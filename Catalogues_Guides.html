@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogs & Guides  -  Zann Dental Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        :root {
+            --color-bg: #E2F2F6;
+            --color-bg-alt: #f5fbfc;
+            --color-dark: #545658;
+            --color-muted: #636466;
+            --color-border: rgba(0,0,0,0.08);
+            --color-white: #ffffff;
+            --color-sage: #9AB1B6;
+            --color-sage-dark: #7a9a9f;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: clamp(72px, 12vw, 92px);
+            overflow-x: hidden;
+        }
+        body {
+            font-family: var(--font);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.55;
+            color: var(--color-muted);
+            background: var(--color-white);
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; height: auto; }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font);
+            font-weight: 700;
+            color: var(--color-dark);
+            text-transform: lowercase;
+        }
+        p {
+            max-width: 72ch;
+            font-weight: 400;
+            color: var(--color-muted);
+            line-height: 1.55;
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100svh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: perspective(1200px) scale(0.88);
+            transition: transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+        .hero.hero-bg-in .hero-bg { transform: perspective(1200px) scale(1); }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(105deg, rgba(32, 36, 38, 0.72) 0%, rgba(52, 58, 60, 0.42) 42%, rgba(72, 82, 84, 0.12) 72%, rgba(90, 100, 102, 0.06) 100%),
+                radial-gradient(ellipse 85% 70% at 15% 50%, rgba(0, 0, 0, 0.22) 0%, transparent 55%);
+            z-index: 1;
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            width: min(1120px, 92vw);
+            margin: 0 auto;
+            padding: clamp(32px, 9vh, 96px) clamp(20px, 5vw, 40px);
+            color: var(--color-white);
+            text-align: left;
+        }
+        .overline {
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: lowercase;
+            color: var(--color-muted);
+            margin-bottom: 10px;
+        }
+        .hero .overline {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 16px;
+        }
+        .hero h1 {
+            font-size: clamp(1.85rem, 5vw + 0.65rem, 3.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.12;
+            margin-bottom: 20px;
+            color: var(--color-white);
+            max-width: min(22ch, 100%);
+        }
+        .hero .lead {
+            font-size: clamp(0.94rem, 0.35vw + 0.9rem, 1.06rem);
+            font-weight: 400;
+            line-height: 1.55;
+            margin: 0 0 12px;
+            max-width: 560px;
+            color: rgba(255, 255, 255, 0.92);
+        }
+        .hero .intro {
+            font-size: clamp(0.94rem, 0.35vw + 0.9rem, 1.06rem);
+            font-weight: 400;
+            line-height: 1.55;
+            margin: 0 0 28px;
+            max-width: 560px;
+            color: rgba(255, 255, 255, 0.88);
+        }
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-family: var(--font);
+            cursor: pointer;
+            border: 1px solid var(--color-dark);
+        }
+        .hero .btn {
+            background: var(--color-white);
+            color: var(--color-dark);
+            border-color: var(--color-dark);
+        }
+        .hero .btn:hover {
+            background: var(--color-dark);
+            color: var(--color-white);
+            border-color: var(--color-dark);
+        }
+        .hero .btn-ghost {
+            background: transparent;
+            color: var(--color-white);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+        .hero .btn-ghost:hover {
+            background: var(--color-white);
+            color: #4c4f51;
+            border-color: var(--color-white);
+        }
+
+        .quick-nav {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background: rgba(232, 244, 247, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(154, 177, 182, 0.25);
+            box-shadow: 0 8px 32px rgba(45, 60, 64, 0.06);
+        }
+        .quick-nav-inner { width: 100%; max-width: 100%; padding: 14px clamp(14px, 4vw, 56px); text-align: center; }
+        .quick-nav-label {
+            text-transform: lowercase;
+            letter-spacing: 0.08em;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--color-muted);
+            margin: 0 auto 8px;
+            padding: 0 clamp(8px, 3vw, 16px);
+            text-align: center;
+        }
+        .quick-nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(0,0,0,0.14);
+            border-bottom: 1px solid rgba(0,0,0,0.14);
+        }
+        .quick-nav-links a {
+            text-decoration: none;
+            color: var(--color-muted);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 14px;
+            border-right: 1px solid rgba(0,0,0,0.1);
+            text-transform: lowercase;
+        }
+        .quick-nav-links a:last-child { border-right: none; }
+        .quick-nav-links a:hover { background: rgba(0,0,0,0.06); color: var(--color-dark); }
+
+        .fit-screen {
+            min-height: 100svh;
+            display: grid;
+            align-items: center;
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+            overflow-x: hidden;
+        }
+        .fit-screen::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 50% at 100% 0%, rgba(226, 242, 246, 0.45) 0%, transparent 55%),
+                linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(250, 252, 252, 0.92) 100%);
+            pointer-events: none;
+        }
+        .fit-screen.alt::before {
+            background:
+                radial-gradient(ellipse 60% 45% at 0% 100%, rgba(218, 236, 240, 0.5) 0%, transparent 50%),
+                linear-gradient(185deg, rgba(240, 248, 250, 0.95) 0%, rgba(255,255,255,0.9) 100%);
+        }
+        #library::before {
+            background:
+                radial-gradient(ellipse 55% 40% at 15% 20%, rgba(200, 228, 234, 0.35) 0%, transparent 50%),
+                linear-gradient(125deg, #ffffff 0%, rgba(248, 252, 252, 0.98) 48%, rgba(236, 247, 250, 0.55) 100%);
+        }
+        #restorative::before {
+            background: linear-gradient(180deg, rgba(255,255,255,0.99) 0%, rgba(245, 250, 251, 0.97) 100%);
+        }
+        #protocols::before {
+            background:
+                radial-gradient(ellipse 80% 60% at 90% 30%, rgba(232, 244, 247, 0.55) 0%, transparent 45%),
+                linear-gradient(195deg, rgba(255, 255, 255, 0.96) 0%, rgba(242, 249, 250, 0.88) 100%);
+        }
+        #removables::before {
+            background: linear-gradient(170deg, rgba(252, 253, 253, 1) 0%, rgba(236, 244, 246, 0.65) 100%);
+        }
+        .section-inner {
+            width: 100%;
+            max-width: 1220px;
+            margin: 0 auto;
+            --section-pad-x: clamp(20px, 4vw, 40px);
+            padding: clamp(48px, 9vh, 96px) var(--section-pad-x);
+            position: relative;
+            z-index: 1;
+        }
+        .section-head { margin-bottom: clamp(28px, 4vw, 40px); }
+        .section-head h2 {
+            display: block;
+            font-size: clamp(32px, 4.8vw, 48px);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: 0;
+            padding-bottom: 22px;
+            border-bottom: none;
+            position: relative;
+            max-width: 22ch;
+        }
+        .section-head h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: min(100px, 28vw);
+            height: 1px;
+            background: linear-gradient(90deg, rgba(122, 154, 159, 0.85) 0%, rgba(122, 154, 159, 0.15) 100%);
+        }
+        .section-head.head-plain h2 {
+            padding-bottom: 0;
+            max-width: none;
+        }
+        .section-head.head-plain h2::after { display: none; }
+        .section-head .deck {
+            max-width: min(560px, 100%);
+            font-size: clamp(15px, 0.35vw + 0.88rem, 16px);
+            line-height: 1.55;
+            color: var(--color-muted);
+            margin-top: 18px;
+            font-weight: 400;
+        }
+        .overline.section-overline {
+            text-align: left;
+            margin-bottom: 8px;
+        }
+
+        /*  -  -  Library: split + large image  -  -  */
+        .lib-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.38fr);
+            gap: clamp(28px, 4vw, 52px);
+            align-items: stretch;
+            min-height: clamp(520px, 78svh, 920px);
+        }
+        .lib-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 0;
+        }
+        .lib-copy .section-head { margin-bottom: 24px; }
+        .lib-copy .section-head h2 { max-width: 16ch; }
+        .lib-copy .deck { max-width: 560px; margin-top: 20px; }
+        .lib-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 32px;
+        }
+        .lib-chips span {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: lowercase;
+            color: var(--color-dark);
+            padding: 10px 18px;
+            border: 1px solid rgba(84, 86, 88, 0.12);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 2px 16px rgba(45, 60, 64, 0.04);
+        }
+        .lib-media {
+            position: relative;
+            min-height: clamp(420px, 72svh, 880px);
+            height: 100%;
+            align-self: stretch;
+            overflow: hidden;
+            background: #2a3032;
+        }
+        .lib-media img {
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.06);
+            transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0.94;
+        }
+        .lib-media:hover img { transform: scale(1); opacity: 1; }
+        .lib-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            padding: 20px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: lowercase;
+            color: rgba(255, 255, 255, 0.85);
+            background: linear-gradient(0deg, rgba(20, 24, 26, 0.75) 0%, transparent 100%);
+        }
+
+        /*  -  -  Restorative: museum-style rows  -  -  */
+        .rest-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border-top: 1px solid rgba(84, 86, 88, 0.08);
+        }
+        .rest-row {
+            display: grid;
+            grid-template-columns: clamp(64px, 9vw, 88px) minmax(0, 1fr);
+            gap: clamp(20px, 3.5vw, 40px);
+            align-items: start;
+            padding: clamp(28px, 3.5vw, 40px) var(--section-pad-x);
+            margin: 0 calc(-1 * var(--section-pad-x));
+            border-bottom: 1px solid rgba(84, 86, 88, 0.06);
+            transition: background 0.35s ease;
+        }
+        .rest-row:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.65);
+        }
+        .rest-row:hover {
+            background: rgba(236, 247, 250, 0.45);
+        }
+        .rest-row-num {
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 700;
+            line-height: 1;
+            color: rgba(122, 154, 159, 0.35);
+            letter-spacing: -0.02em;
+            padding-top: 2px;
+        }
+        .rest-row-body h3 {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.35;
+            margin: 0 0 12px;
+        }
+        .rest-row-body p {
+            margin: 0 0 10px;
+            max-width: none;
+            font-size: 16px;
+            line-height: 1.55;
+        }
+        .rest-row-body p:last-child { margin-bottom: 0; }
+        .price-tag {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-sage-dark);
+            letter-spacing: 0.04em;
+        }
+
+        /*  -  -  Protocols: editorial rail + folio cards + gallery figure  -  -  */
+        .proto-split {
+            display: grid;
+            grid-template-columns: minmax(0, 0.93fr) minmax(0, 1.12fr);
+            gap: clamp(40px, 6vw, 80px);
+            align-items: stretch;
+            min-height: clamp(520px, 76svh, 880px);
+        }
+        .proto-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 0;
+        }
+        .proto-stack {
+            counter-reset: proto;
+            position: relative;
+            padding-left: clamp(22px, 3.2vw, 36px);
+            border-left: 1px solid rgba(122, 154, 159, 0.42);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(22px, 2.8vw, 32px);
+        }
+        .proto-stack::before {
+            content: "";
+            position: absolute;
+            left: -1px;
+            top: 0;
+            width: 3px;
+            height: 48px;
+            background: linear-gradient(180deg, var(--color-sage-dark) 0%, rgba(122, 154, 159, 0.2) 100%);
+            border-radius: 0 2px 2px 0;
+            pointer-events: none;
+        }
+        .proto-card {
+            position: relative;
+            padding: clamp(28px, 3.2vw, 40px) clamp(26px, 3vw, 36px);
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.9) inset,
+                0 22px 56px rgba(45, 60, 64, 0.07);
+            transition: box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        .proto-card::before {
+            counter-increment: proto;
+            content: counter(proto, decimal-leading-zero);
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: var(--color-sage-dark);
+            margin-bottom: 14px;
+        }
+        .proto-card:hover {
+            /* border-color: rgba(122, 154, 159, 0.35); */
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.95) inset,
+                0 28px 68px rgba(45, 60, 64, 0.1);
+        }
+        .proto-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.35;
+            margin: 0 0 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .proto-card p {
+            margin: 0;
+            max-width: none;
+            font-size: 16px;
+            line-height: 1.55;
+        }
+        .proto-card p + p { margin-top: 12px; }
+
+        #protocols .proto-card {
+            padding: clamp(24px, 3.6vw, 44px) clamp(22px, 3.2vw, 40px);
+            /* border: 2px solid #7a9a9f;
+            border-radius: 12px; */
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.92) inset,
+                0 18px 46px rgba(45, 60, 64, 0.07);
+        }
+        #protocols .proto-card:hover {
+            border-color: #7a9a9f;
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.95) inset,
+                0 24px 56px rgba(45, 60, 64, 0.09);
+        }
+
+        .proto-media {
+            min-height: clamp(320px, 56svh, 100%);
+            height: 100%;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            align-self: stretch;
+            background: #1a1d1e;
+            box-shadow: 0 36px 80px rgba(22, 32, 34, 0.2);
+        }
+        .proto-media::before {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            pointer-events: none;
+            z-index: 2;
+        }
+        .proto-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(210deg, transparent 35%, rgba(18, 22, 24, 0.45) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .proto-media img {
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            object-position: center 42%;
+            display: block;
+            transform: scale(1.05);
+            transition: transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .proto-media:hover img { transform: scale(1); }
+        .proto-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            margin: 0;
+            padding: 22px clamp(20px, 3vw, 28px);
+            padding-right: clamp(24px, 4vw, 40px);
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: lowercase;
+            color: rgba(255, 255, 255, 0.88);
+            background: linear-gradient(0deg, rgba(12, 14, 15, 0.82) 0%, transparent 100%);
+        }
+
+        /*  -  -  Removables: process rail (numbered track + columns)  -  -  */
+        #removables .section-inner {
+            max-width: 1240px;
+        }
+        .remov-rail {
+            position: relative;
+            margin-top: clamp(8px, 2vw, 16px);
+            padding: clamp(8px, 1.2vw, 14px);
+            border-radius: 12px;
+            background:
+                linear-gradient(135deg, rgba(242, 249, 250, 0.75) 0%, rgba(122, 154, 159, 0.14) 100%);
+            border: 1px solid rgba(122, 154, 159, 0.28);
+            max-width: 100%;
+        }
+        .remov-rail__inner {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0;
+            position: relative;
+            background: var(--color-white);
+            border-radius: 10px;
+            border: 1px solid rgba(84, 86, 88, 0.08);
+            overflow: hidden;
+            max-width: 100%;
+        }
+        .remov-rail__inner::before {
+            content: "";
+            position: absolute;
+            left: 8%;
+            right: 8%;
+            top: clamp(52px, 7.5vw, 68px);
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(122, 154, 159, 0.35) 12%,
+                rgba(122, 154, 159, 0.35) 88%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+        .remov-step {
+            position: relative;
+            padding: clamp(28px, 3.5vw, 42px) clamp(22px, 2.8vw, 34px);
+            z-index: 1;
+        }
+        .remov-step:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 18%;
+            right: 0;
+            bottom: 18%;
+            width: 1px;
+            background: linear-gradient(
+                180deg,
+                transparent,
+                rgba(122, 154, 159, 0.28) 22%,
+                rgba(122, 154, 159, 0.28) 78%,
+                transparent
+            );
+        }
+        .remov-step__track {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: clamp(20px, 2.5vw, 28px);
+            min-height: 44px;
+        }
+        .remov-step__index {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: var(--color-sage-dark);
+            background: rgba(226, 242, 246, 0.85);
+            border: 1px solid rgba(122, 154, 159, 0.35);
+            border-radius: 50%;
+            box-shadow: 0 4px 16px rgba(45, 60, 64, 0.06);
+        }
+        .remov-step .overline {
+            margin: 0;
+            color: var(--color-sage-dark);
+            font-weight: 600;
+        }
+        .remov-step h3 {
+            font-size: clamp(17px, 1.35vw, 20px);
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 0 0 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .remov-step p {
+            margin: 0;
+            max-width: none;
+            font-size: 16px;
+            line-height: 1.55;
+        }
+        @media (hover: hover) {
+            .remov-step {
+                transition: background 0.35s ease;
+            }
+            .remov-step:hover {
+                background: rgba(236, 247, 250, 0.55);
+            }
+        }
+
+        /*  -  -  Download: centered band (layout 5)  -  -  */
+        #download {
+            min-height: auto;
+            padding-block: clamp(48px, 10vh, 88px);
+        }
+        #download::before {
+            background: var(--color-white);
+        }
+        .download-wrap {
+            text-align: center;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+        .download-wrap .section-head {
+            text-align: center;
+        }
+        .download-wrap .overline.section-overline {
+            text-align: center;
+        }
+        .download-wrap .deck {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 48ch;
+        }
+        .download-solo {
+            margin-top: clamp(32px, 5vw, 44px);
+            padding-top: clamp(28px, 4vw, 36px);
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+        .download-solo__title {
+            font-size: clamp(18px, 2vw, 20px);
+            font-weight: 700;
+            line-height: 1.35;
+            margin: 0 0 12px;
+            color: var(--color-dark);
+        }
+        .download-solo__meta {
+            margin: 0 auto 24px;
+            max-width: min(44ch, 100%);
+            font-size: clamp(15px, 0.35vw + 0.88rem, 16px);
+            line-height: 1.55;
+            color: var(--color-muted);
+            padding: 0 clamp(4px, 2vw, 0);
+            overflow-wrap: anywhere;
+        }
+        .download-solo__cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--color-white);
+            background: var(--color-dark);
+            border: 1px solid var(--color-dark);
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            font-family: var(--font);
+        }
+        .download-solo__cta:hover {
+            background: transparent;
+            color: var(--color-dark);
+        }
+        .download-solo__cta:focus-visible {
+            outline: 2px solid var(--color-sage-dark);
+            outline-offset: 3px;
+        }
+        .download-note {
+            margin-top: clamp(24px, 4vw, 32px);
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+            max-width: 44ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-footer {
+            padding: 40px clamp(16px, 4vw, 32px) 56px;
+            text-align: center;
+            border-top: 1px solid rgba(154, 177, 182, 0.2);
+            background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, var(--color-bg-alt) 100%);
+        }
+        .page-footer a {
+            color: var(--color-dark);
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .page-footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 1200px) {
+            .lib-layout {
+                min-height: clamp(420px, 68svh, 800px);
+                gap: clamp(22px, 3.5vw, 40px);
+            }
+            .proto-split {
+                gap: clamp(28px, 4.5vw, 56px);
+                min-height: clamp(440px, 64svh, 780px);
+            }
+        }
+
+        @media (max-width: 980px) {
+            .lib-layout { grid-template-columns: 1fr; min-height: 0; align-items: stretch; }
+            .lib-media { min-height: clamp(260px, 48svh, 520px); height: auto; order: -1; }
+            .proto-split { grid-template-columns: 1fr; min-height: 0; }
+            #protocols .proto-card {
+                padding: clamp(20px, 4vw, 32px) clamp(18px, 3.5vw, 28px);
+            }
+            .proto-stack {
+                padding-left: 0;
+                border-left: none;
+                padding-top: 8px;
+                border-top: 1px solid rgba(122, 154, 159, 0.28);
+                gap: 20px;
+            }
+            .proto-stack::before { display: none; }
+            .proto-media { min-height: clamp(240px, 42svh, 480px); height: auto; order: -1; }
+            .proto-media::before { inset: 10px; }
+            .remov-rail__inner {
+                grid-template-columns: 1fr;
+            }
+            .remov-rail__inner::before {
+                display: none;
+            }
+            .remov-step:not(:last-child)::after {
+                top: auto;
+                right: auto;
+                bottom: 0;
+                left: 10%;
+                width: 80%;
+                height: 1px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(122, 154, 159, 0.28) 18%,
+                    rgba(122, 154, 159, 0.28) 82%,
+                    transparent
+                );
+            }
+            .hero-inner {
+                padding-top: clamp(48px, 10vh, 72px);
+                padding-bottom: clamp(48px, 10vh, 72px);
+                width: min(1120px, 100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: clamp(64px, 14vw, 88px);
+            }
+            .hero h1 {
+                max-width: none;
+            }
+            .hero .btn {
+                min-height: 44px;
+                padding-inline: 20px;
+            }
+            .section-head h2 {
+                max-width: none;
+                font-size: clamp(1.65rem, 4.5vw + 0.5rem, 2.25rem);
+            }
+            .quick-nav-links {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                overflow-x: auto;
+                overscroll-behavior-x: contain;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                gap: 0;
+                border-left: none;
+                border-right: none;
+                mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+                -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+            }
+            .quick-nav-links a {
+                flex: 0 0 auto;
+                white-space: nowrap;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+            }
+            .quick-nav-links a:first-child {
+                padding-left: clamp(16px, 4vw, 24px);
+            }
+            .quick-nav-links a:last-child {
+                padding-right: clamp(16px, 4vw, 24px);
+            }
+            .rest-row {
+                grid-template-columns: 48px minmax(0, 1fr);
+                gap: clamp(14px, 3vw, 24px);
+            }
+            .rest-row-num {
+                font-size: clamp(22px, 5vw, 32px);
+            }
+            .remov-step__track {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .fit-screen {
+                min-height: 0;
+            }
+            .hero {
+                min-height: 100svh;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .section-inner {
+                --section-pad-x: clamp(14px, 4vw, 20px);
+                padding-top: clamp(32px, 8vh, 48px);
+                padding-bottom: clamp(32px, 8vh, 48px);
+                padding-left: var(--section-pad-x);
+                padding-right: var(--section-pad-x);
+            }
+            .lib-caption,
+            .proto-caption {
+                font-size: 16px;
+                padding-left: clamp(14px, 4vw, 20px);
+                padding-right: clamp(14px, 4vw, 20px);
+            }
+            .quick-nav-inner {
+                padding-left: clamp(10px, 3vw, 14px);
+                padding-right: clamp(10px, 3vw, 14px);
+            }
+            .quick-nav-links a {
+                font-size: 16px;
+                padding: 10px 12px;
+            }
+            .download-wrap {
+                max-width: 100%;
+                padding: 0 clamp(4px, 2vw, 0);
+            }
+            .download-solo__cta {
+                width: 100%;
+                max-width: none;
+                min-height: 48px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .rest-row {
+                grid-template-columns: 1fr;
+            }
+            .rest-row-num {
+                margin-bottom: 4px;
+            }
+            .proto-card h3,
+            .rest-row-body h3 {
+                font-size: clamp(16px, 4.2vw, 18px);
+            }
+        }
+
+        @media (max-height: 480px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding-block: clamp(24px, 6vh, 48px);
+            }
+            .hero-inner {
+                padding-top: clamp(24px, 5vh, 48px);
+                padding-bottom: clamp(24px, 5vh, 48px);
+            }
+            .fit-screen {
+                min-height: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            .hero-bg,
+            .lib-media img,
+            .proto-media img {
+                transition: none;
+            }
+            .hero.hero-bg-in .hero-bg {
+                transform: perspective(1200px) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+      <!-- Top promo bar -->
+        <div class="promo-bar">
+        New to Zann? <a href="#resources">Request a welcome kit</a>  -  Fast turnaround on first case. <a href="#case-submission">Send a case</a>
+    </div>
+    <div class="site-header-sticky">
+  
+    <!-- Header with full navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">ZANN</a>
+        <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+        <nav class="nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Products &amp; Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">products &amp; services</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Crowns &amp; Bridges <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_crown_PFM.html">Porcelain-Fused-to-Metal (PFM)</a>
+                                    <a href="Product_crown_Zirconia.html">Zirconia Crown</a>
+                                    <a href="Product_crown_Emax.html">E.max</a>
+                                    <a href="Product_crown_FullGold.html">Full Gold Crown</a>
+                                </div>
+                            </div>
+                             <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Veneers <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_venner_Emax.html">E.max Veneer</a>
+                                    <a href="Product_veneer_Zirconia.html">Zirconia Veneer</a>
+                                    <!-- <a href="#">Abutments</a> -->
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Implants <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_implant_Standard.html">Standard Implants</a>
+                                    <a href="Product_implant_Advanced_Custom.html">Advanced/Custom Implants</a>
+                                    <a href="Product_implant_Full-Arch.html">Full-Arch Restorations</a>
+                                </div>
+                            </div>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand"> Nightguards/Ortho & Splints </button> <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Nightguards</a>
+                                    <a href="#">Sports Guards</a>
+                                    <a href="#">Essix Retainers</a>
+                                    <a href="#">Bleaching Trays</a>
+                                    <a href="#">Ortho</a>
+                                </div>
+                            </div> -->
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Nightguards/Ortho & Splints <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Nightguards.html">Nightguards</a>
+                                    <a href="Product_Sportsguards.html">Sports Guards</a>
+                                    <a href="Product_Essix Retainers.html">Essix Retainers</a>
+                                    <a href="Product_Bleaching_Trays.html">Bleaching Trays</a>
+                                    <a href="Product_Ortho.html">Ortho</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Removables <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Acrylic_Dentures.html">Acrylic Dentures</a>
+                                    <a href="Product_Immediate_Dentures.html">Immediate Dentures</a>
+                                    <a href="Product_Cast_Partial_Framework_Dentures.html">Cast Partial Framework Denture</a>
+                                    <a href="Product_3D_Printing.html">3D Printed Dentures</a>
+                                    <a href="Product_Denture_Repairs_Relines.html">Denture Repairs/Relines</a>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Dentistry <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Digital_Workflow_Scans.html">Digital Workflow / Scans</a>
+                                    <a href="Product_3D_Printing.html">3D Printing</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Crowns &amp; Bridges</span>
+                                <a href="Product_crown_PFM.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Dentures</span>
+                                <a href="Product_Acrylic_Dentures.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Nightguards</span>
+                                <a href="Product_Nightguards.html" aria-hidden="true"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Case Submission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">case submission</span>
+                             <!-- <div>
+                                <button type="button" class="dropdown-expand">Step-by-step instructions</button>
+                            </div> -->
+                            <a href="Step_BY_Step_Instructions.html">Step-by-step instructions</a>
+                            <a href="Physical_Case_Submission.html">
+                                Physical Case Submission
+                            </a>
+                            <a href="Digital_Case_Submission.html">
+                                Digital Case Submission 
+                            </a>
+                            <a href="FAQ_Case_Submission.html">FAQ Case Submission</a>
+                        </div>
+  
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Physical Case Submission<span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Download RX Forms</a>
+                                    <a href="#">Packing &amp; Shipping Guide</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Case Submission <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Scanner Integration</a>
+                                    <a href="#">File Upload Portal</a>
+                                </div> -->
+                            
+                            
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Send a Case</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Digital Submission</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Shipping</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Education <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">education</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Continuing Education <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Live Webinars</a>
+                                    <a href="#">Recorded Courses</a>
+                                    <a href="#">Hands-On Workshops</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Tips &amp; Tutorials <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Clinical Guides</a>
+                                    <a href="#">Shade &amp; Material Guides</a>
+                                    <a href="#">Workflow Tutorials</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Blog / Articles <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Case Studies</a>
+                                    <a href="#">Digital Dentistry Tips</a>
+                                    <a href="#">Industry News</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Continuing Education</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Clinical Guides</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Case Studies</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+  
+             <!-- <div class="nav-item">
+                <a href="" class="nav-link">Specialists & Support</a>
+            </div> -->
+            <div class="nav-item has-dropdown">
+                <a href="Specialists_Support.html" class="nav-link nav-link-toggle" data-toggle="dropdown">Specialists &amp; Support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">specialists &amp; support</span>
+                            <a href="CustomShadeinHouse.html">Custom Shade in House</a>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Contact a Specialist <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    
+                                    <a href="#">Book Call / Email Support</a> 
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Technical Support <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Troubleshooting</a>
+                                    <a href="#">Material or Product Guidance</a>
+                                </div>
+                            </div>
+                            <a href="#">Local Lab Contacts (Phone &amp; Email)</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Contact a Specialist</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Technical Support</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Local Lab</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">resources</span>
+                            <a href="Catalogues_Guides.html">Catalogs &amp; Guides</a>
+                            <a href="Welcome_Kits.html">Welcome Kits</a>
+                            <a href="Turnaround_Times.html">Turnaround Times</a>
+                            <a href="Resources_Faqs.html">FAQs</a>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Catalogs</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Welcome Kits</span><a href="Welcome_Kits.html" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Turnaround Times</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">about us</span>
+                            <a href="about_ourstory.html">Our Story</a>
+                            <a href="about_missionandvalues.html">Mission &amp; Values</a>
+                            <!-- <a href="#">Team / Technicians</a> -->
+                            <!-- <a href="#">Certifications &amp; Awards</a> -->
+                            <!-- <a href="#">Careers</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Our Story</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Mission &amp; Values</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Team</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+        <!-- <div class="nav-utils">
+            <a href="#search" aria-label="Search">ðŸ"</a>
+            <a href="#account" aria-label="Account">ðŸ‘¤</a>
+        </div> -->
+    </header>
+    </div>
+
+    <section class="hero" id="top">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-inner">
+            <p class="overline" style="color:#7a9a9f;">resources</p>
+            <h1>catalogs &amp; guides: the precision portfolio</h1>
+            <p class="lead">A digital library for clinicians.</p>
+            <p class="intro">Explore how we document material science, restorative options, clinical protocols, and removable systems - so your team can plan cases with clarity from prep to delivery.</p>
+            <div class="hero-cta-row">
+                <a class="btn" href="#library">Browse the library</a>
+                <a class="btn btn-ghost" href="https://github.com/KeralPatel3095/ZANN_PDF/raw/main/ZANN%20Pricelist-2026.pdf ">Download catalogue</a>
+            </div>
+        </div>
+    </section>
+
+    <nav class="quick-nav" aria-label="Page sections">
+        <div class="quick-nav-inner">
+            <p class="quick-nav-label" style="color:#7a9a9f;">On this page</p>
+            <div class="quick-nav-links">
+                <a href="#library">Overview</a>
+                <a href="#restorative">Restorative guide</a>
+                <a href="#protocols">Clinical protocols</a>
+                <a href="#removables">Removables</a>
+                <a href="#download">Download</a>
+                <a href="index.html">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Layout 1: editorial split + image -->
+    <section class="fit-screen alt" id="library">
+        <div class="section-inner">
+            <div class="lib-layout">
+                <div class="lib-copy">
+                    <div class="section-head">
+                        <p class="overline section-overline" style="color:#7a9a9f;">the precision portfolio</p>
+                        <h2>your lab reference, online</h2>
+                        <p class="deck">Structured like our printed references: restorative families first, then chairside protocols, then removable workflows. Align expectations with patients and with our bench team before you prescribe.</p>
+                    </div>
+                    <div class="lib-chips" aria-label="Document categories">
+                        <span>Restorative</span>
+                        <span>Protocols</span>
+                        <span>Removables</span>
+                    </div>
+                </div>
+                <div class="lib-media">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=2000&h=1500&fit=crop&q=85" width="2000" height="1500" alt="Technician reviewing technical documentation in the dental laboratory">
+                    <p class="lib-caption">Bench documentation  -  Zann Dental Laboratory</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layout 2: numbered strips -->
+    <section class="fit-screen" id="restorative">
+        <div class="section-inner">
+            <div class="section-head">
+                <p class="overline section-overline" style="color:#7a9a9f;">material science &amp; esthetics</p>
+                <h2>restorative selection guide</h2>
+                <p class="deck">Choose the right substrate for the arch, the patient, and the fee structure. How we position our core restorative lines at Zann.</p>
+            </div>
+            <div class="rest-stack">
+                <article class="rest-row">
+                    <span class="rest-row-num">01</span>
+                    <div class="rest-row-body">
+                        <h3>the zann zirconia series</h3>
+                        <p><strong>Everyday zirconia</strong>  -  engineered for posterior durability and efficient turnaround. <span class="price-tag">($295)</span></p>
+                        <p><strong>High translucency zirconia</strong>  -  layered optics for anterior vitality and natural enamel behavior. <span class="price-tag">($425)</span></p>
+                    </div>
+                </article>
+                <article class="rest-row">
+                    <span class="rest-row-num">02</span>
+                    <div class="rest-row-body">
+                        <h3>e.max lithium disilicate</h3>
+                        <p><strong>Digitally milled</strong>  -  repeatable contours and consistent thickness for single units and straightforward cases.</p>
+                        <p><strong>Premium pressed</strong>  -  when you need enhanced aesthetic control and nuanced characterization from the ingot stage.</p>
+                    </div>
+                </article>
+                <article class="rest-row">
+                    <span class="rest-row-num">03</span>
+                    <div class="rest-row-body">
+                        <h3>the gold standard</h3>
+                        <p>Our <strong>precision-cast gold crowns</strong> remain the benchmark for biocompatibility, margin adaptation, and long-term service - especially where occlusal wear and tissue response matter most.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layout 3: left stacked cards + right image -->
+    <section class="fit-screen alt" id="protocols">
+        <div class="section-inner">
+            <div class="section-head">
+                <p class="overline section-overline" style="color:#7a9a9f;">chairside alignment</p>
+                <h2>clinical protocol manuals</h2>
+                <p class="deck">Shared language on reduction and cementation reduces remakes and protects your warranty path. These are the numbers we design to.</p>
+            </div>
+            <div class="proto-split">
+                <div class="proto-copy">
+                    <div class="proto-stack">
+                        <article class="proto-card">
+                            <h3>preparation requirements</h3>
+                            <p>Ideal reduction keeps ceramic in its strength window without over-cutting tooth structure. As a working guide: plan <strong>1.0 - 1.5 mm</strong> of clearance for e.max crowns where occlusal and axial walls allow full contour; for <strong>veneers</strong>, target roughly <strong>0.5 - 0.7 mm</strong> labial reduction with defined incisal transitions so we can preserve enamel for bonding.</p>
+                        </article>
+                        <article class="proto-card">
+                            <h3>cementation &amp; bonding</h3>
+                            <p><strong>Lithium disilicate</strong> benefits from adhesive resin protocols that maximize enamel and dentin coupling - ask for our latest IFU pairing for your cement brand.</p>
+                            <p><strong>Zirconia</strong> requires surface conditioning and primers matched to the zirconia generation you receive; we outline chairside steps so retention is predictable under functional load.</p>
+                        </article>
+                    </div>
+                </div>
+                <figure class="proto-media">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600&h=2000&fit=crop&q=85" width="1600" height="2000" alt="Close-up aesthetic dental restoration and natural tooth integration">
+                    <figcaption class="proto-caption">Clinical reference  -  restoration &amp; natural integration</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layout 4: three-step process rail (distinct from bento / splits) -->
+    <section class="fit-screen" id="removables">
+        <div class="section-inner">
+            <div class="section-head">
+                <p class="overline section-overline" style="color:#7a9a9f;">full &amp; partial dentures</p>
+                <h2>the removables blueprint</h2>
+                <p class="deck">Prosthetic success is material density plus gingival artistry. How we describe our removable stack to referring doctors.</p>
+            </div>
+            <div class="remov-rail" role="region" aria-label="Removable workflow: material, aesthetics, communication">
+                <div class="remov-rail__inner">
+                    <article class="remov-step">
+                        <div class="remov-step__track">
+                            <span class="remov-step__index" aria-hidden="true">01</span>
+                            <p class="overline">material system</p>
+                        </div>
+                        <h3>prosthetic systems</h3>
+                        <p>We specify <strong>Diamond D<sup>R</sup></strong> heat-cure acrylic for bases that feel dense under function - helping resist fracture and flexure common with under-packed conventional mixes.</p>
+                    </article>
+                    <article class="remov-step">
+                        <div class="remov-step__track">
+                            <span class="remov-step__index" aria-hidden="true">02</span>
+                            <p class="overline">gingival finish</p>
+                        </div>
+                        <h3>aesthetic characterization</h3>
+                        <p>Gingival surfaces are hand-layered with <strong>VITA<sup>®</sup></strong> stains so tubercle detail, root eminence, and mucosal variation read naturally at conversational distance - not flat pink.</p>
+                    </article>
+                    <article class="remov-step">
+                        <div class="remov-step__track">
+                            <span class="remov-step__index" aria-hidden="true">03</span>
+                            <p class="overline">case alignment</p>
+                        </div>
+                        <h3>lab communication</h3>
+                        <p>Share shade photos, lip support preferences, and occlusal scheme early - we build the try-in and final to the same blueprint so chairside adjustments stay minimal.</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layout 5: single Zann catalogue (pricing & information) -->
+    <section class="fit-screen alt" id="download">
+        <div class="section-inner">
+            <div class="download-wrap">
+                <div class="section-head head-plain">
+                    <p class="overline section-overline" style="color:#7a9a9f;">pricing &amp; reference</p>
+                    <h2>Zann catalogue</h2>
+                    <p class="deck">Three generations of dental expertise distilled into one planning resource: current pricing and essential lab insights for predictable patient outcomes.</p>
+                </div>
+                <div class="download-solo">
+                    <h3 class="download-solo__title">Secure the Essential Lab Guide</h3>
+                    <p class="download-solo__meta">Optimize your workflow with our latest pricing schedule and digital integration protocols. Link below until your permanent file is hosted.</p>
+                    <a class="download-solo__cta" href="https://github.com/KeralPatel3095/ZANN_PDF/raw/main/ZANN%20Pricelist-2026.pdf " download>Download PDF</a>
+                </div>
+                <!-- <p class="download-note">Replace the link above with your hosted PDF URL when the file is ready. If the browser opens the file instead of saving, use "Save link asâ€¦" on the link.</p> -->
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="js/nav-footer.js"></script>
+
+    <!-- <footer class="page-footer">
+        <a href="index.html">â† Back to Zann Dental Lab home</a>
+    </footer> -->
+
+    <script>
+        (function () {
+            var hero = document.getElementById('top');
+            if (hero) {
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        hero.classList.add('hero-bg-in');
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
+
+

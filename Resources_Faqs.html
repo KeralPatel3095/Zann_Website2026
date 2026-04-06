@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources &amp; FAQ  -  Zann Dental Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        :root {
+            --color-bg: #E2F2F6;
+            --color-bg-alt: #f5fbfc;
+            --color-dark: #545658;
+            --color-muted: #636466;
+            --color-border: rgba(0, 0, 0, 0.08);
+            --color-white: #ffffff;
+            --color-sage: #9AB1B6;
+            --color-sage-dark: #7a9a9f;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            --res-pad-x: clamp(20px, 4vw, 48px);
+            --res-section-gap: clamp(24px, 4vh, 48px);
+            --quick-nav-height: clamp(52px, 11vw, 78px);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: clamp(72px, 12vw, 92px);
+            overflow-x: hidden;
+        }
+        body {
+            font-family: var(--font);
+            font-size: 16px;
+            line-height: 1.55;
+            font-weight: 400;
+            color: var(--color-muted);
+            background: #fafcfc;
+            overflow-x: hidden;
+        }
+        a {
+            color: var(--color-sage-dark);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(122, 154, 159, 0.4);
+        }
+        a:hover { color: var(--color-dark); border-bottom-color: var(--color-dark); }
+        .header .nav .nav-link,
+        .header .nav .nav-link:hover,
+        .header .nav .nav-link:focus {
+            border-bottom: none !important;
+        }
+        .header .dropdown-left a,
+        .header .dropdown-left a:hover,
+        .header .dropdown-left a:focus,
+        .header .dropdown-sublinks a,
+        .header .dropdown-sublinks a:hover,
+        .header .dropdown-sublinks a:focus,
+        .header .dropdown-block,
+        .header .dropdown-sublinks {
+            border: none !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
+        }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* Full viewport band (hero + each FAQ chapter) */
+        .res-full {
+            position: relative;
+            min-height: 100svh;
+            min-height: 100dvh;
+            display: grid;
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(154, 177, 182, 0.14);
+        }
+        .res-full:last-of-type {
+            border-bottom: none;
+        }
+        .res-full::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .res-full-inner {
+            position: relative;
+            z-index: 1;
+            width: min(680px, 90vw);
+            margin: 0 auto;
+            padding: clamp(56px, 10vh, 110px) var(--res-pad-x);
+        }
+
+        /* Full-bleed split: image + copy (classy editorial) */
+        .res-full--split {
+            padding: 0;
+            display: block;
+        }
+        .res-full--split::before {
+            background: #f7fafb;
+        }
+        .res-split-screen {
+            position: relative;
+            z-index: 1;
+            min-height: 100svh;
+            min-height: 100dvh;
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+            max-width: 1320px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+        .res-full--media-right .res-split-screen {
+            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        }
+        /* Shared fullscreen photo motion (split chapters + hero) */
+        .res-split-media,
+        .hero-media {
+            margin: 0;
+            position: relative;
+            min-height: 100%;
+            background: #eef4f6;
+            overflow: hidden;
+        }
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            min-height: 100%;
+            z-index: 0;
+        }
+        .res-split-media::after,
+        .hero-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(105deg, rgba(255, 255, 255, 0.12) 0%, transparent 45%);
+            z-index: 1;
+            transition: opacity 1.5s ease;
+        }
+        .hero-media::after {
+            background: linear-gradient(98deg, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
+        }
+        .res-split-media img,
+        .hero-media img {
+            width: 100%;
+            height: 100%;
+            min-height: 100svh;
+            min-height: 100dvh;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.1);
+            filter: brightness(0.94) saturate(0.95);
+            transition:
+                transform 8s cubic-bezier(0.22, 0.61, 0.36, 1),
+                filter 6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 5s ease;
+            opacity: 0.92;
+            will-change: transform;
+        }
+        .res-split-media.is-in-view img,
+        .hero-media.is-in-view img {
+            transform: scale(1);
+            filter: brightness(1) saturate(1.05);
+            opacity: 1;
+        }
+        .res-split-media.is-in-view::after,
+        .hero-media.is-in-view::after {
+            opacity: 0.82;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .res-split-media.is-in-view:hover img,
+            .hero-media.is-in-view:hover img {
+                transform: scale(1.03);
+                transition-duration: 4s, 3s, 2s;
+            }
+        }
+        .res-split-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(48px, 9vh, 100px) clamp(36px, 5vw, 72px);
+            background: #fafcfc;
+        }
+        .res-split-copy .res-chapter h2 {
+            max-width: 26ch;
+        }
+        .res-split-copy .res-chapter p {
+            max-width: min(48ch, 100%);
+        }
+        .res-split-copy .res-highlight {
+            max-width: 100%;
+        }
+        .res-full--media-right .res-split-media {
+            order: 2;
+        }
+        .res-full--media-right .res-split-copy {
+            order: 1;
+        }
+        @media (max-width: 960px) {
+            .res-split-screen,
+            .res-full--media-right .res-split-screen {
+                grid-template-columns: 1fr;
+                min-height: 0;
+            }
+            .res-split-media img {
+                min-height: min(52vh, 420px);
+                max-height: 52vh;
+            }
+            .res-full--media-right .res-split-media,
+            .res-full--media-right .res-split-copy {
+                order: unset;
+            }
+            .res-split-copy {
+                padding: clamp(40px, 8vh, 72px) var(--res-pad-x);
+            }
+        }
+
+        /* Hero  -  photo + dark scrim (same motion as .res-split-media) */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100svh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(105deg, rgba(32, 36, 38, 0.72) 0%, rgba(52, 58, 60, 0.42) 42%, rgba(72, 82, 84, 0.12) 72%, rgba(90, 100, 102, 0.06) 100%),
+                radial-gradient(ellipse 85% 70% at 15% 50%, rgba(0, 0, 0, 0.22) 0%, transparent 55%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            width: min(1120px, 92vw);
+            margin: 0 auto;
+            padding: clamp(32px, 9vh, 96px) clamp(20px, 5vw, 40px);
+            color: var(--color-white);
+            text-align: left;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 2px 24px rgba(0, 0, 0, 0.25);
+        }
+        .hero .overline {
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: lowercase;
+            color: rgba(255, 255, 255, 0.96);
+            margin-bottom: 16px;
+        }
+        .hero h1 {
+            font-size: clamp(1.85rem, 5vw + 0.65rem, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.12;
+            margin-bottom: 14px;
+            color: var(--color-white);
+            max-width: min(22ch, 100%);
+            text-transform: lowercase;
+        }
+        .hero .tagline {
+            font-size: clamp(1rem, 1vw + 0.88rem, 1.2rem);
+            font-weight: 600;
+            color: #f0f8f9;
+            margin-bottom: 16px;
+            max-width: 38ch;
+        }
+        .hero .intro {
+            font-size: clamp(0.94rem, 0.35vw + 0.9rem, 1.05rem);
+            font-weight: 400;
+            line-height: 1.55;
+            margin: 0 0 28px;
+            max-width: min(62ch, 100%);
+            color: rgba(255, 255, 255, 0.95);
+        }
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 12px 22px;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-family: var(--font);
+            border: 1px solid var(--color-dark);
+            text-transform: lowercase;
+            cursor: pointer;
+        }
+        .hero .btn {
+            background: var(--color-white);
+            color: var(--color-dark);
+            border-color: var(--color-dark);
+            border-bottom: 1px solid var(--color-dark);
+        }
+        .hero .btn:hover {
+            background: var(--color-dark);
+            color: var(--color-white);
+            border-color: var(--color-dark);
+            border-bottom-color: var(--color-dark);
+        }
+        .hero .btn-ghost {
+            background: transparent;
+            color: var(--color-white);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+        .hero .btn-ghost:hover {
+            background: var(--color-white);
+            color: var(--color-dark);
+            border-color: var(--color-white);
+        }
+        .hero .note {
+            margin-top: 22px;
+            font-size: 16px;
+            line-height: 1.55;
+            max-width: min(62ch, 100%);
+            margin-left: 0;
+            margin-right: 0;
+            color: rgba(255, 255, 255, 0.88);
+        }
+        .hero .note a {
+            color: rgba(255, 255, 255, 0.95);
+            border-bottom-color: rgba(255, 255, 255, 0.45);
+        }
+        .hero .note a:hover {
+            color: var(--color-white);
+            border-bottom-color: var(--color-white);
+        }
+
+        /* Sticky quick nav  -  same pattern as Turnaround_Times.html */
+        .quick-nav {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background: rgba(232, 244, 247, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(154, 177, 182, 0.25);
+            box-shadow: 0 8px 32px rgba(45, 60, 64, 0.06);
+        }
+        .quick-nav-inner {
+            width: 100%;
+            max-width: 100%;
+            padding: 12px clamp(14px, 4vw, 48px);
+            text-align: center;
+        }
+        .quick-nav-label {
+            font-size: 16px;
+            letter-spacing: 0.08em;
+            text-transform: lowercase;
+            color: var(--color-dark);
+            margin: 0 auto 6px;
+        }
+        .quick-nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .quick-nav-links a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 12px;
+            border-right: 1px solid rgba(0, 0, 0, 0.08);
+            text-transform: lowercase;
+            border-bottom: none;
+        }
+        .quick-nav-links a:last-child { border-right: none; }
+        .quick-nav-links a:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--color-dark);
+        }
+
+        /* Section backdrop variants */
+        #s-overview::before {
+            background: linear-gradient(178deg, #fafcfc 0%, #f0f7f9 45%, #e8f2f5 100%);
+        }
+        #s-cdcp::before {
+            display: none;
+        }
+        #s-warranty::before {
+            display: none;
+        }
+        #s-logistics::before {
+            background: linear-gradient(180deg, #f6fafb 0%, #ecf4f7 100%);
+        }
+        #s-support::before {
+            background: linear-gradient(180deg, #e8f2f5 0%, #dcebee 50%, #d3e6ea 100%);
+        }
+
+        /* Overview  -  quick reference (centered) */
+        .res-overview-inner {
+            width: min(720px, 92vw) !important;
+            text-align: center;
+        }
+        .res-overview-inner > .res-chapter-label {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .res-overview-inner > h2 {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .res-overview-lede {
+            max-width: min(50ch, 100%) !important;
+            font-size: 16px;
+            line-height: 1.55;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1.75rem !important;
+            color: rgba(99, 100, 102, 0.95) !important;
+        }
+        .res-overview-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border-top: 1px solid rgba(122, 154, 159, 0.2);
+        }
+        .res-overview-list > li {
+            padding: 1.25rem 0 1.35rem;
+            border-bottom: 1px solid rgba(84, 86, 88, 0.07);
+        }
+        .res-overview-list > li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .res-overview-list strong {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-dark);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.45rem;
+            text-transform: lowercase;
+        }
+        .res-chapter .res-overview-list p {
+            margin: 0 auto;
+            max-width: min(54ch, 100%);
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+        }
+
+        /* Logistics & digital  -  open columns, no boxes */
+        .res-inner-wide {
+            width: min(1120px, 94vw) !important;
+        }
+        .res-inner-wide .res-chapter h2 {
+            max-width: min(28ch, 100%);
+        }
+        .res-log-intro {
+            max-width: min(58ch, 100%) !important;
+            line-height: 1.55 !important;
+        }
+        .res-log-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 0;
+            margin-top: clamp(2rem, 4vh, 2.75rem);
+            padding-top: clamp(1.75rem, 3vh, 2.35rem);
+            border-top: 1px solid rgba(122, 154, 159, 0.14);
+            align-items: start;
+        }
+        .res-log-col {
+            margin: 0;
+            padding: 0;
+        }
+        .res-log-col--pickup {
+            padding-right: clamp(1.5rem, 4vw, 3rem);
+            border-right: 1px solid rgba(122, 154, 159, 0.12);
+        }
+        .res-log-col--digital {
+            padding-left: clamp(1.5rem, 4vw, 3rem);
+        }
+        .res-log-eyebrow {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+            color: var(--color-sage-dark);
+            margin: 0 0 0.5rem;
+        }
+        .res-log-col-title {
+            font-size: clamp(1.2rem, 1.5vw, 1.35rem);
+            font-weight: 600;
+            color: var(--color-dark);
+            text-transform: lowercase;
+            letter-spacing: -0.03em;
+            line-height: 1.22;
+            margin: 0 0 1.35rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(122, 154, 159, 0.12);
+        }
+        .res-log-faq {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .res-log-faq-item {
+            border-bottom: 1px solid rgba(84, 86, 88, 0.07);
+        }
+        .res-log-q {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            width: 100%;
+            margin: 0;
+            padding: 0.95rem 0;
+            font-family: var(--font);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-dark);
+            letter-spacing: -0.02em;
+            line-height: 1.35;
+            text-transform: lowercase;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: color 0.15s ease, background-color 0.15s ease;
+        }
+        .res-log-q:hover {
+            color: var(--color-sage-dark);
+        }
+        .res-log-q:focus {
+            outline: none;
+        }
+        .res-log-q:focus-visible {
+            outline: 2px solid rgba(122, 154, 159, 0.55);
+            outline-offset: 2px;
+        }
+        .res-log-q::after {
+            content: "";
+            width: 0.4rem;
+            height: 0.4rem;
+            flex-shrink: 0;
+            margin-top: -0.15rem;
+            border-right: 2px solid rgba(122, 154, 159, 0.65);
+            border-bottom: 2px solid rgba(122, 154, 159, 0.65);
+            transform: rotate(45deg);
+            transition: transform 0.2s ease;
+        }
+        .res-log-a {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            margin: 0;
+            padding: 0 0 0 0.15rem;
+            font-size: 16px;
+            line-height: 1.72;
+            color: rgba(99, 100, 102, 0.93);
+            max-width: min(48ch, 100%);
+            transition:
+                max-height 0.38s cubic-bezier(0.33, 1, 0.68, 1),
+                opacity 0.28s ease,
+                padding 0.28s ease;
+        }
+        .res-log-a strong {
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+        /* Reveal: hover (fine pointer), keyboard focus, open state (tap) */
+        .res-log-faq-item.is-open .res-log-a,
+        .res-log-faq-item:focus-within .res-log-a {
+            max-height: 22rem;
+            opacity: 1;
+            padding-bottom: 0.85rem;
+        }
+        .res-log-faq-item.is-open .res-log-q::after,
+        .res-log-faq-item:focus-within .res-log-q::after {
+            transform: rotate(225deg);
+            margin-top: 0.1rem;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .res-log-faq-item:hover .res-log-a {
+                max-height: 22rem;
+                opacity: 1;
+                padding-bottom: 0.85rem;
+            }
+            .res-log-faq-item:hover .res-log-q::after {
+                transform: rotate(225deg);
+                margin-top: 0.1rem;
+            }
+            .res-log-faq-item:hover .res-log-q {
+                color: var(--color-sage-dark);
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .res-log-a {
+                transition: none;
+            }
+            .res-log-q::after {
+                transition: none;
+            }
+        }
+        .res-log-faq-hint {
+            display: block;
+            margin-top: 0.6rem;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.55;
+            color: rgba(122, 154, 159, 0.95);
+        }
+
+        /* Support  -  closing CTA (no card; centered; wide) */
+        #s-support .res-full-inner.res-cta-shell {
+            width: min(980px, 94vw) !important;
+            max-width: 100%;
+        }
+        .res-cta-shell {
+            margin: 0 auto;
+            text-align: center;
+            padding: clamp(2.25rem, 5vh, 3.25rem) var(--res-pad-x);
+            background: none;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .res-cta-shell .res-chapter-label {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0.65rem;
+            color: rgba(84, 86, 88, 0.82);
+            max-width: none;
+        }
+        .res-cta-shell.res-chapter h2,
+        .res-cta-shell > h2 {
+            max-width: min(28ch, 100%);
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .res-cta-deck {
+            max-width: min(64ch, 100%) !important;
+            margin: 0 auto 1.5rem !important;
+            font-size: 16px;
+            line-height: 1.55;
+            color: rgba(99, 100, 102, 0.95) !important;
+            text-align: center;
+        }
+        .res-cta-meta {
+            margin: 0 auto 1.65rem !important;
+            max-width: min(70ch, 100%) !important;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-sage-dark);
+            line-height: 1.55;
+            text-align: center;
+        }
+        .res-cta-meta .res-cta-sep {
+            margin: 0 0.5rem;
+            font-weight: 400;
+            color: rgba(122, 154, 159, 0.55);
+        }
+        .res-cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+        }
+        .res-cta-actions a {
+            border-bottom: none;
+        }
+        .res-cta-actions .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 26px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+            font-family: var(--font);
+            text-transform: lowercase;
+            cursor: pointer;
+        }
+        .res-cta-actions .btn-cta-primary {
+            background: var(--color-dark);
+            color: var(--color-white);
+            border: 1px solid var(--color-dark);
+            box-shadow: none;
+        }
+        .res-cta-actions .btn-cta-primary:hover {
+            background: #3d3f41;
+            color: var(--color-white);
+            border-color: #3d3f41;
+        }
+        .res-cta-actions .btn-cta-ghost {
+            background: transparent;
+            color: var(--color-dark);
+            border: 1px solid rgba(84, 86, 88, 0.35);
+        }
+        .res-cta-actions .btn-cta-ghost:hover {
+            background: rgba(255, 255, 255, 0.45);
+            border-color: var(--color-dark);
+        }
+        .res-cta-note {
+            margin: 1.35rem auto 0 !important;
+            max-width: min(64ch, 100%) !important;
+            font-size: 16px;
+            line-height: 1.55;
+            color: rgba(99, 100, 102, 0.88);
+            text-align: center;
+        }
+        /* Override .res-chapter p for support CTA copy */
+        .res-cta-shell.res-chapter > p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .res-cta-note a {
+            font-weight: 600;
+        }
+        .res-split-copy .res-chapter-deck {
+            margin-bottom: 0.5rem !important;
+        }
+
+        @media (max-width: 800px) {
+            .res-log-grid {
+                grid-template-columns: 1fr;
+            }
+            .res-log-col--pickup {
+                padding-right: 0;
+                padding-bottom: 2rem;
+                margin-bottom: 2rem;
+                border-right: none;
+                border-bottom: 1px solid rgba(122, 154, 159, 0.12);
+            }
+            .res-log-col--digital {
+                padding-left: 0;
+            }
+        }
+
+        .res-chapter-label {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(122, 154, 159, 0.85);
+            margin-bottom: 1rem;
+        }
+        .res-chapter h2 {
+            font-size: clamp(1.5rem, 2.5vw + 0.85rem, 2.125rem);
+            font-weight: 600;
+            letter-spacing: -0.028em;
+            line-height: 1.22;
+            color: var(--color-dark);
+            text-transform: lowercase;
+            margin-bottom: 1.35rem;
+            max-width: 22ch;
+        }
+        .res-chapter h2::after {
+            display: none;
+        }
+        .res-chapter p {
+            max-width: min(42ch, 100%);
+            margin-bottom: 1rem;
+        }
+        .res-chapter p:last-child { margin-bottom: 0; }
+        .res-chapter-deck {
+            max-width: min(48ch, 100%) !important;
+            margin-bottom: 1.75rem !important;
+            font-size: 1rem;
+            line-height: 1.55;
+            color: rgba(99, 100, 102, 0.92) !important;
+        }
+
+        .res-highlight {
+            margin-top: 1.5rem;
+            padding: 1.35rem 0 0;
+            background: transparent;
+            border: none;
+            border-top: 1px solid rgba(122, 154, 159, 0.2);
+            border-radius: 0;
+            max-width: min(40ch, 100%);
+        }
+        .res-highlight strong {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(122, 154, 159, 0.9);
+            margin-bottom: 1rem;
+        }
+        .warranty-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .warranty-list li {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+            justify-content: space-between;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid rgba(84, 86, 88, 0.07);
+            font-size: 16px;
+            color: var(--color-muted);
+        }
+        .warranty-list li:last-child { border-bottom: none; padding-bottom: 0; }
+        .warranty-list .wl-cat {
+            font-weight: 600;
+            color: var(--color-dark);
+            text-transform: lowercase;
+        }
+
+        .page-footer {
+            padding: 40px var(--res-pad-x) 48px;
+            text-align: center;
+            border-top: 1px solid rgba(154, 177, 182, 0.22);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, var(--color-bg-alt) 100%);
+        }
+        .page-footer a {
+            color: var(--color-dark);
+            font-weight: 500;
+            font-size: 16px;
+            border: none;
+        }
+        .page-footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            .hero {
+                justify-content: center;
+            }
+            .hero-inner {
+                text-align: center !important;
+                margin-left: auto;
+                margin-right: auto;
+                width: min(100%, 96vw);
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            .hero .overline,
+            .hero h1,
+            .hero .tagline,
+            .hero .intro {
+                text-align: center !important;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: none;
+            }
+            .quick-nav-links {
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            .quick-nav-links a {
+                flex: 0 0 auto;
+                white-space: nowrap;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .res-split-media img,
+            .hero-media img {
+                transform: none;
+                filter: none;
+                opacity: 1;
+                transition: none;
+            }
+            .res-split-media.is-in-view img,
+            .hero-media.is-in-view img {
+                transform: none;
+            }
+            .res-split-media::after,
+            .hero-media::after {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+      <!-- Top promo bar -->
+        <div class="promo-bar">
+        New to Zann? <a href="#resources">Request a welcome kit</a>  -  Fast turnaround on first case. <a href="#case-submission">Send a case</a>
+    </div>
+    <div class="site-header-sticky">
+  
+    <!-- Header with full navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">ZANN</a>
+        <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+        <nav class="nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Products &amp; Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">products &amp; services</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Crowns &amp; Bridges <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_crown_PFM.html">Porcelain-Fused-to-Metal (PFM)</a>
+                                    <a href="Product_crown_Zirconia.html">Zirconia Crown</a>
+                                    <a href="Product_crown_Emax.html">E.max</a>
+                                    <a href="Product_crown_FullGold.html">Full Gold Crown</a>
+                                </div>
+                            </div>
+                             <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Veneers <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_venner_Emax.html">E.max Veneer</a>
+                                    <a href="Product_veneer_Zirconia.html">Zirconia Veneer</a>
+                                    <!-- <a href="#">Abutments</a> -->
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Implants <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_implant_Standard.html">Standard Implants</a>
+                                    <a href="Product_implant_Advanced_Custom.html">Advanced/Custom Implants</a>
+                                    <a href="Product_implant_Full-Arch.html">Full-Arch Restorations</a>
+                                </div>
+                            </div>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand"> Nightguards/Ortho & Splints </button> <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Nightguards</a>
+                                    <a href="#">Sports Guards</a>
+                                    <a href="#">Essix Retainers</a>
+                                    <a href="#">Bleaching Trays</a>
+                                    <a href="#">Ortho</a>
+                                </div>
+                            </div> -->
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Nightguards/Ortho & Splints <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Nightguards.html">Nightguards</a>
+                                    <a href="Product_Sportsguards.html">Sports Guards</a>
+                                    <a href="Product_Essix Retainers.html">Essix Retainers</a>
+                                    <a href="Product_Bleaching_Trays.html">Bleaching Trays</a>
+                                    <a href="Product_Ortho.html">Ortho</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Removables <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Acrylic_Dentures.html">Acrylic Dentures</a>
+                                    <a href="Product_Immediate_Dentures.html">Immediate Dentures</a>
+                                    <a href="Product_Cast_Partial_Framework_Dentures.html">Cast Partial Framework Denture</a>
+                                    <a href="Product_3D_Printing.html">3D Printed Dentures</a>
+                                    <a href="Product_Denture_Repairs_Relines.html">Denture Repairs/Relines</a>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Dentistry <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Digital_Workflow_Scans.html">Digital Workflow / Scans</a>
+                                    <a href="Product_3D_Printing.html">3D Printing</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Crowns &amp; Bridges</span>
+                                <a href="Product_crown_PFM.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Dentures</span>
+                                <a href="Product_Acrylic_Dentures.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Nightguards</span>
+                                <a href="Product_Nightguards.html" aria-hidden="true"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Case Submission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">case submission</span>
+                             <!-- <div>
+                                <button type="button" class="dropdown-expand">Step-by-step instructions</button>
+                            </div> -->
+                            <a href="Step_BY_Step_Instructions.html">Step-by-step instructions</a>
+                            <a href="Physical_Case_Submission.html">
+                                Physical Case Submission
+                            </a>
+                            <a href="Digital_Case_Submission.html">
+                                Digital Case Submission 
+                            </a>
+                            <a href="FAQ_Case_Submission.html">FAQ Case Submission</a>
+                        </div>
+  
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Physical Case Submission<span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Download RX Forms</a>
+                                    <a href="#">Packing &amp; Shipping Guide</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Case Submission <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Scanner Integration</a>
+                                    <a href="#">File Upload Portal</a>
+                                </div> -->
+                            
+                            
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Send a Case</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Digital Submission</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Shipping</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Education <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">education</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Continuing Education <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Live Webinars</a>
+                                    <a href="#">Recorded Courses</a>
+                                    <a href="#">Hands-On Workshops</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Tips &amp; Tutorials <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Clinical Guides</a>
+                                    <a href="#">Shade &amp; Material Guides</a>
+                                    <a href="#">Workflow Tutorials</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Blog / Articles <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Case Studies</a>
+                                    <a href="#">Digital Dentistry Tips</a>
+                                    <a href="#">Industry News</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Continuing Education</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Clinical Guides</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Case Studies</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+  
+             <!-- <div class="nav-item">
+                <a href="" class="nav-link">Specialists & Support</a>
+            </div> -->
+            <div class="nav-item has-dropdown">
+                <a href="Specialists_Support.html" class="nav-link nav-link-toggle" data-toggle="dropdown">Specialists &amp; Support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">specialists &amp; support</span>
+                            <a href="CustomShadeinHouse.html">Custom Shade in House</a>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Contact a Specialist <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    
+                                    <a href="#">Book Call / Email Support</a> 
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Technical Support <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Troubleshooting</a>
+                                    <a href="#">Material or Product Guidance</a>
+                                </div>
+                            </div>
+                            <a href="#">Local Lab Contacts (Phone &amp; Email)</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Contact a Specialist</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Technical Support</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Local Lab</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">resources</span>
+                            <a href="Catalogues_Guides.html">Catalogs &amp; Guides</a>
+                            <a href="Welcome_Kits.html">Welcome Kits</a>
+                            <a href="Turnaround_Times.html">Turnaround Times</a>
+                            <a href="Resources_Faqs.html">FAQs</a>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Catalogs</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Welcome Kits</span><a href="Welcome_Kits.html" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Turnaround Times</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">about us</span>
+                            <a href="about_ourstory.html">Our Story</a>
+                            <a href="about_missionandvalues.html">Mission &amp; Values</a>
+                            <!-- <a href="#">Team / Technicians</a> -->
+                            <!-- <a href="#">Certifications &amp; Awards</a> -->
+                            <!-- <a href="#">Careers</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Our Story</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Mission &amp; Values</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Team</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+        <!-- <div class="nav-utils">
+            <a href="#search" aria-label="Search">ðŸ"</a>
+            <a href="#account" aria-label="Account">ðŸ‘¤</a>
+        </div> -->
+    </header>
+    </div>
+
+    <header class="hero" id="top">
+        <div class="hero-media" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&amp;q=80" width="1920" height="1280" alt="" fetchpriority="high" decoding="async">
+        </div>
+        <div class="hero-inner">
+            <p class="overline" style="color:#7a9a9f;">zann dental lab</p>
+            <h1>FAQ</h1>
+            <p class="tagline">Straight answers on programs, warranties, logistics, digital QA, and technical support.</p>
+            <p class="intro">Use this page to set expectations with patients and staff - then jump to the chapter you need or scroll each full-screen section in order.</p>
+            <div class="hero-cta-row">
+                <a class="btn" href="#s-overview">overview</a>
+                <a class="btn btn-ghost" href="#s-cdcp">CDCP</a>
+                <a class="btn btn-ghost" href="#s-warranty">warranty</a>
+                <a class="btn btn-ghost" href="#s-logistics">pickup &amp; digital</a>
+                <a class="btn btn-ghost" href="#s-support">support</a>
+            </div>
+            <p class="note">Concierge and chairside rates apply as quoted; confirm scope when you book. For official CDCP policy, refer to <a href="https://www.canada.ca/en/services/benefits/dental/dental-care-plan.html" target="_blank" rel="noopener noreferrer">Canada.ca</a>.</p>
+        </div>
+    </header>
+
+    <nav class="quick-nav" aria-label="On this page">
+        <div class="quick-nav-inner">
+            <p class="quick-nav-label" style="color:#7a9a9f;">on this page</p>
+            <div class="quick-nav-links">
+                <a href="#s-overview">overview</a>
+                <a href="#s-cdcp">CDCP</a>
+                <a href="#s-warranty">warranty</a>
+                <a href="#s-logistics">pickup &amp; digital</a>
+                <a href="#s-support">support</a>
+                <a href="index.html">home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overview -->
+    <section class="res-full" id="s-overview" aria-labelledby="title-overview">
+        <div class="res-full-inner res-chapter res-overview-inner">
+            <p class="res-chapter-label">00  -  overview</p>
+            <h2 id="title-overview">At a glance</h2>
+            <p class="res-chapter-deck res-overview-lede">Policy, logistics, and escalation paths your team can rely on when patients ask - or when a case needs a decision before it hits the lab.</p>
+            <!-- <ul class="res-overview-list">
+                <li>
+                    <strong>CDCP in Ontario</strong>
+                    <p>We accept eligible Canadian Dental Care Plan cases with compliant removable workflows for participating offices. Official eligibility and benefits are on <a href="https://www.canada.ca/en/services/benefits/dental/dental-care-plan.html" target="_blank" rel="noopener noreferrer">Canada.ca</a>; see chapter 01 for details.</p>
+                </li>
+                <li>
+                    <strong>Warranties you can quote</strong>
+                    <p>Crowns to dentures, splints, relines, and repairs - published guarantee windows under our ZANN Integrity Guarantee. Full table in chapter 02.</p>
+                </li>
+                <li>
+                    <strong>GTA logistics &amp; digital QA</strong>
+                    <p>Same-day pickup when cases are in before 2:00 PM (Mon - Fri), plus file validation before fabrication. See chapter 03.</p>
+                </li>
+                <li>
+                    <strong>Specialist support</strong>
+                    <p>Shade and morphology concierge plus chairside technician time - scoped and quoted before the clock starts. Chapter 04.</p>
+                </li>
+                <li>
+                    <strong>Printable references</strong>
+                    <p>For material specs and guides, use <a href="Catalogues_Guides.html">catalogues &amp; guides</a> alongside the chapters below.</p>
+                </li>
+            </ul> -->
+        </div>
+    </section>
+
+    <!-- CDCP -->
+    <section class="res-full res-full--split res-full--media-left" id="s-cdcp" aria-labelledby="title-cdcp">
+        <div class="res-split-screen">
+            <figure class="res-split-media">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1400&amp;q=85" width="1400" height="1050" alt="Dental laboratory technician at the bench" loading="lazy" decoding="async">
+            </figure>
+            <div class="res-split-copy res-chapter">
+                <p class="res-chapter-label">01  -  CDCP</p>
+                <h2 id="title-cdcp">Does ZANN Dental Lab accept CDCP cases?</h2>
+                <p>Yes, we are fully equipped to support clinicians participating in the Canadian Dental Care Plan (CDCP) across Ontario with compliant removable prosthetic solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warranty -->
+    <section class="res-full res-full--split res-full--media-right" id="s-warranty" aria-labelledby="title-warranty">
+        <div class="res-split-screen">
+            <div class="res-split-copy res-chapter">
+                <p class="res-chapter-label">02  -  warranty</p>
+                <h2 id="title-warranty">What is the warranty on your restorations?</h2>
+                <p>We offer a &ldquo;ZANN Integrity Guarantee&rdquo;:</p>
+                <div class="res-highlight" role="region" aria-label="Warranty coverage by product">
+                    <strong>ZANN integrity guarantee  -  summary</strong>
+                    <ul class="warranty-list">
+                        <li><span class="wl-cat">Crown, bridge &amp; veneers</span><span>5 years</span></li>
+                        <li><span class="wl-cat">Dentures</span><span>2 years</span></li>
+                        <li><span class="wl-cat">Nightguards / splints</span><span>3 - 6 months</span></li>
+                        <li><span class="wl-cat">Repairs &amp; relines</span><span>3 months</span></li>
+                    </ul>
+                </div>
+            </div>
+            <figure class="res-split-media">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1400&amp;q=85" width="1400" height="1050" alt="Detail of aesthetic dental restoration work" loading="lazy" decoding="async">
+            </figure>
+        </div>
+    </section>
+
+    <!-- Logistics & Digital -->
+    <section class="res-full" id="s-logistics" aria-labelledby="title-logistics">
+        <div class="res-full-inner res-chapter res-inner-wide">
+            <p class="res-chapter-label">03  -  logistics &amp; digital</p>
+            <h2 id="title-logistics">Pickup &amp; digital  -  FAQ</h2>
+            <p class="res-chapter-deck res-log-intro">GTA routing and file validation before anything hits the bench. <span class="res-log-faq-hint">Hover a question for the answer.</span></p>
+            <div class="res-log-grid">
+                <div class="res-log-col res-log-col--pickup">
+                    <p class="res-log-eyebrow">Pickup</p>
+                    <h3 class="res-log-col-title">GTA logistics</h3>
+                    <div class="res-log-faq">
+                        <div class="res-log-faq-item">
+                            <button type="button" class="res-log-q" aria-expanded="false" aria-controls="log-a-p1" id="log-q-p1">How do I schedule a pickup?</button>
+                            <p class="res-log-a" id="log-a-p1" role="region" aria-labelledby="log-q-p1">Use the portal or call customer service. Same-day pickup when the case is booked before <strong>2:00 PM, Mon&ndash;Fri</strong> (excluding holidays we publish).</p>
+                        </div>
+                        <div class="res-log-faq-item">
+                            <button type="button" class="res-log-q" aria-expanded="false" aria-controls="log-a-p2" id="log-q-p2">Outside the GTA?</button>
+                            <p class="res-log-a" id="log-a-p2" role="region" aria-labelledby="log-q-p2">Extended routes by arrangement - lead time and any fees are quoted when you book.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="res-log-col res-log-col--digital">
+                    <p class="res-log-eyebrow">Digital</p>
+                    <h3 class="res-log-col-title">Files &amp; QA</h3>
+                    <div class="res-log-faq">
+                        <div class="res-log-faq-item">
+                            <button type="button" class="res-log-q" aria-expanded="false" aria-controls="log-a-d1" id="log-q-d1">What file types can we send?</button>
+                            <p class="res-log-a" id="log-a-d1" role="region" aria-labelledby="log-q-d1">Standard intraoral scan exports and STL-class uploads through your account - ask customer service if a scanner or export is new to you.</p>
+                        </div>
+                        
+                        <div class="res-log-faq-item">
+                            <button type="button" class="res-log-q" aria-expanded="false" aria-controls="log-a-d2" id="log-q-d2">What if QA finds an issue?</button>
+                            <p class="res-log-a" id="log-a-d2" role="region" aria-labelledby="log-q-d2">We pause production, document what failed, and contact your office with next steps - no bench charges for work that never cleared QA.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support  -  CTA -->
+    <section class="res-full" id="s-support" aria-labelledby="title-support">
+        <div class="res-full-inner res-chapter res-cta-shell">
+            <p class="res-chapter-label">04  -  support</p>
+            <h2 id="title-support">Book specialist support</h2>
+            <p class="res-cta-deck">Concierge shade and morphology sessions plus chairside technician time - quoted before we start the clock.</p>
+            <p class="res-cta-meta" aria-label="Support rates">Concierge - $90 / hr <span class="res-cta-sep">-</span> Chairside - $50 / 15 min - 1 hr min</p>
+            <div class="res-cta-actions">
+                <a class="btn-cta btn-cta-primary" href="index.html">contact the lab</a>
+                <a class="btn-cta btn-cta-ghost" href="Catalogues_Guides.html">catalogues &amp; guides</a>
+            </div>
+            <!-- <p class="res-cta-note">Share your case ID and whether you need at-lab or chairside coverage. Rates apply as confirmed when you book - same as noted in the hero on this page.</p> -->
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+        
+    <script src="js/nav-footer.js"></script>
+
+    <!-- <footer class="page-footer">
+        <a href="index.html">â† Back to Zann Dental Lab home</a>
+    </footer> -->
+
+    <script>
+        (function () {
+            var mediaEls = document.querySelectorAll('.res-split-media, .hero-media');
+            if (!window.IntersectionObserver) {
+                mediaEls.forEach(function (el) {
+                    el.classList.add('is-in-view');
+                });
+                return;
+            }
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion) {
+                mediaEls.forEach(function (el) {
+                    el.classList.add('is-in-view');
+                });
+                return;
+            }
+            var io = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-in-view');
+                        }
+                    });
+                },
+                { rootMargin: '0px 0px -12% 0px', threshold: 0.15 }
+            );
+            mediaEls.forEach(function (el) {
+                io.observe(el);
+            });
+        })();
+        (function () {
+            var logistics = document.getElementById('s-logistics');
+            if (!logistics) return;
+            logistics.querySelectorAll('.res-log-faq-item').forEach(function (item) {
+                var btn = item.querySelector('.res-log-q');
+                if (!btn) return;
+                btn.addEventListener('click', function () {
+                    var open = item.classList.toggle('is-open');
+                    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
+
+
+
+

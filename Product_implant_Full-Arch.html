@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Full-Arch Implant Restorations  -  Zann Dental Lab</title> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        :root {
+            --color-bg: #E2F2F6;
+            --color-bg-alt: #f5fbfc;
+            --color-dark: #545658;
+            --color-muted: #636466;
+            --color-border: rgba(0,0,0,0.08);
+            --color-white: #ffffff;
+            --color-sage: #9AB1B6;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; }
+        body { font-family: var(--font); font-size: 16px; font-weight: 400; color: var(--color-muted); background: var(--color-white); line-height: 1.55; }
+        h1, h2, h3 { font-weight: 700; color: var(--color-dark); }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-family: var(--font);
+            cursor: pointer;
+            border: 1px solid var(--color-dark);
+        }
+        .btn-primary { background: var(--color-dark); color: var(--color-white); border-color: var(--color-dark); }
+        .btn-primary:hover { background: var(--color-muted); color: var(--color-white); border-color: var(--color-muted); }
+
+        .product-hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .product-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: perspective(1200px) scale(0.88);
+            transition: transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+        .product-hero.hero-bg-in .product-hero-bg {
+            transform: perspective(1200px) scale(1);
+        }
+        .product-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(84,86,88,0.4) 0%, rgba(84,86,88,0.1) 45%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .product-hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px 100px;
+            width: 100%;
+        }
+        .product-hero h1 {
+            font-size: clamp(42px, 8vw, 72px);
+            font-weight: 700;
+            color: var(--color-white);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+       
+        .product-hero .btn { background: var(--color-white); color: var(--color-dark); border-color: var(--color-white); }
+        .product-hero .btn:hover { background: var(--color-bg); color: var(--color-dark); }
+
+        .product-intro {
+            background: var(--color-sage);
+            padding: 48px;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .product-intro-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(154, 177, 182, 0.85);
+            pointer-events: none;
+        }
+        .product-intro-bg { position: relative; }
+        .product-intro-bg .product-intro-inner { position: relative; z-index: 1; }
+        .product-intro-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .product-intro .overline { font-size: 16px; color: var(--color-dark); margin-bottom: 8px; font-weight: 500; }
+        .product-intro h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            color: var(--color-dark);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .product-intro p { font-size: 16px; color: var(--color-muted); line-height: 1.55; }
+
+        .product-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: stretch;
+            min-height: 100vh;
+            background: #f0f0f0;
+            padding: 48px;
+        }
+        @media (max-width: 900px) {
+            .product-split { grid-template-columns: 1fr; grid-template-rows: 50vh auto; }
+        }
+        .product-split-text {
+            padding: 56px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--color-white);
+        }
+        @media (max-width: 900px) { .product-split-text { padding: 40px 24px; } }
+        .product-split h2 { font-size: 42px; font-weight: 700; margin-bottom: 16px; color: var(--color-dark); }
+        .product-split p { font-size: 16px; color: var(--color-muted); margin-bottom: 12px; line-height: 1.55; }
+
+        .product-features {
+            background: #f5f5f5;
+            padding: 80px 24px 100px;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .product-features-inner { max-width: 900px; margin: 0 auto; }
+        .product-features h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--color-dark);
+        }
+        .product-features .block { margin-bottom: 48px; }
+        .product-features .block:last-child { margin-bottom: 0; }
+        .product-features p { font-size: 16px; color: var(--color-muted); line-height: 1.55; margin-bottom: 12px; }
+
+        .product-cta-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: stretch;
+            min-height: 100vh;
+            background: var(--color-bg);
+        }
+        @media (max-width: 900px) {
+            .product-cta-block { grid-template-columns: 1fr; grid-template-rows: auto auto; }
+        }
+        .product-cta-text {
+            padding: 56px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        @media (max-width: 900px) { .product-cta-text { padding: 40px 24px; } }
+        .product-cta-text h2 { font-size: 42px; font-weight: 700; margin-bottom: 20px; color: var(--color-dark); }
+        .product-cta-text p { font-size: 16px; color: var(--color-muted); margin-bottom: 24px; line-height: 1.55; }
+        .product-cta-visual {
+            padding: 0;
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            height: 100%;
+        }
+        .product-cta-visual .double-img-wrap img { max-width: none; max-height: none; }
+
+        .product-materials {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: stretch;
+            min-height: 100vh;
+            background: var(--color-white);
+            padding: 48px;
+        }
+        @media (max-width: 900px) {
+            .product-materials { grid-template-columns: 1fr; grid-template-rows: auto 50vh; }
+        }
+        .product-materials-text {
+            padding: 56px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fafafa;
+        }
+        @media (max-width: 900px) { .product-materials-text { padding: 40px 24px; } }
+        .product-materials h2 { font-size: 42px; font-weight: 700; margin-bottom: 20px; color: var(--color-dark); }
+        .product-materials p { font-size: 16px; color: var(--color-muted); margin-bottom: 14px; line-height: 1.55; }
+
+        .double-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .double-img-wrap .double-img-default,
+        .double-img-wrap .double-img-hover {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform-origin: center;
+        }
+        .double-img-wrap .double-img-default {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .double-img-wrap .double-img-hover {
+            opacity: 0;
+            transform: scale(1.12);
+        }
+        .double-img-wrap:hover .double-img-default {
+            opacity: 0;
+            transform: scale(1.08);
+        }
+        .double-img-wrap:hover .double-img-hover {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .product-split .img-cell {
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: stretch;
+        }
+        .product-split .double-img-wrap { min-height: 400px; flex: 1; border-radius: 0; overflow: hidden; }
+        @media (max-width: 900px) { .product-split .img-cell { padding: 0; } .product-split .double-img-wrap { min-height: 50vh; } }
+        .product-materials .img-cell {
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: stretch;
+        }
+        .product-materials .double-img-wrap { min-height: 400px; flex: 1; border-radius: 0; overflow: hidden; }
+        @media (max-width: 900px) { .product-materials .img-cell { padding: 0; } .product-materials .double-img-wrap { min-height: 50vh; } }
+        .product-cta-visual .double-img-wrap {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        .product-cta-visual .double-img-wrap .double-img-default,
+        .product-cta-visual .double-img-wrap .double-img-hover {
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .reveal-text { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal-text.revealed { opacity: 1; transform: translateY(0); }
+        .reveal-text.reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-text.reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-text.reveal-delay-3 { transition-delay: 0.3s; }
+    </style>
+</head>
+<body>
+
+     <!-- Top promo bar -->
+          <div class="promo-bar">
+        New to Zann? <a href="#resources">Request a welcome kit</a>  -  Fast turnaround on first case. <a href="#case-submission">Send a case</a>
+    </div>
+    <div class="site-header-sticky">
+  
+    <!-- Header with full navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">ZANN</a>
+        <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+        <nav class="nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Products &amp; Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">products &amp; services</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Crowns &amp; Bridges <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_crown_PFM.html">Porcelain-Fused-to-Metal (PFM)</a>
+                                    <a href="Product_crown_Zirconia.html">Zirconia Crown</a>
+                                    <a href="Product_crown_Emax.html">E.max</a>
+                                    <a href="Product_crown_FullGold.html">Full Gold Crown</a>
+                                </div>
+                            </div>
+                             <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Veneers <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_venner_Emax.html">E.max Veneer</a>
+                                    <a href="Product_veneer_Zirconia.html">Zirconia Veneer</a>
+                                    <!-- <a href="#">Abutments</a> -->
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Implants <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_implant_Standard.html">Standard Implants</a>
+                                    <a href="Product_implant_Advanced_Custom.html">Advanced/Custom Implants</a>
+                                    <a href="Product_implant_Full-Arch.html">Full-Arch Restorations</a>
+                                </div>
+                            </div>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand"> Nightguards/Ortho & Splints </button> <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Nightguards</a>
+                                    <a href="#">Sports Guards</a>
+                                    <a href="#">Essix Retainers</a>
+                                    <a href="#">Bleaching Trays</a>
+                                    <a href="#">Ortho</a>
+                                </div>
+                            </div> -->
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Nightguards/Ortho & Splints <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Nightguards.html">Nightguards</a>
+                                    <a href="Product_Sportsguards.html">Sports Guards</a>
+                                    <a href="Product_Essix Retainers.html">Essix Retainers</a>
+                                    <a href="Product_Bleaching_Trays.html">Bleaching Trays</a>
+                                    <a href="Product_Ortho.html">Ortho</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Removables <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Acrylic_Dentures.html">Acrylic Dentures</a>
+                                    <a href="Product_Immediate_Dentures.html">Immediate Dentures</a>
+                                    <a href="Product_Cast_Partial_Framework_Dentures.html">Cast Partial Framework Denture</a>
+                                    <a href="Product_3D_Printing.html">3D Printed Dentures</a>
+                                    <a href="Product_Denture_Repairs_Relines.html">Denture Repairs/Relines</a>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Dentistry <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Digital_Workflow_Scans.html">Digital Workflow / Scans</a>
+                                    <a href="Product_3D_Printing.html">3D Printing</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Crowns &amp; Bridges</span>
+                                <a href="Product_crown_PFM.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Dentures</span>
+                                <a href="Product_Acrylic_Dentures.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Nightguards</span>
+                                <a href="Product_Nightguards.html" aria-hidden="true"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Case Submission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">case submission</span>
+                             <!-- <div>
+                                <button type="button" class="dropdown-expand">Step-by-step instructions</button>
+                            </div> -->
+                            <a href="Step_BY_Step_Instructions.html">Step-by-step instructions</a>
+                            <a href="Physical_Case_Submission.html">
+                                Physical Case Submission
+                            </a>
+                            <a href="Digital_Case_Submission.html">
+                                Digital Case Submission 
+                            </a>
+                            <a href="FAQ_Case_Submission.html">FAQ Case Submission</a>
+                        </div>
+  
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Physical Case Submission<span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Download RX Forms</a>
+                                    <a href="#">Packing &amp; Shipping Guide</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Case Submission <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Scanner Integration</a>
+                                    <a href="#">File Upload Portal</a>
+                                </div> -->
+                            
+                            
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Send a Case</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Digital Submission</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Shipping</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Education <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">education</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Continuing Education <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Live Webinars</a>
+                                    <a href="#">Recorded Courses</a>
+                                    <a href="#">Hands-On Workshops</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Tips &amp; Tutorials <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Clinical Guides</a>
+                                    <a href="#">Shade &amp; Material Guides</a>
+                                    <a href="#">Workflow Tutorials</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Blog / Articles <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Case Studies</a>
+                                    <a href="#">Digital Dentistry Tips</a>
+                                    <a href="#">Industry News</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Continuing Education</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Clinical Guides</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Case Studies</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+  
+             <!-- <div class="nav-item">
+                <a href="" class="nav-link">Specialists & Support</a>
+            </div> -->
+            <div class="nav-item has-dropdown">
+                <a href="Specialists_Support.html" class="nav-link nav-link-toggle" data-toggle="dropdown">Specialists &amp; Support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">specialists &amp; support</span>
+                            <a href="CustomShadeinHouse.html">Custom Shade in House</a>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Contact a Specialist <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    
+                                    <a href="#">Book Call / Email Support</a> 
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Technical Support <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Troubleshooting</a>
+                                    <a href="#">Material or Product Guidance</a>
+                                </div>
+                            </div>
+                            <a href="#">Local Lab Contacts (Phone &amp; Email)</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Contact a Specialist</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Technical Support</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Local Lab</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">resources</span>
+                            <a href="Catalogues_Guides.html">Catalogs &amp; Guides</a>
+                            <a href="Welcome_Kits.html">Welcome Kits</a>
+                            <a href="Turnaround_Times.html">Turnaround Times</a>
+                            <a href="Resources_Faqs.html">FAQs</a>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Catalogs</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Welcome Kits</span><a href="Welcome_Kits.html" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Turnaround Times</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">about us</span>
+                            <a href="about_ourstory.html">Our Story</a>
+                            <a href="about_missionandvalues.html">Mission &amp; Values</a>
+                            <!-- <a href="#">Team / Technicians</a> -->
+                            <!-- <a href="#">Certifications &amp; Awards</a> -->
+                            <!-- <a href="#">Careers</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Our Story</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Mission &amp; Values</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Team</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+        <!-- <div class="nav-utils">
+            <a href="#search" aria-label="Search">ðŸ"</a>
+            <a href="#account" aria-label="Account">ðŸ‘¤</a>
+        </div> -->
+    </header>
+     </div>
+
+    <!-- Section 1: Hero  -  Full-Arch Implant Restorations -->
+    <section class="product-hero" id="section-1">
+        <div class="product-hero-bg" style="background-image: url('https://raw.githubusercontent.com/KeralPatel3095/Zann_WEbsite/c4d07f3ee3fe4e0f1037def061abc20a4d723a34/Website_images.jpg');"></div>
+        <div class="product-hero-inner">
+            <h1 class="reveal-text">Full-Arch Implant Restorations</h1>
+            <p class="reveal-text reveal-delay-1">Complete arch solutions  -  fixed and hybrid prostheses with passive fit and lasting function. Designed for your full-arch implant patients.</p>
+            <a href="index.html#case-submission" class="btn btn-primary reveal-text reveal-delay-2">Send a case</a>
+        </div>
+    </section>
+
+    <!-- Section 2: Intro  -  full-arch that works -->
+    <section class="product-intro product-intro-bg" id="section-2" style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcfee668e2?w=1920&q=80');">
+        <div class="product-intro-inner">
+            <p class="overline reveal-text">Zann is</p>
+            <h2 class="reveal-text reveal-delay-1">full-arch implant restorations that work.</h2>
+            <p class="reveal-text reveal-delay-2">Our full-arch offering includes fixed, screw-retained restorations and hybrid prostheses supported by custom milled titanium or zirconia frameworks. We use digital planning and proven materials so each full-arch case achieves passive fit, proper occlusion, and natural aesthetics for the long term.</p>
+        </div>
+    </section>
+
+    <!-- Section 3: Split  -  passive fit & full-arch design -->
+    <section class="product-split" id="section-3">
+        <div class="img-cell">
+            <div class="double-img-wrap">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&h=600&fit=crop" alt="Full-Arch Implant  -  passive fit and design" class="double-img-default">
+                <img src="https://images.pexels.com/photos/3845128/pexels-photo-3845128.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="" class="double-img-hover" aria-hidden="true">
+            </div>
+        </div>
+        <div class="product-split-text">
+            <h2 class="reveal-text">Passive fit &amp; full-arch design</h2>
+            <p class="reveal-text reveal-delay-1">Full-arch restorations depend on precise framework fit across all implants. We design and mill custom bars and frameworks that align with your implant positions and restorative plan. Fixed and hybrid full-arch prostheses are built for strength, retrievability, and a natural smile line.</p>
+            <p class="reveal-text reveal-delay-2">You get a restoration that fits your full-arch case and delivers predictable function and aesthetics. Every framework is verified for passive fit and occlusion before shipment.</p>
+        </div>
+    </section>
+
+    <!-- Section 4: Frameworks & protocols -->
+    <section class="product-materials" id="section-4">
+        <div class="product-materials-text">
+            <h2 class="reveal-text">frameworks &amp; protocols</h2>
+            <p class="reveal-text reveal-delay-1">We work from digital scans and implant positions to design full-arch frameworks in titanium or zirconia. Try-in and conversion steps use PMMA and definitive materials chosen for your protocol. Our workflows support immediate-load, staged, and conventional full-arch delivery so your cases are handled with consistency and care.</p>
+            <p class="reveal-text reveal-delay-2">From first try-in to final delivery  -  we deliver full-arch implant work that meets the highest lab standards.</p>
+        </div>
+        <div class="img-cell">
+            <div class="double-img-wrap">
+                <img src="https://images.pexels.com/photos/3985062/pexels-photo-3985062.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Full-Arch Implant  -  frameworks" class="double-img-default">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop" alt="" class="double-img-hover" aria-hidden="true">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Features -->
+    <section class="product-features" id="section-5">
+        <div class="product-features-inner">
+            <div class="block">
+                <h2 class="reveal-text">full-arch fixed &amp; hybrid</h2>
+                <p class="reveal-text reveal-delay-1">Our full-arch implant offering includes screw-retained fixed restorations and hybrid prostheses on custom milled titanium or zirconia frameworks. We work from your scan or cast and implant positions to achieve passive fit and support the final prosthesis. Angled implants and multi-unit spans are accommodated with careful bar design and verified connections.</p>
+                <p class="reveal-text reveal-delay-2">We follow strict protocols for framework fit, occlusion, and material selection so every full-arch case meets our lab standards.</p>
+            </div>
+            <div class="block">
+                <h2 class="reveal-text">our commitment to quality</h2>
+                <p class="reveal-text reveal-delay-1">Every full-arch case is handled with clear communication and careful planning. We verify implant positions and use quality components and materials. From try-in to final delivery, we aim for accuracy and predictability so your patients get lasting, functional full-arch results.</p>
+            </div>
+            <div class="block">
+                <h2 class="reveal-text">send us your full-arch case</h2>
+                <p class="reveal-text reveal-delay-1">Send your full-arch implant case with scans, implant system and positions, and your preferred design (fixed or hybrid). We'll work with you to deliver a full-arch restoration that fits your plan and your patient's needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Did you know? + CTA -->
+    <section class="product-cta-block" id="section-6">
+        <div class="product-cta-text">
+            <h2 class="reveal-text">did you know?</h2>
+            <p class="reveal-text reveal-delay-1">Full-arch implant restorations require precise framework fit and careful design to avoid stress on implants and ensure patient comfort. At Zann, we use digital design and milling to deliver full-arch frameworks and restorations that fit your implant layout and support long-term success.</p>
+            <p class="reveal-text reveal-delay-2">We craft each full-arch restoration with attention to fit, occlusion, and aesthetics so you get predictable outcomes and happier patients.</p>
+            <a href="index.html#case-submission" class="btn btn-primary reveal-text reveal-delay-3">learn more</a>
+        </div>
+        <div class="product-cta-visual">
+            <div class="double-img-wrap">
+                <img src="https://images.pexels.com/photos/3845128/pexels-photo-3845128.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Full-Arch Implant  -  product" class="double-img-default">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=600&fit=crop" alt="" class="double-img-hover" aria-hidden="true">
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+        
+    <script src="js/nav-footer.js"></script>
+
+    <script>
+        (function () {
+            var heroSection = document.querySelector('.product-hero');
+            if (heroSection) {
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { heroSection.classList.add('hero-bg-in'); });
+                });
+            }
+            var revealEls = document.querySelectorAll('.reveal-text');
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) entry.target.classList.add('revealed');
+                });
+            }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+            revealEls.forEach(function (el) { observer.observe(el); });
+            var hero = document.querySelector('.product-hero-inner');
+            if (hero) {
+                var heroReveal = hero.querySelectorAll('.reveal-text');
+                heroReveal.forEach(function (el) { el.classList.add('revealed'); });
+            }
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
+

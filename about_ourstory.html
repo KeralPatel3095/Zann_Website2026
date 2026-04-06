@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ZANN Dental Laboratory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        :root {
+            --story-pad-x: clamp(28px, 8vw, 120px);
+            --story-content-max: 920px;
+        }
+        .story-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .story-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url("https://images.unsplash.com/photo-1588776814546-daab30f310ce?w=1920&q=80");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: perspective(1200px) scale(0.9);
+            transition: transform 5.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+        .story-hero.hero-bg-in .story-hero-bg {
+            transform: perspective(1200px) scale(1);
+        }
+        .story-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, rgba(28, 36, 38, 0.72) 0%, rgba(45, 56, 58, 0.42) 46%, rgba(84, 86, 88, 0.08) 100%);
+            z-index: 1;
+        }
+        .story-hero-inner {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: var(--story-content-max);
+            margin: 0 auto;
+            padding: 64px var(--story-pad-x) 88px;
+            box-sizing: border-box;
+            color: #fff;
+        }
+        .story-overline {
+            display: block;
+            margin-bottom: 14px;
+            font-size: 16px;
+            letter-spacing: 0.06em;
+            text-transform: lowercase;
+            color: rgba(255, 255, 255, 0.92);
+        }
+        .story-hero h1 {
+            font-size: clamp(36px, 7vw, 68px);
+            line-height: 1.1;
+            color: #fff;
+            margin-bottom: 12px;
+            max-width: 12ch;
+        }
+        .story-hero p {
+            font-size: clamp(16px, 1vw + 0.85rem, 19px);
+            max-width: 52ch;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 24px;
+        }
+
+        .story-section {
+            min-height: 100vh;
+            padding: clamp(52px, 8vh, 92px) 20px;
+            display: flex;
+            align-items: center;
+        }
+        .story-wrap {
+            width: min(1200px, 92vw);
+            margin: 0 auto;
+            width: 100%;
+        }
+        /* Centered mission / vision band (between hero and heritage) */
+        .story-statement {
+            background: var(--color-bg);
+            /* border-top: 1px solid #2a2a2a; */
+            padding: clamp(56px, 9vh, 100px) var(--story-pad-x);
+            box-sizing: border-box;
+            height: 50vh;
+            padding-top: 120px;
+        }
+        .story-statement-inner {
+            max-width: 48rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .story-statement-text {
+            font-size: clamp(17px, 1.9vw + 0.6rem, 24px);
+            font-weight: 700;
+            line-height: 1.38;
+            letter-spacing: -0.02em;
+            color: #2f3032;
+            margin: 0;
+        }
+        /* Heritage: vertical spine + two-column narrative + metrics strip */
+        .story-heritage {
+            background: #fafcfc;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .story-heritage-layout {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            gap: clamp(20px, 4vw, 48px);
+            align-items: start;
+        }
+        .story-heritage-spine {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 6px;
+        }
+        .story-heritage-index {
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 700;
+            line-height: 1;
+            color: rgba(84, 86, 88, 0.22);
+            letter-spacing: -0.04em;
+            user-select: none;
+        }
+        .story-heritage-line {
+            width: 2px;
+            flex: 1;
+            min-height: 120px;
+            margin: 16px 0;
+            background: linear-gradient(180deg, rgba(84, 86, 88, 0.35) 0%, rgba(84, 86, 88, 0.08) 100%);
+            border-radius: 2px;
+        }
+        .story-heritage-spine-meta {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            white-space: nowrap;
+        }
+        .story-heritage-main h2 {
+            font-size: clamp(28px, 4.2vw, 46px);
+            line-height: 1.12;
+            margin-bottom: clamp(20px, 3vw, 32px);
+            max-width: 20ch;
+        }
+        .story-heritage-columns {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(20px, 3vw, 40px);
+            margin-bottom: clamp(28px, 4vw, 40px);
+        }
+        .story-heritage-columns p {
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+            margin: 0;
+        }
+        .story-heritage-metrics {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0;
+            border: 1px solid rgba(84, 86, 88, 0.12);
+            background: #fff;
+        }
+        .story-heritage-metrics li {
+            padding: clamp(16px, 2vw, 22px) clamp(14px, 2vw, 20px);
+            border-right: 1px solid rgba(84, 86, 88, 0.1);
+        }
+        .story-heritage-metrics li:last-child {
+            border-right: 0;
+        }
+        .story-heritage-metrics .metric-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            margin-bottom: 6px;
+        }
+        .story-heritage-metrics .metric-value {
+            font-size: clamp(18px, 2.2vw, 24px);
+            font-weight: 700;
+            color: var(--color-dark);
+            letter-spacing: -0.02em;
+        }
+
+        /* Leadership  -  editorial grid: flush photos, no frames; dividers + stagger on large screens */
+        .story-generations {
+            background: #fafbfb;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .story-section.story-generations {
+            padding: clamp(72px, 11vh, 112px) var(--story-pad-x);
+            box-sizing: border-box;
+        }
+        .story-gen-editorial {
+            width: 100%;
+            max-width: min(1220px, 100%);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(48px, 7vw, 80px);
+        }
+        .story-gen-spotlight-head.story-gen-intro {
+            text-align: center;
+            max-width: 38rem;
+            margin: 0 auto;
+            padding-top: 0;
+        }
+        .story-gen-spotlight-eyebrow {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            margin: 0 0 14px;
+        }
+        .story-generations .story-gen-spotlight-head h2 {
+            font-size: clamp(26px, 3.2vw, 36px);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            color: var(--color-dark);
+            margin: 0 0 18px;
+        }
+        .story-gen-spotlight-head p {
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+            margin: 0;
+            max-width: none;
+        }
+        .story-gen-profiles {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-auto-rows: auto;
+            gap: clamp(28px, 4vw, 40px);
+            align-items: start;
+        }
+        .story-gen-profiles > li {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+            overflow: visible;
+        }
+        .story-gen-avatar {
+            width: 100%;
+            max-width: none;
+            flex: 0 0 auto;
+            aspect-ratio: 3 / 4;
+            min-height: 0;
+            border-radius: 0;
+            background: #eef1f2;
+            border: none;
+            box-shadow: none;
+            display: block;
+            overflow: hidden;
+        }
+        .story-gen-avatar img {
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
+            transition:
+                transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.35s ease;
+            will-change: transform;
+        }
+        .story-gen-avatar:hover img,
+        .story-gen-avatar:focus-within img {
+            transform: scale(1.045);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .story-gen-avatar img {
+                transition: opacity 0.25s ease;
+            }
+            .story-gen-avatar:hover img,
+            .story-gen-avatar:focus-within img {
+                transform: none;
+            }
+        }
+        .story-gen-body {
+            min-width: 0;
+            padding: clamp(22px, 3vw, 32px) 0 0;
+            text-align: center;
+        }
+        .story-gen-body h3 {
+            font-size: clamp(19px, 2.1vw, 24px);
+            font-weight: 700;
+            margin: 0 0 10px;
+            color: var(--color-dark);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .story-gen-role {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #7a9a9f;
+            margin: 0 0 16px;
+        }
+        .story-gen-role::after {
+            content: '';
+            display: block;
+            width: 36px;
+            height: 2px;
+            margin: 14px auto 0;
+            background: linear-gradient(90deg, #7a9a9f 0%, rgba(122, 154, 159, 0.2) 100%);
+            border-radius: 1px;
+        }
+        .story-gen-bio {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--color-muted);
+            margin: 0 auto;
+            text-align: center;
+            max-width: 32ch;
+        }
+
+        @media (min-width: 1001px) {
+            .story-gen-profiles {
+                gap: 0;
+            }
+            .story-gen-profiles > li {
+                padding: 0 clamp(28px, 3.8vw, 48px);
+            }
+            .story-gen-profiles > li:first-child {
+                padding-left: 0;
+            }
+            .story-gen-profiles > li:last-child {
+                padding-right: 0;
+            }
+            .story-gen-profiles > li:not(:first-child) {
+                border-left: 1px solid rgba(122, 154, 159, 0.28);
+            }
+        }
+
+        /* Split feature  -  full viewport, brand-tint panel + photo */
+        .story-split-section {
+            background: linear-gradient(180deg, #f5f9fb 0%, #eef3f6 100%);
+            min-height: 100svh;
+            min-height: 100dvh;
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            box-sizing: border-box;
+        }
+        .story-split-wrap {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            flex: 1;
+            display: flex;
+            min-height: 100svh;
+            min-height: 100dvh;
+            box-sizing: border-box;
+        }
+        .story-split-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+            flex: 1;
+            width: 100%;
+            min-height: 100svh;
+            min-height: 100dvh;
+            border-radius: 0;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: none;
+        }
+        .story-split-text {
+            background: linear-gradient(165deg, #E2F2F6 0%, #d8ebf0 55%, #cfe5ec 100%);
+            padding: clamp(40px, 6vw, 64px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .story-split-text h2 {
+            font-size: clamp(28px, 3.8vw, 42px);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--color-dark);
+            margin: 0 0 18px;
+            letter-spacing: -0.02em;
+        }
+        .story-split-text p {
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+            margin: 0 0 14px;
+            max-width: 48ch;
+        }
+        .story-split-text p:last-child {
+            margin-bottom: 0;
+        }
+        .story-split-media {
+            position: relative;
+            min-height: 0;
+            background: #e2e8eb;
+            overflow: hidden;
+        }
+        .story-split-media img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: perspective(1200px) scale(1);
+            transform-origin: center center;
+            transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+        .story-split-media:hover img {
+            transform: perspective(1200px) scale(1.07);
+        }
+
+        /* Closing band  -  neutral surface (no teal/blue wash around CTAs) */
+        .story-outro {
+            min-height: 100svh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(48px, 8vh, 88px) var(--story-pad-x);
+            box-sizing: border-box;
+            background: linear-gradient(180deg, #fafafa 0%, #f4f4f4 100%);
+            border-top: 1px solid var(--color-border);
+        }
+        .story-outro-inner {
+            width: 100%;
+            max-width: var(--story-content-max);
+            margin: 0 auto;
+            text-align: center;
+        }
+        .story-outro-eyebrow {
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            margin-bottom: 16px;
+        }
+        .story-outro-inner h2 {
+            font-size: clamp(28px, 4.2vw, 46px);
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+            color: var(--color-dark);
+            margin: 0 0 16px;
+        }
+        .story-outro-inner > p:not(.story-outro-eyebrow) {
+            font-size: clamp(15px, 1.2vw + 0.85rem, 17px);
+            line-height: 1.58;
+            color: var(--color-muted);
+            margin: 0 auto 28px;
+            max-width: 46ch;
+        }
+        .story-outro-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+        }
+        .story-outro-actions .btn:not(.btn-primary) {
+            color: var(--color-dark);
+            background: var(--color-white);
+            border-color: var(--color-dark);
+        }
+        .story-outro-actions .btn:not(.btn-primary):hover {
+            background: var(--color-dark);
+            color: var(--color-white);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .story-split-media img {
+                transition: none;
+            }
+            .story-split-media:hover img {
+                transform: perspective(1200px) scale(1);
+            }
+        }
+
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .reveal-text.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        @media (max-width: 1000px) {
+            .story-gen-profiles {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: clamp(32px, 5vw, 44px);
+                max-width: 720px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .story-gen-profiles > li:last-child {
+                grid-column: 1 / -1;
+                max-width: min(380px, 100%);
+                justify-self: center;
+            }
+            .story-split-card {
+                grid-template-columns: 1fr;
+                grid-template-rows: minmax(42svh, 1fr) minmax(0, 1fr);
+                min-height: 100svh;
+                min-height: 100dvh;
+            }
+            .story-split-media {
+                order: -1;
+                min-height: 42svh;
+            }
+            .story-heritage-columns {
+                grid-template-columns: 1fr;
+            }
+            .story-heritage-metrics {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .story-heritage-metrics li:nth-child(2n) {
+                border-right: 0;
+            }
+            .story-heritage-metrics li:nth-child(-n + 2) {
+                border-bottom: 1px solid rgba(84, 86, 88, 0.1);
+            }
+        }
+        @media (max-width: 640px) {
+            .story-gen-profiles {
+                grid-template-columns: 1fr;
+                max-width: min(440px, 100%);
+            }
+            .story-gen-profiles > li:last-child {
+                grid-column: auto;
+                max-width: none;
+                justify-self: stretch;
+            }
+        }
+        @media (max-width: 620px) {
+            .story-hero { min-height: 100vh; }
+            .story-heritage-layout {
+                grid-template-columns: 1fr;
+            }
+            .story-heritage-spine {
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+                padding-top: 0;
+            }
+            .story-heritage-line {
+                flex: 1;
+                min-height: 2px;
+                width: auto;
+                min-width: 48px;
+                margin: 0;
+                background: linear-gradient(90deg, rgba(84, 86, 88, 0.35) 0%, rgba(84, 86, 88, 0.08) 100%);
+            }
+            .story-heritage-spine-meta {
+                writing-mode: horizontal-tb;
+                transform: none;
+            }
+            .story-heritage-metrics {
+                grid-template-columns: 1fr;
+            }
+            .story-heritage-metrics li {
+                border-right: 0;
+                border-bottom: 1px solid rgba(84, 86, 88, 0.1);
+            }
+            .story-heritage-metrics li:last-child {
+                border-bottom: 0;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+     <!-- Top promo bar -->
+          <div class="promo-bar">
+        New to Zann? <a href="#resources">Request a welcome kit</a>  -  Fast turnaround on first case. <a href="#case-submission">Send a case</a>
+    </div>
+    <div class="site-header-sticky">
+  
+    <!-- Header with full navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">ZANN</a>
+        <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+        <nav class="nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Products &amp; Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">products &amp; services</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Crowns &amp; Bridges <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_crown_PFM.html">Porcelain-Fused-to-Metal (PFM)</a>
+                                    <a href="Product_crown_Zirconia.html">Zirconia Crown</a>
+                                    <a href="Product_crown_Emax.html">E.max</a>
+                                    <a href="Product_crown_FullGold.html">Full Gold Crown</a>
+                                </div>
+                            </div>
+                             <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Veneers <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_venner_Emax.html">E.max Veneer</a>
+                                    <a href="Product_veneer_Zirconia.html">Zirconia Veneer</a>
+                                    <!-- <a href="#">Abutments</a> -->
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Implants <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_implant_Standard.html">Standard Implants</a>
+                                    <a href="Product_implant_Advanced_Custom.html">Advanced/Custom Implants</a>
+                                    <a href="Product_implant_Full-Arch.html">Full-Arch Restorations</a>
+                                </div>
+                            </div>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand"> Nightguards/Ortho & Splints </button> <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Nightguards</a>
+                                    <a href="#">Sports Guards</a>
+                                    <a href="#">Essix Retainers</a>
+                                    <a href="#">Bleaching Trays</a>
+                                    <a href="#">Ortho</a>
+                                </div>
+                            </div> -->
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Nightguards/Ortho & Splints <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Nightguards.html">Nightguards</a>
+                                    <a href="Product_Sportsguards.html">Sports Guards</a>
+                                    <a href="Product_Essix Retainers.html">Essix Retainers</a>
+                                    <a href="Product_Bleaching_Trays.html">Bleaching Trays</a>
+                                    <a href="Product_Ortho.html">Ortho</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Removables <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Acrylic_Dentures.html">Acrylic Dentures</a>
+                                    <a href="Product_Immediate_Dentures.html">Immediate Dentures</a>
+                                    <a href="Product_Cast_Partial_Framework_Dentures.html">Cast Partial Framework Denture</a>
+                                    <a href="Product_3D_Printing.html">3D Printed Dentures</a>
+                                    <a href="Product_Denture_Repairs_Relines.html">Denture Repairs/Relines</a>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Dentistry <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Digital_Workflow_Scans.html">Digital Workflow / Scans</a>
+                                    <a href="Product_3D_Printing.html">3D Printing</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Crowns &amp; Bridges</span>
+                                <a href="Product_crown_PFM.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Dentures</span>
+                                <a href="Product_Acrylic_Dentures.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Nightguards</span>
+                                <a href="Product_Nightguards.html" aria-hidden="true"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Case Submission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">case submission</span>
+                             <!-- <div>
+                                <button type="button" class="dropdown-expand">Step-by-step instructions</button>
+                            </div> -->
+                            <a href="Step_BY_Step_Instructions.html">Step-by-step instructions</a>
+                            <a href="Physical_Case_Submission.html">
+                                Physical Case Submission
+                            </a>
+                            <a href="Digital_Case_Submission.html">
+                                Digital Case Submission 
+                            </a>
+                            <a href="FAQ_Case_Submission.html">FAQ Case Submission</a>
+                        </div>
+  
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Physical Case Submission<span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Download RX Forms</a>
+                                    <a href="#">Packing &amp; Shipping Guide</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Case Submission <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Scanner Integration</a>
+                                    <a href="#">File Upload Portal</a>
+                                </div> -->
+                            
+                            
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Send a Case</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Digital Submission</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Shipping</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Education <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">education</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Continuing Education <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Live Webinars</a>
+                                    <a href="#">Recorded Courses</a>
+                                    <a href="#">Hands-On Workshops</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Tips &amp; Tutorials <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Clinical Guides</a>
+                                    <a href="#">Shade &amp; Material Guides</a>
+                                    <a href="#">Workflow Tutorials</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Blog / Articles <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Case Studies</a>
+                                    <a href="#">Digital Dentistry Tips</a>
+                                    <a href="#">Industry News</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Continuing Education</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Clinical Guides</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Case Studies</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+  
+             <!-- <div class="nav-item">
+                <a href="" class="nav-link">Specialists & Support</a>
+            </div> -->
+            <div class="nav-item has-dropdown">
+                <a href="Specialists_Support.html" class="nav-link nav-link-toggle" data-toggle="dropdown">Specialists &amp; Support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">specialists &amp; support</span>
+                            <a href="CustomShadeinHouse.html">Custom Shade in House</a>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Contact a Specialist <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    
+                                    <a href="#">Book Call / Email Support</a> 
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Technical Support <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Troubleshooting</a>
+                                    <a href="#">Material or Product Guidance</a>
+                                </div>
+                            </div>
+                            <a href="#">Local Lab Contacts (Phone &amp; Email)</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Contact a Specialist</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Technical Support</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Local Lab</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">resources</span>
+                            <a href="Catalogues_Guides.html">Catalogs &amp; Guides</a>
+                            <a href="Welcome_Kits.html">Welcome Kits</a>
+                            <a href="Turnaround_Times.html">Turnaround Times</a>
+                            <a href="Resources_Faqs.html">FAQs</a>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Catalogs</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Welcome Kits</span><a href="Welcome_Kits.html" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Turnaround Times</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">about us</span>
+                            <a href="about_ourstory.html">Our Story</a>
+                            <a href="about_missionandvalues.html">Mission &amp; Values</a>
+                            <!-- <a href="#">Team / Technicians</a> -->
+                            <!-- <a href="#">Certifications &amp; Awards</a> -->
+                            <!-- <a href="#">Careers</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Our Story</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Mission &amp; Values</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Team</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+        <!-- <div class="nav-utils">
+            <a href="#search" aria-label="Search">ðŸ"</a>
+            <a href="#account" aria-label="Account">ðŸ‘¤</a>
+        </div> -->
+    </header>
+     </div>
+    
+    <main>
+        <!-- Hero Section -->
+        <section class="story-hero" id="top">
+            <div class="story-hero-bg" aria-hidden="true"></div>
+            <div class="story-hero-inner">
+                <span class="story-overline reveal-text" style="color:#7a9a9f;">about ZANN dental laboratory</span>
+                <h1 class="reveal-text reveal-delay-1">a legacy of precision and artistry</h1>
+                <p class="reveal-text reveal-delay-2">ZANN is a third-generation dental technology company built on precision, integrity, and innovation. For more than 30 years, our family has dedicated itself to mastering both the art and science of restorative dentistry.</p>
+                <a class="btn btn-primary reveal-text reveal-delay-3" href="#visionaries">the generations behind the craft</a>
+            </div>
+        </section>
+
+        
+
+        <!-- Heritage Craftsmanship to Next-Generation Technology Section -->
+        <section class="story-section story-heritage">
+            <div class="story-wrap story-heritage-layout">
+                <div class="story-heritage-spine reveal-text" aria-hidden="true">
+                    <span class="story-heritage-index">01</span>
+                    <span class="story-heritage-line"></span>
+                    <span class="story-heritage-spine-meta" style="color:#7a9a9f;">evolution</span>
+                </div>
+                <div class="story-heritage-main">
+                    <h2 class="reveal-text reveal-delay-1">heritage craftsmanship to next-generation technology</h2>
+                    <div class="story-heritage-columns">
+                        <p class="reveal-text reveal-delay-2">What began as a commitment to heritage craftsmanship has evolved into a next-generation dental technology corporation specializing in digital prosthetics and advanced biomaterials.</p>
+                        <p class="reveal-text reveal-delay-2">We combine decades of traditional knowledge with the latest advancements in clinical support systems.</p>
+                    </div>
+                    <ul class="story-heritage-metrics reveal-text reveal-delay-3" aria-label="ZANN at a glance">
+                        <li><span class="metric-label">Established</span><span class="metric-value">1989</span></li>
+                        <li><span class="metric-label">Family legacy</span><span class="metric-value">30+ years</span></li>
+                        <li><span class="metric-label">Leadership</span><span class="metric-value">3rd gen</span></li>
+                        <li><span class="metric-label">Workflow</span><span class="metric-value">fully digital</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="story-statement" aria-label="Mission and vision">
+            <div class="story-wrap story-statement-inner">
+                <p class="story-statement-text reveal-text">ZANN Dental Laboratory is founded on a 30-year legacy of clinical excellence and third-generation craftsmanship. We bridge the gap between traditional dental artistry and a high-performance digital ecosystem to deliver superior restorative results.</p>
+            </div>
+        </section>
+
+        <!-- Leadership -->
+        <section class="story-section story-generations" id="visionaries" aria-labelledby="story-gen-heading">
+            
+            <div class="story-wrap story-gen-editorial">
+                <header class="story-gen-spotlight-head story-gen-intro">
+                    <p class="story-gen-spotlight-eyebrow reveal-text" style="color:#7a9a9f; margin-bottom: 12px;">Leadership</p>
+                    <h2 id="story-gen-heading" class="reveal-text reveal-delay-1">The generations behind the craft</h2>
+                    <p class="reveal-text reveal-delay-2">ZANN is directed by its founding owners and chief executive officer, with a shared focus on clinical quality, disciplined operations, and long-term partnerships with dental practices.</p>
+                </header>
+                <ol class="story-gen-profiles">
+                    <li class="reveal-text reveal-delay-1">
+                        <div class="story-gen-avatar">
+                            <img src="images/leadership-owner.jpg" alt="Portrait of Nenad Bogdanovic, Owner" width="680" height="850" loading="lazy" decoding="async">
+                        </div>
+                        <div class="story-gen-body">
+                            <h3>Nenad Bogdanovic</h3>
+                            <span class="story-gen-role">Owner</span>
+                            <p class="story-gen-bio">Master technician and laboratory director with more than three decades of experience across traditional and fully digital workflows.</p>
+                        </div>
+                    </li>
+                    <li class="reveal-text reveal-delay-2">
+                        <div class="story-gen-avatar">
+                            <img src="images/leadership-owner-cofounder.jpg" alt="Portrait of Zorica Bogdanovic, Owner and co-founder" width="680" height="850" loading="lazy" decoding="async">
+                        </div>
+                        <div class="story-gen-body">
+                            <h3>Zorica Bogdanovic</h3>
+                            <span class="story-gen-role">Owner &amp; co-founder</span>
+                            <p class="story-gen-bio">Co-founder focused on client service, operational consistency, and the relationships that sustain practices over the long term.</p>
+                        </div>
+                    </li>
+                    <li class="reveal-text reveal-delay-3">
+                        <div class="story-gen-avatar">
+                            <img src="images/leadership-ceo.jpg" alt="Portrait of Ana Bogdanovic, Chief Executive Officer" width="680" height="850" loading="lazy" decoding="async">
+                        </div>
+                        <div class="story-gen-body">
+                            <h3>Ana Bogdanovic</h3>
+                            <span class="story-gen-role">Chief executive officer</span>
+                            <p class="story-gen-bio">Leads strategic growth and digital infrastructure, aligning clinical rigor with scalable systems for partner laboratories and clinicians.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Bridging the Gap to the Future Section -->
+        <section class="story-split-section">
+            <div class="story-wrap story-split-wrap">
+                <div class="story-split-card">
+                    <div class="story-split-text">
+                        <h2 class="reveal-text">bridging the gap to the future</h2>
+                        <p class="reveal-text reveal-delay-1">Established in 1989, we have successfully guided our partners through the transition into fully digital dentistry.</p>
+                        <p class="reveal-text reveal-delay-2">By preserving the artistry that defines exceptional restorative work while embracing high-performance digital ecosystems, we ensure that every restoration is a masterpiece of both form and function.</p>
+                    </div>
+                    <div class="story-split-media">
+                        <img src="https://images.unsplash.com/photo-1606206873764-fd15e242df52?w=1200&amp;q=80" alt="Precision dental laboratory environment" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing band  -  CTA on light surface (no background image) -->
+        <section class="story-outro" id="partner" aria-labelledby="story-outro-heading">
+            <div class="story-outro-inner story-wrap">
+                <span class="story-outro-eyebrow reveal-text" style="color:#7a9a9f;">Partnership</span>
+                <h2 id="story-outro-heading" class="reveal-text reveal-delay-1">Built for practices that expect more</h2>
+                <p class="reveal-text reveal-delay-2">
+                    From case planning to delivery, ZANN supports your team with consistent quality and responsive lab support - so you can focus on your patients.
+                </p>
+                <div class="story-outro-actions reveal-text reveal-delay-3">
+                    <a class="btn btn-primary" href="index.html#case-submission">Send a case</a>
+                    <a class="btn" href="contact.html">Contact</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/nav-footer.js"></script>
+
+    <script>
+        (function () {
+            var hero = document.querySelector(".story-hero");
+            if (hero) {
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        hero.classList.add("hero-bg-in");
+                    });
+                });
+            }
+
+            var revealEls = document.querySelectorAll(".reveal-text");
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("revealed");
+                    }
+                });
+            }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+
+            revealEls.forEach(function (el) {
+                observer.observe(el);
+            });
+
+            var heroReveal = document.querySelectorAll(".story-hero .reveal-text");
+            heroReveal.forEach(function (el) {
+                el.classList.add("revealed");
+            });
+
+        })();
+    </script>
+</body>
+</html>
+
+
+
+

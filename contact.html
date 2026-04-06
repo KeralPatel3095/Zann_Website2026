@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact  -  Zann Dental Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        :root {
+            --contact-pad-x: clamp(24px, 5vw, 48px);
+            --contact-max: 1120px;
+            --contact-sage: #c5ddd8;
+            --contact-teal: #e2f2f6;
+            --contact-teal-deep: #b8d9e2;
+        }
+        body {
+            background:
+                radial-gradient(ellipse 140% 100% at 100% -30%, rgba(160, 205, 215, 0.42) 0%, transparent 52%),
+                radial-gradient(ellipse 90% 70% at -10% 60%, rgba(175, 210, 200, 0.45) 0%, transparent 48%),
+                radial-gradient(ellipse 80% 50% at 50% 100%, rgba(200, 230, 235, 0.5) 0%, transparent 55%),
+                linear-gradient(180deg, #d8ecf2 0%, #d0e6ed 40%, #d6eaf0 100%);
+            min-height: 100vh;
+        }
+        .contact-hero {
+            position: relative;
+            min-height: min(52vh, 520px);
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+        .contact-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url("https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80");
+            background-size: cover;
+            background-position: center;
+            transform: perspective(1200px) scale(0.92);
+            transition: transform 5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+        .contact-hero.hero-bg-in .contact-hero-bg {
+            transform: perspective(1200px) scale(1);
+        }
+        .contact-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(105deg, rgba(20, 42, 48, 0.82) 0%, rgba(35, 72, 82, 0.45) 48%, rgba(90, 130, 138, 0.18) 100%),
+                radial-gradient(ellipse 70% 80% at 20% 60%, rgba(0, 0, 0, 0.22) 0%, transparent 55%),
+                radial-gradient(ellipse 90% 60% at 100% 100%, rgba(184, 217, 226, 0.15) 0%, transparent 45%);
+            z-index: 1;
+        }
+        .contact-hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: min(120px, 18vh);
+            background: linear-gradient(to top, rgba(232, 244, 247, 0.97), rgba(232, 244, 247, 0.4), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .contact-hero-inner {
+            position: relative;
+            z-index: 3;
+            width: min(var(--contact-max), 92vw);
+            margin: 0 auto;
+            padding: clamp(48px, 10vh, 100px) var(--contact-pad-x) clamp(32px, 5vh, 56px);
+            color: #fff;
+        }
+        .contact-hero .overline {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: lowercase;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .contact-hero h1 {
+            font-size: clamp(2rem, 4.5vw + 0.5rem, 3rem);
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+            text-transform: lowercase;
+            margin: 0 0 14px;
+            max-width: 18ch;
+        }
+        .contact-hero-lede {
+            font-size: clamp(0.95rem, 0.4vw + 0.88rem, 1.08rem);
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.92);
+            margin: 0;
+            max-width: 40ch;
+        }
+        .contact-section {
+            position: relative;
+            padding: clamp(56px, 10vh, 104px) var(--contact-pad-x) clamp(72px, 12vh, 120px);
+            border-top: 1px solid rgba(122, 154, 159, 0.22);
+            background:
+                radial-gradient(ellipse 100% 80% at 50% 0%, rgba(184, 217, 226, 0.35) 0%, transparent 58%),
+                radial-gradient(ellipse 70% 50% at 85% 20%, rgba(160, 200, 210, 0.3) 0%, transparent 45%),
+                radial-gradient(ellipse 60% 45% at 10% 75%, rgba(150, 190, 185, 0.22) 0%, transparent 42%),
+                linear-gradient(165deg, #c5e0e8 0%, #d4eaf0 22%, var(--contact-teal) 45%, #dceef3 78%, #d0e8ee 100%);
+        }
+        .contact-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .contact-grid {
+            position: relative;
+            z-index: 1;
+            max-width: var(--contact-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+            gap: clamp(40px, 6vw, 72px);
+            align-items: start;
+        }
+        .contact-info {
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+        .contact-info h2 {
+            font-size: clamp(1.25rem, 2vw, 1.5rem);
+            font-weight: 700;
+            color: var(--color-dark);
+            margin: 0 0 8px;
+            text-transform: lowercase;
+            letter-spacing: -0.02em;
+        }
+        .contact-info > p.lede {
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+            margin: 0 0 28px;
+            max-width: 42ch;
+        }
+        .contact-details {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .contact-details li {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(122, 154, 159, 0.2);
+        }
+        .contact-details li:first-child {
+            padding-top: 0;
+        }
+        .contact-details li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .contact-details .label {
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            margin-bottom: 6px;
+        }
+        .contact-details a {
+            color: var(--color-dark);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+        .contact-details span.value {
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+        }
+        .contact-form-wrap {
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+        .contact-form-wrap h2 {
+            font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+            font-weight: 700;
+            color: var(--color-dark);
+            margin: 0 0 6px;
+            text-transform: lowercase;
+        }
+        .contact-form-wrap > p.hint {
+            font-size: 16px;
+            color: var(--color-muted);
+            margin: 0 0 24px;
+            line-height: 1.55;
+        }
+        .contact-form label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 6px;
+        }
+        .contact-form label .req {
+            color: #8a6a4a;
+            font-weight: 500;
+        }
+        .contact-form input:not([type="hidden"]),
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px 0 12px;
+            font-size: 16px;
+            font-family: var(--font);
+            color: var(--color-dark);
+            margin-bottom: 22px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            border-bottom: 2px solid rgba(84, 86, 88, 0.28);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(84, 86, 88, 0.42);
+        }
+        /* Custom topic dropdown (theme colors  -  no native blue/white menu) */
+        .contact-topic-dd {
+            margin-bottom: 22px;
+        }
+        .contact-topic-dd-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 6px;
+        }
+        .contact-topic-dd-wrap {
+            position: relative;
+        }
+        .contact-topic-dd-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 0 12px;
+            margin: 0;
+            font-size: 16px;
+            font-family: var(--font);
+            font-weight: 500;
+            color: var(--color-dark);
+            text-align: left;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid rgba(84, 86, 88, 0.28);
+            border-radius: 0;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .contact-topic-dd-trigger:hover {
+            border-bottom-color: rgba(45, 72, 78, 0.55);
+        }
+        .contact-topic-dd-trigger[aria-expanded="true"] {
+            border-bottom-color: rgba(45, 72, 78, 0.85);
+            box-shadow: 0 1px 0 0 rgba(45, 72, 78, 0.35);
+        }
+        .contact-topic-dd-trigger:focus {
+            outline: none;
+            border-bottom-color: rgba(45, 72, 78, 0.85);
+            box-shadow: 0 1px 0 0 rgba(45, 72, 78, 0.35);
+        }
+        .contact-topic-dd-chevron {
+            flex-shrink: 0;
+            width: 12px;
+            height: 12px;
+            opacity: 0.75;
+            transition: transform 0.2s ease;
+        }
+        .contact-topic-dd-trigger[aria-expanded="true"] .contact-topic-dd-chevron {
+            transform: rotate(180deg);
+        }
+        .contact-topic-dd-list {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: calc(100% + 4px);
+            z-index: 20;
+            margin: 0;
+            padding: 6px 0;
+            list-style: none;
+            max-height: min(280px, 50vh);
+            overflow-y: auto;
+            background: rgba(196, 222, 228, 0.97);
+            border: 1px solid rgba(84, 86, 88, 0.22);
+            box-shadow: 0 12px 32px rgba(45, 72, 78, 0.14);
+        }
+        .contact-topic-dd-list[hidden] {
+            display: none !important;
+        }
+        .contact-topic-dd-list li {
+            margin: 0;
+            padding: 11px 16px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--color-dark);
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+        .contact-topic-dd-list li:hover,
+        .contact-topic-dd-list li.is-highlighted {
+            background: rgba(58, 90, 98, 0.14);
+        }
+        .contact-topic-dd-list li.is-selected {
+            background: rgba(45, 72, 78, 0.12);
+            font-weight: 600;
+        }
+        .contact-form input:-webkit-autofill,
+        .contact-form input:-webkit-autofill:hover,
+        .contact-form input:-webkit-autofill:focus,
+        .contact-form textarea:-webkit-autofill,
+        .contact-form textarea:-webkit-autofill:hover,
+        .contact-form textarea:-webkit-autofill:focus {
+            -webkit-text-fill-color: var(--color-dark);
+            transition: background-color 99999s ease-out;
+            -webkit-box-shadow: 0 0 0 100px #d0e6ed inset;
+            box-shadow: 0 0 0 100px #d0e6ed inset;
+        }
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+            padding: 12px 0;
+            border: none;
+            border-bottom: 2px solid rgba(84, 86, 88, 0.28);
+            line-height: 1.55;
+        }
+        .contact-form textarea.contact-practice-address {
+            min-height: 88px;
+        }
+        .contact-form input:not([type="hidden"]):focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-bottom-color: rgba(45, 72, 78, 0.85);
+            box-shadow: 0 1px 0 0 rgba(45, 72, 78, 0.35);
+        }
+        .contact-form .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 720px) {
+            .contact-form .field-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        .contact-form .actions {
+            margin-top: 8px;
+        }
+        .contact-form .actions .btn-primary {
+            color: #e8f4f7;
+            background: #2d4850;
+            border-color: #2d4850;
+        }
+        .contact-form .actions .btn-primary:hover {
+            background: #243a41;
+            border-color: #243a41;
+            color: #e8f4f7;
+        }
+        .contact-form .actions .btn-primary:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+        .contact-form-status {
+            margin-bottom: 20px;
+            padding: 14px 18px;
+            font-size: 16px;
+            line-height: 1.55;
+            border: 1px solid rgba(45, 72, 78, 0.22);
+            border-radius: 4px;
+            color: var(--color-dark);
+        }
+        .contact-form-status[hidden] {
+            display: none !important;
+        }
+        .contact-form-status.is-success {
+            background: rgba(184, 214, 204, 0.45);
+            border-color: rgba(76, 120, 100, 0.35);
+        }
+        .contact-form-status.is-error {
+            background: rgba(232, 210, 205, 0.5);
+            border-color: rgba(140, 80, 70, 0.3);
+        }
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .contact-hero-bg {
+                transition: none;
+                transform: perspective(1200px) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+     <!-- Top promo bar -->
+          <div class="promo-bar">
+        New to Zann? <a href="#resources">Request a welcome kit</a>  -  Fast turnaround on first case. <a href="#case-submission">Send a case</a>
+    </div>
+    <div class="site-header-sticky">
+  
+    <!-- Header with full navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">ZANN</a>
+        <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+        <nav class="nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Products &amp; Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">products &amp; services</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Crowns &amp; Bridges <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_crown_PFM.html">Porcelain-Fused-to-Metal (PFM)</a>
+                                    <a href="Product_crown_Zirconia.html">Zirconia Crown</a>
+                                    <a href="Product_crown_Emax.html">E.max</a>
+                                    <a href="Product_crown_FullGold.html">Full Gold Crown</a>
+                                </div>
+                            </div>
+                             <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Veneers <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_venner_Emax.html">E.max Veneer</a>
+                                    <a href="Product_veneer_Zirconia.html">Zirconia Veneer</a>
+                                    <!-- <a href="#">Abutments</a> -->
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Implants <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_implant_Standard.html">Standard Implants</a>
+                                    <a href="Product_implant_Advanced_Custom.html">Advanced/Custom Implants</a>
+                                    <a href="Product_implant_Full-Arch.html">Full-Arch Restorations</a>
+                                </div>
+                            </div>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand"> Nightguards/Ortho & Splints </button> <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Nightguards</a>
+                                    <a href="#">Sports Guards</a>
+                                    <a href="#">Essix Retainers</a>
+                                    <a href="#">Bleaching Trays</a>
+                                    <a href="#">Ortho</a>
+                                </div>
+                            </div> -->
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Nightguards/Ortho & Splints <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Nightguards.html">Nightguards</a>
+                                    <a href="Product_Sportsguards.html">Sports Guards</a>
+                                    <a href="Product_Essix Retainers.html">Essix Retainers</a>
+                                    <a href="Product_Bleaching_Trays.html">Bleaching Trays</a>
+                                    <a href="Product_Ortho.html">Ortho</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Removables <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Acrylic_Dentures.html">Acrylic Dentures</a>
+                                    <a href="Product_Immediate_Dentures.html">Immediate Dentures</a>
+                                    <a href="Product_Cast_Partial_Framework_Dentures.html">Cast Partial Framework Denture</a>
+                                    <a href="Product_3D_Printing.html">3D Printed Dentures</a>
+                                    <a href="Product_Denture_Repairs_Relines.html">Denture Repairs/Relines</a>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Dentistry <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Digital_Workflow_Scans.html">Digital Workflow / Scans</a>
+                                    <a href="Product_3D_Printing.html">3D Printing</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Crowns &amp; Bridges</span>
+                                <a href="Product_crown_PFM.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Dentures</span>
+                                <a href="Product_Acrylic_Dentures.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Nightguards</span>
+                                <a href="Product_Nightguards.html" aria-hidden="true"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Case Submission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">case submission</span>
+                             <!-- <div>
+                                <button type="button" class="dropdown-expand">Step-by-step instructions</button>
+                            </div> -->
+                            <a href="Step_BY_Step_Instructions.html">Step-by-step instructions</a>
+                            <a href="Physical_Case_Submission.html">
+                                Physical Case Submission
+                            </a>
+                            <a href="Digital_Case_Submission.html">
+                                Digital Case Submission 
+                            </a>
+                            <a href="FAQ_Case_Submission.html">FAQ Case Submission</a>
+                        </div>
+  
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Physical Case Submission<span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Download RX Forms</a>
+                                    <a href="#">Packing &amp; Shipping Guide</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Case Submission <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Scanner Integration</a>
+                                    <a href="#">File Upload Portal</a>
+                                </div> -->
+                            
+                            
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Send a Case</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Digital Submission</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Shipping</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Education <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">education</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Continuing Education <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Live Webinars</a>
+                                    <a href="#">Recorded Courses</a>
+                                    <a href="#">Hands-On Workshops</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Tips &amp; Tutorials <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Clinical Guides</a>
+                                    <a href="#">Shade &amp; Material Guides</a>
+                                    <a href="#">Workflow Tutorials</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Blog / Articles <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Case Studies</a>
+                                    <a href="#">Digital Dentistry Tips</a>
+                                    <a href="#">Industry News</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Continuing Education</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Clinical Guides</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Case Studies</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+  
+             <!-- <div class="nav-item">
+                <a href="" class="nav-link">Specialists & Support</a>
+            </div> -->
+            <div class="nav-item has-dropdown">
+                <a href="Specialists_Support.html" class="nav-link nav-link-toggle" data-toggle="dropdown">Specialists &amp; Support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">specialists &amp; support</span>
+                            <a href="CustomShadeinHouse.html">Custom Shade in House</a>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Contact a Specialist <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    
+                                    <a href="#">Book Call / Email Support</a> 
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Technical Support <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Troubleshooting</a>
+                                    <a href="#">Material or Product Guidance</a>
+                                </div>
+                            </div>
+                            <a href="#">Local Lab Contacts (Phone &amp; Email)</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Contact a Specialist</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Technical Support</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Local Lab</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">resources</span>
+                            <a href="Catalogues_Guides.html">Catalogs &amp; Guides</a>
+                            <a href="Welcome_Kits.html">Welcome Kits</a>
+                            <a href="Turnaround_Times.html">Turnaround Times</a>
+                            <a href="Resources_Faqs.html">FAQs</a>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Catalogs</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Welcome Kits</span><a href="Welcome_Kits.html" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Turnaround Times</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">about us</span>
+                            <a href="about_ourstory.html">Our Story</a>
+                            <a href="about_missionandvalues.html">Mission &amp; Values</a>
+                            <!-- <a href="#">Team / Technicians</a> -->
+                            <!-- <a href="#">Certifications &amp; Awards</a> -->
+                            <!-- <a href="#">Careers</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Our Story</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Mission &amp; Values</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Team</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+        <!-- <div class="nav-utils">
+            <a href="#search" aria-label="Search">ðŸ"</a>
+            <a href="#account" aria-label="Account">ðŸ‘¤</a>
+        </div> -->
+    </header>
+     </div>
+
+    <main>
+        <section class="contact-hero" id="top" aria-labelledby="contact-heading">
+            <div class="contact-hero-bg" aria-hidden="true"></div>
+            <div class="contact-hero-inner">
+                <span class="overline">Zann dental laboratory</span>
+                <h1 id="contact-heading">Contact us</h1>
+                <p class="contact-hero-lede">Reach our team for case questions, technical support, or partnership inquiries - we respond within one business day.</p>
+            </div>
+        </section>
+
+        <section class="contact-section" aria-labelledby="contact-form-heading">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2 id="contact-info-heading">Lab &amp; hours</h2>
+                    <p class="lede">Prefer to call or visit? Use the details below. You can also send a message and we'll route it to the right specialist.</p>
+                    <ul class="contact-details">
+                        <li>
+                            <span class="label">Phone</span>
+                            <a href="tel:+14166965454">(416) 696-5454</a>
+                        </li>
+                        <li>
+                            <span class="label">Email</span>
+                            <a href="mailto:zanndentallab@gmail.com">zanndentallab@gmail.com</a>
+                        </li>
+                        <li>
+                            <span class="label">Hours</span>
+                            <span class="value">Monday - Friday, 8:00 a.m. - 5:00 p.m. (local time)</span>
+                        </li>
+                        <li>
+                            <span class="label">Address</span>
+                            <span class="value"><a href="https://www.google.com/maps/search/?api=1&amp;query=18+Wynford+Dr+Unit+718%2C+North+York%2C+ON+M3C+0K8" target="_blank" rel="noopener noreferrer">18 Wynford Dr Unit 718, North York, ON M3C 0K8</a></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form-wrap">
+                    <h2 id="contact-form-heading">Send a message</h2>
+                    <p class="hint">Please provide all required information below so we can review your message and respond promptly.</p>
+                    <form class="contact-form" action="https://formsubmit.co/zanndentallab@gmail.com" method="POST" id="contact-form">
+                        <div id="contact-form-status" class="contact-form-status" role="status" aria-live="polite" tabindex="-1" hidden></div>
+                        <input type="hidden" name="_subject" value="Zann website  -  contact form">
+                        <input type="hidden" name="_template" value="table">
+                        <!-- Skip FormSubmit's "I'm not a robot" page (see their _captcha docs) -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <!-- Return here after FormSubmit processes the message -->
+                        <input type="hidden" name="_next" id="formsubmit-next" value="">
+                        <div class="field-row">
+                            <div>
+                                <label for="contact-name">Full name <span class="req" aria-hidden="true">*</span></label>
+                                <input type="text" id="contact-name" name="name" required autocomplete="name" placeholder="Dr. Jane Smith">
+                            </div>
+                            <div>
+                                <label for="contact-phone">Phone</label>
+                                <input type="tel" id="contact-phone" name="phone" autocomplete="tel" placeholder="(416) 696-5454">
+                            </div>
+                        </div>
+                        <label for="contact-email">Work email <span class="req" aria-hidden="true">*</span></label>
+                        <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder="you@practice.com">
+
+                        <label for="contact-practice">Practice / office</label>
+                        <input type="text" id="contact-practice" name="practice" autocomplete="organization" placeholder="Optional">
+
+                        <label for="contact-practice-address">Practice address</label>
+                        <textarea id="contact-practice-address" name="practice_address" class="contact-practice-address" autocomplete="street-address" placeholder="Street, suite, city, province, postal code"></textarea>
+
+                        <div class="contact-topic-dd">
+                            <label class="contact-topic-dd-label" id="contact-topic-label" for="contact-topic-trigger">Topic</label>
+                            <input type="hidden" name="topic" id="contact-topic-value" value="general">
+                            <div class="contact-topic-dd-wrap">
+                                <button type="button" class="contact-topic-dd-trigger" id="contact-topic-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="contact-topic-list" aria-labelledby="contact-topic-label">
+                                    <span id="contact-topic-trigger-text">General inquiry</span>
+                                    <span class="contact-topic-dd-chevron" aria-hidden="true">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                </button>
+                                <ul class="contact-topic-dd-list" id="contact-topic-list" role="listbox" hidden aria-labelledby="contact-topic-label">
+                                    <li role="option" tabindex="-1" data-value="general" aria-selected="true" class="is-selected">General inquiry</li>
+                                    <li role="option" tabindex="-1" data-value="case" aria-selected="false">Case or Rx question</li>
+                                    <li role="option" tabindex="-1" data-value="digital" aria-selected="false">Digital workflow / scans</li>
+                                    <li role="option" tabindex="-1" data-value="billing" aria-selected="false">Billing or account</li>
+                                    <li role="option" tabindex="-1" data-value="other" aria-selected="false">Other</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <label for="contact-message">Message <span class="req" aria-hidden="true">*</span></label>
+                        <textarea id="contact-message" name="message" required placeholder="How can we help?"></textarea>
+
+                        <div class="actions">
+                            <button type="submit" class="btn btn-primary">Send message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/nav-footer.js"></script>
+
+    <script>
+        (function () {
+            var hero = document.querySelector(".contact-hero");
+            if (hero) {
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        hero.classList.add("hero-bg-in");
+                    });
+                });
+            }
+        })();
+        (function () {
+            var wrap = document.querySelector(".contact-topic-dd-wrap");
+            if (!wrap) return;
+            var trigger = document.getElementById("contact-topic-trigger");
+            var list = document.getElementById("contact-topic-list");
+            var hidden = document.getElementById("contact-topic-value");
+            var textEl = document.getElementById("contact-topic-trigger-text");
+            var options = list ? list.querySelectorAll('[role="option"]') : [];
+            function open() {
+                list.hidden = false;
+                trigger.setAttribute("aria-expanded", "true");
+            }
+            function close() {
+                list.hidden = true;
+                trigger.setAttribute("aria-expanded", "false");
+                options.forEach(function (o) { o.classList.remove("is-highlighted"); });
+            }
+            function toggle() {
+                if (list.hidden) open(); else close();
+            }
+            function selectOption(li) {
+                var v = li.getAttribute("data-value");
+                var label = li.textContent.trim();
+                hidden.value = v;
+                textEl.textContent = label;
+                options.forEach(function (o) {
+                    o.classList.remove("is-selected");
+                    o.setAttribute("aria-selected", "false");
+                });
+                li.classList.add("is-selected");
+                li.setAttribute("aria-selected", "true");
+                close();
+            }
+            trigger.addEventListener("click", function (e) {
+                e.stopPropagation();
+                toggle();
+            });
+            wrap.addEventListener("click", function (e) {
+                e.stopPropagation();
+            });
+            document.addEventListener("click", function () {
+                close();
+            });
+            options.forEach(function (li) {
+                li.addEventListener("click", function () {
+                    selectOption(li);
+                });
+                li.addEventListener("mouseenter", function () {
+                    options.forEach(function (o) { o.classList.remove("is-highlighted"); });
+                    li.classList.add("is-highlighted");
+                });
+            });
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape" && !list.hidden) {
+                    e.preventDefault();
+                    close();
+                    trigger.focus();
+                }
+            });
+        })();
+        (function () {
+            var form = document.getElementById("contact-form");
+            var statusEl = document.getElementById("contact-form-status");
+            var nextInput = document.getElementById("formsubmit-next");
+            if (nextInput) {
+                try {
+                    nextInput.value = new URL("?sent=1", window.location.href).href;
+                } catch (err) {
+                    var base = (window.location.origin || "") + (window.location.pathname || "contact.html");
+                    nextInput.value = base.replace(/\?.*$/, "") + "?sent=1";
+                }
+            }
+            function showStatus(ok, message) {
+                if (!statusEl) return;
+                statusEl.hidden = false;
+                statusEl.textContent = message;
+                statusEl.classList.remove("is-success", "is-error");
+                statusEl.classList.add(ok ? "is-success" : "is-error");
+                statusEl.focus({ preventScroll: true });
+                statusEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
+            if (form) {
+                form.addEventListener("submit", function () {
+                    var btn = form.querySelector('button[type="submit"]');
+                    if (btn) {
+                        btn.disabled = true;
+                        btn.textContent = "Sendingâ€¦";
+                    }
+                });
+            }
+            var params = new URLSearchParams(window.location.search);
+            if (params.get("sent") === "1") {
+                showStatus(
+                    true,
+                    "Thank you for your inquiry. We have received your message and will respond at our earliest convenience."
+                );
+                try {
+                    var clean = window.location.pathname + window.location.hash;
+                    window.history.replaceState({}, document.title, clean);
+                } catch (e2) { /* ignore */ }
+            }
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
+

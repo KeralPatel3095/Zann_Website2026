@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission and values  -  Zann Dental Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        :root {
+            --mv-pad-x: clamp(28px, 8vw, 120px);
+            --mv-content-max: 920px;
+            --mv-sage: #7a9a9f;
+        }
+        /*  -  -  Hero (catalogue / product-style treatment)  -  -  */
+        .mv-hero {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100svh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .mv-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url("https://images.unsplash.com/photo-1588776814546-daab30f310ce?w=1920&q=80");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: perspective(1200px) scale(0.88);
+            transition: transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+        .mv-hero.hero-bg-in .mv-hero-bg {
+            transform: perspective(1200px) scale(1);
+        }
+        .mv-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(105deg, rgba(32, 36, 38, 0.74) 0%, rgba(52, 58, 60, 0.45) 42%, rgba(84, 86, 88, 0.14) 72%, rgba(90, 100, 102, 0.06) 100%),
+                radial-gradient(ellipse 80% 65% at 18% 45%, rgba(0, 0, 0, 0.2) 0%, transparent 58%);
+            z-index: 1;
+        }
+        .mv-hero-inner {
+            position: relative;
+            z-index: 2;
+            width: min(1120px, 92vw);
+            margin: 0 auto;
+            padding: clamp(40px, 8vh, 96px) var(--mv-pad-x);
+            box-sizing: border-box;
+            color: #fff;
+        }
+        .mv-overline {
+            display: block;
+            margin-bottom: 16px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: lowercase;
+            color: rgba(255, 255, 255, 0.88);
+        }
+        .mv-hero h1 {
+            font-size: clamp(2rem, 5.2vw + 0.5rem, 3.65rem);
+            line-height: 1.1;
+            color: #fff;
+            margin: 0 0 20px;
+            max-width: min(16ch, 100%);
+            letter-spacing: -0.03em;
+            text-transform: lowercase;
+            text-shadow: 0 2px 28px rgba(0, 0, 0, 0.18);
+        }
+        .mv-hero-lede {
+            font-size: clamp(0.94rem, 0.35vw + 0.88rem, 1.08rem);
+            max-width: 36rem;
+            line-height: 1.58;
+            color: rgba(255, 255, 255, 0.92);
+            margin: 0;
+        }
+        /*  -  -  Shared full-viewport sections  -  -  */
+        .mv-section {
+            min-height: 100svh;
+            min-height: 100dvh;
+            padding: clamp(40px, 6vh, 72px) var(--mv-pad-x);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+        }
+        .mv-section > .mv-wrap {
+            width: min(1140px, 94vw);
+            margin: 0 auto;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .mv-eyebrow {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            margin: 0 0 14px;
+        }
+        .mv-mission h2,
+        .mv-values-intro h2,
+        .mv-standard h2 {
+            font-size: clamp(28px, 3.6vw, 40px);
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+            color: var(--color-dark);
+            margin: 0 0 20px;
+            text-transform: lowercase;
+        }
+        /*  -  -  Mission: editorial split panel (Our Story / values pattern)  -  -  */
+        .mv-section.mv-mission {
+            align-items: stretch;
+        }
+        .mv-section.mv-mission > .mv-wrap {
+            width: min(1240px, 94vw);
+            justify-content: center;
+        }
+        .mv-mission {
+            background: linear-gradient(180deg, #f5f9fb 0%, #e8f0f4 42%, #eef3f6 100%);
+            border-top: 1px solid rgba(84, 86, 88, 0.08);
+            border-bottom: 1px solid var(--color-border);
+            padding-top: clamp(56px, 9vh, 100px);
+            padding-bottom: clamp(48px, 8vh, 96px);
+        }
+        .mv-mission-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+            align-items: stretch;
+            width: 100%;
+            min-height: min(88svh, 920px);
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid rgba(84, 86, 88, 0.1);
+            box-shadow:
+                0 4px 6px rgba(45, 56, 58, 0.04),
+                0 28px 56px rgba(45, 56, 58, 0.09),
+                inset 0 1px 0 rgba(255, 255, 255, 0.65);
+        }
+        .mv-mission-copy {
+            background: linear-gradient(165deg, #E2F2F6 0%, #d8ebf0 52%, #cfe5ec 100%);
+            padding: clamp(44px, 6.5vw, 88px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid rgba(84, 86, 88, 0.08);
+            box-sizing: border-box;
+            min-width: 0;
+        }
+        .mv-mission-head .mv-eyebrow {
+            color: #5a6e72;
+            margin-bottom: 12px;
+        }
+        .mv-mission h2 {
+            max-width: 18ch;
+            margin-bottom: clamp(22px, 3vw, 34px);
+            font-size: clamp(28px, 3.8vw, 42px);
+            line-height: 1.15;
+        }
+        .mv-mission-body {
+            margin: 0;
+        }
+        .mv-mission-body p {
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+            margin: 0 0 18px;
+            max-width: 48ch;
+        }
+        .mv-mission-body p.mv-mission-lead {
+            font-size: clamp(17px, 0.9vw + 0.94rem, 19px);
+            font-weight: 600;
+            line-height: 1.55;
+            color: var(--color-dark);
+            letter-spacing: -0.015em;
+        }
+        .mv-mission-body p:last-child {
+            margin-bottom: 0;
+        }
+        .mv-mission-media {
+            position: relative;
+            margin: 0;
+            min-height: 320px;
+            background: #d8e2e6;
+            overflow: hidden;
+        }
+        .mv-mission-media img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: perspective(1200px) scale(1);
+            transform-origin: center center;
+            transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+        .mv-mission-media:hover img {
+            transform: perspective(1200px) scale(1.06);
+        }
+        /*  -  -  Values: full-viewport split (bridging section pattern)  -  -  */
+        .mv-section.mv-values {
+            padding: clamp(32px, 5vw, 88px);
+            box-sizing: border-box;
+            display: block;
+            min-height: 100svh;
+            min-height: 100dvh;
+        }
+        .mv-values-fullbleed {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(260px, 36vw);
+            min-height: calc(100svh - clamp(64px, 10vw, 176px));
+            min-height: calc(100dvh - clamp(64px, 10vw, 176px));
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .mv-values-intro {
+            order: 2;
+            background: linear-gradient(165deg, #E2F2F6 0%, #d8ebf0 52%, #cfe5ec 100%);
+            padding: clamp(44px, 7vw, 96px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(84, 86, 88, 0.08);
+            box-sizing: border-box;
+        }
+        .mv-values-intro .mv-eyebrow {
+            color: #5a6e72;
+        }
+        .mv-values-intro h2 {
+            color: var(--color-dark);
+            max-width: 14ch;
+        }
+        .mv-values-intro-lede {
+            margin-top: 22px;
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+            max-width: 34ch;
+        }
+        .mv-values-list-wrap {
+            background: #fff;
+            padding: clamp(44px, 7vw, 96px);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            overflow-y: auto;
+            order: 1;
+        }
+        .mv-values-rows {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 720px;
+        }
+        .mv-values-rows > li {
+            display: grid;
+            grid-template-columns: 52px minmax(0, 1fr);
+            gap: 18px 22px;
+            padding: 26px 0;
+            border-bottom: 1px solid rgba(84, 86, 88, 0.09);
+            align-items: start;
+        }
+        .mv-values-rows > li:first-child {
+            padding-top: 0;
+        }
+        .mv-values-rows > li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .mv-value-num {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--mv-sage);
+            padding-top: 3px;
+        }
+        .mv-values-rows h3 {
+            font-size: clamp(15px, 1.4vw, 17px);
+            font-weight: 700;
+            color: var(--color-dark);
+            margin: 0 0 8px;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            text-transform: lowercase;
+        }
+        .mv-values-rows p {
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+            margin: 0;
+            max-width: 62ch;
+        }
+        /*  -  -  Standard: closing band, no card  -  -  */
+        .mv-standard {
+            background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
+            border-top: 1px solid var(--color-border);
+        }
+        .mv-standard-inner {
+            max-width: 40rem;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .mv-standard-body {
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+            margin: 0 0 28px;
+        }
+        .mv-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .mv-standard-inner .mv-actions {
+            justify-content: center;
+        }
+        /* Secondary links use neutral fill (no default blue for Send a case / Contact) */
+        .mv-standard-inner .mv-actions .btn:not(.btn-primary) {
+            color: var(--color-dark);
+            background: var(--color-white);
+        }
+        .mv-standard-inner .mv-actions .btn:not(.btn-primary):hover {
+            background: var(--color-dark);
+            color: var(--color-white);
+        }
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .reveal-text.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        @media (max-width: 900px) {
+            .mv-mission-panel {
+                grid-template-columns: 1fr;
+                grid-template-rows: minmax(40svh, 300px) auto;
+                min-height: 0;
+            }
+            .mv-mission-media {
+                order: -1;
+                min-height: min(44svh, 400px);
+            }
+            .mv-mission {
+                padding-top: clamp(40px, 6vh, 72px);
+                padding-bottom: clamp(40px, 6vh, 72px);
+            }
+            .mv-mission-copy {
+                border-right: none;
+                border-top: 1px solid rgba(84, 86, 88, 0.08);
+                padding: clamp(36px, 8vh, 72px) clamp(28px, 6vw, 40px);
+            }
+            .mv-values-fullbleed {
+                grid-template-columns: 1fr;
+                min-height: 0;
+            }
+            .mv-values-intro,
+            .mv-values-list-wrap {
+                order: 0;
+            }
+            .mv-values-intro {
+                border-left: none;
+                border-bottom: 1px solid rgba(84, 86, 88, 0.08);
+                padding: clamp(36px, 8vh, 72px) var(--mv-pad-x);
+            }
+            .mv-values-list-wrap {
+                padding: clamp(36px, 8vh, 72px) var(--mv-pad-x);
+                min-height: auto;
+            }
+            .mv-section {
+                min-height: auto;
+                padding: clamp(48px, 8vh, 80px) var(--mv-pad-x);
+            }
+            .mv-section.mv-values {
+                min-height: auto;
+                padding: clamp(28px, 6vw, 56px) var(--mv-pad-x);
+            }
+            .mv-values-fullbleed {
+                min-height: 0;
+            }
+            .mv-hero {
+                min-height: 100svh;
+                min-height: 100dvh;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .mv-hero-bg {
+                transition: none;
+                transform: perspective(1200px) scale(1);
+            }
+            .mv-mission-media img,
+            .mv-mission-media:hover img {
+                transition: none;
+                transform: perspective(1200px) scale(1);
+            }
+            .reveal-text {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+     <!-- Top promo bar -->
+          <div class="promo-bar">
+        New to Zann? <a href="#resources">Request a welcome kit</a>  -  Fast turnaround on first case. <a href="#case-submission">Send a case</a>
+    </div>
+    <div class="site-header-sticky">
+  
+    <!-- Header with full navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">ZANN</a>
+        <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+        <nav class="nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Products &amp; Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">products &amp; services</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Crowns &amp; Bridges <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_crown_PFM.html">Porcelain-Fused-to-Metal (PFM)</a>
+                                    <a href="Product_crown_Zirconia.html">Zirconia Crown</a>
+                                    <a href="Product_crown_Emax.html">E.max</a>
+                                    <a href="Product_crown_FullGold.html">Full Gold Crown</a>
+                                </div>
+                            </div>
+                             <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Veneers <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_venner_Emax.html">E.max Veneer</a>
+                                    <a href="Product_veneer_Zirconia.html">Zirconia Veneer</a>
+                                    <!-- <a href="#">Abutments</a> -->
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Implants <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_implant_Standard.html">Standard Implants</a>
+                                    <a href="Product_implant_Advanced_Custom.html">Advanced/Custom Implants</a>
+                                    <a href="Product_implant_Full-Arch.html">Full-Arch Restorations</a>
+                                </div>
+                            </div>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand"> Nightguards/Ortho & Splints </button> <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Nightguards</a>
+                                    <a href="#">Sports Guards</a>
+                                    <a href="#">Essix Retainers</a>
+                                    <a href="#">Bleaching Trays</a>
+                                    <a href="#">Ortho</a>
+                                </div>
+                            </div> -->
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Nightguards/Ortho & Splints <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Nightguards.html">Nightguards</a>
+                                    <a href="Product_Sportsguards.html">Sports Guards</a>
+                                    <a href="Product_Essix Retainers.html">Essix Retainers</a>
+                                    <a href="Product_Bleaching_Trays.html">Bleaching Trays</a>
+                                    <a href="Product_Ortho.html">Ortho</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Removables <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Acrylic_Dentures.html">Acrylic Dentures</a>
+                                    <a href="Product_Immediate_Dentures.html">Immediate Dentures</a>
+                                    <a href="Product_Cast_Partial_Framework_Dentures.html">Cast Partial Framework Denture</a>
+                                    <a href="Product_3D_Printing.html">3D Printed Dentures</a>
+                                    <a href="Product_Denture_Repairs_Relines.html">Denture Repairs/Relines</a>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Dentistry <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Digital_Workflow_Scans.html">Digital Workflow / Scans</a>
+                                    <a href="Product_3D_Printing.html">3D Printing</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Crowns &amp; Bridges</span>
+                                <a href="Product_crown_PFM.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Dentures</span>
+                                <a href="Product_Acrylic_Dentures.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Nightguards</span>
+                                <a href="Product_Nightguards.html" aria-hidden="true"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Case Submission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">case submission</span>
+                             <!-- <div>
+                                <button type="button" class="dropdown-expand">Step-by-step instructions</button>
+                            </div> -->
+                            <a href="Step_BY_Step_Instructions.html">Step-by-step instructions</a>
+                            <a href="Physical_Case_Submission.html">
+                                Physical Case Submission
+                            </a>
+                            <a href="Digital_Case_Submission.html">
+                                Digital Case Submission 
+                            </a>
+                            <a href="FAQ_Case_Submission.html">FAQ Case Submission</a>
+                        </div>
+  
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Physical Case Submission<span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Download RX Forms</a>
+                                    <a href="#">Packing &amp; Shipping Guide</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Case Submission <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Scanner Integration</a>
+                                    <a href="#">File Upload Portal</a>
+                                </div> -->
+                            
+                            
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Send a Case</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Digital Submission</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Shipping</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Education <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">education</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Continuing Education <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Live Webinars</a>
+                                    <a href="#">Recorded Courses</a>
+                                    <a href="#">Hands-On Workshops</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Tips &amp; Tutorials <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Clinical Guides</a>
+                                    <a href="#">Shade &amp; Material Guides</a>
+                                    <a href="#">Workflow Tutorials</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Blog / Articles <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Case Studies</a>
+                                    <a href="#">Digital Dentistry Tips</a>
+                                    <a href="#">Industry News</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Continuing Education</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Clinical Guides</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Case Studies</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+  
+             <!-- <div class="nav-item">
+                <a href="" class="nav-link">Specialists & Support</a>
+            </div> -->
+            <div class="nav-item has-dropdown">
+                <a href="Specialists_Support.html" class="nav-link nav-link-toggle" data-toggle="dropdown">Specialists &amp; Support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">specialists &amp; support</span>
+                            <a href="CustomShadeinHouse.html">Custom Shade in House</a>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Contact a Specialist <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    
+                                    <a href="#">Book Call / Email Support</a> 
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Technical Support <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Troubleshooting</a>
+                                    <a href="#">Material or Product Guidance</a>
+                                </div>
+                            </div>
+                            <a href="#">Local Lab Contacts (Phone &amp; Email)</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Contact a Specialist</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Technical Support</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Local Lab</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">resources</span>
+                            <a href="Catalogues_Guides.html">Catalogs &amp; Guides</a>
+                            <a href="Welcome_Kits.html">Welcome Kits</a>
+                            <a href="Turnaround_Times.html">Turnaround Times</a>
+                            <a href="Resources_Faqs.html">FAQs</a>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Catalogs</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Welcome Kits</span><a href="Welcome_Kits.html" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Turnaround Times</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">about us</span>
+                            <a href="about_ourstory.html">Our Story</a>
+                            <a href="about_missionandvalues.html">Mission &amp; Values</a>
+                            <!-- <a href="#">Team / Technicians</a> -->
+                            <!-- <a href="#">Certifications &amp; Awards</a> -->
+                            <!-- <a href="#">Careers</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Our Story</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Mission &amp; Values</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Team</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+        <!-- <div class="nav-utils">
+            <a href="#search" aria-label="Search">ðŸ”</a>
+            <a href="#account" aria-label="Account">ðŸ‘¤</a>
+        </div> -->
+    </header>
+     </div>
+
+    <main>
+        <section class="mv-hero" id="top">
+            <div class="mv-hero-bg" aria-hidden="true"></div>
+            <div class="mv-hero-inner">
+                <span class="mv-overline reveal-text" style="color:#7a9a9f;">Zann dental laboratory</span>
+                <h1 class="reveal-text reveal-delay-1">Mission and values</h1>
+                <p class="mv-hero-lede reveal-text reveal-delay-2">What guides our work clinical quality, trusted partnerships, and a standard of excellence in every restoration we deliver.</p>
+            </div>
+        </section>
+
+        <!-- Mission -->
+        <section class="mv-section mv-mission" aria-labelledby="mv-mission-heading">
+            <div class="mv-wrap">
+                <div class="mv-mission-panel">
+                    <div class="mv-mission-copy">
+                        <header class="mv-mission-head">
+                            <p class="mv-eyebrow reveal-text" style="color:#7a9a9f;">Why we exist</p>
+                            <h2 id="mv-mission-heading" class="reveal-text reveal-delay-1">Our mission</h2>
+                        </header>
+                        <div class="mv-mission-body">
+                            <p class="mv-mission-lead reveal-text reveal-delay-2">Our mission is to improve treatment care and provide high-quality esthetics.</p>
+                            <p class="reveal-text reveal-delay-2">At ZANN, we do not simply fabricate dental restorationswe engineer elevated patient outcomes. We are committed to supporting modern dental practices through continual innovation, clear communication, and uncompromising quality.</p>
+                        </div>
+                    </div>
+                    <figure class="mv-mission-media reveal-text reveal-delay-2">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&amp;q=80" alt="Dental technician examining a precision restoration in the laboratory" width="1200" height="1500" loading="lazy" decoding="async">
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values -->
+        <section class="mv-section mv-values" aria-labelledby="mv-values-heading">
+            <div class="mv-values-fullbleed">
+                <div class="mv-values-intro">
+                    <p class="mv-eyebrow reveal-text" style="color:#7a9a9f;">What we stand for</p>
+                    <h2 id="mv-values-heading" class="reveal-text reveal-delay-1">Our core values</h2>
+                    <p class="mv-values-intro-lede reveal-text reveal-delay-2">Five principles shape how we work with clinicians, technicians, and patients - every day.</p>
+                </div>
+                <div class="mv-values-list-wrap">
+                    <ol class="mv-values-rows">
+                        <li class="reveal-text reveal-delay-1">
+                            <span class="mv-value-num" aria-hidden="true">01</span>
+                            <div>
+                                <h3>Precision and excellence</h3>
+                                <p>We utilize a layered verification system and digital QA processes to ensure every case is verified for accuracy and esthetics before production.</p>
+                            </div>
+                        </li>
+                        <li class="reveal-text reveal-delay-2">
+                            <span class="mv-value-num" aria-hidden="true">02</span>
+                            <div>
+                                <h3>Integrity and trust</h3>
+                                <p>Every restoration is a reflection of our craftsmanship and standards, backed by the ZANN Integrity Guarantee to provide clinicians and patients with peace of mind.</p>
+                            </div>
+                        </li>
+                        <li class="reveal-text reveal-delay-2">
+                            <span class="mv-value-num" aria-hidden="true">03</span>
+                            <div>
+                                <h3>Innovation</h3>
+                                <p>We expand our digital ecosystem and introduce cutting-edge procedures to stay at the forefront of restorative outcomes.</p>
+                            </div>
+                        </li>
+                        <li class="reveal-text reveal-delay-3">
+                            <span class="mv-value-num" aria-hidden="true">04</span>
+                            <div>
+                                <h3>Clinical collaboration</h3>
+                                <p>We value the relationships we build with clinicians, offering technical consults and treatment planning to make your daily workflow easier and more predictable.</p>
+                            </div>
+                        </li>
+                        <li class="reveal-text reveal-delay-3">
+                            <span class="mv-value-num" aria-hidden="true">05</span>
+                            <div>
+                                <h3>Education and empowerment</h3>
+                                <p>We empower the dental community through hands-on digital education, scan training, and by supporting healthcare education.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Standard -->
+        <section class="mv-section mv-standard" aria-labelledby="mv-standard-heading">
+            <div class="mv-wrap">
+                <div class="mv-standard-inner">
+                    <p class="mv-eyebrow reveal-text" style="color:#7a9a9f;">Commitment</p>
+                    <h2 id="mv-standard-heading" class="reveal-text reveal-delay-1">The ZANN standard</h2>
+                    <p class="mv-standard-body reveal-text reveal-delay-2">Our values are reflected in our choice of premium materials and rigorous quality assurance at every stage of fabrication. We believe that behind every restoration is a patient relying on us to deliver our best, and we take that responsibility seriously.</p>
+                    <div class="mv-actions reveal-text reveal-delay-3">
+                        <a class="btn btn-primary" href="about_ourstory.html">Our story</a>
+                        <a class="btn" href="index.html#case-submission">Send a case</a>
+                        <a class="btn" href="contact.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/nav-footer.js"></script>
+
+    <script>
+        (function () {
+            var hero = document.querySelector(".mv-hero");
+            if (hero) {
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        hero.classList.add("hero-bg-in");
+                    });
+                });
+            }
+            var revealEls = document.querySelectorAll(".reveal-text");
+            var prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            if (!prefersReduce && "IntersectionObserver" in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("revealed");
+                        }
+                    });
+                }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+                revealEls.forEach(function (el) {
+                    observer.observe(el);
+                });
+            } else {
+                revealEls.forEach(function (el) {
+                    el.classList.add("revealed");
+                });
+            }
+            document.querySelectorAll(".mv-hero .reveal-text").forEach(function (el) {
+                el.classList.add("revealed");
+            });
+        })();
+    </script>
+</body>
+</html>
+
+

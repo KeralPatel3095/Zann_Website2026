@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Turnaround Times  -  Zann Dental Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        :root {
+            --color-bg: #E2F2F6;
+            --color-bg-alt: #f5fbfc;
+            --color-dark: #545658;
+            --color-muted: #636466;
+            --color-border: rgba(0, 0, 0, 0.08);
+            --color-white: #ffffff;
+            --color-sage: #9AB1B6;
+            --color-sage-dark: #7a9a9f;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            --section-y: clamp(44px, 8vh, 88px);
+            --section-gap: clamp(20px, 3vh, 40px);
+            --tt-section-pad-y: clamp(40px, 8vh, 88px);
+            --tt-section-gap: clamp(24px, 4vh, 48px);
+            --quick-nav-height: clamp(52px, 11vw, 78px);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: clamp(72px, 12vw, 92px);
+            overflow-x: hidden;
+        }
+        body {
+            font-family: var(--font);
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--color-muted);
+            background: var(--color-white);
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; height: auto; display: block; }
+        h1, h2, h3 {
+            color: var(--color-dark);
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            text-transform: lowercase;
+            font-weight: 700;
+        }
+        p { max-width: 72ch; }
+        a {
+            color: var(--color-sage-dark);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: none;
+        }
+        a:hover { color: var(--color-dark); border-bottom: none; }
+
+        /*  -  -  Hero: same structure & motion as Welcome_Kits  -  -  */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100svh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: perspective(1200px) scale(0.88);
+            transition: transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+        .hero.hero-bg-in .hero-bg {
+            transform: perspective(1200px) scale(1);
+        }
+        .double-img-wrap {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .double-img-wrap .double-img-default,
+        .double-img-wrap .double-img-hover {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: opacity 0.65s ease, transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+        }
+        .double-img-wrap .double-img-default {
+            opacity: 1;
+        }
+        .double-img-wrap .double-img-hover {
+            opacity: 0;
+            transform: scale(1.06);
+        }
+        .double-img-wrap:hover .double-img-default {
+            opacity: 0;
+            transform: scale(1.04);
+        }
+        .double-img-wrap:hover .double-img-hover {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(105deg, rgba(32, 36, 38, 0.72) 0%, rgba(52, 58, 60, 0.42) 42%, rgba(72, 82, 84, 0.12) 72%, rgba(90, 100, 102, 0.06) 100%),
+                radial-gradient(ellipse 85% 70% at 15% 50%, rgba(0, 0, 0, 0.22) 0%, transparent 55%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            width: min(1120px, 92vw);
+            margin: 0 auto;
+            padding: clamp(32px, 9vh, 96px) clamp(20px, 5vw, 40px);
+            color: var(--color-white);
+            text-align: left;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 2px 24px rgba(0, 0, 0, 0.25);
+        }
+        .hero .overline {
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: lowercase;
+            color: rgba(255, 255, 255, 0.96);
+            margin-bottom: 16px;
+        }
+        .hero h1 {
+            font-size: clamp(1.85rem, 5vw + 0.65rem, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.12;
+            margin-bottom: 14px;
+            color: var(--color-white);
+            max-width: min(22ch, 100%);
+        }
+        .hero .tagline {
+            font-size: clamp(1rem, 1vw + 0.88rem, 1.2rem);
+            font-weight: 600;
+            color: #f0f8f9;
+            margin-bottom: 16px;
+            max-width: 38ch;
+        }
+        .hero .intro {
+            font-size: clamp(0.94rem, 0.35vw + 0.9rem, 1.05rem);
+            font-weight: 400;
+            line-height: 1.55;
+            margin: 0 0 28px;
+            max-width: min(62ch, 100%);
+            color: rgba(255, 255, 255, 0.95);
+        }
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 12px 22px;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-family: var(--font);
+            border: 1px solid var(--color-dark);
+            text-transform: lowercase;
+            cursor: pointer;
+        }
+        .hero .btn {
+            background: var(--color-white);
+            color: var(--color-dark);
+            border-color: var(--color-dark);
+            border-bottom: 1px solid var(--color-dark);
+        }
+        .hero .btn:hover {
+            background: var(--color-dark);
+            color: var(--color-white);
+            border-color: var(--color-dark);
+            border-bottom-color: var(--color-dark);
+        }
+        .hero .btn-ghost {
+            background: transparent;
+            color: var(--color-white);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+        .hero .btn-ghost:hover {
+            background: var(--color-white);
+            color: var(--color-dark);
+            border-color: var(--color-white);
+        }
+        .hero .note {
+            margin-top: 22px;
+            font-size: 16px;
+            line-height: 1.55;
+            max-width: min(62ch, 100%);
+            margin-left: 0;
+            margin-right: 0;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .quick-nav {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background: rgba(232, 244, 247, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(154, 177, 182, 0.25);
+            box-shadow: 0 8px 32px rgba(45, 60, 64, 0.06);
+        }
+        .quick-nav-inner {
+            width: 100%;
+            max-width: 100%;
+            padding: 12px clamp(14px, 4vw, 48px);
+            text-align: center;
+        }
+        .quick-nav-label {
+            font-size: 16px;
+            letter-spacing: 0.08em;
+            text-transform: lowercase;
+            color: var(--color-dark);
+            margin: 0 auto 6px;
+        }
+        .quick-nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .quick-nav-links a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 12px;
+            border-right: 1px solid rgba(0, 0, 0, 0.08);
+            text-transform: lowercase;
+            border-bottom: none;
+        }
+        .quick-nav-links a:last-child { border-right: none; }
+        .quick-nav-links a:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--color-dark);
+        }
+
+        /*  -  -  Sections: pattern from Welcome_Kits / Catalogues_Guides  -  -  */
+        .section {
+            position: relative;
+            border-bottom: 1px solid var(--color-border);
+            overflow-x: hidden;
+        }
+        .section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        nav.quick-nav + .section {
+            margin-top: var(--tt-section-gap);
+        }
+        .section + .section {
+            margin-top: var(--tt-section-gap);
+        }
+        .section-inner {
+            width: 100%;
+            max-width: 1220px;
+            margin: 0 auto;
+            --section-pad-x: clamp(20px, 4vw, 40px);
+            padding: clamp(48px, 9vh, 96px) var(--section-pad-x);
+            position: relative;
+            z-index: 1;
+        }
+        .section-head {
+            margin-bottom: clamp(28px, 4vw, 40px);
+        }
+        .section-head .overline.section-overline {
+            text-align: left;
+            margin-bottom: 8px;
+        }
+        .section-head .overline {
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--color-sage-dark);
+            margin-bottom: 10px;
+            text-transform: lowercase;
+        }
+        .section-head h2 {
+            display: block;
+            font-size: clamp(32px, 4.8vw, 48px);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            max-width: 22ch;
+            position: relative;
+            color: var(--color-dark);
+            text-transform: lowercase;
+        }
+        .section-head h2::after {
+            content: none;
+        }
+        .section-head .deck {
+            max-width: min(560px, 100%);
+            font-size: clamp(15px, 0.35vw + 0.88rem, 16px);
+            line-height: 1.55;
+            color: var(--color-muted);
+            margin-top: 18px;
+            font-weight: 400;
+        }
+
+        #crown-bridge::before {
+            background:
+                radial-gradient(ellipse 70% 50% at 100% 0%, rgba(226, 242, 246, 0.5) 0%, transparent 55%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 252, 252, 0.95) 100%);
+        }
+        #crown-bridge .cb-top {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: clamp(20px, 3vw, 40px);
+            align-items: start;
+            justify-items: stretch;
+            margin-bottom: clamp(28px, 4vw, 48px);
+        }
+        #crown-bridge .cb-top .section-head {
+            margin-bottom: 0;
+            min-width: 0;
+        }
+        #crown-bridge .layout-split-check__aside--benchmark {
+            border-radius: 0;
+            position: static;
+            align-self: start;
+            justify-self: end;
+            padding: clamp(28px, 3.5vw, 42px) clamp(28px, 3.8vw, 48px);
+            min-width: min(100%, 288px);
+            max-width: 100%;
+            background-color: #E2F2F6;
+            /* box-shadow:
+                0 1px 0 rgba(255, 255, 255, 1) inset,
+                0 20px 48px rgba(45, 60, 64, 0.1); */
+        }
+        #crown-bridge .layout-split-check--with-photo {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+            gap: clamp(32px, 4.5vw, 52px);
+            align-items: stretch;
+        }
+        #crown-bridge .layout-split-check__col--image-only {
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            min-width: 0;
+        }
+        #crown-bridge .layout-split-check__col--image-only .section-photo {
+            flex: 1 1 auto;
+            min-height: clamp(320px, 52vh, 640px);
+            display: flex;
+            flex-direction: column;
+            border-radius: 0;
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.95) inset,
+                0 24px 56px rgba(45, 60, 64, 0.12);
+        }
+        #crown-bridge .layout-split-check__col--image-only .section-photo img {
+            flex: 1 1 auto;
+            width: 100%;
+            min-height: clamp(300px, 50vh, 620px);
+            height: 100%;
+            aspect-ratio: unset;
+            object-fit: cover;
+            object-position: center 36%;
+            display: block;
+            transform: scale(1);
+            transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        #crown-bridge .layout-split-check__col--image-only .section-photo:hover img {
+            transform: scale(1.025);
+        }
+        .layout-split-check {
+            display: grid;
+            grid-template-columns: minmax(0, 0.4fr) minmax(0, 1fr);
+            gap: clamp(32px, 5vw, 56px);
+            align-items: start;
+        }
+        .layout-split-check--with-photo {
+            grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr);
+        }
+        .layout-split-check__col {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(20px, 3vw, 28px);
+        }
+        .section-photo {
+            margin: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(84, 86, 88, 0.1);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.95) inset,
+                0 20px 48px rgba(45, 60, 64, 0.1);
+        }
+        .section-photo img {
+            width: 100%;
+            height: auto;
+            min-height: 200px;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.03);
+            transition: transform 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .section-photo:hover img {
+            transform: scale(1);
+        }
+        .section-photo figcaption {
+            padding: 12px 16px 14px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: lowercase;
+            color: var(--color-muted);
+            background: linear-gradient(180deg, rgba(250, 252, 253, 0.98) 0%, rgba(255, 255, 255, 1) 100%);
+            border-top: 1px solid rgba(84, 86, 88, 0.07);
+        }
+        .layout-split-check__aside {
+            position: sticky;
+            top: calc(var(--quick-nav-height, 56px) + 20px);
+            padding: clamp(26px, 3.5vw, 36px);
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(84, 86, 88, 0.1);
+            border-radius: 12px;
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.95) inset,
+                0 16px 40px rgba(45, 60, 64, 0.07);
+        }
+        .layout-split-check__aside p {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-sage-dark);
+            letter-spacing: 0.08em;
+            text-transform: lowercase;
+            margin-bottom: 14px;
+        }
+        .layout-split-check__aside strong {
+            display: block;
+            font-size: clamp(26px, 3.5vw, 38px);
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 10px;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+        }
+        .check-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border-top: 1px solid rgba(84, 86, 88, 0.1);
+        }
+        .check-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 20px;
+            padding: clamp(22px, 3vw, 32px) 0;
+            border-bottom: 1px solid rgba(84, 86, 88, 0.07);
+            align-items: baseline;
+            margin: 0 calc(-1 * var(--section-pad-x));
+            padding-left: var(--section-pad-x);
+            padding-right: var(--section-pad-x);
+            transition: background 0.35s ease;
+        }
+        .check-row:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.45);
+        }
+        .check-row:hover {
+            background: rgba(236, 247, 250, 0.55);
+        }
+        .check-row:last-child { border-bottom: none; }
+        .check-row dt {
+            font-weight: 600;
+            color: var(--color-dark);
+            font-size: 16px;
+            letter-spacing: -0.02em;
+        }
+        .check-row dd {
+            font-size: 16px;
+            color: var(--color-sage-dark);
+            font-weight: 500;
+            text-align: right;
+            white-space: nowrap;
+            margin: 0;
+        }
+
+        /* Implant solutions  -  light full-viewport, high-contrast focal panel */
+        #implants {
+            min-height: 100svh;
+            min-height: 100dvh;
+            display: grid;
+            align-items: center;
+        }
+        #implants::before {
+            background:
+                radial-gradient(ellipse 80% 60% at 10% 18%, rgba(186, 228, 236, 0.42) 0%, transparent 54%),
+                radial-gradient(ellipse 70% 50% at 88% 76%, rgba(200, 236, 242, 0.35) 0%, transparent 52%),
+                linear-gradient(170deg, #fbfeff 0%, #f1f8fa 48%, #e8f3f6 100%);
+        }
+        /* Implants: simple, clean layout */
+        #implants .section-inner.implants-split {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(20px, 3vw, 32px);
+            align-items: start;
+            justify-content: center;
+        }
+        #implants .implants-head { order: 1; }
+        #implants .implants-body { order: 2; }
+        #implants .implants-head {
+            margin-bottom: 0;
+            text-align: left;
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+        #implants .implants-head .overline.section-overline {
+            text-align: left;
+        }
+        #implants .implants-head h2 {
+            max-width: min(26ch, 100%);
+            font-size: clamp(34px, 5.2vw, 52px);
+            margin-left: 0;
+            margin-right: auto;
+        }
+        #implants .implants-head h2::after {
+            content: none;
+        }
+        #implants .implants-head .deck {
+            margin-left: 0;
+            margin-right: auto;
+            max-width: min(54ch, 100%);
+            font-size: clamp(16px, 1.1vw, 17px);
+        }
+        #implants .implants-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(12px, 1.8vw, 18px) clamp(22px, 3vw, 30px);
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: none;
+            box-shadow: none;
+        }
+        #implants .implant-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 10px;
+            padding: clamp(14px, 1.8vw, 18px) 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            min-height: 0;
+            overflow: visible;
+            border-bottom: 1px solid rgba(84, 86, 88, 0.14);
+            transition: none;
+        }
+        #implants .implant-card:nth-last-child(-n + 2) {
+            border-bottom: none;
+        }
+        .implant-card__meta {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 6px;
+            text-align: left;
+            flex-shrink: 0;
+        }
+        .implant-card__kicker {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-sage-dark);
+            opacity: 0.95;
+            border: none;
+            padding: 0;
+            line-height: 1;
+        }
+        .implant-card p.implant-card__days {
+            margin: 0;
+            font-size: clamp(16px, 1.4vw, 18px);
+            line-height: 1.35;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--color-dark);
+        }
+        .implant-card h3.implant-card__title {
+            margin: 0;
+            font-size: clamp(18px, 1.7vw, 22px);
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            color: var(--color-dark);
+            text-align: left;
+            max-width: none;
+            min-width: 0;
+        }
+        #removables::before {
+            background: linear-gradient(175deg, rgba(255, 255, 255, 1) 0%, rgba(240, 248, 250, 0.65) 100%);
+        }
+        #removables .section-inner {
+            text-align: center;
+        }
+        #removables .section-head {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 42rem;
+        }
+        #removables .section-head .overline.section-overline {
+            text-align: center;
+        }
+        #removables .section-head h2 {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 22ch;
+        }
+        #removables .section-head h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #removables .section-head .deck {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #removables .rail-stack {
+            max-width: min(36rem, 100%);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #removables .rail-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            padding: clamp(28px, 3.5vw, 40px) clamp(20px, 4vw, 28px);
+            margin: 0;
+        }
+        #removables .rail-num {
+            padding-top: 0;
+        }
+        #removables .rail-body {
+            max-width: 36rem;
+        }
+        #removables .rail-body h3,
+        #removables .rail-body p {
+            text-align: center;
+        }
+        .rail-stack {
+            border-top: 1px solid rgba(84, 86, 88, 0.1);
+        }
+        .rail-row {
+            display: grid;
+            grid-template-columns: clamp(64px, 9vw, 88px) minmax(0, 1fr);
+            gap: clamp(22px, 3.5vw, 40px);
+            align-items: start;
+            padding: clamp(28px, 3.5vw, 40px) 0;
+            margin: 0 calc(-1 * var(--section-pad-x));
+            padding-left: var(--section-pad-x);
+            padding-right: var(--section-pad-x);
+            border-bottom: 1px solid rgba(84, 86, 88, 0.07);
+            transition: background 0.35s ease;
+        }
+        .rail-row:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.55);
+        }
+        .rail-row:hover {
+            background: rgba(236, 247, 250, 0.5);
+        }
+        .rail-row:last-child { border-bottom: none; }
+        .rail-num {
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 700;
+            color: rgba(122, 154, 159, 0.32);
+            line-height: 1;
+            letter-spacing: -0.03em;
+            padding-top: 2px;
+        }
+        .rail-body h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .rail-body p {
+            font-size: 16px;
+            margin: 0;
+            max-width: none;
+            line-height: 1.55;
+        }
+
+        /* Nightguards / sports guards  -  full-screen bg zoom + centered cards (no wrap padding) */
+        #appliances {
+            position: relative;
+            min-height: 100svh;
+            min-height: 100dvh;
+            display: grid;
+            align-items: center;
+            border-bottom-color: rgba(255, 255, 255, 0.12);
+            overflow: hidden;
+        }
+        #appliances .appliances-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background:
+                url("https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1920&q=80") center / cover no-repeat;
+            transform: perspective(1200px) scale(1.1);
+            transition: transform 7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+        #appliances.appliances-bg-in .appliances-bg {
+            transform: perspective(1200px) scale(1);
+        }
+        #appliances::before {
+            background: linear-gradient(90deg, transparent 0%, rgba(90, 142, 152, 0.25) 15%, rgba(90, 142, 152, 0.25) 85%, transparent 100%);
+            z-index: 1;
+        }
+        #appliances .section-inner {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        #appliances .section-head {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 44rem;
+            margin-bottom: clamp(40px, 6vw, 64px);
+        }
+        #appliances .section-head .overline {
+            text-align: center;
+            color: rgba(198, 232, 238, 0.95);
+        }
+        #appliances .section-head h2 {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 24ch;
+            color: #f5fcfc;
+        }
+        #appliances .section-head h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, rgba(184, 228, 236, 0.95) 0%, rgba(154, 200, 208, 0.25) 72%, transparent 100%);
+        }
+        #appliances .section-head .deck {
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(236, 248, 250, 0.9);
+        }
+        #appliances .tri-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(22px, 3vw, 32px);
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0;
+            border-radius: 0;
+            background: none;
+            border: none;
+            box-shadow: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        #appliances .tri-card {
+            text-align: center;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.92);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 1) inset,
+                0 22px 52px rgba(0, 0, 0, 0.22);
+        }
+        #appliances .tri-card::before {
+            left: 14%;
+            right: 14%;
+        }
+        #appliances .tri-card h3,
+        #appliances .tri-card p {
+            text-align: center;
+        }
+        #appliances .tri-card .days {
+            margin-left: 0;
+        }
+        .tri-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, #ffffff 0%, #f7fbfc 55%, #ffffff 100%);
+            border: 1px solid rgba(84, 86, 88, 0.08);
+            border-radius: 20px;
+            padding: clamp(30px, 4vw, 42px) clamp(22px, 3vw, 30px);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 1) inset,
+                0 14px 40px rgba(45, 60, 64, 0.07);
+            text-align: left;
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        .tri-card::before {
+            content: "";
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            top: 0;
+            height: 3px;
+            border-radius: 0 0 4px 4px;
+            background: linear-gradient(90deg, transparent, rgba(122, 154, 159, 0.45) 15%, rgba(200, 230, 236, 0.95) 50%, rgba(122, 154, 159, 0.45) 85%, transparent);
+            opacity: 0.92;
+        }
+        .tri-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 55% at 50% 0%, rgba(255, 255, 255, 0.65) 0%, transparent 55%);
+            pointer-events: none;
+            opacity: 0.65;
+        }
+        .tri-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(122, 154, 159, 0.28);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 1) inset,
+                0 24px 56px rgba(45, 60, 64, 0.11);
+        }
+        .tri-card h3,
+        .tri-card p,
+        .tri-card .days {
+            position: relative;
+            z-index: 1;
+        }
+        .tri-card .days {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 9px 16px;
+            border-radius: 999px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-sage-dark);
+            background: linear-gradient(180deg, rgba(232, 244, 247, 0.95) 0%, rgba(220, 238, 242, 0.88) 100%);
+            border: 1px solid rgba(122, 154, 159, 0.28);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+        }
+        .tri-card h3 {
+            font-size: clamp(17px, 1.45vw, 20px);
+            margin-bottom: 14px;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            line-height: 1.3;
+        }
+        .tri-card p {
+            font-size: 16px;
+            margin: 0;
+            max-width: none;
+            line-height: 1.55;
+            color: var(--color-muted);
+        }
+
+        .layout-split-check__aside-meta {
+            font-size: 16px;
+            color: var(--color-muted);
+            font-weight: 400;
+        }
+
+        /* Send-a-case  -  two full-width splits (image L / copy R Ã‚- copy L / image R) */
+        .send-split {
+            margin-top: 0;
+            padding: 0;
+            min-height: min(92svh, 960px);
+            min-height: min(92dvh, 960px);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            border: none;
+            border-bottom: 1px solid rgba(84, 86, 88, 0.1);
+        }
+        #send-case {
+            margin-top: var(--tt-section-gap);
+            padding: clamp(20px, 4vw, 48px) clamp(20px, 5vw, 56px);
+            box-sizing: border-box;
+        }
+        #send-stone {
+            margin-top: var(--tt-section-gap);
+            padding: clamp(20px, 4vw, 48px) clamp(20px, 5vw, 56px);
+            box-sizing: border-box;
+        }
+        .send-case__media {
+            position: relative;
+            min-height: 100%;
+            overflow: hidden;
+        }
+        .send-case__media .double-img-wrap .double-img-default,
+        .send-case__media .double-img-wrap .double-img-hover {
+            transition: opacity 0.65s ease, transform 4.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .send-case__media .double-img-wrap .double-img-default {
+            transform: scale(1.06);
+        }
+        .send-case__media .double-img-wrap:hover .double-img-default {
+            transform: scale(1.03);
+        }
+        .send-split--img-left .send-case__media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(28, 34, 36, 0.38) 0%, rgba(28, 34, 36, 0.12) 42%, transparent 72%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .send-split--img-right .send-case__media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(270deg, rgba(28, 34, 36, 0.38) 0%, rgba(28, 34, 36, 0.12) 42%, transparent 72%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .send-case__media .double-img-wrap {
+            z-index: 0;
+        }
+        .send-case__copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(40px, 7vh, 88px) clamp(24px, 4vw, 64px);
+            background: linear-gradient(180deg, #ffffff 0%, #f3f9fa 45%, #eef6f8 100%);
+            border-left: 1px solid rgba(84, 86, 88, 0.1);
+        }
+        .send-split--img-right .send-case__copy {
+            border-left: none;
+            border-right: 1px solid rgba(84, 86, 88, 0.1);
+        }
+        .send-case__copy-surface {
+            max-width: 36rem;
+            margin: 0;
+            width: 100%;
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .send-case__copy .section-head {
+            margin-bottom: clamp(28px, 4vw, 36px);
+        }
+        .send-case__copy .section-head h2 {
+            max-width: min(20ch, 100%);
+        }
+        .send-block {
+            margin-bottom: clamp(24px, 4vw, 32px);
+        }
+        .send-block:last-child { margin-bottom: 0; }
+        .send-block h3 {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-sage-dark);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(122, 154, 159, 0.35);
+        }
+        .send-list {
+            list-style: none;
+        }
+        .send-list li {
+            font-size: 16px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            max-width: 58ch;
+        }
+        .send-list li:last-child { border-bottom: none; }
+        .send-list strong {
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+
+        .page-footer {
+            margin-top: var(--tt-section-gap);
+            padding: 40px clamp(16px, 4vw, 32px) 48px;
+            text-align: center;
+            border-top: 1px solid rgba(154, 177, 182, 0.22);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, var(--color-bg-alt) 100%);
+        }
+        .page-footer a {
+            color: var(--color-dark);
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: none;
+            border: none;
+        }
+        .page-footer a:hover { text-decoration: underline; }
+
+        /* Standard responsive system */
+        @media (max-width: 1200px) {
+            :root {
+                --tt-section-gap: clamp(56px, 9vh, 88px);
+                --section-pad-x: clamp(18px, 3vw, 32px);
+            }
+            .hero-inner,
+            .section-inner,
+            .quick-nav-inner {
+                width: min(1240px, 96vw);
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .section-head h2 {
+                font-size: clamp(30px, 4.4vw, 42px);
+                line-height: 1.14;
+            }
+            .section-head .deck,
+            p,
+            li,
+            dt,
+            dd {
+                font-size: 16px;
+                line-height: 1.55;
+            }
+        }
+
+        @media (max-width: 960px) {
+            .layout-split-check,
+            .layout-split-check--with-photo {
+                grid-template-columns: 1fr;
+            }
+            #crown-bridge .cb-top {
+                grid-template-columns: 1fr;
+                margin-bottom: clamp(22px, 3vw, 32px);
+            }
+            #crown-bridge .layout-split-check__aside--benchmark {
+                justify-self: stretch;
+                min-width: 0;
+            }
+            #crown-bridge .layout-split-check--with-photo {
+                grid-template-columns: 1fr;
+            }
+            #crown-bridge .layout-split-check__col--image-only .section-photo {
+                flex: none;
+                min-height: 0;
+                max-height: none;
+            }
+            #crown-bridge .layout-split-check__col--image-only .section-photo img {
+                flex: none;
+                height: auto;
+                max-height: none;
+                min-height: min(62vw, 380px);
+                aspect-ratio: 16 / 10;
+                object-position: center;
+            }
+            .layout-split-check__aside {
+                position: static;
+            }
+            #implants .section-inner.implants-split {
+                grid-template-columns: 1fr;
+                gap: clamp(22px, 3.5vw, 32px);
+            }
+            #implants .implants-head {
+                order: 1;
+                text-align: left;
+            }
+            #implants .implants-head .overline.section-overline {
+                text-align: left;
+            }
+            #implants .implants-head h2 {
+                margin-left: 0;
+            }
+            #implants .implants-head h2::after {
+                left: 0;
+                right: auto;
+            }
+            #implants .implants-head .deck {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            #implants .implants-body { order: 2; }
+            #implants .implants-grid,
+            #implants .card-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            #implants .implant-card__meta {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+            .send-split {
+                grid-template-columns: 1fr;
+                min-height: 0;
+            }
+            .send-case__media {
+                min-height: 42svh;
+                order: -1;
+            }
+            .send-split--img-right .send-case__media {
+                order: -1;
+            }
+            .send-case__copy {
+                border-left: none;
+                border-right: none;
+                border-top: 1px solid rgba(84, 86, 88, 0.1);
+            }
+            #appliances .tri-grid {
+                grid-template-columns: 1fr;
+                padding: 0;
+            }
+            .check-row {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+            .check-row dd {
+                text-align: left;
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --tt-section-gap: clamp(44px, 8vh, 64px);
+                --section-pad-x: clamp(12px, 4vw, 20px);
+            }
+            .hero,
+            .section,
+            .fit-screen {
+                min-height: 0;
+            }
+            .hero-inner,
+            .section-inner,
+            .quick-nav-inner {
+                width: min(100%, 98vw);
+                padding-left: clamp(10px, 3.8vw, 16px);
+                padding-right: clamp(10px, 3.8vw, 16px);
+            }
+            .hero h1 {
+                font-size: clamp(30px, 8.2vw, 46px);
+                line-height: 1.08;
+            }
+            .section-head h2 {
+                font-size: clamp(26px, 7vw, 36px);
+                line-height: 1.12;
+            }
+            .section-head .deck {
+                margin-top: 12px;
+            }
+            .quick-nav-links a {
+                min-height: 42px;
+                padding: 10px 14px;
+            }
+            .tri-card,
+            .implant-card,
+            .send-list li,
+            .check-row,
+            .rail-row {
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+            .send-case__copy {
+                padding: clamp(18px, 5vw, 26px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --tt-section-gap: clamp(36px, 7vh, 52px);
+                --section-pad-x: 10px;
+            }
+            #implants {
+                padding-left: 6px;
+                padding-right: 6px;
+            }
+            #implants .section-inner.implants-split {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+            .hero-inner,
+            .section-inner,
+            .quick-nav-inner {
+                width: min(100%, 99vw);
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .hero h1 {
+                font-size: clamp(28px, 9.2vw, 38px);
+            }
+            .section-head h2 {
+                font-size: clamp(24px, 7.8vw, 32px);
+            }
+            .overline,
+            .section-head .overline {
+                font-size: 14px;
+                letter-spacing: 0.07em;
+            }
+            .quick-nav-links a {
+                font-size: 15px;
+                padding: 9px 12px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .quick-nav-links {
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            .quick-nav-links a {
+                flex: 0 0 auto;
+                white-space: nowrap;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .hero-bg { transition: none; }
+            .hero.hero-bg-in .hero-bg {
+                transform: perspective(1200px) scale(1);
+            }
+            .double-img-wrap .double-img-default,
+            .double-img-wrap .double-img-hover {
+                transition: opacity 0.35s ease !important;
+            }
+            .double-img-wrap:hover .double-img-default,
+            .double-img-wrap:hover .double-img-hover,
+            .send-case__media .double-img-wrap:hover .double-img-default {
+                transform: none !important;
+            }
+            .send-case__media .double-img-wrap .double-img-default {
+                transform: scale(1.06) !important;
+            }
+            .implant-card:hover,
+            .tri-card:hover {
+                transform: none;
+            }
+            .section-photo img,
+            #crown-bridge .layout-split-check__col--image-only .section-photo:hover img {
+                transform: none;
+                transition: none;
+            }
+            #appliances .appliances-bg {
+                transition: none;
+            }
+            #appliances.appliances-bg-in .appliances-bg {
+                transform: perspective(1200px) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+ <!-- Top promo bar -->
+  <div class="promo-bar">
+    New to Zann? <a href="#resources">Request a welcome kit</a>  -  Fast turnaround on first case. <a href="#case-submission">Send a case</a>
+</div>
+    <div class="site-header-sticky">
+
+<!-- Header with full navigation -->
+<header class="header">
+    <a href="index.html" class="logo">ZANN</a>
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-overlay" aria-hidden="true"></div>
+    <nav class="nav">
+        <div class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-item has-dropdown">
+            <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Products &amp; Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+            <div class="dropdown">
+                <div class="dropdown-inner">
+                    <div class="dropdown-left">
+                        <span class="dropdown-label">products &amp; services</span>
+                        <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Crowns &amp; Bridges <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="Product_crown_PFM.html">Porcelain-Fused-to-Metal (PFM)</a>
+                                <a href="Product_crown_Zirconia.html">Zirconia Crown</a>
+                                <a href="Product_crown_Emax.html">E.max</a>
+                                <a href="Product_crown_FullGold.html">Full Gold Crown</a>
+                            </div>
+                        </div>
+                         <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Veneers <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="Product_venner_Emax.html">E.max Veneer</a>
+                                <a href="Product_veneer_Zirconia.html">Zirconia Veneer</a>
+                                <!-- <a href="#">Abutments</a> -->
+                            </div>
+                        </div>
+                        <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Implants <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="Product_implant_Standard.html">Standard Implants</a>
+                                <a href="Product_implant_Advanced_Custom.html">Advanced/Custom Implants</a>
+                                <a href="Product_implant_Full-Arch.html">Full-Arch Restorations</a>
+                            </div>
+                        </div>
+                        <!-- <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand"> Nightguards/Ortho & Splints </button> <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="#">Nightguards</a>
+                                <a href="#">Sports Guards</a>
+                                <a href="#">Essix Retainers</a>
+                                <a href="#">Bleaching Trays</a>
+                                <a href="#">Ortho</a>
+                            </div>
+                        </div> -->
+                        <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Nightguards/Ortho & Splints <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="Product_Nightguards.html">Nightguards</a>
+                                <a href="Product_Sportsguards.html">Sports Guards</a>
+                                <a href="Product_Essix Retainers.html">Essix Retainers</a>
+                                <a href="Product_Bleaching_Trays.html">Bleaching Trays</a>
+                                <a href="Product_Ortho.html">Ortho</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Removables <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="Product_Acrylic_Dentures.html">Acrylic Dentures</a>
+                                <a href="Product_Immediate_Dentures.html">Immediate Dentures</a>
+                                <a href="Product_Cast_Partial_Framework_Dentures.html">Cast Partial Framework Denture</a>
+                                <a href="Product_3D_Printing.html">3D Printed Dentures</a>
+                                <a href="Product_Denture_Repairs_Relines.html">Denture Repairs/Relines</a>
+                            </div>
+                        </div>
+                        
+                        <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Digital Dentistry <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="Product_Digital_Workflow_Scans.html">Digital Workflow / Scans</a>
+                                <a href="Product_3D_Printing.html">3D Printing</a>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="dropdown-right">
+                        <div class="dropdown-card">
+                            <div class="dropdown-card-img-wrap">
+                                <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                            </div>
+                            <span class="dropdown-card-label">Crowns &amp; Bridges</span>
+                            <a href="Product_crown_PFM.html" aria-hidden="true"></a>
+                        </div>
+                        <div class="dropdown-card">
+                            <div class="dropdown-card-img-wrap">
+                                <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                            </div>
+                            <span class="dropdown-card-label">Dentures</span>
+                            <a href="Product_Acrylic_Dentures.html" aria-hidden="true"></a>
+                        </div>
+                        <div class="dropdown-card">
+                            <div class="dropdown-card-img-wrap">
+                                <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                            </div>
+                            <span class="dropdown-card-label">Nightguards</span>
+                            <a href="Product_Nightguards.html" aria-hidden="true"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-item has-dropdown">
+            <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Case Submission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+            <div class="dropdown">
+                <div class="dropdown-inner">
+                    <div class="dropdown-left">
+                        <span class="dropdown-label">case submission</span>
+                         <!-- <div>
+                            <button type="button" class="dropdown-expand">Step-by-step instructions</button>
+                        </div> -->
+                        <a href="Step_BY_Step_Instructions.html">Step-by-step instructions</a>
+                        <a href="Physical_Case_Submission.html">
+                            Physical Case Submission
+                        </a>
+                        <a href="Digital_Case_Submission.html">
+                            Digital Case Submission 
+                        </a>
+                        <a href="FAQ_Case_Submission.html">FAQ Case Submission</a>
+                    </div>
+
+                        <!-- <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Physical Case Submission<span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="#">Download RX Forms</a>
+                                <a href="#">Packing &amp; Shipping Guide</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Digital Case Submission <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="#">Scanner Integration</a>
+                                <a href="#">File Upload Portal</a>
+                            </div> -->
+                        
+                        
+                    <div class="dropdown-right">
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Send a Case</span><a href="#" aria-hidden="true"></a></div>
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Digital Submission</span><a href="#" aria-hidden="true"></a></div>
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Shipping</span><a href="#" aria-hidden="true"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="nav-item has-dropdown">
+            <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Education <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+            <div class="dropdown">
+                <div class="dropdown-inner">
+                    <div class="dropdown-left">
+                        <span class="dropdown-label">education</span>
+                        <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Continuing Education <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="#">Live Webinars</a>
+                                <a href="#">Recorded Courses</a>
+                                <a href="#">Hands-On Workshops</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Tips &amp; Tutorials <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="#">Clinical Guides</a>
+                                <a href="#">Shade &amp; Material Guides</a>
+                                <a href="#">Workflow Tutorials</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Blog / Articles <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="#">Case Studies</a>
+                                <a href="#">Digital Dentistry Tips</a>
+                                <a href="#">Industry News</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-right">
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Continuing Education</span><a href="#" aria-hidden="true"></a></div>
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Clinical Guides</span><a href="#" aria-hidden="true"></a></div>
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Case Studies</span><a href="#" aria-hidden="true"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+         <!-- <div class="nav-item">
+            <a href="" class="nav-link">Specialists & Support</a>
+        </div> -->
+        <div class="nav-item has-dropdown">
+            <a href="Specialists_Support.html" class="nav-link nav-link-toggle" data-toggle="dropdown">Specialists &amp; Support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+            <div class="dropdown">
+                <div class="dropdown-inner">
+                    <div class="dropdown-left">
+                        <span class="dropdown-label">specialists &amp; support</span>
+                        <a href="CustomShadeinHouse.html">Custom Shade in House</a>
+                        <!-- <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Contact a Specialist <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                
+                                <a href="#">Book Call / Email Support</a> 
+                            </div>
+                        </div>
+                        <div class="dropdown-block">
+                            <button type="button" class="dropdown-expand">Technical Support <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                            <div class="dropdown-sublinks">
+                                <a href="#">Troubleshooting</a>
+                                <a href="#">Material or Product Guidance</a>
+                            </div>
+                        </div>
+                        <a href="#">Local Lab Contacts (Phone &amp; Email)</a> -->
+                    </div>
+                    <div class="dropdown-right">
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Contact a Specialist</span><a href="#" aria-hidden="true"></a></div>
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Technical Support</span><a href="#" aria-hidden="true"></a></div>
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Local Lab</span><a href="#" aria-hidden="true"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-item has-dropdown">
+            <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+            <div class="dropdown">
+                <div class="dropdown-inner">
+                    <div class="dropdown-left">
+                        <span class="dropdown-label">resources</span>
+                        <a href="Catalogues_Guides.html">Catalogs &amp; Guides</a>
+                        <a href="Welcome_Kits.html">Welcome Kits</a>
+                        <a href="Turnaround_Times.html">Turnaround Times</a>
+                        <a href="Resources_Faqs.html">FAQs</a>
+                    </div>
+                    <div class="dropdown-right">
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Catalogs</span><a href="#" aria-hidden="true"></a></div>
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Welcome Kits</span><a href="Welcome_Kits.html" aria-hidden="true"></a></div>
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Turnaround Times</span><a href="#" aria-hidden="true"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-item has-dropdown">
+            <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+            <div class="dropdown">
+                <div class="dropdown-inner">
+                    <div class="dropdown-left">
+                        <span class="dropdown-label">about us</span>
+                        <a href="about_ourstory.html">Our Story</a>
+                        <a href="about_missionandvalues.html">Mission &amp; Values</a>
+                        <!-- <a href="#">Team / Technicians</a> -->
+                        <!-- <a href="#">Certifications &amp; Awards</a> -->
+                        <!-- <a href="#">Careers</a> -->
+                    </div>
+                    <div class="dropdown-right">
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Our Story</span><a href="#" aria-hidden="true"></a></div>
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Mission &amp; Values</span><a href="#" aria-hidden="true"></a></div>
+                        <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Team</span><a href="#" aria-hidden="true"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+    </nav>
+    <!-- <div class="nav-utils">
+        <a href="#search" aria-label="Search">Ã°Å¸"</a>
+        <a href="#account" aria-label="Account">Ã°Å¸â€˜¤</a>
+    </div> -->
+</header>
+ </div>
+
+    <header class="hero" id="top">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-inner">
+            <p class="overline" style="color:#7a9a9f;">zann dental lab</p>
+            <h1>production turnaround times</h1>
+            <p class="tagline">Our schedules are engineered for clinical efficiency and predictable delivery.</p>
+            <p class="intro">Use this guide to set chairside expectations with patients and coordinate restorative, implant, and removable workflows.</p>
+            <div class="hero-cta-row">
+                <a class="btn" href="#crown-bridge">crown &amp; bridge</a>
+                <a class="btn btn-ghost" href="#implants">implants</a>
+                <a class="btn btn-ghost" href="#send-case">digital submission</a>
+                <a class="btn btn-ghost" href="#send-stone">models &amp; STL</a>
+            </div>
+            <!-- <p class="note">Pick-up and delivery times are <strong>not</strong> included in the production days below.</p> -->
+        </div>
+    </header>
+
+    <nav class="quick-nav" aria-label="On this page">
+        <div class="quick-nav-inner">
+            <p class="quick-nav-label" style="color:#7a9a9f;">on this page</p>
+            <div class="quick-nav-links">
+                <a href="#crown-bridge">crown &amp; bridge</a>
+                <a href="#implants">implants</a>
+                <a href="#removables">removables</a>
+                <a href="#appliances">guards &amp; retainers</a>
+                <a href="#send-case">digital submission</a>
+                <a href="#send-stone">stone to STL</a>
+                <a href="index.html">home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Crown & Bridge -->
+    <section class="section" id="crown-bridge" aria-labelledby="title-cb">
+        <div class="section-inner">
+            <div class="cb-top">
+                <header class="section-head">
+                    <p class="overline section-overline">restorative</p>
+                    <h2 id="title-cb">crown &amp; bridge restorations</h2>
+                    <p class="deck">Turnarounds reflect standard production lanes. Complex layering or rush requests may vary - confirm with the lab when planning large conversions.</p>
+                </header>
+                <aside class="layout-split-check__aside layout-split-check__aside--benchmark" aria-label="Benchmark turnaround window">
+                    <p>benchmark window</p>
+                    <strong>7 - 25 days</strong>
+                    <span class="layout-split-check__aside-meta">by product line</span>
+                </aside>
+            </div>
+            <div class="layout-split-check layout-split-check--with-photo">
+                <div class="layout-split-check__col layout-split-check__col--image-only">
+                    <figure class="section-photo">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1400&amp;q=85" alt="Technician inspecting fixed prosthetic and crown work at the dental laboratory bench" width="1400" height="1050" loading="lazy" decoding="async">
+                        <figcaption>restorative bench  -  finishing &amp; QC</figcaption>
+                    </figure>
+                </div>
+                <dl class="check-grid">
+                    <div class="check-row"><dt>Zirconia (monolithic / HT / layered)</dt><dd>7 - 9 days (depending on esthetic level)</dd></div>
+                    <div class="check-row"><dt>e.max (milled / pressed / veneers)</dt><dd>8 - 14 days</dd></div>
+                    <div class="check-row"><dt>Long-term PMMA temps</dt><dd>7 days</dd></div>
+                    <div class="check-row"><dt>Diagnostic wax-ups</dt><dd>8 - 10 days</dd></div>
+                    <div class="check-row"><dt>Full arch / full mouth cases</dt><dd>25 days</dd></div>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implants -->
+    <section class="section" id="implants" aria-labelledby="title-imp">
+        <div class="section-inner implants-split">
+            <div class="implants-body">
+                <div class="card-grid-2 implants-grid">
+                    <article class="implant-card">
+                        <h3 class="implant-card__title">custom abutment crown package</h3>
+                        <div class="implant-card__meta">
+                            <span class="implant-card__kicker">production window</span>
+                            <p class="implant-card__days">10 - 16 days</p>
+                        </div>
+                    </article>
+                    <article class="implant-card">
+                        <h3 class="implant-card__title">angulated or advanced cases</h3>
+                        <div class="implant-card__meta">
+                            <span class="implant-card__kicker">production window</span>
+                            <p class="implant-card__days">14 - 18 days</p>
+                        </div>
+                    </article>
+                    <article class="implant-card">
+                        <h3 class="implant-card__title">All-on-X provisionals</h3>
+                        <div class="implant-card__meta">
+                            <span class="implant-card__kicker">production window</span>
+                            <p class="implant-card__days">12 days</p>
+                        </div>
+                    </article>
+                    <article class="implant-card">
+                        <h3 class="implant-card__title">All-on-X final zirconia</h3>
+                        <div class="implant-card__meta">
+                            <span class="implant-card__kicker">production window</span>
+                            <p class="implant-card__days">2.5 weeks</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <header class="section-head implants-head">
+                <p class="overline section-overline">implants</p>
+                <h2 id="title-imp">implant solutions</h2>
+                <p class="deck">Angulation, multi-unit notes, and try-in preferences can extend the front end of these windows - document clearly on the Rx.</p>
+            </header>
+        </div>
+    </section>
+
+     <!-- Appliances -->
+     <section class="section" id="appliances" aria-labelledby="title-app">
+        <div class="appliances-bg" aria-hidden="true"></div>
+        <div class="section-inner">
+            <header class="section-head">
+                <p class="overline section-overline">appliances</p>
+                <h2 id="title-app">nightguards &amp; sports guards</h2>
+                <p class="deck">Appliance lines share a standard production lane when scans or impressions meet clearance requirements.</p>
+            </header>
+            <div class="tri-grid">
+                <article class="tri-card">
+                    <h3>Nightguard Pro appliances</h3>
+                    <p>Protective splint therapy with predictable contouring for bruxing patients.</p>
+                    <span class="days">7 days</span>
+                </article>
+                <article class="tri-card">
+                    <h3>Sports guards (ImpactGuard series)</h3>
+                    <p>Impact-rated mouth guards for athletic cases.</p>
+                    <span class="days">7 days</span>
+                </article>
+                <article class="tri-card">
+                    <h3>Essix retainers &amp; bleaching trays</h3>
+                    <p>Clear retainers and tray based whitening carriers.</p>
+                    <span class="days">7 days</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Removables -->
+    <section class="section" id="removables" aria-labelledby="title-rem">
+        <div class="section-inner">
+            <header class="section-head">
+                <p class="overline section-overline">removables</p>
+                <h2 id="title-rem">removables &amp; repairs</h2>
+                <p class="deck">Repairs and relines prioritize rapid turnaround when cases arrive early in the production day with complete authorization.</p>
+            </header>
+            <div class="rail-stack">
+                <article class="rail-row">
+                    <span class="rail-num" aria-hidden="true">01</span>
+                    <div class="rail-body">
+                        <h3>full dentures</h3>
+                        <p>25 days</p>
+                    </div>
+                </article>
+                <article class="rail-row">
+                    <span class="rail-num" aria-hidden="true">02</span>
+                    <div class="rail-body">
+                        <h3>partial dentures (acrylic / flexible)</h3>
+                        <p>14 days</p>
+                    </div>
+                </article>
+                <article class="rail-row">
+                    <span class="rail-num" aria-hidden="true">03</span>
+                    <div class="rail-body">
+                        <h3>cast partial framework try-in</h3>
+                        <p>10 days</p>
+                    </div>
+                </article>
+                <article class="rail-row">
+                    <span class="rail-num" aria-hidden="true">04</span>
+                    <div class="rail-body">
+                        <h3>flippers</h3>
+                        <p>3 - 5 days</p>
+                    </div>
+                </article>
+                <article class="rail-row">
+                    <span class="rail-num" aria-hidden="true">05</span>
+                    <div class="rail-body">
+                        <h3>repairs &amp; relines</h3>
+                        <p>Next-day (dependent on time received and scope)</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- Digital Submission -->
+    <section class="send-split send-split--img-left" id="send-case" aria-labelledby="title-send">
+        <div class="send-case__media">
+            <div class="double-img-wrap">
+                <img class="double-img-default" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600&amp;q=85" width="1600" height="1200" alt="Dental laboratory  -  clinical reference and restoration work" loading="lazy" decoding="async">
+                <img class="double-img-hover" src="https://images.unsplash.com/photo-1606811971618-4486be086dce?w=1600&amp;q=85" width="1600" height="1200" alt="" loading="lazy" decoding="async" aria-hidden="true">
+            </div>
+        </div>
+        <div class="send-case__copy">
+            <div class="send-case__copy-surface">
+                <header class="section-head">
+                    <p class="overline section-overline">technical</p>
+                    <h2 id="title-send">how to send a case digitally</h2>
+                    <p class="deck">Connect through your preferred scanning platform using the details below. ZANN Dental Lab supports a fully digital ecosystem.</p>
+                </header>
+                <div class="send-block">
+                    <h3>digital scanner integration</h3>
+                    <ul class="send-list">
+                        <li><strong>iTero:</strong> Call 1-800-577-8767 (Option 1 twice). Provide ZANN Dental's phone number (416-696-5454) or account number (64717).</li>
+                        <li><strong>3Shape TRIOS:</strong> Find us on 3Shape Communicate using <a href="mailto:cadcamdesign@zanndental.com">cadcamdesign@zanndental.com</a>.</li>
+                        <li><strong>Medit Link:</strong> Connect via the Medit Link portal using <a href="mailto:cadcamdesign@zanndental.com">cadcamdesign@zanndental.com</a>.</li>
+                        <li><strong>Sirona Connect:</strong> Add "ZANN Dental" or "ZANN Dental Lab" as your favorite lab.</li>
+                        <li><strong>Carestream:</strong> Add "ZANN Dental Laboratory" on CS Connect.</li>
+                        <li><strong>Other (3M, E4D, STL):</strong> Export as an STL file and send via WeTransfer to <a href="mailto:cadcamdesign@zanndental.com">cadcamdesign@zanndental.com</a>.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stone to STL -->
+    <section class="send-split send-split--img-right" id="send-stone" aria-labelledby="title-stone">
+        <div class="send-case__copy">
+            <div class="send-case__copy-surface">
+                <header class="section-head">
+                    <p class="overline section-overline">technical</p>
+                    <h2 id="title-stone">physical impressions &amp; models</h2>
+                    <p class="deck">When digital isn't in-office yet, ship models or impressions - we convert physical work into the same archival-grade STL files your digital cases use.</p>
+                </header>
+                <div class="send-block">
+                    <h3>traditional impression conversion</h3>
+                    <ul class="send-list">
+                        <li><strong>Stone to STL:</strong> We offer model conversion services. Send physical models or PVS impressions, and our technicians will convert them into high-resolution digital files for secure archiving.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="send-case__media">
+            <div class="double-img-wrap">
+                <img class="double-img-default" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&amp;q=85" width="1600" height="1280" alt="Dental laboratory workspace with models and bench workflow" loading="lazy" decoding="async">
+                <img class="double-img-hover" src="https://images.unsplash.com/photo-1588776814546-1ffcf47287b4?w=1600&amp;q=85" width="1600" height="1200" alt="" loading="lazy" decoding="async" aria-hidden="true">
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+        
+    <script src="js/nav-footer.js"></script>
+
+    <!-- <footer class="page-footer">
+        <a href="index.html">Ã¢â€  back to Zann Dental Lab home</a>
+    </footer> -->
+
+    <script>
+        (function () {
+            var hero = document.getElementById('top');
+            if (hero) {
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        hero.classList.add('hero-bg-in');
+                    });
+                });
+            }
+            var app = document.getElementById('appliances');
+            if (!app) return;
+            function revealAppliancesBg() {
+                app.classList.add('appliances-bg-in');
+            }
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                revealAppliancesBg();
+            } else if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(
+                    function (entries) {
+                        entries.forEach(function (e) {
+                            if (e.isIntersecting) {
+                                revealAppliancesBg();
+                                io.unobserve(app);
+                            }
+                        });
+                    },
+                    { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+                );
+                io.observe(app);
+            } else {
+                revealAppliancesBg();
+            }
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
+
+

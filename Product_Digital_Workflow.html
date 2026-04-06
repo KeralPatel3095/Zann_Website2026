@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Digital Workflow  -  Zann Dental Lab</title> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        :root {
+            --color-bg: #E2F2F6;
+            --color-bg-alt: #f5fbfc;
+            --color-dark: #545658;
+            --color-muted: #636466;
+            --color-border: rgba(0,0,0,0.08);
+            --color-white: #ffffff;
+            --color-sage: #9AB1B6;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; }
+        body { font-family: var(--font); font-size: 16px; font-weight: 400; color: var(--color-muted); background: var(--color-white); line-height: 1.55; }
+        h1, h2, h3 { font-weight: 700; color: var(--color-dark); }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-family: var(--font);
+            cursor: pointer;
+            border: 1px solid var(--color-dark);
+        }
+        .btn-primary { background: var(--color-dark); color: var(--color-white); border-color: var(--color-dark); }
+        .btn-primary:hover { background: var(--color-muted); color: var(--color-white); border-color: var(--color-muted); }
+
+        .product-hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .product-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: perspective(1200px) scale(0.88);
+            transition: transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+        .product-hero.hero-bg-in .product-hero-bg {
+            transform: perspective(1200px) scale(1);
+        }
+        .product-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(84,86,88,0.4) 0%, rgba(84,86,88,0.1) 45%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .product-hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px 100px;
+            width: 100%;
+        }
+        .product-hero h1 {
+            font-size: clamp(42px, 8vw, 72px);
+            font-weight: 700;
+            color: var(--color-white);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        
+        .product-hero .btn { background: var(--color-white); color: var(--color-dark); border-color: var(--color-white); }
+        .product-hero .btn:hover { background: var(--color-bg); color: var(--color-dark); }
+
+        .product-intro {
+            background: var(--color-sage);
+            padding: 48px;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .product-intro-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(154, 177, 182, 0.85);
+            pointer-events: none;
+        }
+        .product-intro-bg { position: relative; }
+        .product-intro-bg .product-intro-inner { position: relative; z-index: 1; }
+        .product-intro-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .product-intro .overline { font-size: 16px; color: var(--color-dark); margin-bottom: 8px; font-weight: 500; }
+        .product-intro h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            color: var(--color-dark);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .product-intro p { font-size: 16px; color: var(--color-muted); line-height: 1.55; }
+
+        .product-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: stretch;
+            min-height: 100vh;
+            background: #f0f0f0;
+            padding: 48px;
+        }
+        @media (max-width: 900px) {
+            .product-split { grid-template-columns: 1fr; grid-template-rows: 50vh auto; }
+        }
+        .product-split-text {
+            padding: 56px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--color-white);
+        }
+        @media (max-width: 900px) { .product-split-text { padding: 40px 24px; } }
+        .product-split h2 { font-size: 42px; font-weight: 700; margin-bottom: 16px; color: var(--color-dark); }
+        .product-split p { font-size: 16px; color: var(--color-muted); margin-bottom: 12px; line-height: 1.55; }
+
+        .product-features {
+            background: #f5f5f5;
+            padding: 80px 24px 100px;
+            width: 100%;
+        }
+        .product-features-inner { max-width: 900px; margin: 0 auto; }
+
+        .product-apps {
+            background: var(--color-white);
+            padding: 80px 24px 100px;
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .product-apps { padding: 80px 48px 100px; }
+        }
+        @media (min-width: 1024px) {
+            .product-apps { padding: 100px 64px 120px; }
+        }
+        .product-apps-inner { max-width: 1100px; width: 100%; margin: 0 auto; }
+        .product-apps h2.section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            .product-apps h2.section-title { font-size: 32px; margin-bottom: 48px; }
+        }
+        .product-app-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: center;
+            min-height: 140px;
+            border-bottom: 1px solid var(--color-border);
+            transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .product-app-row:hover {
+            background-color: rgba(154, 177, 182, 0.04);
+            border-color: rgba(154, 177, 182, 0.25);
+        }
+        .product-app-row:last-child { border-bottom: none; }
+        /* Staggered reveal when section comes into view */
+        .product-app-list .product-app-row.reveal-text { transition: opacity 0.7s ease, transform 0.7s ease, background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
+        .product-app-list .product-app-row:nth-child(1).reveal-text { transition-delay: 0s; }
+        .product-app-list .product-app-row:nth-child(2).reveal-text { transition-delay: 0.07s; }
+        .product-app-list .product-app-row:nth-child(3).reveal-text { transition-delay: 0.14s; }
+        .product-app-list .product-app-row:nth-child(4).reveal-text { transition-delay: 0.21s; }
+        .product-app-list .product-app-row:nth-child(5).reveal-text { transition-delay: 0.28s; }
+        .product-app-list .product-app-row:nth-child(6).reveal-text { transition-delay: 0.35s; }
+        @media (max-width: 700px) {
+            .product-app-row { grid-template-columns: 1fr; grid-template-rows: auto auto; min-height: 0; padding: 20px 0; gap: 12px; }
+        }
+        @media (max-width: 480px) {
+            .product-apps { padding: 60px 16px 80px; }
+        }
+        .product-app-row:nth-child(even) .product-app-content { order: 2; }
+        .product-app-row:nth-child(even) .product-app-accent { order: 1; }
+        @media (max-width: 700px) {
+            .product-app-row:nth-child(even) .product-app-content,
+            .product-app-row:nth-child(even) .product-app-accent { order: unset; }
+        }
+        .product-app-content {
+            padding: 32px 24px 32px 0;
+            position: relative;
+            transition: transform 0.35s ease;
+        }
+        /* Hover line: always on the inner edge (next to the number block). Odd rows: content left â†' line right; even rows: content right â†' line left */
+        .product-app-content::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            bottom: 24px;
+            width: 3px;
+            background: var(--color-sage);
+            opacity: 0;
+            border-radius: 2px;
+            transition: opacity 0.35s ease;
+            right: 0;
+            left: auto;
+        }
+        .product-app-row:nth-child(even) .product-app-content::before {
+            left: 0;
+            right: auto;
+        }
+        .product-app-row:hover .product-app-content::before { opacity: 0.5; }
+        .product-app-row:hover .product-app-content { transform: translateX(4px); }
+        .product-app-row:nth-child(even):hover .product-app-content { transform: translateX(-4px); }
+        .product-app-row:nth-child(even) .product-app-content { padding: 32px 0 32px 24px; }
+        @media (max-width: 700px) {
+            .product-app-content { padding: 0 !important; }
+            .product-app-content::before { display: none; }
+            .product-app-row:hover .product-app-content,
+            .product-app-row:nth-child(even):hover .product-app-content { transform: none; }
+        }
+        .product-app-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+        .product-app-row:hover .product-app-content h3 { color: #3d4042; }
+        .product-app-content p {
+            font-size: 16px;
+            color: var(--color-muted);
+            line-height: 1.55;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+        .product-app-row:hover .product-app-content p { color: var(--color-dark); }
+        .product-app-accent {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            background: rgba(154, 177, 182, 0.15);
+            min-height: 140px;
+            transition: background-color 0.4s ease;
+        }
+        .product-app-row:hover .product-app-accent { background: rgba(154, 177, 182, 0.25); }
+        @media (max-width: 700px) {
+            .product-app-accent { min-height: 80px; padding: 20px; }
+        }
+        .product-app-num {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-sage);
+            line-height: 1;
+            transition: transform 0.35s ease, color 0.35s ease;
+        }
+        .product-app-row:hover .product-app-num {
+            transform: scale(1.06);
+            color: #7a9a9f;
+        }
+        @media (max-width: 700px) {
+            .product-app-num { font-size: 36px; }
+        }
+        .product-features h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--color-dark);
+        }
+        .product-features .block { margin-bottom: 48px; }
+        .product-features .block:last-child { margin-bottom: 0; }
+        .product-features p { font-size: 16px; color: var(--color-muted); line-height: 1.55; margin-bottom: 12px; }
+
+        .product-cta-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: stretch;
+            min-height: 100vh;
+            background: var(--color-bg);
+        }
+        @media (max-width: 900px) {
+            .product-cta-block { grid-template-columns: 1fr; grid-template-rows: auto auto; }
+        }
+        .product-cta-text {
+            padding: 56px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        @media (max-width: 900px) { .product-cta-text { padding: 40px 24px; } }
+        .product-cta-text h2 { font-size: 42px; font-weight: 700; margin-bottom: 20px; color: var(--color-dark); }
+        .product-cta-text p { font-size: 16px; color: var(--color-muted); margin-bottom: 24px; line-height: 1.55; }
+        .product-cta-visual {
+            padding: 0;
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            height: 100%;
+        }
+        .product-cta-visual .double-img-wrap img { max-width: none; max-height: none; }
+
+        .product-materials {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: stretch;
+            min-height: 100vh;
+            background: var(--color-white);
+            padding: 48px;
+        }
+        @media (max-width: 900px) {
+            .product-materials { grid-template-columns: 1fr; grid-template-rows: auto 50vh; }
+        }
+        .product-materials-text {
+            padding: 56px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fafafa;
+        }
+        @media (max-width: 900px) { .product-materials-text { padding: 40px 24px; } }
+        .product-materials h2 { font-size: 42px; font-weight: 700; margin-bottom: 20px; color: var(--color-dark); }
+        .product-materials p { font-size: 16px; color: var(--color-muted); margin-bottom: 14px; line-height: 1.55; }
+
+        .double-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .double-img-wrap .double-img-default,
+        .double-img-wrap .double-img-hover {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform-origin: center;
+        }
+        .double-img-wrap .double-img-default {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .double-img-wrap .double-img-hover {
+            opacity: 0;
+            transform: scale(1.12);
+        }
+        .double-img-wrap:hover .double-img-default {
+            opacity: 0;
+            transform: scale(1.08);
+        }
+        .double-img-wrap:hover .double-img-hover {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .product-split .img-cell {
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: stretch;
+        }
+        .product-split .double-img-wrap { min-height: 400px; flex: 1; border-radius: 0; overflow: hidden; }
+        @media (max-width: 900px) { .product-split .img-cell { padding: 0; } .product-split .double-img-wrap { min-height: 50vh; } }
+        .product-materials .img-cell {
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: stretch;
+        }
+        .product-materials .double-img-wrap { min-height: 400px; flex: 1; border-radius: 0; overflow: hidden; }
+        @media (max-width: 900px) { .product-materials .img-cell { padding: 0; } .product-materials .double-img-wrap { min-height: 50vh; } }
+        .product-cta-visual .double-img-wrap {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        .product-cta-visual .double-img-wrap .double-img-default,
+        .product-cta-visual .double-img-wrap .double-img-hover {
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .reveal-text { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal-text.revealed { opacity: 1; transform: translateY(0); }
+        .reveal-text.reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-text.reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-text.reveal-delay-3 { transition-delay: 0.3s; }
+    </style>
+</head>
+<body>
+
+     <!-- Top promo bar -->
+          <div class="promo-bar">
+        New to Zann? <a href="#resources">Request a welcome kit</a>  -  Fast turnaround on first case. <a href="#case-submission">Send a case</a>
+    </div>
+    <div class="site-header-sticky">
+  
+    <!-- Header with full navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">ZANN</a>
+        <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+        <nav class="nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Products &amp; Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">products &amp; services</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Crowns &amp; Bridges <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_crown_PFM.html">Porcelain-Fused-to-Metal (PFM)</a>
+                                    <a href="Product_crown_Zirconia.html">Zirconia Crown</a>
+                                    <a href="Product_crown_Emax.html">E.max</a>
+                                    <a href="Product_crown_FullGold.html">Full Gold Crown</a>
+                                </div>
+                            </div>
+                             <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Veneers <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_venner_Emax.html">E.max Veneer</a>
+                                    <a href="Product_veneer_Zirconia.html">Zirconia Veneer</a>
+                                    <!-- <a href="#">Abutments</a> -->
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Implants <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_implant_Standard.html">Standard Implants</a>
+                                    <a href="Product_implant_Advanced_Custom.html">Advanced/Custom Implants</a>
+                                    <a href="Product_implant_Full-Arch.html">Full-Arch Restorations</a>
+                                </div>
+                            </div>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand"> Nightguards/Ortho & Splints </button> <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Nightguards</a>
+                                    <a href="#">Sports Guards</a>
+                                    <a href="#">Essix Retainers</a>
+                                    <a href="#">Bleaching Trays</a>
+                                    <a href="#">Ortho</a>
+                                </div>
+                            </div> -->
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Nightguards/Ortho & Splints <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Nightguards.html">Nightguards</a>
+                                    <a href="Product_Sportsguards.html">Sports Guards</a>
+                                    <a href="Product_Essix Retainers.html">Essix Retainers</a>
+                                    <a href="Product_Bleaching_Trays.html">Bleaching Trays</a>
+                                    <a href="Product_Ortho.html">Ortho</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Removables <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Acrylic_Dentures.html">Acrylic Dentures</a>
+                                    <a href="Product_Immediate_Dentures.html">Immediate Dentures</a>
+                                    <a href="Product_Cast_Partial_Framework_Dentures.html">Cast Partial Framework Denture</a>
+                                    <a href="Product_3D_Printing.html">3D Printed Dentures</a>
+                                    <a href="Product_Denture_Repairs_Relines.html">Denture Repairs/Relines</a>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Dentistry <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Digital_Workflow_Scans.html">Digital Workflow / Scans</a>
+                                    <a href="Product_3D_Printing.html">3D Printing</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Crowns &amp; Bridges</span>
+                                <a href="Product_crown_PFM.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Dentures</span>
+                                <a href="Product_Acrylic_Dentures.html" aria-hidden="true"></a>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <div class="dropdown-card-img dropdown-card-img-default"></div>
+                                    <div class="dropdown-card-img dropdown-card-img-hover"></div>
+                                </div>
+                                <span class="dropdown-card-label">Nightguards</span>
+                                <a href="Product_Nightguards.html" aria-hidden="true"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Case Submission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">case submission</span>
+                             <!-- <div>
+                                <button type="button" class="dropdown-expand">Step-by-step instructions</button>
+                            </div> -->
+                            <a href="Step_BY_Step_Instructions.html">Step-by-step instructions</a>
+                            <a href="Physical_Case_Submission.html">
+                                Physical Case Submission
+                            </a>
+                            <a href="Digital_Case_Submission.html">
+                                Digital Case Submission 
+                            </a>
+                            <a href="FAQ_Case_Submission.html">FAQ Case Submission</a>
+                        </div>
+  
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Physical Case Submission<span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Download RX Forms</a>
+                                    <a href="#">Packing &amp; Shipping Guide</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Case Submission <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Scanner Integration</a>
+                                    <a href="#">File Upload Portal</a>
+                                </div> -->
+                            
+                            
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Send a Case</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Digital Submission</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Shipping</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Education <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">education</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Continuing Education <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Live Webinars</a>
+                                    <a href="#">Recorded Courses</a>
+                                    <a href="#">Hands-On Workshops</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Tips &amp; Tutorials <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Clinical Guides</a>
+                                    <a href="#">Shade &amp; Material Guides</a>
+                                    <a href="#">Workflow Tutorials</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Blog / Articles <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Case Studies</a>
+                                    <a href="#">Digital Dentistry Tips</a>
+                                    <a href="#">Industry News</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Continuing Education</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Clinical Guides</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Case Studies</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+  
+             <!-- <div class="nav-item">
+                <a href="" class="nav-link">Specialists & Support</a>
+            </div> -->
+            <div class="nav-item has-dropdown">
+                <a href="Specialists_Support.html" class="nav-link nav-link-toggle" data-toggle="dropdown">Specialists &amp; Support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">specialists &amp; support</span>
+                            <a href="CustomShadeinHouse.html">Custom Shade in House</a>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Contact a Specialist <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    
+                                    <a href="#">Book Call / Email Support</a> 
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Technical Support <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Troubleshooting</a>
+                                    <a href="#">Material or Product Guidance</a>
+                                </div>
+                            </div>
+                            <a href="#">Local Lab Contacts (Phone &amp; Email)</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Contact a Specialist</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Technical Support</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Local Lab</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">resources</span>
+                            <a href="Catalogues_Guides.html">Catalogs &amp; Guides</a>
+                            <a href="Welcome_Kits.html">Welcome Kits</a>
+                            <a href="Turnaround_Times.html">Turnaround Times</a>
+                            <a href="Resources_Faqs.html">FAQs</a>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Catalogs</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Welcome Kits</span><a href="Welcome_Kits.html" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Turnaround Times</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">about us</span>
+                            <a href="about_ourstory.html">Our Story</a>
+                            <a href="about_missionandvalues.html">Mission &amp; Values</a>
+                            <!-- <a href="#">Team / Technicians</a> -->
+                            <!-- <a href="#">Certifications &amp; Awards</a> -->
+                            <!-- <a href="#">Careers</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Our Story</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Mission &amp; Values</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Team</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+        <!-- <div class="nav-utils">
+            <a href="#search" aria-label="Search">ðŸ"</a>
+            <a href="#account" aria-label="Account">ðŸ‘¤</a>
+        </div> -->
+    </header>
+     </div>
+
+    <!-- Section 1: Hero  -  Digital Workflow -->
+    <section class="product-hero" id="section-1">
+        <div class="product-hero-bg" style="background-image: url('images/');"></div>
+        <div class="product-hero-inner">
+            <h1 class="reveal-text">Digital Workflow</h1>
+            <p class="reveal-text reveal-delay-1">From digital scans to design and fabrication  -  we work with your files and systems so restorations are accurate, consistent, and delivered on time.</p>
+            <a href="index.html#case-submission" class="btn btn-primary reveal-text reveal-delay-2">Send a case</a>
+        </div>
+    </section>
+
+    <!-- Section 2: Intro  -  high performance digital workflow -->
+    <section class="product-intro product-intro-bg" id="section-2" style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcfee668e2?w=1920&q=80');">
+        <div class="product-intro-inner">
+            <p class="overline reveal-text">Zann is</p>
+            <h2 class="reveal-text reveal-delay-1">digital workflow that works for your practice.</h2>
+            <p class="reveal-text reveal-delay-2">We accept digital scans and design files from major systems and use CAD/CAM and 3D printing where they add value. Our digital workflow covers crowns, bridges, implant restorations, dentures, and more  -  from scan import through design, milling or printing, and finishing. We keep the same quality standards whether the case starts as a scan or an impression.</p>
+        </div>
+    </section>
+
+    <!-- Section 3: Split  -  scan to finish -->
+    <section class="product-split" id="section-3">
+        <div class="img-cell">
+            <div class="double-img-wrap">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&h=600&fit=crop" alt="Digital Workflow  -  scan to finish" class="double-img-default">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop" alt="" class="double-img-hover" aria-hidden="true">
+            </div>
+        </div>
+        <div class="product-split-text">
+            <h2 class="reveal-text">Scan to finish</h2>
+            <p class="reveal-text reveal-delay-1">When you send digital scans, we import them into our design environment and work from accurate 3D data. Design is done with attention to margin fit, occlusion, and aesthetics. From there we use milling, pressing, or 3D printing as appropriate  -  so you get a restoration that fits your case and your preferred workflow.</p>
+            <p class="reveal-text reveal-delay-2">You get consistent quality whether the case is fully digital or hybrid. Every case is checked before shipment.</p>
+        </div>
+    </section>
+
+    <!-- Section 4: Materials & fabrication -->
+    <section class="product-materials" id="section-4">
+        <div class="product-materials-text">
+            <h2 class="reveal-text">file formats &amp; systems</h2>
+            <p class="reveal-text reveal-delay-1">We work with common scan and design file formats so you can send data from the systems you already use. Our design and fabrication steps are set up for digital input  -  from STL and design files to milled or printed output. When you're ready to go digital or expand what you send digitally, we're set up to receive, design, and deliver without compromising fit or turnaround.</p>
+            <p class="reveal-text reveal-delay-2">From single crowns to full-arch and implant cases  -  we deliver restorations through a digital workflow that meets the demands of everyday practice.</p>
+        </div>
+        <div class="img-cell">
+            <div class="double-img-wrap">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcfee668e2?w=800&h=600&fit=crop" alt="Digital Workflow  -  file formats and systems" class="double-img-default">
+                <img src="https://images.unsplash.com/photo-1588776813677-77f2f3b1b7a0?w=800&h=600&fit=crop" alt="" class="double-img-hover" aria-hidden="true">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Features -->
+    <section class="product-features" id="section-5">
+        <div class="product-features-inner">
+            <div class="block">
+                <h2 class="reveal-text">digital workflow that fits your practice</h2>
+                <p class="reveal-text reveal-delay-1">We accept digital scans and design files for crowns, bridges, implants, dentures, and more. Our design and fabrication steps are aligned so we can go from your scan or file to a finished restoration with the same quality we deliver for traditional cases. Whether you're fully digital or adding digital cases gradually, we work with your file types and timelines.</p>
+                <p class="reveal-text reveal-delay-2">You get restorations that fit your case and your workflow. We're here to support your next digital case.</p>
+            </div>
+            <div class="block">
+                <h2 class="reveal-text">our commitment to quality</h2>
+                <p class="reveal-text reveal-delay-1">Every digital case is handled with clear communication and consistent processes. We use proven design and fabrication protocols so accuracy and fit match our lab standards. From single units to full-arch and implant work, we aim for on-time delivery and predictable results.</p>
+            </div>
+            <div class="block">
+                <h2 class="reveal-text">tell us what you need</h2>
+                <p class="reveal-text reveal-delay-1">Send your scan or design file and let us know the restoration type  -  crown, bridge, implant, denture, guide, or other. We'll confirm compatibility and turnaround and produce the restoration to your specifications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5b: What our digital workflow includes  -  alternating row layout -->
+    <section class="product-apps" id="section-apps">
+        <div class="product-apps-inner">
+            <h2 class="section-title reveal-text">What our digital workflow includes</h2>
+            <div class="product-app-list">
+                <div class="product-app-row reveal-text">
+                    <div class="product-app-content">
+                        <h3>Scan submission &amp; import</h3>
+                        <p>Send digital scans in the file formats we support. We import into our design environment so your case is built from accurate 3D data from the start.</p>
+                    </div>
+                    <div class="product-app-accent"><span class="product-app-num">01</span></div>
+                </div>
+                <div class="product-app-row reveal-text reveal-delay-1">
+                    <div class="product-app-content">
+                        <h3>Digital design (CAD)</h3>
+                        <p>Restorations are designed with attention to margins, occlusion, and aesthetics. We work to your specs and restoration type so the design is ready for fabrication.</p>
+                    </div>
+                    <div class="product-app-accent"><span class="product-app-num">02</span></div>
+                </div>
+                <div class="product-app-row reveal-text reveal-delay-2">
+                    <div class="product-app-content">
+                        <h3>CAM milling &amp; 3D printing</h3>
+                        <p>We use milling and 3D printing as appropriate for each case  -  crowns, bridges, implant parts, models, guides, and appliances  -  so output matches the design.</p>
+                    </div>
+                    <div class="product-app-accent"><span class="product-app-num">03</span></div>
+                </div>
+                <div class="product-app-row reveal-text">
+                    <div class="product-app-content">
+                        <h3>Implant planning support</h3>
+                        <p>For implant cases we can work from your planning data to produce surgical guides and restorative components that fit your chosen system and plan.</p>
+                    </div>
+                    <div class="product-app-accent"><span class="product-app-num">04</span></div>
+                </div>
+                <div class="product-app-row reveal-text reveal-delay-1">
+                    <div class="product-app-content">
+                        <h3>Digital dentures &amp; try-ins</h3>
+                        <p>Digital denture workflows from scan to try-in and final delivery. We produce try-in bases and finished dentures using digital design and additive or traditional fabrication.</p>
+                    </div>
+                    <div class="product-app-accent"><span class="product-app-num">05</span></div>
+                </div>
+                <div class="product-app-row reveal-text reveal-delay-2">
+                    <div class="product-app-content">
+                        <h3>Quality check &amp; delivery</h3>
+                        <p>Every restoration is checked for fit, occlusion, and finish before shipment. We deliver on the timeline we quote so your digital workflow stays predictable.</p>
+                    </div>
+                    <div class="product-app-accent"><span class="product-app-num">06</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Did you know? + CTA -->
+    <section class="product-cta-block" id="section-6">
+        <div class="product-cta-text">
+            <h2 class="reveal-text">did you know?</h2>
+            <p class="reveal-text reveal-delay-1">A digital workflow can reduce physical impressions and streamline how cases move from the chair to the lab. Scans and design files give us accurate data to work from, and CAD/CAM and 3D printing help keep quality consistent. When you're ready to send digital cases, we're set up to receive and deliver without compromising fit or turnaround.</p>
+            <p class="reveal-text reveal-delay-2">At Zann, we run our digital workflow to the same quality standards as the rest of our lab so you get predictable results.</p>
+            <a href="index.html#case-submission" class="btn btn-primary reveal-text reveal-delay-3">learn more</a>
+        </div>
+        <div class="product-cta-visual">
+            <div class="double-img-wrap">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=600&fit=crop" alt="Digital Workflow  -  product" class="double-img-default">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcfee668e2?w=600&h=600&fit=crop" alt="" class="double-img-hover" aria-hidden="true">
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="js/nav-footer.js"></script>
+
+    <script>
+        (function () {
+            var heroSection = document.querySelector('.product-hero');
+            if (heroSection) {
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { heroSection.classList.add('hero-bg-in'); });
+                });
+            }
+            var revealEls = document.querySelectorAll('.reveal-text');
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) entry.target.classList.add('revealed');
+                });
+            }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+            revealEls.forEach(function (el) { observer.observe(el); });
+            var hero = document.querySelector('.product-hero-inner');
+            if (hero) {
+                var heroReveal = hero.querySelectorAll('.reveal-text');
+                heroReveal.forEach(function (el) { el.classList.add('revealed'); });
+            }
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
+
