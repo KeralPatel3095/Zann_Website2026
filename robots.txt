@@ -1,0 +1,5 @@
+# Zann Dental Lab — allow indexing; point crawlers to the sitemap.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.zanndental.com/sitemap.xml
