@@ -699,9 +699,6 @@
                     </div>
                 </div>
             </div>
-             <div class="nav-item">
-              <a href="blog.html" class="nav-link">Blog</a>
-          </div>
             <div class="nav-item">
                 <a href="contact.html" class="nav-link">Contact</a>
             </div>
@@ -887,15 +884,7 @@
         (function () {
             var form = document.getElementById("contact-form");
             var statusEl = document.getElementById("contact-form-status");
-            var nextInput = document.getElementById("formsubmit-next");
-            if (nextInput) {
-                try {
-                    nextInput.value = new URL("?sent=1", window.location.href).href;
-                } catch (err) {
-                    var base = (window.location.origin || "") + (window.location.pathname || "contact.html");
-                    nextInput.value = base.replace(/\?.*$/, "") + "?sent=1";
-                }
-            }
+            var topicText = document.getElementById("contact-topic-trigger-text");
             function showStatus(ok, message) {
                 if (!statusEl) return;
                 statusEl.hidden = false;
@@ -906,24 +895,37 @@
                 statusEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
             }
             if (form) {
-                form.addEventListener("submit", function () {
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
                     var btn = form.querySelector('button[type="submit"]');
                     if (btn) {
                         btn.disabled = true;
-                        btn.textContent = "Sendingâ€¦";
+                        btn.textContent = "Sending...";
                     }
+                    showStatus(false, "Submitting your message...");
+                    var data = new FormData(form);
+                    fetch("https://formsubmit.co/ajax/zanndentallab@gmail.com", {
+                        method: "POST",
+                        body: data,
+                        headers: {
+                            "Accept": "application/json"
+                        }
+                    }).then(function (resp) {
+                        if (!resp.ok) throw new Error("Request failed");
+                        return resp.json();
+                    }).then(function () {
+                        form.reset();
+                        if (topicText) topicText.textContent = "General inquiry";
+                        showStatus(true, "Thank you for submitting. We will get right back to you.");
+                    }).catch(function () {
+                        showStatus(false, "We could not submit your message right now. Please try again in a moment.");
+                    }).finally(function () {
+                        if (btn) {
+                            btn.disabled = false;
+                            btn.textContent = "Send message";
+                        }
+                    });
                 });
-            }
-            var params = new URLSearchParams(window.location.search);
-            if (params.get("sent") === "1") {
-                showStatus(
-                    true,
-                    "Thank you for your inquiry. We have received your message and will respond at our earliest convenience."
-                );
-                try {
-                    var clean = window.location.pathname + window.location.hash;
-                    window.history.replaceState({}, document.title, clean);
-                } catch (e2) { /* ignore */ }
             }
         })();
     </script>
