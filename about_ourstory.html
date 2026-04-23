@@ -253,7 +253,7 @@
             padding: 0;
             width: 100%;
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             grid-auto-rows: auto;
             gap: clamp(28px, 4vw, 40px);
             align-items: start;
@@ -273,7 +273,8 @@
             width: 100%;
             max-width: none;
             flex: 0 0 auto;
-            aspect-ratio: 3 / 4;
+            aspect-ratio: 1 / 1;
+            height: auto;
             min-height: 0;
             border-radius: 0;
             background: #eef1f2;
@@ -287,7 +288,7 @@
             height: 100%;
             min-height: 100%;
             object-fit: cover;
-            object-position: center 20%;
+            object-position: center center;
             display: block;
             transition:
                 transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -311,14 +312,28 @@
             min-width: 0;
             padding: clamp(22px, 3vw, 32px) 0 0;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .story-gen-body h3 {
-            font-size: clamp(19px, 2.1vw, 24px);
+            font-size: clamp(16px, 1.45vw, 20px);
             font-weight: 700;
             margin: 0 0 10px;
             color: var(--color-dark);
-            letter-spacing: -0.02em;
+            letter-spacing: -0.015em;
             line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        .story-gen-body h3::first-letter {
+            font-size: 1.7em;
+            line-height: 0.9;
+            font-weight: 700;
+            color: #7a9a9f;
+            margin-right: 0.04em;
         }
         .story-gen-role {
             display: block;
@@ -329,7 +344,7 @@
             color: #7a9a9f;
             margin: 0 0 16px;
         }
-        .story-gen-role::after {
+        /* .story-gen-role::after {
             content: '';
             display: block;
             width: 36px;
@@ -337,7 +352,7 @@
             margin: 14px auto 0;
             background: linear-gradient(90deg, #7a9a9f 0%, rgba(122, 154, 159, 0.2) 100%);
             border-radius: 1px;
-        }
+        } */
         .story-gen-bio {
             font-size: 15px;
             line-height: 1.65;
@@ -345,23 +360,12 @@
             margin: 0 auto;
             text-align: center;
             max-width: 32ch;
+            min-height: 7.2em;
         }
 
         @media (min-width: 1001px) {
             .story-gen-profiles {
-                gap: 0;
-            }
-            .story-gen-profiles > li {
-                padding: 0 clamp(28px, 3.8vw, 48px);
-            }
-            .story-gen-profiles > li:first-child {
-                padding-left: 0;
-            }
-            .story-gen-profiles > li:last-child {
-                padding-right: 0;
-            }
-            .story-gen-profiles > li:not(:first-child) {
-                border-left: 1px solid rgba(122, 154, 159, 0.28);
+                gap: clamp(22px, 2.2vw, 30px);
             }
         }
 
@@ -533,11 +537,6 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-            .story-gen-profiles > li:last-child {
-                grid-column: 1 / -1;
-                max-width: min(380px, 100%);
-                justify-self: center;
-            }
             .story-split-card {
                 grid-template-columns: 1fr;
                 grid-template-rows: minmax(42svh, 1fr) minmax(0, 1fr);
@@ -565,11 +564,6 @@
             .story-gen-profiles {
                 grid-template-columns: 1fr;
                 max-width: min(440px, 100%);
-            }
-            .story-gen-profiles > li:last-child {
-                grid-column: auto;
-                max-width: none;
-                justify-self: stretch;
             }
         }
         @media (max-width: 620px) {
@@ -949,19 +943,10 @@
                     <p class="reveal-text reveal-delay-2">ZANN is directed by its founding owners and chief executive officer, with a shared focus on clinical quality, disciplined operations, and long-term partnerships with dental practices.</p>
                 </header>
                 <ol class="story-gen-profiles">
-                    <li class="reveal-text reveal-delay-1">
-                        <div class="story-gen-avatar">
-                            <img src="images/leadership-owner.jpg" alt="Portrait of Nenad Bogdanovic, Owner" width="680" height="850" loading="lazy" decoding="async">
-                        </div>
-                        <div class="story-gen-body">
-                            <h3>Nenad Bogdanovic</h3>
-                            <span class="story-gen-role">Owner</span>
-                            <p class="story-gen-bio">Master technician and laboratory director with more than three decades of experience across traditional and fully digital workflows.</p>
-                        </div>
-                    </li>
+                   
                     <li class="reveal-text reveal-delay-2">
                         <div class="story-gen-avatar">
-                            <img src="images/leadership-owner-cofounder.jpg" alt="Portrait of Zorica Bogdanovic, Owner and co-founder" width="680" height="850" loading="lazy" decoding="async">
+                            <img src="images/Zoka.jpg" alt="Portrait of Zorica Bogdanovic, Owner and co-founder" width="680" height="850" loading="lazy" decoding="async">
                         </div>
                         <div class="story-gen-body">
                             <h3>Zorica Bogdanovic</h3>
@@ -971,12 +956,32 @@
                     </li>
                     <li class="reveal-text reveal-delay-3">
                         <div class="story-gen-avatar">
-                            <img src="images/leadership-ceo.jpg" alt="Portrait of Ana Bogdanovic, Chief Executive Officer" width="680" height="850" loading="lazy" decoding="async">
+                            <img src="images/Ana.jpg" alt="Portrait of Ana Bogdanovic, Chief Executive Officer" width="680" height="850" loading="lazy" decoding="async">
                         </div>
                         <div class="story-gen-body">
                             <h3>Ana Bogdanovic</h3>
                             <span class="story-gen-role">Chief executive officer</span>
                             <p class="story-gen-bio">Leads strategic growth and digital infrastructure, aligning clinical rigor with scalable systems for partner laboratories and clinicians.</p>
+                        </div>
+                    </li>
+                     <li class="reveal-text reveal-delay-1">
+                        <div class="story-gen-avatar">
+                            <img src="images/Ned.jpg" alt="Portrait of Nenad Bogdanovic, Owner" width="680" height="850" loading="lazy" decoding="async">
+                        </div>
+                        <div class="story-gen-body">
+                            <h3>Nenad Bogdanovic</h3>
+                            <span class="story-gen-role">Owner</span>
+                            <p class="story-gen-bio">Master technician and laboratory director with more than three decades of experience across traditional and fully digital workflows.</p>
+                        </div>
+                    </li>
+                     <li class="reveal-text reveal-delay-1">
+                        <div class="story-gen-avatar">
+                            <img src="images/Nemanja.jpg" alt="Portrait of Nemanja Bogdanovic, Business Consultant" width="680" height="850" loading="lazy" decoding="async">
+                        </div>
+                        <div class="story-gen-body">
+                            <h3>Nemanja Bogdanovic</h3>
+                            <span class="story-gen-role">Business Consultant</span>
+                            <p class="story-gen-bio">Supports business development through data-driven insights, streamlined processes, and scalable solutions for sustainable growth.</p>
                         </div>
                     </li>
                 </ol>
@@ -993,7 +998,7 @@
                         <p class="reveal-text reveal-delay-2">By preserving the artistry that defines exceptional restorative work while embracing high-performance digital ecosystems, we ensure that every restoration is a masterpiece of both form and function.</p>
                     </div>
                     <div class="story-split-media">
-                        <img src="https://images.unsplash.com/photo-1606206873764-fd15e242df52?w=1200&amp;q=80" alt="Precision dental laboratory environment" width="1200" height="800" loading="lazy" decoding="async">
+                        <img src="images/Our_Story.jpg" alt="Precision dental laboratory environment" width="1200" height="800" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>

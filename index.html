@@ -25,6 +25,7 @@
     <meta name="twitter:description" content="Crowns, bridges, dentures, nightguards &amp; digital dentistry. Dental lab serving practices across Canada.">
     <meta name="twitter:image" content="https://www.zanndental.com/images/Logo.png">
     <meta name="theme-color" content="#E2F2F6">
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -68,6 +69,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWix+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8LhQvK4LLxNTa3N8R+4YBf6z7P6f7xg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <style>
         :root {
             --color-bg: #E2F2F6;
@@ -837,7 +841,7 @@
         .how-section {
             background: linear-gradient(165deg, #e2f2f6 0%, #eef8fa 35%, #e5f4f7 70%, #dceef2 100%);
             width: 100%;
-            min-height: 85vh;
+            min-height: 105vh;
             box-sizing: border-box;
             padding: 88px 24px 88px;
             margin-top: 0;
@@ -1010,6 +1014,67 @@
         .digital-section .double-img-hover .placeholder-visual { background: linear-gradient(to bottom, #f0fafb 0%, #d4eef2 100%); color: var(--color-dark); font-weight: 500; }
         .digital-inner-text { padding: 48px 40px 48px 32px; display: flex; flex-direction: column; justify-content: center; }
 
+        /* Scanner tools boxes (from Welcome Kits digital scanner integration) */
+        .scanner-tools-section {
+            background: var(--color-bg);
+            width: 100%;
+            box-sizing: border-box;
+            padding: 42px 24px 52px;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .scanner-tools-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .scanner-tools-inner h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 10px;
+        }
+        .scanner-tools-inner p {
+            font-size: 16px;
+            color: var(--color-muted);
+            margin-bottom: 22px;
+        }
+        .scanner-tools-grid {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+        }
+        .scanner-tools-grid a {
+            display: block;
+            padding: 14px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.72);
+            color: var(--color-dark);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.18s, border-color 0.18s, box-shadow 0.18s;
+        }
+        .scanner-tools-grid a:hover {
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(122, 154, 159, 0.28);
+            box-shadow: 0 4px 14px rgba(45, 60, 64, 0.06);
+        }
+        .scanner-tools-grid a:focus-visible {
+            outline: 2px solid #7a9a9f;
+            outline-offset: 2px;
+        }
+        @media (max-width: 900px) {
+            .scanner-tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 520px) {
+            .scanner-tools-grid { grid-template-columns: 1fr; }
+        }
+
         /* Ready to Get Started  -  small section, professional */
         .ready-section { background: var(--color-bg); width: 100%; box-sizing: border-box; padding: 48px 24px 56px; text-align: center; }
         .ready-section h2 { font-size: 42px; font-weight: 700; margin-bottom: 12px; color: var(--color-dark); }
@@ -1072,7 +1137,7 @@
 
         /* Instagram section  -  no space (tight, full bleed) */
         .instagram-section { width: 100%; min-height: 100vh; box-sizing: border-box; display: flex; align-items: stretch; justify-content: center; padding-top: 80px; background: #E2F2F6; border-top: 1px solid var(--color-border); }
-        .instagram-section .ig-feed-wrap { width: 100%; max-width: none; margin: 0; border-radius: 0; overflow: hidden; box-shadow: none; background: #E2F2F6; border: none; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 0; box-sizing: border-box; }
+        .instagram-section .ig-feed-wrap { width: 100%; max-width: none;  margin: 0; border-radius: 0; overflow: hidden; box-shadow: none; background: #E2F2F6; border: none; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 0; box-sizing: border-box; }
         .instagram-section .elfsight-app-5f886527-872c-4a31-aed0-db17a97bed9e { width: 100% !important; min-height: 70vh; box-sizing: border-box; background: #E2F2F6 !important; }
         .instagram-section .elfsight-app-5f886527-872c-4a31-aed0-db17a97bed9e > div { padding: 0 !important; background: #E2F2F6 !important; }
         .instagram-section .elfsight-app-5f886527-872c-4a31-aed0-db17a97bed9e div { background: #E2F2F6 !important; }
@@ -1157,9 +1222,19 @@
         .footer-newsletter .legal { font-size: 16px; color: var(--color-muted); margin-top: 8px; }
         .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 24px; border-top: 1px solid var(--color-border); display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px; }
         @media (max-width: 500px) {
-            .footer-bottom { flex-direction: column; gap: 16px; padding-top: 20px; text-align: center; }
+            /* .footer-bottom { flex-direction: column; gap: 16px; padding-top: 20px; text-align: center; }
         }
         .footer-bottom .social { display: flex; gap: 12px; font-size: 16px; }
+        .footer-bottom .badges { font-size: 16px; color: var(--color-muted); } */
+
+          .footer-bottom { flex-direction: column; gap: 16px; padding-top: 20px; text-align: center; }
+            .footer-bottom .social { gap: 20px; }
+            .footer-bottom .social a { font-size: 18px; }
+        }
+        .footer-bottom .social { display: flex; align-items: center; gap: 24px; }
+        .footer-bottom .social a { display: inline-flex; align-items: center; justify-content: center; color: #5a6063; font-size: 20px; line-height: 1; transition: color 0.2s ease, transform 0.2s ease; }
+        .footer-bottom .social a:hover { color: #4b5053; transform: translateY(-1px); }
+        .footer-bottom .social i { display: block; }
         .footer-bottom .badges { font-size: 16px; color: var(--color-muted); }
 
         /* Chat + scroll  -  subtle */
@@ -1999,16 +2074,16 @@
             </div>
         </div>
         <div class="double-img-wrap">
-            <div class="double-img-default"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=800&fit=crop" alt="Dental lab work"></div>
-            <div class="double-img-hover"><img src="https://images.pexels.com/photos/3845128/pexels-photo-3845128.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Lab restorations detail"></div>
+            <div class="double-img-default"><img src="images/Home1.2.jpg" alt="Dental lab work"></div>
+            <div class="double-img-hover"><img src="images/Home1.1 elevated lab work.jpg" alt="Lab restorations detail"></div>
         </div>
     </section>
 
     <!-- Bundle / partner CTA block -->
     <section class="cta-block scroll-animate" id="case-submission">
         <div class="double-img-wrap">
-            <div class="double-img-default"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=800&fit=crop" alt="Welcome kit / bundle"></div>
-            <div class="double-img-hover"><img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Starter kit detail"></div>
+            <div class="double-img-default"><img src="images/Home2.2.jpg" alt="Welcome kit / bundle"></div>
+            <div class="double-img-hover"><img src="images/Home2.1 partner with us + save.jpg"alt="Starter kit detail"></div>
         </div>
         <div class="cta-block-text">
             <p class="small-label animate-title">need to elevate your lab workflow?</p>
@@ -2087,8 +2162,8 @@
     <section class="digital-section scroll-animate">
         <div class="digital-inner animate-body">
             <div class="double-img-wrap">
-                <div class="double-img-default"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=800&fit=crop" alt="Digital workflow - CAD/CAM - 3D printing"></div>
-                <div class="double-img-hover"><img src="https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Scan to delivery"></div>
+                <div class="double-img-default"><img src="images/Home3.1.jpg" alt="Digital workflow - CAD/CAM - 3D printing"></div>
+                <div class="double-img-hover"><img src="images/Home3.2.jpg" alt="Scan to delivery"></div>
             </div>
             <div class="digital-inner-text">
                 <h2 class="animate-title">Digital workflow from scan to delivery</h2>
@@ -2100,6 +2175,20 @@
                     <li>Consistent fit and fast turnaround</li>
                 </ul>
                 <a href="#products" class="btn btn-outline" style="margin-top:16px">Explore digital options</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="scanner-tools-section scroll-animate" id="scanner-tools">
+        <div class="scanner-tools-inner animate-body">
+            <h2>Scanner Portals</h2>
+            <p>Use these direct links for digital scanner integration and file transfer.</p>
+            <div class="scanner-tools-grid">
+                <a href="https://www.itero.com/" target="_blank" rel="noopener noreferrer">iTero / Align</a>
+                <a href="https://www.3shape.com/" target="_blank" rel="noopener noreferrer">3Shape</a>
+                <a href="https://www.carestreamdental.com/" target="_blank" rel="noopener noreferrer">Carestream Dental</a>
+                <a href="https://www.dentsplysirona.com/" target="_blank" rel="noopener noreferrer">Dentsply Sirona</a>
+                <a href="https://wetransfer.com/" target="_blank" rel="noopener noreferrer">WeTransfer</a>
             </div>
         </div>
     </section>
@@ -2152,7 +2241,7 @@
     </section>
 
     <!-- Instagram  -  full-screen aesthetic feed -->
-    <section class="instagram-section scroll-animate" id="instagram">
+     <section class="instagram-section scroll-animate" id="instagram">
         <div class="ig-feed-wrap">
             <div class="elfsight-app-5f886527-872c-4a31-aed0-db17a97bed9e animate-body"></div>
         </div>
@@ -2160,7 +2249,20 @@
 
     <!-- Footer -->
     <footer class="footer" id="contact">
-        <div class="footer-grid">
+         <div class="footer-grid">
+            <div class="footer-newsletter">
+                <h3>Subscribe to our updates</h3>
+                <p>Be the first to know about new services, education events, and lab tips.</p>
+                <!-- Mailchimp: Audience → Signup forms → Embedded forms → Naked/form embed. Paste your form’s action URL below and replace the honeypot input name with the exact b_… name from that embed. -->
+                <form class="footer-mailchimp-form validate" action="https://zanndental.us4.list-manage.com/subscribe/post?u=58e87bab4cd6adaaf507efad6&id=5f38705c64&f_id=006072e9f0" method="post" id="mc-footer-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                    <input type="email" name="EMAIL" id="mce-EMAIL-footer" class="required email" placeholder="Email" aria-label="Email" required autocomplete="email" value="">
+                    <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_HONEYPOT_NAME_FROM_MAILCHIMP_EMBED" tabindex="-1" value=""></div>
+                    <button type="submit" name="subscribe" id="mc-embedded-subscribe-footer" class="btn btn-primary" style="margin-top:8px">Subscribe</button>
+                </form>
+                <p class="legal">By subscribing you agree to our <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>.</p>
+            </div>
+            <div>
+        <!-- <div class="footer-grid">
             <div class="footer-newsletter">
                 <h3>Subscribe to our updates</h3>
                 <p>Be the first to know about new services, education events, and lab tips.</p>
@@ -2168,7 +2270,7 @@
                 <button type="button" class="btn btn-primary" style="margin-top:8px">Subscribe</button>
                 <p class="legal">By subscribing you agree to our <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>.</p>
             </div>
-            <div>
+            <div> -->
                 <h3>About</h3>
                 <ul>
                     <li><a href="about_ourstory.html">Our story</a></li>
@@ -2207,9 +2309,15 @@
         </div>
         <div class="footer-bottom">
             <div class="social">
-                <a href="#" aria-label="Facebook">f</a>
+                <!-- <a href="#" aria-label="Facebook">f</a>
                 <a href="https://www.instagram.com/zanndental/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
-                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="LinkedIn">in</a> -->
+                 <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/zanndental/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <!-- <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a> -->
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <!-- <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a> -->
+
             </div>
             <div class="badges">Secure - SSL encryption</div>
         </div>
@@ -2219,6 +2327,8 @@
     <button type="button" class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button> -->
 
     <script>
+
+       
         (function () {
             // Hero slider  -  4 slides, auto-advance + arrows + dots
             var heroSlides = document.querySelectorAll('.hero-slide');
@@ -2463,6 +2573,8 @@
                 if (consent !== 'accepted' && consent !== 'rejected') openCookieBanner();
             })();
         })();
+
+        
     </script>
     <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
 </body>

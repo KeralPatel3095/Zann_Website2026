@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Night Guard Promotion | Zann Dental Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #f8f7f4;
+      --color-bg-warm: #f5f3ef;
+      --color-bg-white: #ffffff;
+      --color-text: #1a1a1a;
+      --color-text-muted: #4a4a4a;
+      --color-accent: #b85c38;
+      --color-accent-dark: #8b4528;
+      --color-accent-soft: rgba(184, 92, 56, 0.06);
+      --color-border: rgba(0, 0, 0, 0.06);
+      --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.03);
+      --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.06);
+      --radius: 20px;
+      --radius-sm: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      overflow-x: hidden;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top bar - minimal & refined */
+    .promo-brand {
+      padding: 18px 8%;
+      text-align: center;
+      background: var(--color-text);
+      color: rgba(255, 255, 255, 0.95);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    /* Hero - diagonal split, editorial feel */
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(165deg, var(--color-bg-warm) 0%, var(--color-bg) 50%, var(--color-bg-white) 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 52%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(184, 92, 56, 0.03) 0%, transparent 60%);
+      transform: skewX(-8deg);
+      transform-origin: top right;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      padding: 80px 8% 80px 10%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3.5px;
+      color: var(--color-accent);
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.12;
+      margin-bottom: 28px;
+      color: var(--color-text);
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: var(--color-text-muted);
+      margin-bottom: 40px;
+      max-width: 420px;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 18px 40px;
+      background: var(--color-accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(184, 92, 56, 0.25);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 18px 40px;
+      background: transparent;
+      color: var(--color-text);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-bg-white);
+      border-color: var(--color-text-muted);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      padding: 60px 8% 80px 4%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image-container {
+      position: relative;
+      width: 60%;
+      max-width: 480px;
+      margin-top: -140px;
+      margin-right: -120px;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      /* border-radius: var(--radius); */
+      /* box-shadow: var(--shadow-card); */
+    }
+
+    .hero-image-container::after {
+      content: '';
+      position: absolute;
+      inset: -20px -20px -20px 20px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      z-index: -1;
+    }
+
+    .hero-card {
+      position: absolute;
+      bottom: 40px;
+      margin-left: -154px;
+      background: var(--color-bg-white);
+      padding: 28px 32px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-card);
+      max-width: 260px;
+      border-left: 3px solid var(--color-accent);
+    }
+
+    .hero-card h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--color-text);
+    }
+
+    .hero-card p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .hero-card .cta-phone {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--color-accent);
+      font-weight: 600;
+      font-size: 15px;
+      /* padding: 20px 40px 20px 40px; */
+    }
+
+    /* Product section - staggered offset layout */
+    .section-product {
+      padding: 120px 8%;
+      display: grid;
+      grid-template-columns: 0.9fr 1fr;
+      gap: 80px;
+      align-items: center;
+      background: var(--color-bg-white);
+    }
+
+    .section-product .image-stats {
+      position: relative;
+    }
+
+    .section-product .image-stats img {
+      width: 100%;
+      /* border-radius: var(--radius); */
+      /* box-shadow: var(--shadow-card); */
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: -40px;
+      margin-left: -4px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat-item {
+      background: var(--color-bg-white);
+      padding: 24px 16px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-card);
+      text-align: center;
+      border: 1px solid var(--color-border);
+    }
+
+    .stat-item .number {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .stat-item .label {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      /* color:black; */
+      font-weight: 500;
+    }
+
+    .promo-text {
+      padding-right: 5%;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .promo-text h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(28px, 2.8vw, 38px);
+      margin-bottom: 24px;
+      color: var(--color-text);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .promo-text p {
+      font-size: 16px;
+      color: var(--color-text-muted);
+      line-height: 1.85;
+      margin-bottom: 32px;
+    }
+
+    /* How to Send - horizontal cards with offset */
+    .send-case {
+      background: var(--color-bg);
+      padding: 120px 8%;
+      position: relative;
+    }
+
+    .send-case .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .send-case .section-label {
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .send-case .section-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--color-text);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .send-case .section-header > p {
+      color: var(--color-text-muted);
+      max-width: 500px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card-grid .card:nth-child(odd) {
+      transform: translateY(0);
+    }
+
+    .card-grid .card:nth-child(even) {
+      transform: translateY(24px);
+    }
+
+    .card {
+      background: var(--color-bg-white);
+      border-radius: var(--radius-sm);
+      padding: 32px 24px;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: left;
+      border: 1px solid var(--color-border);
+    }
+
+    .card:hover {
+      transform: translateY(-8px) !important;
+      box-shadow: var(--shadow-card);
+      border-color: rgba(184, 92, 56, 0.2);
+    }
+
+    .card .icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-accent-soft);
+      border-radius: 10px;
+      color: var(--color-accent);
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 19px;
+      margin-bottom: 12px;
+      color: var(--color-text);
+      font-weight: 700;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    /* Form section - side-by-side with accent stripe */
+    .section-form {
+      background: var(--color-bg-white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 540px;
+      position: relative;
+    }
+
+    .section-form::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, var(--color-border), transparent);
+      transform: translateX(-50%);
+    }
+
+    .promo-image-content {
+      padding: 80px 10% 80px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .promo-image-content h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 30px;
+      margin-bottom: 16px;
+      color: var(--color-text);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .promo-image-content > p {
+      color: var(--color-text-muted);
+      margin-bottom: 32px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .promo-image-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .promo-image-content li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .promo-image-content li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .promo-form {
+      padding: 80px 8% 80px 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--color-bg-warm);
+    }
+
+    .promo-form input[type="text"] {
+      width: 100%;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      transition: all 0.2s;
+      background: var(--color-bg-white);
+    }
+
+    .promo-form input[type="text"]:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 2px var(--color-accent-soft);
+    }
+
+    .promo-form label {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--color-text);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .promo-form .radio-group {
+      margin: 16px 0 28px;
+    }
+
+    .promo-form .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .promo-form .radio-group input {
+      accent-color: var(--color-accent);
+    }
+
+    .promo-form button,
+    .promo-form .btn-primary {
+      width: 100%;
+      padding: 18px;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* Features - asymmetric bento */
+    .section-features {
+      background: var(--color-text);
+      color: #fff;
+      padding: 100px 8%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-features::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      /* background: radial-gradient(circle, rgba(184, 92, 56, 0.15) 0%, transparent 70%); */
+      pointer-events: none;
+    }
+
+    .section-features .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-features .section-label {
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 3px;
+    }
+
+    .section-features .section-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .section-features .intro-p {
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 500px;
+      margin: 0 auto;
+      font-size: 15px;
+    }
+
+    .why-zann-bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-zann-bento .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+      padding: 36px 32px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .why-zann-bento .feature-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .why-zann-bento .feature-card .icon-wrap {
+      width: 48px;
+      height: 48px;
+      background: rgba(184, 92, 56, 0.3);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .why-zann-bento .feature-card img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+    }
+
+    .why-zann-bento .feature-card h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 20px;
+      margin-bottom: 0;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .why-zann-bento .feature-card p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .why-zann-bento .feature-card:nth-child(1) { grid-column: 1 / 5;      
+       border-color: rgba(184, 92, 56, 0.4);
+                                            }
+    .why-zann-bento .feature-card:nth-child(2) { grid-column: 5 / 9; border-color: rgba(184, 92, 56, 0.4); }
+    .why-zann-bento .feature-card:nth-child(3) { grid-column: 9 / 13; border-color: rgba(184, 92, 56, 0.4);}
+    .why-zann-bento .feature-card:nth-child(4) {
+      grid-column: 1 / 7;
+            /* background: rgba(184, 92, 56, 0.2); */
+      border-color: rgba(184, 92, 56, 0.4);
+    }
+    .why-zann-bento .feature-card:nth-child(5) {
+      grid-column: 7 / 13;
+      /* background: rgba(184, 92, 56, 0.2); */
+      border-color: rgba(184, 92, 56, 0.4);
+    }
+    .why-zann-bento .feature-card:nth-child(6) {
+      grid-column: 1 / -1;
+      /* background: linear-gradient(135deg, rgba(184, 92, 56, 0.25) 0%, rgba(184, 92, 56, 0.05) 100%); */
+      border-color: rgba(184, 92, 56, 0.4);
+      padding: 40px 40px;
+    }
+
+    .why-zann-bento .special-offer h2,
+    .why-zann-bento .refer-offer h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+    }
+
+    .why-zann-bento .special-offer h2 img,
+    .why-zann-bento .refer-offer h2 img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .why-zann-bento .special-offer p,
+    .why-zann-bento .refer-offer p {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Footer bar */
+    .promo-footer-brand {
+      padding: 24px 8%;
+      text-align: center;
+      background: #0f0f0f;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero::before { display: none; }
+      .hero-content { padding: 60px 8%; text-align: center; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero-image-wrap { padding: 40px 8%; }
+      .hero-card { left: 50%; transform: translateX(-50%); }
+      .section-product { grid-template-columns: 1fr; gap: 60px; }
+      .stats-row { margin-left: 0; margin-top: 24px; }
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+      .card-grid .card:nth-child(even) { transform: translateY(0); }
+      .section-form { grid-template-columns: 1fr; }
+      .section-form::before { display: none; }
+      .promo-form { background: var(--color-bg-white); padding: 60px 8%; }
+      .why-zann-bento .feature-card:nth-child(1),
+      .why-zann-bento .feature-card:nth-child(2),
+      .why-zann-bento .feature-card:nth-child(3) { grid-column: 1 / -1; }
+      .why-zann-bento .feature-card:nth-child(4),
+      .why-zann-bento .feature-card:nth-child(5) { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { min-height: auto; }
+      .hero-image-container::after { display: none; }
+      .stats-row { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr; }
+      .card-grid .card:nth-child(even) { transform: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+  <div class="promo-brand">Zann Dental Lab — Exclusive Night Guard Promotion</div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="label">Custom Dental Solutions</p>
+      <h1>Exclusive Night Guard Promotion</h1>
+      <p>Try Canada's most comfortable custom night guard — just cover delivery!</p>
+      <div class="hero-buttons">
+        <a href="#promo-form" class="btn-primary">Claim Free Night Guard</a>
+        <a href="#send-case" class="btn-secondary">How to Send</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-image-container">
+        <img src="https://raw.githubusercontent.com/KeralPatel3095/zann_image/50905c20421fcabea0303f77afc6ba0b5ec36ab6/insta_zann_march_+_onward___18_-removebg-preview.png" alt="Night Guard" class="hero-image" />
+        <div class="hero-card">
+          <h3>Need Help?</h3>
+          <p>Connect your scanner or email us — fast and easy with Zann Dental Lab.</p>
+          <div class="cta-phone">
+            <i class="fas fa-phone"></i>
+            <span>416-696-5454</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-product">
+    <div class="image-stats">
+      <!-- <img src="https://raw.githubusercontent.com/KeralPatel3095/zann_image/97cb6b70da1e4818a75b9f6b6f4f7b94867d8889/zann%20night%20guard%20.jpg" alt="Night guard" /> -->
+             <img src="https://raw.githubusercontent.com/KeralPatel3095/zann_image/20d783a0043d45ebe8c298a635362d2518bf9594/zann%20night%20guard%20%20(1).jpg" alt="Night guard" />
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="number">7</span>
+          <span class="label">Day turnaround</span>
+        </div>
+        <div class="stat-item">
+          <span class="number">6</span>
+          <span class="label">Days open per week</span>
+        </div>
+        <div class="stat-item">
+          <span class="number">24/7</span>
+          <span class="label">Support available</span>
+        </div>
+      </div>
+    </div>
+    <div class="promo-text">
+      <p class="section-label">Premium Materials</p>
+      <h2>Premium Night Guards Tailored For Comfort</h2>
+      <p>Our 3D-printed Keystone soft splints provide superior fit and protection. With fast 7-day turnaround and secure STL file storage, Zann ensures both quality and convenience.</p>
+      <a href="#promo-form" class="btn-primary">Read More</a>
+    </div>
+  </section>
+
+  <section class="send-case" id="send-case">
+    <div class="section-header">
+      <span class="section-label">Send Your Case</span>
+      <h2 class="section-title">How to Send Your Case</h2>
+      <p>Connect your scanner or email us — it's fast and easy with Zann Dental Lab</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon"><i class="fas fa-tooth"></i></div>
+        <h2>iTero</h2>
+        <p>Call <span class="highlight">1-800-577-8767</span>. Choose option one twice. Provide <span class="highlight">416-696-5454</span> or account <span class="highlight">64717</span> to add Zann.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-x-ray"></i></div>
+        <h2>Carestream</h2>
+        <p>Add <span class="highlight">"Zann Dental Laboratory"</span> on CS Connect.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-network-wired"></i></div>
+        <h2>Sirona Connect</h2>
+        <p>Add <span class="highlight">"Zann Dental"</span> or <span class="highlight">"Zann Dental Lab"</span> as your favourite lab in your Sirona account.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-envelope"></i></div>
+        <h2>3Shape TRIOS</h2>
+        <p>Search for us on 3Shape Communicate using <span class="highlight">cadcamdesign@zanndental.com</span></p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-laptop"></i></div>
+        <h2>E4D</h2>
+        <p>Email files directly to <span class="highlight">cadcamdesign@zanndental.com</span></p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-link"></i></div>
+        <h2>Medit Link</h2>
+        <p>Connect through Medit Link using <span class="highlight">cadcamdesign@zanndental.com</span></p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-file-export"></i></div>
+        <h2>3M</h2>
+        <p>Export STL file and send to <span class="highlight">cadcamdesign@zanndental.com</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-form" id="promo-form">
+    <div class="promo-image-content">
+      <h2>Real Promotion for Dental Clinics</h2>
+      <p>Experience Zann quality – just cover delivery</p>
+      <ul>
+        <li>3D-printed Keystone soft splint</li>
+        <li>7-day turnaround</li>
+        <li>STL file storage</li>
+        <li>Open 6 days/week</li>
+        <li>Personalized service</li>
+      </ul>
+    </div>
+
+    <div class="promo-form">
+      <form>
+        <input type="text" placeholder="Clinic Name" required />
+        <input type="text" placeholder="Dentist Contact" required />
+        <input type="text" placeholder="Shipping Info" required />
+
+        <label>$40 Payment</label>
+        <div class="radio-group">
+          <label><input type="radio" name="option" value="impression" required /> Send impression</label>
+          <label><input type="radio" name="option" value="scanner" /> We have a scanner — will upload STL</label>
+        </div>
+
+        <a href="http://www.zanndental.com/claim-nightguard.html">
+          <button type="button" class="btn-primary">Claim My Free Night Guard</button>
+        </a>
+      </form>
+    </div>
+  </section>
+
+  <section class="section-features">
+    <div class="section-header">
+      <span class="section-label">Why Choose Us</span>
+      <h2 class="section-title">Why Dentists Choose Zann</h2>
+      <p class="intro-p">Premium night guards and seamless service — every time.</p>
+    </div>
+
+    <div class="why-zann-bento">
+      <div class="feature-card">
+        
+        <h3>Fast Turnaround</h3>
+        <p>Receive your custom night guard in just 7 days — no delays, no compromise.</p>
+      </div>
+      <div class="feature-card">
+       
+        <h3>Premium Materials</h3>
+        <p>We use Keystone soft splints known for ultimate comfort and protection.</p>
+      </div>
+      <div class="feature-card">
+        
+        <h3>Secure File Storage</h3>
+        <p>STL files are stored securely for seamless future reorders and convenience.</p>
+      </div>
+      <div class="feature-card special-offer">
+        <h2> Special Offer Just for You!</h2>
+        <p><strong>Your first night guard is FREE</strong><br>Only pay $40 for delivery. Try us risk-free.</p>
+      </div>
+      <div class="feature-card special-offer">
+        <h2> Exclusive Pricing</h2>
+        <p>$165 for bulk guards (Reg. $180)</p>
+      </div>
+      <div class="feature-card refer-offer">
+        <h2>Refer a Dentist & Get Rewarded</h2>
+        <p>Refer another dental clinic and receive a <strong>next free night guard</strong> or a <strong>$200 lab credit</strong> when they place their first order!</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="promo-footer-brand">Zann Dental Lab — Premium Custom Dental Solutions</div>
+
+</body>
+</html>
