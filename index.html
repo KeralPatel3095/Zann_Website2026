@@ -706,7 +706,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 32px;
+            padding:12px 22px 12px 22px;
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             transform-origin: center;
         }
@@ -1090,6 +1090,137 @@
         .stats-banner p { color: var(--color-muted); max-width: 600px; margin: 0 auto 16px; font-size: 16px; line-height: 1.55; }
         .stats-banner .btn { margin-top: 6px; }
 
+        /* Why dentists choose Zann */
+        .why-zann-section {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #eaf5f8 0%, #e2f2f6 52%, #edf6f8 100%);
+            padding: clamp(64px, 9vw, 110px) 24px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .why-zann-inner {
+            width: min(1160px, 100%);
+            margin: 0 auto;
+            text-align: left;
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: clamp(24px, 4vw, 64px);
+            align-items: start;
+        }
+        .why-zann-kicker {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            color: #5f6b70;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+        .why-zann-section h2 {
+            font-size: clamp(40px, 6.5vw, 74px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--color-dark);
+            line-height: 0.98;
+            letter-spacing: -0.03em;
+            text-transform: none;
+        }
+        .why-zann-intro {
+            font-size: clamp(17px, 1.8vw, 22px);
+            color: #5f686c;
+            max-width: 34ch;
+            margin: 0;
+            line-height: 1.45;
+        }
+        .why-zann-detail {
+            border-left: 1px solid rgba(84,86,88,0.22);
+            padding-left: clamp(16px, 2.5vw, 26px);
+        }
+        .why-zann-list {
+            list-style: none;
+            margin: 0 0 18px;
+            padding: 0;
+            max-width: none;
+            text-align: left;
+            display: grid;
+            gap: 12px;
+            grid-template-columns: 1fr;
+            counter-reset: why-zann-point;
+        }
+        .why-zann-list li {
+            color: var(--color-dark);
+            font-size: clamp(17px, 1.5vw, 20px);
+            line-height: 1.4;
+            font-weight: 500;
+            position: relative;
+            padding: 10px 12px 10px 52px;
+            background: rgba(255,255,255,0.42);
+            border: 1px solid rgba(84,86,88,0.14);
+            border-radius: 10px;
+        }
+        .why-zann-list li::before {
+            counter-increment: why-zann-point;
+            content: counter(why-zann-point, decimal-leading-zero);
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(84,86,88,0.9);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            border: 1px solid rgba(84,86,88,0.28);
+            border-radius: 999px;
+            min-width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5fbfc;
+        }
+        .why-zann-note {
+            color: #5f686c;
+            font-size: 15px;
+            line-height: 1.65;
+            max-width: 40ch;
+            margin: 0;
+            font-style: normal;
+            letter-spacing: 0.01em;
+        }
+        @media (max-width: 900px) {
+            .why-zann-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .why-zann-intro,
+            .why-zann-note {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .why-zann-detail {
+                border-left: none;
+                border-top: 1px solid rgba(84,86,88,0.22);
+                padding-left: 0;
+                padding-top: 16px;
+                margin-top: 6px;
+            }
+            .why-zann-list {
+                max-width: 620px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        @media (max-width: 600px) {
+            .why-zann-section {
+                min-height: auto;
+                padding: 54px 16px 58px;
+            }
+        }
+
         /* Testimonials  -  See what our dentists say (small section, professional) */
         .testimonials-section { background: var(--color-bg); padding: 48px 24px 56px; width: 100%; box-sizing: border-box; text-align: center; }
         .testimonials-section h2 { text-align: center; font-size: 42px; font-weight: 700; margin-bottom: 20px; color: var(--color-dark); letter-spacing: 0.01em; }
@@ -1114,6 +1245,7 @@
             .partners-section h2,
             .how-section .section-title,
             .digital-section h2,
+            .why-zann-section h2,
             .ready-section h2,
             .testimonials-section h2,
             .pro-banner h2 {
@@ -1127,6 +1259,7 @@
             .partners-section h2,
             .how-section .section-title,
             .digital-section h2,
+            .why-zann-section h2,
             .ready-section h2,
             .testimonials-section h2,
             .pro-banner h2 {
@@ -1248,7 +1381,7 @@
             .header { padding-left: 24px; padding-right: 24px; }
             .section { padding-left: 24px; padding-right: 24px; }
             .hero-text h1 { font-size: clamp(40px, 6vw, 54px); }
-            .section-title, .split-block h2, .cta-block h2, .partners-section h2, .digital-section h2, .ready-section h2, .testimonials-section h2, .pro-banner h2 { font-size: clamp(30px, 4.4vw, 42px); }
+            .section-title, .split-block h2, .cta-block h2, .partners-section h2, .digital-section h2, .why-zann-section h2, .ready-section h2, .testimonials-section h2, .pro-banner h2 { font-size: clamp(30px, 4.4vw, 42px); }
         }
 
         @media (max-width: 768px) {
@@ -1267,7 +1400,7 @@
             .logo { font-size: 24px; }
             .hero-text h1 { font-size: 34px; line-height: 1.12; }
             .hero-slide .hero-inner { padding: 72px 16px 88px; }
-            .section-title, .split-block h2, .cta-block h2, .partners-section h2, .digital-section h2, .ready-section h2, .testimonials-section h2, .pro-banner h2 { font-size: 28px; }
+            .section-title, .split-block h2, .cta-block h2, .partners-section h2, .digital-section h2, .why-zann-section h2, .ready-section h2, .testimonials-section h2, .pro-banner h2 { font-size: 28px; }
             .footer { padding-left: 16px; padding-right: 16px; }
         }
 
@@ -1316,11 +1449,20 @@
 
             .nav-item.has-dropdown .dropdown-right {
                 margin-top: 10px !important;
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
             }
 
             .nav-item.has-dropdown .dropdown-right .dropdown-card {
-                min-height: 120px !important;
-                margin-bottom: 10px !important;
+                height: clamp(120px, 22vw, 170px) !important;
+                min-height: clamp(120px, 22vw, 170px) !important;
+                margin-bottom: 0 !important;
+            }
+
+            .nav-item.has-dropdown .dropdown-right .dropdown-card .dropdown-card-img {
+                background-size: cover !important;
+                background-position: center center !important;
             }
         }
 
@@ -1335,6 +1477,7 @@
             .cta-block h2,
             .partners-section h2,
             .digital-section h2,
+            .why-zann-section h2,
             .ready-section h2,
             .testimonials-section h2,
             .pro-banner h2 {
@@ -1355,11 +1498,44 @@
             .hero-text p { font-size: 16px; }
             .hero-ctas { justify-content: flex-start; gap: 10px; flex-wrap: wrap; }
 
-            main h1,
-            main h2,
-            main h3,
-            main .section-title,
-            main p {
+            /* Keep tablet alignment predictable:
+               center only summary/marketing sections, not all content blocks. */
+            .trust-section h1,
+            .trust-section h2,
+            .trust-section h3,
+            .trust-section p,
+            .products-section h1,
+            .products-section h2,
+            .products-section h3,
+            .products-section p,
+            .how-section h1,
+            .how-section h2,
+            .how-section h3,
+            .how-section p,
+            .stats-banner h1,
+            .stats-banner h2,
+            .stats-banner h3,
+            .stats-banner p,
+            .testimonials-section h1,
+            .testimonials-section h2,
+            .testimonials-section h3,
+            .testimonials-section p,
+            .why-zann-section h1,
+            .why-zann-section h2,
+            .why-zann-section h3,
+            .why-zann-section p,
+            .ready-section h1,
+            .ready-section h2,
+            .ready-section h3,
+            .ready-section p,
+            .pro-banner h1,
+            .pro-banner h2,
+            .pro-banner h3,
+            .pro-banner p,
+            .instagram-section h1,
+            .instagram-section h2,
+            .instagram-section h3,
+            .instagram-section p {
                 text-align: center;
             }
 
@@ -1389,6 +1565,7 @@
             .cta-block h2,
             .partners-section h2,
             .digital-section h2,
+            .why-zann-section h2,
             .ready-section h2,
             .testimonials-section h2,
             .pro-banner h2 {
@@ -1398,6 +1575,7 @@
 
         @media (max-width: 768px) {
             .promo-bar { font-size: 14px; line-height: 1.45; padding: 7px 10px; }
+            .hero-slide-bg { background-position: center center !important; }
             .hero-slide .hero-inner { min-height: 68vh; padding: 72px 16px 78px; }
             .hero-text h1 { font-size: clamp(30px, 7.8vw, 40px); }
             .hero-text p { font-size: 15px; }
@@ -1429,6 +1607,7 @@
             }
             .partners-section,
             .digital-section,
+            .why-zann-section,
             .ready-section,
             .testimonials-section,
             .pro-banner {
@@ -1440,6 +1619,7 @@
             .cta-block h2,
             .partners-section h2,
             .digital-section h2,
+            .why-zann-section h2,
             .ready-section h2,
             .testimonials-section h2,
             .pro-banner h2 {
@@ -1463,6 +1643,7 @@
             .cta-block h2,
             .partners-section h2,
             .digital-section h2,
+            .why-zann-section h2,
             .ready-section h2,
             .testimonials-section h2,
             .pro-banner h2 {
@@ -1474,7 +1655,7 @@
 <body>
      <!-- Top promo bar -->
      <div class="promo-bar">
-        New to Zann? <a href="#resources">Request a welcome kit, Fast turnaround on first case. <a href="#case-submission">Send a case</a>
+        New to Zann? <a href="Welcome_Kits.html">Request a welcome kit, Fast turnaround on first case. <a href="#scanner-tools">Send a case</a>
     </div>
 
     <div class="site-header-sticky">
@@ -1493,7 +1674,7 @@
                 <div class="dropdown">
                     <div class="dropdown-inner">
                         <div class="dropdown-left">
-                            <span class="dropdown-label">products &amp; services</span>
+                            <span class="dropdown-label" style="color: #7a9a9f;">products &amp; services</span>
                             <div class="dropdown-block">
                                 <button type="button" class="dropdown-expand">Crowns &amp; Bridges <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
                                 <div class="dropdown-sublinks">
@@ -1770,7 +1951,7 @@
                         <div class="animate-body">
                         <p>from crowns and bridges to dentures and nightguards, we combine skilled craftsmanship with CAD/CAM and 3D printing to deliver accurate cases, dependable turnaround, and seamless reorders. </p>
                         <div class="hero-ctas">
-                            <a href="#case-submission" class="btn btn-primary">Send a Case</a>
+                            <a href="#scanner-tools" class="btn btn-primary">Send a Case</a>
                             <a href="#products" class="btn btn-outline">Digital Dentistry</a>
                             <a href="#education" class="btn btn-outline">Education</a>
                             <a href="blog.html" class="btn btn-outline">Lab journal</a>
@@ -1788,8 +1969,8 @@
                         <div class="animate-body">
                         <p>pfm, zirconia, e.max, and full gold restorations crafted for precise fit, lasting function, and natural aesthetics - supported by clear communication and reliable service. </p>
                         <div class="hero-ctas">
-                            <a href="#products" class="btn btn-primary">View Crowns &amp; Bridges</a>
-                            <a href="#case-submission" class="btn btn-outline">Send a Case</a>
+                            <a href="Product_crown_Zirconia.html" class="btn btn-primary">View Crowns &amp; Bridges</a>
+                            <a href="#scanner-tools" class="btn btn-outline">Send a Case</a>
                         </div>
                         </div>
                     </div>
@@ -1804,7 +1985,7 @@
                         <p>custom nightguards produced through advanced digital workflows for accurate fit, smooth delivery, and fewer chairside adjustments. </p>
                         <div class="hero-ctas">
                             <a href="#products" class="btn btn-primary">Explore Nightguards</a>
-                            <a href="#education" class="btn btn-outline">Learn more</a>
+                            <a href="Product_Nightguards.html" class="btn btn-outline">Learn more</a>
                         </div>
                         </div>
                     </div>
@@ -1818,7 +1999,7 @@
                         <div class="animate-body">
                         <p>new to ZANN? request a welcome kit with rx forms and shipping information. our team is ready to support you from your first submission onward. </p>
                         <div class="hero-ctas">
-                            <a href="#case-submission" class="btn btn-primary">Request welcome kit</a>
+                            <a href="Welcome_Kits.html" class="btn btn-primary">Request welcome kit</a>
                             <a href="contact.html" class="btn btn-outline">Contact a specialist</a>
                         </div>
                         </div>
@@ -1847,7 +2028,7 @@
                 <span>Dentists we serve</span>
             </div>
             <div class="stat-card">
-                <strong>5,000+</strong>
+                <strong>170k+</strong>
                 <span>Cases completed</span>
             </div>
             <div class="stat-card">
@@ -1910,88 +2091,88 @@
                 <p>Fluoride-free options available</p>
             </div> -->
             <div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5zM12 22V12M20 7l-8 5M4 7l8 5"/></svg>
-    </div>
-    <p>FDA-Cleared & Biocompatible Materials</p>
-</div>
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                </div>
+                <p>Canadian-Made Since 1989</p>
+            </div>
 
-<div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-    </div>
-    <p>ISO-Certified & Quality-Assured Workflows</p>
-</div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <p>Experienced RDT-Led Technical Team</p>
+            </div>
 
-<div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-    </div>
-    <p>Eco-Friendly Digital Manufacturing</p>
-</div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+                </div>
+                <p>Reliable Turnaround Times</p>
+            </div>
 
-<div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-    </div>
-    <p>Proudly Fabricated in the Canada</p>
-</div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+                </div>
+                <p>Micron-Level Precision &amp; Margin Accuracy</p>
+            </div>
 
-<div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-    </div>
-    <p>Multi-Stage Quality Control Checks</p>
-</div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2" ry="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>
+                </div>
+                <p>Digital CAD/CAM Workflow</p>
+            </div>
 
-<div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    </div>
-    <p>Sustainable Laboratory Practices</p>
-</div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/><path d="M6 9V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5"/></svg>
+                </div>
+                <p>3D Printing Technology</p>
+            </div>
 
-<div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/><path d="M6 9V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5"/></svg>
-    </div>
-    <p>Advanced SLS & 3D Printing Technology</p>
-</div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M8 14h8l-1 7-3-2-3 2-1-7z"/></svg>
+                </div>
+                <p>Premium Certified Materials</p>
+            </div>
 
-<div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
-    </div>
-    <p>Micron-Level Precision & Margin Accuracy</p>
-</div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <p>Hypoallergenic &amp; Monomer Free Options</p>
+            </div>
 
-<div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    </div>
-    <p>Experienced CDT-Led Technical Team</p>
-</div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <p>Multi-Stage Quality Control Checks</p>
+            </div>
 
-<div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-    </div>
-    <p>98% Case Success & Remake-Free Rate</p>
-</div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <p>Chairside-Friendly Results</p>
+            </div>
 
-<div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    </div>
-    <p>Ethical Labor & Sourcing Standards</p>
-</div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                </div>
+                <p>98% Case Success &amp; Remake-Free Rate</p>
+            </div>
 
-<div class="trust-item">
-    <div class="trust-icon">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </div>
-    <p>Hypoallergenic & Monomer-Free Options</p>
-</div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"/><path d="M5 13v4a2 2 0 0 0 2 2h1"/><path d="M19 13v4a2 2 0 0 1-2 2h-1"/><path d="M9 18h6"/><circle cx="8" cy="11" r="1"/><circle cx="16" cy="11" r="1"/></svg>
+                </div>
+                <p>Real Human Case Support</p>
+            </div>
         </div>
     </section>
 
@@ -2005,8 +2186,8 @@
             <div class="products-carousel" id="productCarousel">
                 <div class="product-card">
                     <div class="product-card-img-wrap">
-                        <div class="product-img product-img-default"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=600&fit=crop" alt="Zirconia Crown"></div>
-                        <div class="product-img product-img-hover"><img src="https://images.pexels.com/photos/3845128/pexels-photo-3845128.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Zirconia Crown detail"></div>
+                        <div class="product-img product-img-default"><img src="images/Zrc-1x Strength _ Aesthetic.jpg" alt="Zirconia Crown"></div>
+                        <div class="product-img product-img-hover"><img src="images/Zrc-1x Strength _ Aesthetic (2).jpg" alt="Zirconia Crown detail"></div>
                     </div>
                     <div class="content">
                         <h3>Zirconia Crowns</h3>
@@ -2015,8 +2196,8 @@
                 </div>
                 <div class="product-card">
                     <div class="product-card-img-wrap">
-                        <div class="product-img product-img-default"><img src="https://images.pexels.com/photos/3845128/pexels-photo-3845128.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Digital Denture"></div>
-                        <div class="product-img product-img-hover"><img src="https://images.unsplash.com/photo-1588776814546-1ffcfee668e2?w=600&h=600&fit=crop" alt="Digital Denture detail"></div>
+                        <div class="product-img product-img-default"><img src="images/Emax-1x Strength _ Aesthetic.jpg" alt="Emax Veneer"></div>
+                        <div class="product-img product-img-hover"><img src="images/Emax-1x Strength _ Aesthetic (2).jpg" alt="Emax Veneer detail"></div>
                     </div>
                     <div class="content">
                         <h3>Emax Veneers</h3>
@@ -2025,8 +2206,8 @@
                 </div>
                 <div class="product-card">
                     <div class="product-card-img-wrap">
-                        <div class="product-img product-img-default"><img src="https://raw.githubusercontent.com/KeralPatel3095/Zann_WEbsite/8f19e5a6e4fcaabd8dbe20cb3835f456b7d22fab/Gemini_Generated_Image_vqu9lfvqu9lfvqu9.png" alt="Nightguard"></div>
-                        <div class="product-img product-img-hover"><img src="https://raw.githubusercontent.com/KeralPatel3095/Zann_WEbsite/361619d6f9bfbfddd25af6d6821860061df60fae/NG1.png" alt="Nightguard detail"></div>
+                        <div class="product-img product-img-default"><img src="images/stand_implant1.jpg" alt="implant"></div>
+                        <div class="product-img product-img-hover"><img src="images/stand_implant2.jpg" alt="implant detail"></div>
                     </div>
                     <div class="content">
                         <h3>Implant Restorations</h3>
@@ -2035,8 +2216,8 @@
                 </div>
                 <div class="product-card">
                     <div class="product-card-img-wrap">
-                        <div class="product-img product-img-default"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=600&fit=crop" alt="Implant restoration"></div>
-                        <div class="product-img product-img-hover"><img src="https://images.pexels.com/photos/3985062/pexels-photo-3985062.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Implant detail"></div>
+                        <div class="product-img product-img-default"><img src="images/NG_1x Strength _ Aesthetic.jpg" alt="Nightguard"></div>
+                        <div class="product-img product-img-hover"><img src="images/NG_2x Strength _ Aesthetic.jpg" alt="Nightguard detail"></div>
                     </div>
                     <div class="content">
                         <h3>Nightguards </h3>
@@ -2045,8 +2226,8 @@
                 </div>
                 <div class="product-card">
                     <div class="product-card-img-wrap">
-                        <div class="product-img product-img-default"><img src="https://images.unsplash.com/photo-1588776814546-1ffcfee668e2?w=600&h=600&fit=crop" alt="Digital Denture"></div>
-                        <div class="product-img product-img-hover"><img src="https://images.pexels.com/photos/7578896/pexels-photo-7578896.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Digital Denture detail"></div>
+                        <div class="product-img product-img-default"><img src="images/3dPrinted_1x Strength _ Aesthetic.jpg" alt="Digital Denture"></div>
+                        <div class="product-img product-img-hover"><img src="images/Drepair_1x Strength _ Aesthetic.jpg" alt="Digital Denture detail"></div>
                     </div>
                     <div class="content">
                         <h3>Dentures</h3>
@@ -2096,6 +2277,26 @@
         </div>
     </section>
 
+    <section class="why-zann-section scroll-animate">
+        <div class="why-zann-inner animate-body">
+            <div>
+                <span class="why-zann-kicker">Why dentists choose Zann</span>
+                <h2 class="animate-title">consistency matters</h2>
+                <p class="why-zann-intro">dentists choose Zann because consistency matters.</p>
+            </div>
+            <div class="why-zann-detail">
+                <ul class="why-zann-list">
+                    <li>accurate first-time fit</li>
+                    <li>fewer adjustments and remakes</li>
+                    <li>clear, responsive communication</li>
+                    <li>predictable turnaround times</li>
+                    <li>long-term case reliability</li>
+                </ul>
+                <p class="why-zann-note">this is not just fabrication - it is clinical support.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- How It Works (grid-based, reference-inspired) -->
     <section class="how-section scroll-animate" id="how-it-works">
         <span class="how-overline animate-title">workflow simplicity</span>
@@ -2128,7 +2329,7 @@
                         <div class="how-step-num-wrap"><span class="how-step-num">04</span></div>
                         <h3>Delivered to you</h3>
                         <p>
-                            
+                           you seat with confidence 
                         </p>
                     </div>
                 </div>
@@ -2169,13 +2370,14 @@
                 <div class="double-img-hover"><img src="images/Home3.2.jpg" alt="Scan to delivery"></div>
             </div>
             <div class="digital-inner-text">
-                <h2 class="animate-title">Digital workflow from scan to delivery</h2>
-                <p>We integrate with your practice: accept digital scans from iTero, TRIOS, and other systems, and use CAD/CAM milling and 3D printing for crowns, bridges, dentures, and guards.</p>
+                <h2 class="animate-title">built for modern dentistry</h2>
+                <h3>we support both traditional impressions and fully digital workflows.</h3><br>
+                <p>from intraoral scans to stl file submissions, our systems are designed to integrate directly into your practice - reducing friction, improving turnaround, and ensuring consistent results. Capabilities include:</p>
                 <ul class="digital-list">
-                    <li>Digital scan integration (STL, scan files)</li>
-                    <li>CAD/CAM milling for zirconia and more</li>
-                    <li>3D printing for models, nightguards, and prototypes</li>
-                    <li>Consistent fit and fast turnaround</li>
+                    <li>cad/cam design</li>
+                    <li>3d printing</li>
+                    <li>digital diagnostics </li>
+                    <li>scan based restorations</li>
                 </ul>
                 <a href="#products" class="btn btn-outline" style="margin-top:16px">Explore digital options</a>
             </div>
@@ -2198,10 +2400,10 @@
 
     <!-- Stats banner -->
     <section class="stats-banner scroll-animate" id="about">
-        <div class="big-number animate-title">5,000+</div>
+        <div class="big-number animate-title">170k+</div>
         <div class="animate-body">
         <p class="big-label">restorations delivered to dentists.</p>
-        <p>At Zann Dental Lab, we focus on quality, digital workflows, and clear communication. From single crowns to full-arch implant cases and Dentures, we help you deliver results your patients trust  -  with reliable turnaround and specialist support when you need it.</p>
+        <p>at Zann Dental Lab, we focus on quality, digital workflows, and clear communication. From single crowns to full-arch implant cases and Dentures, we help you deliver results your patients trust  -  with reliable turnaround and specialist support when you need it.</p>
         <a href="#about" class="btn btn-outline">Learn how you can work with us</a>
         </div>
     </section>
@@ -2211,13 +2413,13 @@
         <h2 class="animate-title">See what our dentists are saying</h2>
         <div class="testimonial-slide animate-body">
             <div class="quote-marks">"</div>
-            <blockquote id="testimonialText">Best lab we have ever worked with. Our team and patients are consistently happy with fit and aesthetics. We send all our crown and denture cases to Zann.</blockquote>
+            <blockquote id="testimonialText">Friendly staff, excellent service and precision in crafting crowns and bridges. Highly recommend for quality and accommodation.</blockquote>
             <div class="stars">★★★★★</div>
-            <p class="author" id="testimonialAuthor">Dr. Sarah M., General Practice</p>
+            <p class="author" id="testimonialAuthor">Don valley Dental</p>
         </div>
         <div class="testimonial-nav">
             <button type="button" class="filled" id="testPrev" aria-label="Previous">←</button>
-            <button type="button" id="testNext" aria-label="Next">-></button>
+            <button type="button" id="testNext" aria-label="Next">→</button>
         </div>
     </section>
 
@@ -2225,7 +2427,7 @@
     <section class="ready-section scroll-animate">
         <h2 class="animate-title">Ready to get started?</h2>
         <div class="animate-body">
-        <p>Send your first case, request a welcome kit, or talk to a specialist. We're here to make your lab experience simple and reliable.</p>
+        <p>whether you’re new to our lab or scaling your workflow, we’re ready to support your practice with consistent, reliable restorations.</p>
         <div class="ready-btns">
             <a href="#case-submission" class="btn btn-primary">Send a case</a>
             <a href="#case-submission" class="btn btn-outline">Request welcome kit</a>
@@ -2322,7 +2524,10 @@
                 <!-- <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a> -->
 
             </div>
-            <div class="badges">Secure - SSL encryption</div>
+                <div class="badges">© Zann Dental Laboratory. All rights reserved.</div>
+                <a href="" target="_blank" style="color:#7a9a9f; text-decoration:none;">
+                    Keral Patel
+                </a>
         </div>
     </footer>
 
@@ -2457,9 +2662,9 @@
                 next.addEventListener('click', function () { carousel.scrollBy({ left: 332, behavior: 'smooth' }); });
             }
             var testimonials = [
-                { text: 'Best lab we have ever worked with. Our team and patients are consistently happy with fit and aesthetics. We send all our crown and denture cases to Zann.', author: 'Dr. Sarah M., General Practice' },
-                { text: 'Dentures from Zann have changed our workflow. Fewer adjustments, happier patients, and the team is always responsive.', author: 'Dr. James L., DDS' },
-                { text: 'Nightguards that actually fit. Double articulation and Keystone material make a real difference. Highly recommend.', author: 'Dr. Amy K., General Practice' }
+                { text: 'Friendly staff, excellent service and precision in crafting crowns and bridges. Highly recommend for quality and accommodation.', author: 'Don Valley Dental' },
+                { text: 'The best lab ever! I started working with Zann 2 years ago and very quickly grew to rely on the for all my work. A tremendous family team that always go above and beyond to ensure every case is perfect. When times are tough, they are always there to help. My patients notice the difference too - a true partnership.Could not recommend this lab any more!', author: 'Dr. Thomas Minkov' },
+                { text: 'We have had the pleasure of working with Zann Dental Lab and we could not be happier with the experience! From start to finish, the communication and service was outstanding! The technicians are highly skilled and meticulous in their work. The quality of the crowns, bridges and veneers, that they have provided have been exceptional and they fit perfectly. The turnaround time is quick and they are always responsive to any questions or concerns, We highly recommend Zann Dental Lab for their professionalism, precision, and overall excellent service!', author: 'District Dental' }
             ];
             var idx = 0;
             var testText = document.getElementById('testimonialText');

@@ -294,6 +294,7 @@ h1, h2, h3, .section-title { font-weight: 700; color: var(--color-dark); }
     color: var(--color-muted);
     text-transform: lowercase;
     letter-spacing: 0.04em;
+    color: #7a9a9f;
 }
 .dropdown-block {
     margin-bottom: 4px;
@@ -733,12 +734,35 @@ h2,
     .product-materials-text {
         padding: clamp(26px, 5vw, 38px) clamp(18px, 4vw, 28px) !important;
     }
+
+    /* Ensure hero images stay centered on mobile/tablet viewports across all pages. */
+    .hero-bg,
+    .hero-slide-bg,
+    .page-hero-bg,
+    .product-hero-bg,
+    .contact-hero-bg,
+    .story-hero-bg,
+    .mv-hero-bg {
+        background-position: center center !important;
+    }
 }
 
 /* Mobile: stronger polish for touch and readability */
 @media (max-width: 768px) {
     body {
         line-height: 1.6;
+    }
+
+    /* Mobile-only hero image alignment:
+       keep focal point centered so images do not appear shifted right. */
+    .hero-bg,
+    .hero-slide-bg,
+    .page-hero-bg,
+    .product-hero-bg,
+    .contact-hero-bg,
+    .story-hero-bg,
+    .mv-hero-bg {
+        background-position: center center !important;
     }
 
     .btn,
@@ -829,11 +853,20 @@ h2,
     /* Keep images in same column below links */
     .nav-item.has-dropdown .dropdown-right {
         margin-top: 10px !important;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
     }
 
     .nav-item.has-dropdown .dropdown-right .dropdown-card {
-        min-height: 120px !important;
-        margin-bottom: 10px !important;
+        height: clamp(120px, 22vw, 170px) !important;
+        min-height: clamp(120px, 22vw, 170px) !important;
+        margin-bottom: 0 !important;
+    }
+
+    .nav-item.has-dropdown .dropdown-right .dropdown-card .dropdown-card-img {
+        background-size: cover !important;
+        background-position: center center !important;
     }
 }
 
