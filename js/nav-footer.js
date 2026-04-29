@@ -8,6 +8,17 @@
     var headerEl = document.getElementById('site-header');
     var footerEl = document.getElementById('site-footer');
     var COOKIE_CONSENT_KEY = 'zann_cookie_consent';
+    var FA_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css';
+
+    function ensureFontAwesome() {
+        if (document.querySelector('link[href*="font-awesome"], link[href*="fontawesome"], link[href*="cdnjs.cloudflare.com/ajax/libs/font-awesome"]')) {
+            return;
+        }
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = FA_CDN;
+        document.head.appendChild(link);
+    }
 
     function getCookieValue(name) {
         var escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -169,6 +180,7 @@
     }
 
     function loadAndInit() {
+        ensureFontAwesome();
         Promise.all([
             fetch('includes/header.html').then(function (r) { return r.text(); }),
             fetch('includes/footer.html').then(function (r) { return r.text(); })
