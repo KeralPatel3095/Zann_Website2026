@@ -49,20 +49,20 @@
         @media (max-width: 992px) { .nav-overlay { display: block; visibility: hidden; pointer-events: none; } .header.nav-open .nav-overlay { visibility: visible; pointer-events: auto; opacity: 1; } }
         .nav-item { position: relative; flex-shrink: 0; }
         .nav-link { display: flex; align-items: center; gap: 4px; padding: 8px 10px; color: var(--color-muted); text-decoration: none; font-size: 16px; font-weight: 500; border-radius: 8px; transition: color 0.5s ease, background 0.2s ease; white-space: nowrap; }
-        @media (min-width: 1100px) { .nav-link { padding: 10px 12px; font-size: 16px; } }
+         @media (min-width: 1100px) { .nav-link { padding: 10px 12px; font-size: 16px; } }
         .nav-link:hover { color: var(--color-dark); background: rgba(0,0,0,0.06); }
-        .nav-item.has-dropdown:hover .nav-link { color: var(--color-dark); background: rgba(0,0,0,0.06); }
+        .nav-item.dropdown-open .nav-link.nav-link-toggle { color: var(--color-dark); background: rgba(0,0,0,0.06); }
         .nav-link svg { width: 14px; height: 14px; transition: transform 0.5s ease; }
         .nav-item.dropdown-open .nav-link { text-decoration: underline; }
         .nav-item.dropdown-open .nav-link svg { transform: rotate(180deg); }
         .dropdown { position: fixed; top: 98px; left: 0; right: 0; bottom: 0; background: var(--color-bg); z-index: 90; opacity: 0; visibility: hidden; transform: translateY(-12px); transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease; overflow-y: auto; }
-        .nav-item.dropdown-open .dropdown, .nav-item.has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .nav-item.dropdown-open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
         .dropdown-inner { display: grid; grid-template-columns: 280px 1fr; min-height: 100%; max-width: 1400px; margin: 0 auto; }
         .dropdown-left { padding: 32px 24px 48px; border-right: 1px solid var(--color-border); opacity: 0; transform: translateX(-16px); transition: opacity 0.5s ease 0.12s, transform 0.5s ease 0.12s; }
-        .nav-item.dropdown-open .dropdown-left, .nav-item.has-dropdown:hover .dropdown-left { opacity: 1; transform: translateX(0); }
+        .nav-item.dropdown-open .dropdown-left { opacity: 1; transform: translateX(0); }
         @media (max-width: 768px) { .dropdown-inner { grid-template-columns: 1fr; } .dropdown { top: 88px; } }
         .dropdown-right { padding: 32px 24px 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-content: start; opacity: 0; transform: translateX(16px); transition: opacity 0.55s ease 0.18s, transform 0.55s ease 0.18s; }
-        .nav-item.dropdown-open .dropdown-right, .nav-item.has-dropdown:hover .dropdown-right { opacity: 1; transform: translateX(0); }
+        .nav-item.dropdown-open .dropdown-right { opacity: 1; transform: translateX(0); }
         @media (max-width: 1100px) { .dropdown-right { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) { .dropdown-right { grid-template-columns: 1fr; padding-top: 24px; } }
         .dropdown-label { display: block; padding: 0 0 16px; font-size: 16px; font-weight: 500; color: var(--color-muted); text-transform: lowercase; letter-spacing: 0.04em; }
@@ -3144,8 +3144,8 @@
         <section class="case-split" aria-hidden="true">
             <div class="img-cell">
                 <div class="double-img-wrap">
-                    <img src="images/CaseSub1.1.jpg" alt="Dental lab - prepare your case" class="double-img-default">
-                    <img src="images/CaseSub1.2.jpg" alt="" class="double-img-hover" aria-hidden="true">
+                    <img src="images/CaseSub1.2.jpg" alt="Dental lab - prepare your case" class="double-img-default">
+                    <img src="images/CaseSub1.1.jpg" alt="" class="double-img-hover" aria-hidden="true">
                 </div>
             </div>
             <div class="case-split-text">

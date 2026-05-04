@@ -240,7 +240,7 @@
             color: var(--color-dark);
             background: rgba(0,0,0,0.06);
         }
-        .nav-item.has-dropdown:hover .nav-link { color: var(--color-dark); background: rgba(0,0,0,0.06); }
+        .nav-item.dropdown-open .nav-link.nav-link-toggle { color: var(--color-dark); background: rgba(0,0,0,0.06); }
         .nav-link svg { width: 14px; height: 14px; transition: transform 0.5s ease; }
         .nav-item.dropdown-open .nav-link { text-decoration: underline; }
         .nav-item.dropdown-open .nav-link svg { transform: rotate(180deg); }
@@ -269,8 +269,7 @@
             transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
             overflow-y: auto;
         }
-        .nav-item.dropdown-open .dropdown,
-        .nav-item.has-dropdown:hover .dropdown {
+        .nav-item.dropdown-open .dropdown {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
@@ -287,8 +286,7 @@
             transform: translateX(-16px);
             transition: opacity 0.5s ease 0.12s, transform 0.5s ease 0.12s;
         }
-        .nav-item.dropdown-open .dropdown-left,
-        .nav-item.has-dropdown:hover .dropdown-left {
+        .nav-item.dropdown-open .dropdown-left {
             opacity: 1;
             transform: translateX(0);
         }
@@ -305,8 +303,7 @@
             transform: translateX(16px);
             transition: opacity 0.55s ease 0.18s, transform 0.55s ease 0.18s;
         }
-        .nav-item.dropdown-open .dropdown-right,
-        .nav-item.has-dropdown:hover .dropdown-right {
+        .nav-item.dropdown-open .dropdown-right {
             opacity: 1;
             transform: translateX(0);
         }
@@ -408,23 +405,16 @@
             transform: translateY(20px) scale(0.96);
             transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.45s ease;
         }
-        .nav-item.dropdown-open .dropdown-card,
-        .nav-item.has-dropdown:hover .dropdown-card {
+        .nav-item.dropdown-open .dropdown-card {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
-        .nav-item.dropdown-open .dropdown-card:nth-child(1),
-        .nav-item.has-dropdown:hover .dropdown-card:nth-child(1) { transition-delay: 0.22s; }
-        .nav-item.dropdown-open .dropdown-card:nth-child(2),
-        .nav-item.has-dropdown:hover .dropdown-card:nth-child(2) { transition-delay: 0.34s; }
-        .nav-item.dropdown-open .dropdown-card:nth-child(3),
-        .nav-item.has-dropdown:hover .dropdown-card:nth-child(3) { transition-delay: 0.46s; }
-        .nav-item.dropdown-open .dropdown-card:nth-child(4),
-        .nav-item.has-dropdown:hover .dropdown-card:nth-child(4) { transition-delay: 0.58s; }
-        .nav-item.dropdown-open .dropdown-card:nth-child(5),
-        .nav-item.has-dropdown:hover .dropdown-card:nth-child(5) { transition-delay: 0.7s; }
-        .nav-item.dropdown-open .dropdown-card:nth-child(6),
-        .nav-item.has-dropdown:hover .dropdown-card:nth-child(6) { transition-delay: 0.82s; }
+        .nav-item.dropdown-open .dropdown-card:nth-child(1) { transition-delay: 0.22s; }
+        .nav-item.dropdown-open .dropdown-card:nth-child(2) { transition-delay: 0.34s; }
+        .nav-item.dropdown-open .dropdown-card:nth-child(3) { transition-delay: 0.46s; }
+        .nav-item.dropdown-open .dropdown-card:nth-child(4) { transition-delay: 0.58s; }
+        .nav-item.dropdown-open .dropdown-card:nth-child(5) { transition-delay: 0.7s; }
+        .nav-item.dropdown-open .dropdown-card:nth-child(6) { transition-delay: 0.82s; }
         .dropdown-card:hover {
             transform: translateY(-4px) scale(1.02);
             box-shadow: 0 12px 32px rgba(0,0,0,0.12);
@@ -1218,6 +1208,172 @@
             .why-zann-section {
                 min-height: auto;
                 padding: 54px 16px 58px;
+            }
+        }
+
+        /* Lab spotlight — full-bleed background image, content overlaid (no bottom bar headline) */
+        .lab-spotlight-section {
+            position: relative;
+            isolation: isolate;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            min-height: clamp(440px, 68vh, 760px);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: clamp(48px, 7vw, 100px) clamp(22px, 5vw, 56px);
+            background: #2a2d2f;
+        }
+        .lab-spotlight-bg-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+        }
+        .lab-spotlight-scrim {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient(
+                105deg,
+                rgba(0, 0, 0, 0.08) 0%,
+                rgba(255, 253, 250, 0) 38%,
+                rgba(252, 250, 247, 0.72) 54%,
+                rgba(250, 247, 242, 0.93) 68%,
+                rgba(250, 247, 242, 0.97) 100%
+            );
+        }
+        .lab-spotlight-inner {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            width: 100%;
+            max-width: min(1180px, 100%);
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            align-self: stretch;
+            min-height: clamp(360px, 56vh, 620px);
+        }
+        .lab-spotlight-panel {
+            text-align: left;
+            width: min(100%, 440px);
+            padding: clamp(12px, 2vw, 20px) 0 clamp(8px, 1vw, 12px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .lab-spotlight-panel h2 {
+            font-family: var(--font);
+            font-size: clamp(1.75rem, 2.8vw, 2.65rem);
+            font-weight: 700;
+            font-style: normal;
+            margin: 0 0 20px;
+            color: #1c1c1c;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            text-transform: none;
+            max-width: 16ch;
+        }
+        .lab-spotlight-lead {
+            font-size: clamp(15px, 1.2vw, 17px);
+            color: #5c5c5c;
+            line-height: 1.65;
+            max-width: 42ch;
+            margin: 0;
+            font-weight: 400;
+        }
+        .lab-spotlight-features {
+            list-style: none;
+            margin: clamp(32px, 5vw, 48px) 0 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(20px, 4vw, 40px);
+        }
+        .lab-spotlight-feature {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            flex: 1 1 72px;
+            max-width: 140px;
+        }
+        .lab-spotlight-label {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: lowercase;
+            color: #3a3a3a;
+        }
+        .lab-spotlight-icon-wrap {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1c1c1c;
+        }
+        .lab-spotlight-icon-wrap svg {
+            flex-shrink: 0;
+        }
+        .lab-spotlight-feature--accent .lab-spotlight-icon-wrap {
+            background: #e8e5e0;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        @media (max-width: 900px) {
+            .lab-spotlight-section {
+                align-items: flex-end;
+                justify-content: center;
+                min-height: clamp(500px, 78vh, 820px);
+                padding: clamp(36px, 6vw, 56px) clamp(18px, 4vw, 28px) clamp(40px, 8vw, 64px);
+            }
+            .lab-spotlight-scrim {
+                background: linear-gradient(
+                    to top,
+                    rgba(250, 247, 242, 0.98) 0%,
+                    rgba(250, 247, 242, 0.9) 32%,
+                    rgba(250, 247, 242, 0.35) 55%,
+                    rgba(0, 0, 0, 0.12) 100%
+                );
+            }
+            .lab-spotlight-inner {
+                justify-content: center;
+                min-height: 0;
+            }
+            .lab-spotlight-panel {
+                width: 100%;
+                max-width: 28rem;
+                margin: 0 auto;
+                text-align: center;
+                padding-bottom: 0;
+            }
+            .lab-spotlight-panel h2,
+            .lab-spotlight-lead {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .lab-spotlight-features {
+                justify-content: center;
+            }
+            .lab-spotlight-feature {
+                align-items: center;
+                max-width: none;
+                flex: 0 1 auto;
+            }
+        }
+        @media (max-width: 520px) {
+            .lab-spotlight-features {
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
             }
         }
 
@@ -2083,7 +2239,7 @@
         <p class="section-desc">we provide complete, full-service dental laboratory solutions, including crowns and bridges (pfm, e.max, zirconia, and gold), implant restorations, partial and full dentures, as well as nightguards and sports guards. our workflow is fully integrated with modern CAD/CAM design, precision milling, and advanced 3D printing technologies.</p>
         <div class="stats-row">
             <div class="stat-card">
-                <strong>100+</strong>
+                <strong>200+</strong>
                 <span>Dentists we serve</span>
             </div>
             <div class="stat-card">
@@ -2201,6 +2357,7 @@
         </div>
     </section>
 
+    <!-- Why dentists choose Zann -->
     <section class="why-zann-section scroll-animate">
         <div class="why-zann-inner animate-body">
             <div>
@@ -2217,6 +2374,58 @@
                     <li>long-term case reliability</li>
                 </ul>
                 <p class="why-zann-note">this is not just fabrication - it is clinical support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lab spotlight — background photo, copy + icons overlaid (no bottom promo bar) -->
+    <section class="lab-spotlight-section scroll-animate" aria-labelledby="lab-spotlight-heading">
+        <img
+            class="lab-spotlight-bg-img"
+            src="images/At the lab.jpg"
+            alt="Technicians at work in the Zann dental laboratory"
+            width="1600"
+            height="1067"
+            loading="lazy"
+            decoding="async"
+        />
+        <div class="lab-spotlight-scrim" aria-hidden="true"></div>
+        <div class="lab-spotlight-inner animate-body">
+            <div class="lab-spotlight-panel">
+                <h2 id="lab-spotlight-heading" class="animate-title">consistent work. clear communication.</h2>
+                <p class="lab-spotlight-lead">
+                    we combine careful handwork with digital verification so every restoration arrives predictable,
+                    seat-ready, and aligned with what you prescribed.
+                </p>
+                <ul class="lab-spotlight-features" role="list">
+                    <li class="lab-spotlight-feature">
+                        <span class="lab-spotlight-icon-wrap" aria-hidden="true">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="9"/>
+                                <path d="M9 12l2 2 4-4"/>
+                            </svg>
+                        </span>
+                        <span class="lab-spotlight-label">consistent</span>
+                    </li>
+                    <li class="lab-spotlight-feature lab-spotlight-feature--accent">
+                        <span class="lab-spotlight-icon-wrap" aria-hidden="true">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="9"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
+                            </svg>
+                        </span>
+                        <span class="lab-spotlight-label">focused</span>
+                    </li>
+                    <li class="lab-spotlight-feature">
+                        <span class="lab-spotlight-icon-wrap" aria-hidden="true">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2l9 8-9 12-9-12 9-8z"/>
+                            </svg>
+                        </span>
+                        <span class="lab-spotlight-label">enduring</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -2404,16 +2613,16 @@
         <div class="partners-row-wrap animate-body">
             <div class="partners-logos">
                 <div class="partners-logos-set">
-                    <span>ADA</span>
-                    <span>NADL</span>
+                    <span>WeTransfer</span>
+                    <span>MEDIT</span>
                     <span>iTero</span>
                     <span>TRIOS</span>
                     <span>3Shape</span>
                     <span>ISO Certified</span>
                 </div>
                 <div class="partners-logos-set">
-                    <span>ADA</span>
-                    <span>NADL</span>
+                    <span>WeTransfer</span>
+                    <span>MEDIT</span>
                     <span>iTero</span>
                     <span>TRIOS</span>
                     <span>3Shape</span>
@@ -2689,7 +2898,7 @@
                 link.addEventListener('click', function () { closeMobileNav(); });
             });
 
-            // Dropdown: open on click, close when clicking outside
+            // Dropdown: click only (no hover-to-open)
             var navToggles = document.querySelectorAll('.nav-link-toggle');
             var navItems = document.querySelectorAll('.nav-item.has-dropdown');
             navToggles.forEach(function (toggle) {
