@@ -1034,31 +1034,114 @@
         .scanner-tools-grid {
             list-style: none;
             display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 10px;
             margin: 0;
             padding: 0;
         }
-        .scanner-tools-grid a {
+        .scanner-tools-grid .scanner-portal-btn {
             display: block;
+            width: 100%;
+            box-sizing: border-box;
             padding: 14px 12px;
             border: 1px solid rgba(255, 255, 255, 0.55);
             border-radius: 6px;
             background: rgba(255, 255, 255, 0.72);
             color: var(--color-dark);
-            text-decoration: none;
+            font-family: inherit;
             font-size: 16px;
             font-weight: 500;
+            text-align: center;
+            cursor: pointer;
             transition: background 0.18s, border-color 0.18s, box-shadow 0.18s;
+            appearance: none;
         }
-        .scanner-tools-grid a:hover {
+        .scanner-tools-grid .scanner-portal-btn:hover {
             background: rgba(255, 255, 255, 0.92);
             border-color: rgba(122, 154, 159, 0.28);
             box-shadow: 0 4px 14px rgba(45, 60, 64, 0.06);
         }
-        .scanner-tools-grid a:focus-visible {
+        .scanner-tools-grid .scanner-portal-btn:focus-visible {
             outline: 2px solid #7a9a9f;
             outline-offset: 2px;
+        }
+        .scanner-portal-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 195;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .scanner-portal-modal.is-open {
+            display: flex;
+        }
+        .scanner-portal-modal__backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(40, 48, 52, 0.45);
+            cursor: pointer;
+        }
+        .scanner-portal-modal__panel {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 520px;
+            max-height: min(85vh, 640px);
+            overflow: auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 22px 22px 20px;
+            box-shadow: 0 20px 50px rgba(45, 60, 64, 0.18);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            text-align: left;
+        }
+        .scanner-portal-modal__close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--color-dark);
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s ease;
+        }
+        .scanner-portal-modal__close:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .scanner-portal-modal__title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin: 0 44px 14px 0;
+            padding-right: 4px;
+            line-height: 1.2;
+        }
+        .scanner-portal-modal__body {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--color-muted);
+        }
+        .scanner-portal-modal__body p {
+            margin: 0 0 12px;
+        }
+        .scanner-portal-modal__body p:last-child {
+            margin-bottom: 0;
+        }
+        .scanner-portal-modal__body a {
+            color: #4a7c85;
+            font-weight: 600;
+            word-break: break-word;
         }
         @media (max-width: 900px) {
             .scanner-tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1500,13 +1583,39 @@
             gap: 12px;
             box-sizing: border-box;
         }
-        .instagram-section .instagram-raw-embeds .instagram-media {
-            display: inline-block !important;
-            width: calc(25% - 9px) !important;
-            max-width: none !important;
+        .instagram-section .instagram-embed-shell,
+        .instagram-section .instagram-raw-embeds > blockquote.instagram-media,
+        .instagram-section .instagram-raw-embeds > iframe {
+            position: relative;
+            flex: 0 0 calc(25% - 9px);
+            width: calc(25% - 9px);
+            max-width: calc(25% - 9px);
+            min-width: 0;
+            box-sizing: border-box;
+            margin: 0 !important;
+        }
+        .instagram-section .instagram-embed-shell .instagram-media,
+        .instagram-section .instagram-embed-shell iframe {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
             min-width: 0 !important;
             margin: 0 !important;
             vertical-align: top;
+        }
+        .instagram-section .instagram-engagement-blur {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: clamp(72px, 30%, 140px);
+            border-radius: 0 0 3px 3px;
+            pointer-events: none;
+            z-index: 6;
+            background: rgba(199, 221, 226, 0.353);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
         }
         .instagram-section .instagram-media [style*="color:#3897f0"],
         .instagram-section .instagram-media [style*="color: #3897f0"],
@@ -1523,8 +1632,12 @@
             color: #ffffff !important;
         }
         @media (max-width: 1024px) {
-            .instagram-section .instagram-raw-embeds .instagram-media {
-                width: calc(50% - 10px) !important;
+            .instagram-section .instagram-embed-shell,
+            .instagram-section .instagram-raw-embeds > blockquote.instagram-media,
+            .instagram-section .instagram-raw-embeds > iframe {
+                flex: 0 0 calc(50% - 10px);
+                width: calc(50% - 10px);
+                max-width: calc(50% - 10px);
             }
         }
         @media (max-width: 768px) {
@@ -1534,16 +1647,20 @@
                 align-items: center;
                 gap: 16px;
             }
-            .instagram-section .instagram-raw-embeds .instagram-media,
-            .instagram-section .instagram-raw-embeds blockquote.instagram-media {
+            .instagram-section .instagram-embed-shell,
+            .instagram-section .instagram-raw-embeds > blockquote.instagram-media,
+            .instagram-section .instagram-raw-embeds > iframe {
                 width: min(100%, 540px) !important;
                 max-width: 540px !important;
                 min-width: 0 !important;
                 margin: 0 auto !important;
+                flex: none;
                 display: block !important;
             }
             /* Mobile: first 4 posts only, single column */
-            .instagram-section .instagram-raw-embeds blockquote.instagram-media:nth-of-type(n+5) {
+            .instagram-section .instagram-raw-embeds > blockquote.instagram-media:nth-of-type(n+5),
+            .instagram-section .instagram-raw-embeds > iframe:nth-of-type(n+5),
+            .instagram-section .instagram-embed-shell:nth-of-type(n+5) {
                 display: none !important;
             }
         }
@@ -1942,7 +2059,7 @@
                                     <a href="Product_Immediate_Dentures.html">Immediate Dentures</a>
                                     <a href="Product_Cast_Partial_Framework_Dentures.html">Cast Partial Dentures</a>
                                     <a href="Product_3D_Printing.html">3D Printed Dentures</a>
-                                    <a href="Product_Denture_Repairs.html">Denture Repairs/Relines</a>
+                                    <a href="Product_Denture_Repairs_Relines.html">Denture Repairs/Relines</a>
 
                                 </div>
                             </div>
@@ -1950,7 +2067,7 @@
                             <div class="dropdown-block">
                                 <button type="button" class="dropdown-expand">Digital Dentistry <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
                                 <div class="dropdown-sublinks">
-                                    <a href="Product_Digital_Workflow.html">Digital Workflow / Scans</a>
+                                    <a href="Product_Digital_Workflow_Scans.html">Digital Workflow / Scans</a>
                                     <a href="Product_3D_Printing.html">3D Printing</a>
                                 </div>
                             </div>
@@ -2654,19 +2771,40 @@
         </div>
     </section>
 
+    <!-- Scanner Portals -->
     <section class="scanner-tools-section scroll-animate" id="scanner-tools">
         <div class="scanner-tools-inner animate-body">
             <h2>Scanner Portals</h2>
-            <p>Use these direct links for digital scanner integration and file transfer.</p>
+            <p>Click a portal for step-by-step connection instructions with Zann Dental Lab.</p>
             <div class="scanner-tools-grid">
-                <a href="https://www.itero.com/" target="_blank" rel="noopener noreferrer">iTero / Align</a>
-                <a href="https://www.3shape.com/" target="_blank" rel="noopener noreferrer">3Shape</a>
-                <a href="https://www.carestreamdental.com/" target="_blank" rel="noopener noreferrer">Carestream Dental</a>
-                <a href="https://www.dentsplysirona.com/" target="_blank" rel="noopener noreferrer">Dentsply Sirona</a>
-                <a href="https://wetransfer.com/" target="_blank" rel="noopener noreferrer">WeTransfer</a>
+                <button type="button" class="scanner-portal-btn" data-portal="itero">iTero / Align</button>
+                <button type="button" class="scanner-portal-btn" data-portal="carestream">Carestream</button>
+                <button type="button" class="scanner-portal-btn" data-portal="sirona">Sirona Connect</button>
+                <button type="button" class="scanner-portal-btn" data-portal="shape3">3Shape TRIOS</button>
+                <button type="button" class="scanner-portal-btn" data-portal="e4d">E4D</button>
+                <button type="button" class="scanner-portal-btn" data-portal="medit">Medit Link</button>
+                <button type="button" class="scanner-portal-btn" data-portal="m3m">3M</button>
+                <button type="button" class="scanner-portal-btn" data-portal="wetransfer">WeTransfer</button>
             </div>
         </div>
     </section>
+
+    <div
+        class="scanner-portal-modal"
+        id="scanner-portal-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="scanner-portal-modal-title"
+        aria-hidden="true"
+        hidden
+    >
+        <div class="scanner-portal-modal__backdrop" aria-hidden="true"></div>
+        <div class="scanner-portal-modal__panel">
+            <button type="button" class="scanner-portal-modal__close" aria-label="Close">&times;</button>
+            <h3 class="scanner-portal-modal__title" id="scanner-portal-modal-title"></h3>
+            <div class="scanner-portal-modal__body" id="scanner-portal-modal-body"></div>
+        </div>
+    </div>
 
     <!-- Stats banner -->
     <section class="stats-banner scroll-animate" id="about">
@@ -2963,6 +3101,140 @@
             updateTestimonial();
             var scrollTopBtn = document.getElementById('scrollTop');
             if (scrollTopBtn) scrollTopBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+            // Instagram: blur strip over likes / comments (re-run after embed.js replaces blockquotes with iframes)
+            function ensureInstagramPrivacyMasks() {
+                var root = document.querySelector('.instagram-raw-embeds');
+                if (!root) return;
+                var kids = Array.prototype.slice.call(root.children);
+                kids.forEach(function (node) {
+                    if (node.classList && node.classList.contains('instagram-embed-shell')) {
+                        if (!node.querySelector('.instagram-engagement-blur')) {
+                            var b = document.createElement('div');
+                            b.className = 'instagram-engagement-blur';
+                            b.setAttribute('aria-hidden', 'true');
+                            node.appendChild(b);
+                        }
+                        return;
+                    }
+                    var isIg =
+                        (node.tagName === 'BLOCKQUOTE' && node.classList && node.classList.contains('instagram-media')) ||
+                        node.tagName === 'IFRAME';
+                    if (!isIg) return;
+                    var wrap = document.createElement('div');
+                    wrap.className = 'instagram-embed-shell';
+                    root.insertBefore(wrap, node);
+                    wrap.appendChild(node);
+                    var blur = document.createElement('div');
+                    blur.className = 'instagram-engagement-blur';
+                    blur.setAttribute('aria-hidden', 'true');
+                    wrap.appendChild(blur);
+                });
+            }
+            ensureInstagramPrivacyMasks();
+            [400, 1200, 2800].forEach(function (ms) {
+                setTimeout(ensureInstagramPrivacyMasks, ms);
+            });
+            window.addEventListener('load', ensureInstagramPrivacyMasks);
+
+            // Scanner portal instructions (modal)
+            (function () {
+                var modal = document.getElementById('scanner-portal-modal');
+                var titleEl = document.getElementById('scanner-portal-modal-title');
+                var bodyEl = document.getElementById('scanner-portal-modal-body');
+                var closeBtn = modal ? modal.querySelector('.scanner-portal-modal__close') : null;
+                var backdrop = modal ? modal.querySelector('.scanner-portal-modal__backdrop') : null;
+                if (!modal || !titleEl || !bodyEl || !closeBtn || !backdrop) return;
+
+                var email = 'cadcamdesign@zanndental.com';
+                var copy = {
+                    itero: {
+                        title: 'iTero / Align',
+                        html:
+                            '<p>Call <strong>1-800-577-8767</strong>. Choose option one twice and provide Zann Dental&apos;s phone number <strong>416-696-5454</strong> or our account number <strong>64717</strong> to add Zann to your iTero account.</p>'
+                    },
+                    carestream: {
+                        title: 'Carestream',
+                        html: '<p>Add &ldquo;ZANN Dental Laboratory&rdquo; on CS Connect.</p>'
+                    },
+                    sirona: {
+                        title: 'Sirona Connect',
+                        html:
+                            '<p>Add &ldquo;ZANN Dental&rdquo; or &ldquo;ZANN Dental Lab&rdquo; as your favourite lab in your Sirona Connect account.</p>'
+                    },
+                    shape3: {
+                        title: '3Shape TRIOS',
+                        html:
+                            '<p>Find us on 3Shape Communicate using our email <a href="mailto:' +
+                            email +
+                            '">' +
+                            email +
+                            '</a>.</p>'
+                    },
+                    e4d: {
+                        title: 'E4D',
+                        html: '<p>Send us through <a href="mailto:' + email + '">' + email + '</a>.</p>'
+                    },
+                    medit: {
+                        title: 'Medit Link',
+                        html:
+                            '<p>Connect to us via the Medit Link portal using <a href="mailto:' +
+                            email +
+                            '">' +
+                            email +
+                            '</a>.</p>'
+                    },
+                    m3m: {
+                        title: '3M',
+                        html:
+                            '<p>Export as a STL file and email file to <a href="mailto:' +
+                            email +
+                            '">' +
+                            email +
+                            '</a>.</p>'
+                    },
+                    wetransfer: {
+                        title: 'WeTransfer',
+                        html: '<p><a href="mailto:' + email + '">' + email + '</a></p>'
+                    }
+                };
+
+                var lastActive = null;
+                function onKeydown(e) {
+                    if (e.key === 'Escape') closeScannerModal();
+                }
+                function openScannerModal(key) {
+                    var block = copy[key];
+                    if (!block) return;
+                    lastActive = document.activeElement;
+                    titleEl.textContent = block.title;
+                    bodyEl.innerHTML = block.html;
+                    modal.hidden = false;
+                    modal.classList.add('is-open');
+                    modal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                    document.addEventListener('keydown', onKeydown);
+                    closeBtn.focus();
+                }
+                function closeScannerModal() {
+                    modal.classList.remove('is-open');
+                    modal.hidden = true;
+                    modal.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                    document.removeEventListener('keydown', onKeydown);
+                    bodyEl.innerHTML = '';
+                    if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
+                    lastActive = null;
+                }
+
+                document.querySelectorAll('.scanner-portal-btn[data-portal]').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        openScannerModal(btn.getAttribute('data-portal'));
+                    });
+                });
+                closeBtn.addEventListener('click', closeScannerModal);
+                backdrop.addEventListener('click', closeScannerModal);
+            })();
 
             // Scroll-in animations: add in-view when section enters viewport (smooth, professional trigger)
             var animatedSections = document.querySelectorAll('.scroll-animate');
