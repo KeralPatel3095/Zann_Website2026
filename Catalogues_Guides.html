@@ -1372,7 +1372,7 @@
             <p class="lead">A digital library for clinicians.</p>
             <p class="intro">Explore our guides on material science, restorative options, clinical protocols, and removable systems - so your team can plan cases with clarity from prep to delivery.</p>
             <div class="hero-cta-row">
-                <a class="btn btn-ghost" id="open-price-modal">Need a Pricelist</a>
+                <a class="btn btn-ghost open-price-modal" href="#">Need a Pricelist</a>
                 <a class="btn" href="#library">Browse the library</a>
             </div>
         </div>
@@ -1533,7 +1533,7 @@
                 <div class="download-solo">
                     <h3 class="download-solo__title">Secure the Essential Lab Guide</h3>
                     <p class="download-solo__meta">Submit your practice name and email to receive the latest price list.</p>
-                    <button type="button" class="download-solo__cta" id="open-price-modal">Need a Pricelist</button>
+                    <button type="button" class="download-solo__cta open-price-modal">Need a Pricelist</button>
                 </div>
                 <!-- <p class="download-note">Replace the link above with your hosted PDF URL when the file is ready. If the browser opens the file instead of saving, use "Save link asâ€¦" on the link.</p> -->
             </div>
@@ -1546,7 +1546,7 @@
             <button type="button" class="price-modal__close" id="price-modal-close" aria-label="Close">×</button>
             <h3 class="price-modal__title" id="price-modal-title">need a pricelist</h3>
             <p class="price-modal__meta">Please enter your practice name and email address.</p>
-            <form class="download-price-form" id="download-price-form" name="price-list-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <form class="download-price-form" id="download-price-form" name="price-list-request" method="POST" action="" data-netlify="true" netlify netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="price-list-request">
                 <p hidden>
                     <label>Do not fill this out: <input name="bot-field"></label>
@@ -1589,10 +1589,11 @@
             var form = document.getElementById('download-price-form');
             var statusEl = document.getElementById('download-price-status');
             var modal = document.getElementById('price-modal');
-            var openBtn = document.getElementById('open-price-modal');
+            var openTriggers = document.querySelectorAll('.open-price-modal');
             var closeBtn = document.getElementById('price-modal-close');
             var backdrop = document.getElementById('price-modal-backdrop');
             var firstInput = document.getElementById('price-practice-name');
+            var lastOpenTrigger = null;
             if (!form) return;
             function openModal() {
                 if (!modal) return;
@@ -1605,7 +1606,7 @@
                 if (!modal) return;
                 modal.setAttribute('aria-hidden', 'true');
                 document.body.style.overflow = '';
-                if (openBtn) openBtn.focus();
+                if (lastOpenTrigger) lastOpenTrigger.focus();
             }
             function showStatus(ok, message) {
                 if (!statusEl) return;
@@ -1614,7 +1615,13 @@
                 statusEl.classList.remove('is-success', 'is-error');
                 statusEl.classList.add(ok ? 'is-success' : 'is-error');
             }
-            if (openBtn) openBtn.addEventListener('click', openModal);
+            openTriggers.forEach(function (el) {
+                el.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    lastOpenTrigger = el;
+                    openModal();
+                });
+            });
             if (closeBtn) closeBtn.addEventListener('click', closeModal);
             if (backdrop) backdrop.addEventListener('click', closeModal);
             document.addEventListener('keydown', function (e) {
@@ -1629,21 +1636,23 @@
                 }
                 showStatus(false, 'Submitting your request...');
                 var payload = new URLSearchParams(new FormData(form)).toString();
-                fetch('/', {
+                var submitTo = form.action || (window.location.pathname + window.location.search);
+                fetch(submitTo, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: payload
                 }).then(function (resp) {
-                    if (!resp.ok) throw new Error('Request failed');
+                    if (!resp.ok) throw new Error('HTTP ' + resp.status);
                 }).then(function () {
                     form.reset();
                     showStatus(true, 'Thank you. Your request was submitted.');
                     setTimeout(closeModal, 900);
-                }).catch(function () {
+                }).catch(function (err) {
                     if (window.location.protocol === 'file:') {
                         showStatus(false, 'Netlify forms work after deployment. Please publish this site on Netlify and try again.');
                     } else {
-                        showStatus(false, 'Could not submit right now. Please try again in a moment.');
+                        if (window.console && console.error) console.error('Netlify form submit:', err);
+                        showStatus(false, 'Could not submit right now. In Netlify → Forms, confirm "price-list-request" appears after deploy, then try again.');
                     }
                 }).finally(function () {
                     if (submitBtn) {
