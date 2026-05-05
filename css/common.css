@@ -19,7 +19,7 @@ html {
 }
 body { overflow-x: clip; }
 body { font-family: var(--font); font-size: 16px; font-weight: 400; color: var(--color-muted); background: var(--color-white); line-height: 1.55; }
-h1, h2, h3, .section-title { font-weight: 700; color: var(--color-dark); }
+h1, h2, h3, .section-title { font-weight: 700; color: var(--color-dark);}
 
 /* ========== FULL HEADER (promo bar + main header + nav + dropdowns + mobile) ========== */
 
