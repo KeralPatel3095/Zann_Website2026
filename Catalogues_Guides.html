@@ -1546,7 +1546,7 @@
             <button type="button" class="price-modal__close" id="price-modal-close" aria-label="Close">×</button>
             <h3 class="price-modal__title" id="price-modal-title">need a pricelist</h3>
             <p class="price-modal__meta">Please enter your practice name and email address.</p>
-            <form class="download-price-form" id="download-price-form" name="price-list-request" method="POST" action="" data-netlify="true" netlify netlify-honeypot="bot-field">
+            <form class="download-price-form" id="download-price-form" name="price-list-request" method="POST" action="/" data-netlify="true" netlify netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="price-list-request">
                 <p hidden>
                     <label>Do not fill this out: <input name="bot-field"></label>
@@ -1627,6 +1627,26 @@
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape' && modal && modal.getAttribute('aria-hidden') === 'false') closeModal();
             });
+            function encodeNetlifyPriceForm() {
+                var data = new URLSearchParams();
+                data.append('form-name', 'price-list-request');
+                var practiceEl = form.elements.namedItem('practice_name');
+                var emailEl = form.elements.namedItem('email');
+                var botEl = form.elements.namedItem('bot-field');
+                if (practiceEl) data.append('practice_name', practiceEl.value || '');
+                if (emailEl) data.append('email', emailEl.value || '');
+                data.append('request_type', 'Need a Pricelist');
+                if (botEl) data.append('bot-field', botEl.value || '');
+                return data.toString();
+            }
+            function postToNetlify(url) {
+                return fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: encodeNetlifyPriceForm(),
+                    credentials: 'same-origin'
+                });
+            }
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
                 var submitBtn = form.querySelector('button[type="submit"]');
@@ -1635,15 +1655,16 @@
                     submitBtn.textContent = 'Submitting...';
                 }
                 showStatus(false, 'Submitting your request...');
-                var payload = new URLSearchParams(new FormData(form)).toString();
-                var submitTo = form.action || (window.location.pathname + window.location.search);
-                fetch(submitTo, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: payload
-                }).then(function (resp) {
-                    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-                }).then(function () {
+                postToNetlify('/')
+                    .then(function (resp) {
+                        if (resp.ok) return;
+                        var path = window.location.pathname || '';
+                        if (!path || path === '/') throw new Error('HTTP ' + resp.status);
+                        return postToNetlify(path).then(function (r2) {
+                            if (!r2.ok) throw new Error('HTTP ' + r2.status);
+                        });
+                    })
+                    .then(function () {
                     form.reset();
                     showStatus(true, 'Thank you. Your request was submitted.');
                     setTimeout(closeModal, 900);
@@ -1652,7 +1673,7 @@
                         showStatus(false, 'Netlify forms work after deployment. Please publish this site on Netlify and try again.');
                     } else {
                         if (window.console && console.error) console.error('Netlify form submit:', err);
-                        showStatus(false, 'Could not submit right now. In Netlify → Forms, confirm "price-list-request" appears after deploy, then try again.');
+                        showStatus(false, 'Could not submit. Save and redeploy the site, then in Netlify check Forms shows "price-list-request". If you use a SPA redirect for all URLs, add an exception so POST requests are not rewritten to index.html.');
                     }
                 }).finally(function () {
                     if (submitBtn) {

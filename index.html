@@ -3351,14 +3351,16 @@
         
     </script>
     <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-     <!-- Netlify parses this at build so the "price-list-request" form is registered; submissions still POST from Catalogues_Guides.html -->
-    <form name="price-list-request" method="POST" data-netlify="true" netlify netlify-honeypot="bot-field" hidden>
-        <input type="hidden" name="form-name" value="price-list-request">
-        <input type="text" name="practice_name">
-        <input type="email" name="email">
-        <input type="hidden" name="request_type" value="Need a Pricelist">
-        <label>Do not fill: <input name="bot-field"></label>
-    </form>
+     <!-- Netlify parses this at build so the "price-list-request" form is registered (keep fields in sync with Catalogues_Guides.html modal). -->
+    <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+        <form name="price-list-request" method="POST" data-netlify="true" netlify netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="price-list-request">
+            <input type="text" name="practice_name" autocomplete="off" tabindex="-1">
+            <input type="email" name="email" autocomplete="off" tabindex="-1">
+            <input type="hidden" name="request_type" value="Need a Pricelist">
+            <label>Do not fill: <input name="bot-field" tabindex="-1"></label>
+        </form>
+    </div>
 </body>
 </html>
 
