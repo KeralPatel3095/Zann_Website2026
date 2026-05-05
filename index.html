@@ -240,6 +240,22 @@
             color: var(--color-dark);
             background: rgba(0,0,0,0.06);
         }
+         /* Keep logo + nav on a single row for mid/large desktop widths */
+        @media (min-width: 993px) and (max-width: 1500px) {
+            .header {
+                padding: 14px 36px 24px;
+                gap: 16px;
+                flex-wrap: nowrap;
+            }
+            .nav {
+                flex-wrap: nowrap;
+                gap: 2px;
+            }
+            .nav-link {
+                padding: 8px 10px;
+                font-size: 15px;
+            }
+        }
         .nav-item.dropdown-open .nav-link.nav-link-toggle { color: var(--color-dark); background: rgba(0,0,0,0.06); }
         .nav-link svg { width: 14px; height: 14px; transition: transform 0.5s ease; }
         .nav-item.dropdown-open .nav-link { text-decoration: underline; }

@@ -209,6 +209,22 @@ h1, h2, h3, .section-title { font-weight: 700; color: var(--color-dark); }
     transition: color 0.5s ease, background 0.2s ease;
     white-space: nowrap;
 }
+ /* Keep logo + nav on a single row for mid/large desktop widths */
+        @media (min-width: 993px) and (max-width: 1500px) {
+            .header {
+                padding: 14px 36px 24px;
+                gap: 16px;
+                flex-wrap: nowrap;
+            }
+            .nav {
+                flex-wrap: nowrap;
+                gap: 2px;
+            }
+            .nav-link {
+                padding: 8px 10px;
+                font-size: 15px;
+            }
+        }
 @media (min-width: 1100px) {
     .nav-link { padding: 10px 12px; font-size: 16px; }
 }
