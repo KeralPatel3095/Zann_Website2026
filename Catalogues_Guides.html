@@ -722,6 +722,121 @@
             padding: 0 clamp(4px, 2vw, 0);
             overflow-wrap: anywhere;
         }
+        .download-price-form {
+            max-width: 420px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .download-price-form .form-field {
+            margin-bottom: 12px;
+        }
+        .download-price-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            font-weight: 600;
+        }
+        .download-price-form input {
+            width: 100%;
+            min-height: 44px;
+            padding: 10px 12px;
+            border: 1px solid rgba(84, 86, 88, 0.26);
+            border-radius: 6px;
+            font-size: 16px;
+            color: var(--color-dark);
+            background: #fff;
+            font-family: var(--font);
+        }
+        .download-price-form input:focus {
+            outline: none;
+            border-color: var(--color-sage-dark);
+            box-shadow: 0 0 0 2px rgba(122, 154, 159, 0.2);
+        }
+        .download-price-form .download-solo__cta {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: lowercase;
+        }
+        .download-price-status {
+            margin: 0 0 12px;
+            padding: 10px 12px;
+            border: 1px solid rgba(122, 154, 159, 0.3);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.82);
+            color: var(--color-dark);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .download-price-status[hidden] { display: none; }
+        .download-price-status.is-success { background: #e3efe8; border-color: #9cb9a7; }
+        .download-price-status.is-error { background: #f2e2df; border-color: #c89a93; }
+        .price-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1400;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .price-modal[aria-hidden="false"] {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .price-modal__backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(31, 43, 46, 0.45);
+            border: none;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+        }
+        .price-modal__dialog {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 480px);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 249, 251, 0.96) 100%);
+            border-radius: 14px;
+            border: 1px solid rgba(122, 154, 159, 0.35);
+            box-shadow: 0 24px 60px rgba(45, 72, 78, 0.22);
+            padding: 24px 22px 22px;
+        }
+        .price-modal__close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(122, 154, 159, 0.32);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--color-dark);
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .price-modal__close:hover {
+            background: rgba(226, 242, 246, 0.85);
+        }
+        .price-modal__title {
+            margin: 0 0 8px;
+            font-size: clamp(20px, 1.4vw + 12px, 26px);
+            color: var(--color-dark);
+            text-transform: lowercase;
+            letter-spacing: -0.01em;
+        }
+        .price-modal__meta {
+            margin: 0 0 18px;
+            font-size: 15px;
+            line-height: 1.55;
+            color: var(--color-muted);
+        }
         .download-solo__cta {
             display: inline-flex;
             align-items: center;
@@ -1257,7 +1372,7 @@
             <p class="lead">A digital library for clinicians.</p>
             <p class="intro">Explore our guides on material science, restorative options, clinical protocols, and removable systems - so your team can plan cases with clarity from prep to delivery.</p>
             <div class="hero-cta-row">
-                <a class="btn btn-ghost" href="https://github.com/KeralPatel3095/ZANN_PDF/raw/main/ZANN%20Pricelist-2026.pdf ">Download catalogue</a>
+                <a class="btn btn-ghost" id="open-price-modal">Need a Pricelist</a>
                 <a class="btn" href="#library">Browse the library</a>
             </div>
         </div>
@@ -1417,13 +1532,39 @@
                 </div>
                 <div class="download-solo">
                     <h3 class="download-solo__title">Secure the Essential Lab Guide</h3>
-                    <p class="download-solo__meta">Optimize your workflow with our latest pricing schedule and digital integration protocols. Link below until your permanent file is hosted.</p>
-                    <a class="download-solo__cta" href="https://github.com/KeralPatel3095/ZANN_PDF/raw/main/ZANN%20Pricelist-2026.pdf " download>Download PDF</a>
+                    <p class="download-solo__meta">Submit your practice name and email to receive the latest price list.</p>
+                    <button type="button" class="download-solo__cta" id="open-price-modal">Need a Pricelist</button>
                 </div>
                 <!-- <p class="download-note">Replace the link above with your hosted PDF URL when the file is ready. If the browser opens the file instead of saving, use "Save link asâ€¦" on the link.</p> -->
             </div>
         </div>
     </section>
+
+    <div class="price-modal" id="price-modal" aria-hidden="true">
+        <button type="button" class="price-modal__backdrop" id="price-modal-backdrop" aria-label="Close"></button>
+        <div class="price-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="price-modal-title">
+            <button type="button" class="price-modal__close" id="price-modal-close" aria-label="Close">×</button>
+            <h3 class="price-modal__title" id="price-modal-title">need a pricelist</h3>
+            <p class="price-modal__meta">Please enter your practice name and email address.</p>
+            <form class="download-price-form" id="download-price-form" name="price-list-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="price-list-request">
+                <p hidden>
+                    <label>Do not fill this out: <input name="bot-field"></label>
+                </p>
+                <input type="hidden" name="request_type" value="Need a Pricelist">
+                <div id="download-price-status" class="download-price-status" role="status" aria-live="polite" hidden></div>
+                <div class="form-field">
+                    <label for="price-practice-name">practice name</label>
+                    <input type="text" id="price-practice-name" name="practice_name" required>
+                </div>
+                <div class="form-field">
+                    <label for="price-email">email address</label>
+                    <input type="email" id="price-email" name="email" required>
+                </div>
+                <button type="submit" class="download-solo__cta">Submit</button>
+            </form>
+        </div>
+    </div>
 
     <div id="site-footer"></div>
 
@@ -1444,12 +1585,76 @@
                 });
             }
         })();
+        (function () {
+            var form = document.getElementById('download-price-form');
+            var statusEl = document.getElementById('download-price-status');
+            var modal = document.getElementById('price-modal');
+            var openBtn = document.getElementById('open-price-modal');
+            var closeBtn = document.getElementById('price-modal-close');
+            var backdrop = document.getElementById('price-modal-backdrop');
+            var firstInput = document.getElementById('price-practice-name');
+            if (!form) return;
+            function openModal() {
+                if (!modal) return;
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                if (statusEl) statusEl.hidden = true;
+                if (firstInput) firstInput.focus();
+            }
+            function closeModal() {
+                if (!modal) return;
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                if (openBtn) openBtn.focus();
+            }
+            function showStatus(ok, message) {
+                if (!statusEl) return;
+                statusEl.hidden = false;
+                statusEl.textContent = message;
+                statusEl.classList.remove('is-success', 'is-error');
+                statusEl.classList.add(ok ? 'is-success' : 'is-error');
+            }
+            if (openBtn) openBtn.addEventListener('click', openModal);
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            if (backdrop) backdrop.addEventListener('click', closeModal);
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && modal && modal.getAttribute('aria-hidden') === 'false') closeModal();
+            });
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Submitting...';
+                }
+                showStatus(false, 'Submitting your request...');
+                var payload = new URLSearchParams(new FormData(form)).toString();
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: payload
+                }).then(function (resp) {
+                    if (!resp.ok) throw new Error('Request failed');
+                }).then(function () {
+                    form.reset();
+                    showStatus(true, 'Thank you. Your request was submitted.');
+                    setTimeout(closeModal, 900);
+                }).catch(function () {
+                    if (window.location.protocol === 'file:') {
+                        showStatus(false, 'Netlify forms work after deployment. Please publish this site on Netlify and try again.');
+                    } else {
+                        showStatus(false, 'Could not submit right now. Please try again in a moment.');
+                    }
+                }).finally(function () {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Submit';
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 </html>
-
-
-
-
 
 
