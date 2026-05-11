@@ -13,7 +13,9 @@
         :root {
             --story-pad-x: clamp(28px, 8vw, 120px);
             --story-content-max: 920px;
+            text-transform: lowercase;        
         }
+
         .story-hero {
             position: relative;
             min-height: 100vh;
@@ -315,6 +317,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            
         }
         .story-gen-body h3 {
             font-size: clamp(16px, 1.45vw, 20px);
@@ -327,6 +330,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             width: 100%;
+            text-transform: uppercase;
         }
         .story-gen-body h3::first-letter {
             font-size: 1.7em;

@@ -15,6 +15,7 @@
     --blog-prose: 40rem;
     --blog-img-ease: cubic-bezier(0.33, 1, 0.68, 1);
     --blog-img-duration: 0.55s;
+
 }
 
 * {
@@ -37,6 +38,7 @@ body {
     background: var(--color-white);
     line-height: 1.55;
     overflow-x: clip;
+    text-transform: lowercase;
 }
 
 h1,
