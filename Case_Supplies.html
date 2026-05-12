@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Supplies | Zann Dental Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        :root {
+            --color-dark: #545658;
+            --color-muted: #636466;
+            --color-border: rgba(0, 0, 0, 0.08);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: var(--font);
+            color: var(--color-muted);
+            background: #ededed;
+        }
+        .case-supplies-page {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 46px 20px 70px;
+        }
+        .case-supplies-page h1 {
+            margin: 0 0 6px;
+            font-size: clamp(30px, 3.7vw, 38px);
+            color: var(--color-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+        }
+        .required-note {
+            margin: 0 0 22px;
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #6e7275;
+        }
+        .required-note span { color: #a15454; }
+        .case-supplies-form {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+            gap: 24px 56px;
+        }
+        .form-column {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .field label,
+        .group-title {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #5d6164;
+        }
+        .req { color: #a15454; }
+        .field input[type="text"],
+        .field input[type="email"],
+        .field input[type="tel"],
+        .field textarea {
+            width: 100%;
+            border: 1px solid #b9bec2;
+            border-radius: 0;
+            background: #f2f2f2;
+            padding: 10px 12px;
+            font-size: 14px;
+            font-family: var(--font);
+            color: var(--color-dark);
+        }
+        .field textarea {
+            min-height: 116px;
+            resize: vertical;
+        }
+        .name-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .checklist label {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: #505457;
+            cursor: pointer;
+        }
+        .checklist input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+            margin: 0;
+            accent-color: #7a9a9f;
+        }
+        .actions { margin-top: 10px; }
+        .actions button {
+            min-width: 124px;
+            height: 42px;
+            border: 1px solid var(--color-dark);
+            background: transparent;
+            color: var(--color-dark);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            font-family: var(--font);
+            cursor: pointer;
+        }
+        .actions button:hover {
+            background: var(--color-dark);
+            color: #fff;
+        }
+        .status {
+            margin-bottom: 14px;
+            padding: 10px 12px;
+            border: 1px solid #c2c7cb;
+            font-size: 14px;
+            color: var(--color-dark);
+            background: #f7f7f7;
+        }
+        .status[hidden] { display: none; }
+        .status.is-success { background: #e3efe8; border-color: #9cb9a7; }
+        .status.is-error { background: #f2e2df; border-color: #c89a93; }
+        @media (max-width: 768px) {
+            .case-supplies-page { padding: 32px 16px 50px; }
+            .case-supplies-form { grid-template-columns: 1fr; gap: 18px; }
+            .name-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <main class="case-supplies-page">
+        <h1>everything you need to get started</h1>
+        <p class="required-note"><span>*</span> indicates required field</p>
+
+        <!-- Netlify: Site settings > Forms > Notifications — add zanndentallab@gmail.com for form "case-supplies-request". -->
+        <form
+            class="case-supplies-form"
+            id="case-supplies-form"
+            name="case-supplies-request"
+            method="POST"
+            action="/"
+            data-netlify="true"
+            netlify
+            netlify-honeypot="bot-field"
+        >
+            <input type="hidden" name="form-name" value="case-supplies-request">
+            <p hidden>
+                <label>Do not fill this out: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </p>
+            <div id="case-supplies-status" class="status" role="status" aria-live="polite" hidden></div>
+
+            <div class="form-column">
+                <div class="field">
+                    <label for="cs-practice-name">practice name <span class="req">*</span></label>
+                    <input type="text" id="cs-practice-name" name="practice_name" required>
+                </div>
+
+                <div class="field">
+                    <div class="group-title">type of business <span class="req">*</span></div>
+                    <div class="checklist" id="cs-business-group">
+                        <label><input type="checkbox" name="type_of_business[]" value="Private Practice">private practice</label>
+                        <label><input type="checkbox" name="type_of_business[]" value="Group Practice">group practice</label>
+                        <label><input type="checkbox" name="type_of_business[]" value="Dental Lab">dental lab</label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="cs-dentist-first">name of dentist <span class="req">*</span></label>
+                    <div class="name-grid">
+                        <input type="text" id="cs-dentist-first" name="dentist_first_name" placeholder="First" required>
+                        <input type="text" id="cs-dentist-last" name="dentist_last_name" placeholder="Last" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="cs-office-manager">office manager <span class="req">*</span></label>
+                    <input type="text" id="cs-office-manager" name="office_manager" required>
+                </div>
+
+                <div class="field">
+                    <label for="cs-main-receptionist">main receptionist</label>
+                    <input type="text" id="cs-main-receptionist" name="main_receptionist">
+                </div>
+
+                <div class="field">
+                    <label for="cs-address">address <span class="req">*</span></label>
+                    <input type="text" id="cs-address" name="address" required>
+                </div>
+
+                <div class="field">
+                    <div class="group-title">order supplies <span class="req">*</span></div>
+                    <div class="checklist" id="cs-supplies-group">
+                        <label><input type="checkbox" name="order_supplies[]" value="ZANN Boxes">zann boxes</label>
+                        <label><input type="checkbox" name="order_supplies[]" value="Shipping Bags">shipping bags</label>
+                        <label><input type="checkbox" name="order_supplies[]" value="Price List">price list</label>
+                        <label><input type="checkbox" name="order_supplies[]" value="Welcome Package">welcome package</label>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="submit">submit</button>
+                </div>
+            </div>
+
+            <div class="form-column">
+                <div class="field">
+                    <label for="cs-phone">phone number <span class="req">*</span></label>
+                    <input type="tel" id="cs-phone" name="phone_number" required>
+                </div>
+
+                <div class="field">
+                    <label for="cs-email">email <span class="req">*</span></label>
+                    <input type="email" id="cs-email" name="email" required>
+                </div>
+
+                <div class="field">
+                    <label for="cs-comment">comment</label>
+                    <textarea id="cs-comment" name="comment"></textarea>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        (function () {
+            var form = document.getElementById('case-supplies-form');
+            var statusEl = document.getElementById('case-supplies-status');
+
+            function showStatus(ok, message) {
+                if (!statusEl) return;
+                statusEl.hidden = false;
+                statusEl.textContent = message;
+                statusEl.classList.remove('is-success', 'is-error');
+                statusEl.classList.add(ok ? 'is-success' : 'is-error');
+            }
+
+            function hasChecked(containerId) {
+                var group = document.getElementById(containerId);
+                if (!group) return false;
+                return !!group.querySelector('input[type="checkbox"]:checked');
+            }
+
+            if (!form) return;
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                if (!hasChecked('cs-business-group')) {
+                    showStatus(false, 'Please select at least one option in type of business.');
+                    return;
+                }
+                if (!hasChecked('cs-supplies-group')) {
+                    showStatus(false, 'Please select at least one option in order supplies.');
+                    return;
+                }
+
+                var submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'submitting...';
+                }
+                showStatus(false, 'Submitting your request...');
+
+                function encodeNetlifyBody() {
+                    var data = new URLSearchParams();
+                    var fd = new FormData(form);
+                    fd.forEach(function (value, key) {
+                        data.append(key, value);
+                    });
+                    return data.toString();
+                }
+                function postToNetlify(url) {
+                    return fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: encodeNetlifyBody(),
+                        credentials: 'same-origin'
+                    });
+                }
+                postToNetlify('/')
+                    .then(function (resp) {
+                        if (resp.ok) return;
+                        var path = window.location.pathname || '';
+                        if (!path || path === '/') throw new Error('HTTP ' + resp.status);
+                        return postToNetlify(path).then(function (r2) {
+                            if (!r2.ok) throw new Error('HTTP ' + r2.status);
+                        });
+                    })
+                    .then(function () {
+                    form.reset();
+                    showStatus(true, 'Thank you. Your case supplies request was submitted successfully.');
+                }).catch(function (err) {
+                    if (window.location.protocol === 'file:') {
+                        showStatus(false, 'Netlify forms work after deployment. Please publish this site on Netlify and try again.');
+                    } else {
+                        if (window.console && console.error) console.error('Netlify form submit:', err);
+                        showStatus(false, 'Could not submit. Save and redeploy the site, then in Netlify check Forms shows "case-supplies-request". If you use a SPA redirect for all URLs, add an exception so POST requests are not rewritten to index.html.');
+                    }
+                }).finally(function () {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'submit';
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

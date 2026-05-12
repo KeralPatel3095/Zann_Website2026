@@ -1,911 +1,2603 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Night Guard Promotion | Zann Dental Lab</title>
+  <title>free night guard promotion | zann dental lab</title>
+  <meta name="description" content="exclusive night guard promotion for dental clinics: canada’s comfortable custom keystone soft splint — free guard, $40 delivery. pay with paypal. 7-day turnaround, stl storage, 24/7 support.">
+  <link rel="icon" type="image/x-icon" href="images/Logo.png">
+  <link rel="canonical" href="https://www.zanndental.com/Promotion.html">
+  <meta name="theme-color" content="#E2F2F6">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
     :root {
-      --color-bg: #f8f7f4;
-      --color-bg-warm: #f5f3ef;
-      --color-bg-white: #ffffff;
-      --color-text: #1a1a1a;
-      --color-text-muted: #4a4a4a;
-      --color-accent: #b85c38;
-      --color-accent-dark: #8b4528;
-      --color-accent-soft: rgba(184, 92, 56, 0.06);
-      --color-border: rgba(0, 0, 0, 0.06);
-      --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.03);
-      --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.06);
-      --radius: 20px;
-      --radius-sm: 12px;
+      --color-bg: #e2f2f6;
+      --color-bg-alt: #f5fbfc;
+      --color-white: #ffffff;
+      --color-dark: #545658;
+      --color-muted: #636466;
+      --color-border: rgba(0, 0, 0, 0.08);
+      --promo-accent: #4a6f78;
+      --promo-accent-soft: rgba(74, 111, 120, 0.14);
+      --promo-kicker: #7a9a9f;
+      --paypal-blue: #0070ba;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      --pro-max: 1080px;
+      --pro-line: #dce3e5;
+      --pro-line-strong: #c5ced1;
+      --pro-shadow-panel: 0 12px 40px rgba(45, 52, 55, 0.07), 0 2px 8px rgba(45, 52, 55, 0.04);
+      --pro-shadow-soft: 0 2px 10px rgba(45, 52, 55, 0.05), 0 1px 2px rgba(45, 52, 55, 0.04);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 72px;
+      background: var(--color-bg);
+      text-transform: lowercase;
     }
 
     body {
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--color-muted);
       background: var(--color-bg);
-      color: var(--color-text);
-      overflow-x: hidden;
-      line-height: 1.65;
+      line-height: 1.55;
+      overflow-x: clip;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Top bar - minimal & refined */
-    .promo-brand {
-      padding: 18px 8%;
-      text-align: center;
-      background: var(--color-text);
-      color: rgba(255, 255, 255, 0.95);
-      font-family: 'Outfit', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-    }
-
-    /* Hero - diagonal split, editorial feel */
-    .hero {
-      min-height: 90vh;
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      align-items: center;
-      position: relative;
-      background: linear-gradient(165deg, var(--color-bg-warm) 0%, var(--color-bg) 50%, var(--color-bg-white) 100%);
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
+    .skip-link {
       position: absolute;
+      left: 12px;
+      top: -100px;
+      z-index: 100;
+      padding: 10px 16px;
+      background: var(--color-dark);
+      color: var(--color-white);
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: top 0.15s ease;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+      outline: 2px solid var(--promo-accent);
+      outline-offset: 2px;
+    }
+
+    .promo-site-header {
+      position: sticky;
       top: 0;
-      right: 0;
-      width: 52%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(184, 92, 56, 0.03) 0%, transparent 60%);
-      transform: skewX(-8deg);
-      transform-origin: top right;
-      pointer-events: none;
+      z-index: 50;
+      width: 100vw;
+      max-width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      box-sizing: border-box;
+      background: rgba(226, 242, 246, 0.94);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid rgba(99, 100, 102, 0.12);
     }
 
-    .hero-content {
-      padding: 80px 8% 80px 10%;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero .label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 3.5px;
-      color: var(--color-accent);
-      margin-bottom: 24px;
-      font-weight: 600;
-    }
-
-    .hero h1 {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(36px, 4vw, 52px);
-      font-weight: 700;
-      line-height: 1.12;
-      margin-bottom: 28px;
-      color: var(--color-text);
-      letter-spacing: -0.03em;
-    }
-
-    .hero p {
-      font-size: 17px;
-      color: var(--color-text-muted);
-      margin-bottom: 40px;
-      max-width: 420px;
-      line-height: 1.8;
-      font-weight: 400;
-    }
-
-    .hero-buttons {
+    .promo-site-header__inner {
+      max-width: var(--pro-max);
+      margin: 0 auto;
+      padding: 12px clamp(20px, 4vw, 48px);
       display: flex;
-      gap: 16px;
       flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 18px 40px;
-      background: var(--color-accent);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      letter-spacing: 0.5px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary:hover {
-      background: var(--color-accent-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(184, 92, 56, 0.25);
-    }
-
-    .btn-secondary {
-      display: inline-block;
-      padding: 18px 40px;
-      background: transparent;
-      color: var(--color-text);
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      border: 1px solid var(--color-border);
-      transition: all 0.3s ease;
-    }
-
-    .btn-secondary:hover {
-      background: var(--color-bg-white);
-      border-color: var(--color-text-muted);
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .hero-image-wrap {
-      position: relative;
-      padding: 60px 8% 80px 4%;
-      display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      gap: 10px 20px;
     }
 
-    .hero-image-container {
-      position: relative;
-      width: 60%;
-      max-width: 480px;
-      margin-top: -140px;
-      margin-right: -120px;
-    }
-
-    .hero-image {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      /* border-radius: var(--radius); */
-      /* box-shadow: var(--shadow-card); */
-    }
-
-    .hero-image-container::after {
-      content: '';
-      position: absolute;
-      inset: -20px -20px -20px 20px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius);
-      z-index: -1;
-    }
-
-    .hero-card {
-      position: absolute;
-      bottom: 40px;
-      margin-left: -154px;
-      background: var(--color-bg-white);
-      padding: 28px 32px;
-      border-radius: var(--radius-sm);
-      box-shadow: var(--shadow-card);
-      max-width: 260px;
-      border-left: 3px solid var(--color-accent);
-    }
-
-    .hero-card h3 {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 20px;
+    .promo-site-header__brand {
       font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--color-text);
-    }
-
-    .hero-card p {
-      font-size: 14px;
-      color: var(--color-text-muted);
-      margin-bottom: 16px;
-      line-height: 1.6;
-    }
-
-    .hero-card .cta-phone {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--color-accent);
-      font-weight: 600;
-      font-size: 15px;
-      /* padding: 20px 40px 20px 40px; */
-    }
-
-    /* Product section - staggered offset layout */
-    .section-product {
-      padding: 120px 8%;
-      display: grid;
-      grid-template-columns: 0.9fr 1fr;
-      gap: 80px;
-      align-items: center;
-      background: var(--color-bg-white);
-    }
-
-    .section-product .image-stats {
-      position: relative;
-    }
-
-    .section-product .image-stats img {
-      width: 100%;
-      /* border-radius: var(--radius); */
-      /* box-shadow: var(--shadow-card); */
-    }
-
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: -40px;
-      margin-left: -4px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .stat-item {
-      background: var(--color-bg-white);
-      padding: 24px 16px;
-      border-radius: var(--radius-sm);
-      box-shadow: var(--shadow-card);
-      text-align: center;
-      border: 1px solid var(--color-border);
-    }
-
-    .stat-item .number {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--color-accent);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .stat-item .label {
-      font-size: 12px;
-      color: var(--color-text-muted);
-      /* color:black; */
-      font-weight: 500;
-    }
-
-    .promo-text {
-      padding-right: 5%;
-    }
-
-    .section-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: var(--color-accent);
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
-
-    .promo-text h2 {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(28px, 2.8vw, 38px);
-      margin-bottom: 24px;
-      color: var(--color-text);
-      letter-spacing: -0.02em;
-      line-height: 1.25;
-    }
-
-    .promo-text p {
       font-size: 16px;
-      color: var(--color-text-muted);
-      line-height: 1.85;
-      margin-bottom: 32px;
-    }
-
-    /* How to Send - horizontal cards with offset */
-    .send-case {
-      background: var(--color-bg);
-      padding: 120px 8%;
-      position: relative;
-    }
-
-    .send-case .section-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .send-case .section-label {
-      display: inline-block;
-      margin-bottom: 12px;
-    }
-
-    .send-case .section-title {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(28px, 3vw, 40px);
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--color-text);
       letter-spacing: -0.02em;
-      line-height: 1.2;
+      color: var(--color-dark);
+      text-decoration: none;
+      line-height: 1.3;
     }
 
-    .send-case .section-header > p {
-      color: var(--color-text-muted);
-      max-width: 500px;
-      margin: 0 auto;
-      font-size: 16px;
-      line-height: 1.7;
+    .promo-site-header__brand:hover {
+      color: var(--promo-accent);
     }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto;
+    .promo-site-header__tag {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--promo-accent);
+      padding: 6px 11px;
+      border: 1px solid rgba(74, 111, 120, 0.22);
+      border-radius: 2px;
+      background: rgba(74, 111, 120, 0.06);
     }
 
-    .card-grid .card:nth-child(odd) {
+    .promo-page {
+      font-feature-settings: "kern" 1, "liga" 1;
+      width: 100%;
+      overflow-x: clip;
+    }
+
+    /* ── Motion (respects .promo-motion-off from JS when reduced-motion) ── */
+    @keyframes promo-fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes promo-fade-up-deep {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes promo-hero-drift {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes promo-header-in {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    html:not(.promo-motion-off) .promo-site-header {
+      animation: promo-header-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    html:not(.promo-motion-off) .promo-hero-copy > .label {
+      opacity: 0;
+      animation: promo-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
+    }
+
+    html:not(.promo-motion-off) .promo-hero-copy > h1 {
+      opacity: 0;
+      animation: promo-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.16s forwards;
+    }
+
+    html:not(.promo-motion-off) .promo-hero-copy > p.lead {
+      opacity: 0;
+      animation: promo-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.26s forwards;
+    }
+
+    html:not(.promo-motion-off) .promo-hero-copy > .promo-hero-buttons {
+      opacity: 0;
+      animation: promo-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.36s forwards;
+    }
+
+    html:not(.promo-motion-off) .promo-hero-visual {
+      animation: promo-hero-drift 7s ease-in-out 0.9s infinite alternate;
+    }
+
+    html:not(.promo-motion-off) .promo-hero-visual img {
+      opacity: 0;
+      animation: promo-fade-up-deep 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.16s forwards;
+    }
+
+    .motion-reveal {
+      will-change: opacity, transform;
+    }
+
+    .promo-motion-js .motion-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .promo-motion-js .motion-reveal.is-inview {
+      opacity: 1;
       transform: translateY(0);
     }
 
-    .card-grid .card:nth-child(even) {
+    /* In-section stagger + image fade-up (scroll sections only) */
+    .promo-motion-js .section-premium:not(.is-inview) .premium-stats-ladder,
+    .promo-motion-js .section-premium:not(.is-inview) .premium-body > .copy-block {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: none;
+    }
+
+    .promo-motion-js .section-premium.is-inview .premium-stats-ladder {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1) 0.05s,
+        transform 0.68s cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
+    }
+
+    .promo-motion-js .section-premium.is-inview .premium-body > .copy-block {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.64s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+        transform 0.72s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+    }
+
+    .promo-motion-js .section-premium:not(.is-inview) .premium-square-frame img {
+      opacity: 0;
+      transform: translateY(42px) scale(0.95);
+      transition: none;
+    }
+
+    .promo-motion-js .section-premium.is-inview .premium-square-frame img {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition:
+        opacity 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0.14s,
+        transform 0.82s cubic-bezier(0.22, 1, 0.36, 1) 0.14s;
+    }
+
+    .promo-motion-js .section-send:not(.is-inview) .section-send-header,
+    .promo-motion-js .section-send:not(.is-inview) .send-accordion {
+      opacity: 0;
       transform: translateY(24px);
+      transition: none;
     }
 
-    .card {
-      background: var(--color-bg-white);
-      border-radius: var(--radius-sm);
-      padding: 32px 24px;
-      box-shadow: var(--shadow-subtle);
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      text-align: left;
-      border: 1px solid var(--color-border);
+    .promo-motion-js .section-send.is-inview .section-send-header {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.58s cubic-bezier(0.22, 1, 0.36, 1) 0.04s,
+        transform 0.64s cubic-bezier(0.22, 1, 0.36, 1) 0.04s;
     }
 
-    .card:hover {
-      transform: translateY(-8px) !important;
-      box-shadow: var(--shadow-card);
-      border-color: rgba(184, 92, 56, 0.2);
+    .promo-motion-js .section-send.is-inview .send-accordion {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+        transform 0.68s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
     }
 
-    .card .icon {
-      width: 44px;
-      height: 44px;
+    .promo-motion-js .section-claim:not(.is-inview) .claim-prehead,
+    .promo-motion-js .section-claim:not(.is-inview) .claim-panel {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: none;
+    }
+
+    .promo-motion-js .section-claim.is-inview .claim-prehead {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.58s cubic-bezier(0.22, 1, 0.36, 1) 0.04s,
+        transform 0.64s cubic-bezier(0.22, 1, 0.36, 1) 0.04s;
+    }
+
+    .promo-motion-js .section-claim.is-inview .claim-panel {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.64s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+    }
+
+    .promo-motion-js .section-close-cta:not(.is-inview) .close-cta-copy__inner {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: none;
+    }
+
+    .promo-motion-js .section-close-cta.is-inview .close-cta-copy__inner {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1) 0.08s,
+        transform 0.68s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
+    }
+
+    .promo-motion-js .section-close-cta:not(.is-inview) .close-cta-media__square img {
+      opacity: 0;
+      transform: translateY(42px) scale(0.95);
+      transition: none;
+    }
+
+    .promo-motion-js .section-close-cta.is-inview .close-cta-media__square img {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition:
+        opacity 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+        transform 0.82s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+    }
+
+    .promo-motion-js .section-promo-legal:not(.is-inview) .promo-legal-grid > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: none;
+    }
+
+    .promo-motion-js .section-promo-legal.is-inview .promo-legal-grid > *:nth-child(1) {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
+    }
+
+    .promo-motion-js .section-promo-legal.is-inview .promo-legal-grid > *:nth-child(2) {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+    }
+
+    .promo-motion-js .section-promo-full-cta:not(.is-inview) .promo-full-cta__inner > * {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: none;
+    }
+
+    .promo-motion-js .section-promo-full-cta.is-inview .promo-full-cta__inner > *:nth-child(1) {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.04s,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.04s;
+    }
+
+    .promo-motion-js .section-promo-full-cta.is-inview .promo-full-cta__inner > *:nth-child(2) {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+    }
+
+    .promo-motion-js .section-promo-full-cta.is-inview .promo-full-cta__inner > *:nth-child(3) {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.16s,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.16s;
+    }
+
+    .promo-motion-js .section-promo-full-cta.is-inview .promo-full-cta__inner > *:nth-child(4) {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.22s,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.22s;
+    }
+
+    .promo-motion-js .section-promo-full-cta.is-inview .promo-full-cta__inner > *:nth-child(5) {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.28s,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.28s;
+    }
+
+    html.promo-motion-off .motion-reveal,
+    html.promo-motion-off .promo-motion-js .motion-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      will-change: auto;
+    }
+
+    html.promo-motion-off .promo-site-header,
+    html.promo-motion-off .promo-hero-copy > *,
+    html.promo-motion-off .promo-hero-visual,
+    html.promo-motion-off .promo-hero-visual img {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    html.promo-motion-off .section-premium .premium-stats-ladder,
+    html.promo-motion-off .section-premium .premium-body > .copy-block,
+    html.promo-motion-off .section-premium .premium-square-frame img,
+    html.promo-motion-off .section-send .section-send-header,
+    html.promo-motion-off .section-send .send-accordion,
+    html.promo-motion-off .section-claim .claim-prehead,
+    html.promo-motion-off .section-claim .claim-panel,
+    html.promo-motion-off .section-close-cta .close-cta-copy__inner,
+    html.promo-motion-off .section-close-cta .close-cta-media__square img,
+    html.promo-motion-off .section-promo-legal .promo-legal-grid > *,
+    html.promo-motion-off .section-promo-full-cta .promo-full-cta__inner > * {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    .promo-btn-primary,
+    .promo-btn-secondary,
+    .promo-full-cta__phone,
+    .promo-form .claim-link,
+    .promo-form .paypal-cta {
+      transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    html:not(.promo-motion-off) .promo-btn-primary:hover,
+    html:not(.promo-motion-off) .promo-btn-secondary:hover,
+    html:not(.promo-motion-off) .promo-full-cta__phone:hover {
+      transform: translateY(-2px);
+    }
+
+    html:not(.promo-motion-off) .promo-form .claim-link:hover,
+    html:not(.promo-motion-off) .promo-form .paypal-cta:hover {
+      transform: translateY(-2px);
+    }
+
+    html:not(.promo-motion-off) .promo-site-header__brand,
+    html:not(.promo-motion-off) .promo-site-header__tag {
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    html:not(.promo-motion-off) .promo-site-header__brand:hover {
+      transform: translateY(-1px);
+    }
+
+    html:not(.promo-motion-off) .send-accordion summary {
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    html:not(.promo-motion-off) .send-accordion details {
+      transition: background 0.22s ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html:not(.promo-motion-off) .promo-site-header,
+      html:not(.promo-motion-off) .promo-hero-copy > *,
+      html:not(.promo-motion-off) .promo-hero-visual,
+      html:not(.promo-motion-off) .promo-hero-visual img {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .promo-motion-js .motion-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .promo-motion-js .section-premium .premium-stats-ladder,
+      .promo-motion-js .section-premium .premium-body > .copy-block,
+      .promo-motion-js .section-premium .premium-square-frame img,
+      .promo-motion-js .section-send .section-send-header,
+      .promo-motion-js .section-send .send-accordion,
+      .promo-motion-js .section-claim .claim-prehead,
+      .promo-motion-js .section-claim .claim-panel,
+      .promo-motion-js .section-close-cta .close-cta-copy__inner,
+      .promo-motion-js .section-close-cta .close-cta-media__square img,
+      .promo-motion-js .section-promo-legal .promo-legal-grid > *,
+      .promo-motion-js .section-promo-full-cta .promo-full-cta__inner > * {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Full-bleed content bands (same palette as css/common.css + site header) */
+    .promo-page > section,
+    .promo-page > .promo-footer-brand {
+      width: 100vw;
+      max-width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .promo-page h1,
+    .promo-page h2,
+    .promo-page h3 {
+      font-weight: 700;
+      color: var(--color-dark);
+    }
+
+    main.promo-page:focus {
+      outline: none;
+    }
+
+    /* ═══ A. Hero — asymmetric split + bottom phone rail ═══ */
+    .promo-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      min-height: min(88vh, 820px);
+      align-items: stretch;
+      background: var(--color-bg);
+      border-bottom: 1px solid rgba(99, 100, 102, 0.1);
+    }
+
+    .promo-hero-copy {
+      padding: clamp(40px, 6vw, 88px) clamp(24px, 5vw, 56px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      background: transparent;
+      min-width: 0;
+    }
+
+    .promo-hero-copy .label {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--promo-kicker);
+      margin-bottom: 8px;
+    }
+
+    .promo-hero-copy h1 {
+      font-size: clamp(42px, 8vw, 72px);
+      line-height: 1.1;
+      max-width: 12ch;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .promo-hero-copy p.lead {
+      font-size: 16px;
+      max-width: 34ch;
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+
+    .promo-hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .promo-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 26px;
+      background: var(--color-dark);
+      color: var(--color-white);
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 16px;
+      border: 1px solid var(--color-dark);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .promo-btn-primary:hover {
+      background: #2a2c2e;
+      border-color: #2a2c2e;
+    }
+
+    .promo-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 26px;
+      background: var(--color-white);
+      color: var(--color-dark);
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 16px;
+      border: 1px solid var(--pro-line-strong);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .promo-btn-secondary:hover {
+      background: #f4f7f8;
+      border-color: var(--promo-accent);
+    }
+
+    .promo-hero-visual {
+      position: relative;
+      background: rgba(255, 255, 255, 0.38);
+      clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--color-accent-soft);
-      border-radius: 10px;
-      color: var(--color-accent);
-      font-size: 18px;
-      margin-bottom: 20px;
+      padding: clamp(24px, 4vw, 56px) clamp(20px, 4vw, 48px);
+      min-height: 0;
+      min-width: 0;
     }
 
-    .card h2 {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 19px;
-      margin-bottom: 12px;
-      color: var(--color-text);
+    .promo-hero-visual img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: min(100%, clamp(240px, 36vw, 420px));
+      max-height: min(62vh, 520px);
+      object-fit: contain;
+      object-position: center center;
+      margin-inline: auto;
+      filter: drop-shadow(0 20px 36px rgba(74, 111, 120, 0.2));
+    }
+
+    .hero-phone-rail {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px clamp(24px, 5vw, 56px);
+      background: var(--color-dark);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .hero-phone-rail strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .hero-phone-rail a {
+      color: #b8d9e2;
       font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .card p {
+    .hero-phone-rail a:hover {
+      text-decoration: underline;
+    }
+
+    /* ═══ B. Premium — square photo + vertical stat ladder ═══ */
+    .section-premium {
+      padding: clamp(64px, 10vw, 112px) clamp(24px, 5vw, 56px);
+      background: var(--color-white);
+      border-bottom: 1px solid var(--pro-line);
+    }
+
+    .premium-wrap {
+      max-width: var(--pro-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: clamp(28px, 5vw, 56px);
+      align-items: center;
+    }
+
+    .premium-stats-ladder {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-left: 3px solid var(--promo-accent);
+      padding-left: 20px;
+    }
+
+    .premium-stats-ladder .rung {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .premium-stats-ladder .rung:last-child {
+      border-bottom: none;
+    }
+
+    .premium-stats-ladder .num {
+      display: block;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--promo-accent);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .premium-stats-ladder .txt {
       font-size: 14px;
-      color: var(--color-text-muted);
-      line-height: 1.7;
+      font-weight: 600;
+      color: var(--color-dark);
+      letter-spacing: 0.06em;
+      margin-top: 6px;
+    }
+
+    .premium-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, min(42vw, 420px));
+      gap: clamp(24px, 4vw, 40px);
+      align-items: center;
+      min-width: 0;
+    }
+
+    .premium-body .eyebrow {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--promo-kicker);
+      margin-bottom: 8px;
+    }
+
+    .premium-body h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .premium-body > .copy-block p {
+      font-size: 16px;
+      line-height: 1.55;
+      margin-bottom: 20px;
+      max-width: 48ch;
+    }
+
+    .premium-square-wrap {
+      justify-self: end;
+      width: 100%;
+      max-width: min(100%, 420px);
+      min-width: 0;
+    }
+
+    .premium-square-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--color-bg-alt);
+    }
+
+    .premium-square-frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    html:not(.promo-motion-off) .premium-square-frame img,
+    html:not(.promo-motion-off) .close-cta-media__square img {
+      transition:
+        opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html:not(.promo-motion-off) .premium-square-frame:hover img,
+    html:not(.promo-motion-off) .close-cta-media__square:hover img {
+      transform: translateY(0) scale(1.04);
+    }
+
+    html.promo-motion-off .premium-square-frame img,
+    html.promo-motion-off .close-cta-media__square img {
+      transition: none;
+    }
+
+    /* ═══ C. Send — accordion (details/summary) ═══ */
+    .section-send {
+      padding: clamp(72px, 11vw, 112px) clamp(24px, 5vw, 56px);
+      background: var(--color-bg);
+      border-bottom: 1px solid rgba(99, 100, 102, 0.1);
+    }
+
+    .section-send-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px 32px;
+      max-width: var(--pro-max);
+      margin: 0 auto 32px;
+      border-bottom: 1px solid var(--pro-line-strong);
+      padding-bottom: 18px;
+    }
+
+    .section-send-header .head-text {
+      flex: 1 1 min(100%, 520px);
+    }
+
+    .section-send-header h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .section-send-header .eyebrow {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--promo-kicker);
+      margin-bottom: 6px;
+    }
+
+    .section-send-header p {
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 52ch;
+      margin-top: 10px;
+    }
+
+    .send-accordion {
+      max-width: var(--pro-max);
+      margin: 0 auto;
+      border: 1px solid var(--pro-line-strong);
+      border-radius: 3px;
+      background: var(--color-white);
+      box-shadow: var(--pro-shadow-soft);
+      overflow: hidden;
+    }
+
+    .send-accordion details {
+      border: none;
+      border-bottom: 1px solid var(--pro-line);
+      border-radius: 0;
+      margin-bottom: 0;
+      background: var(--color-white);
+      transition: background 0.15s ease;
+    }
+
+    .send-accordion details:last-of-type {
+      border-bottom: none;
+    }
+
+    .send-accordion details[open] {
+      background: #fafcfc;
+    }
+
+    .send-accordion summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 16px 20px;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--color-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .send-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .send-accordion summary::after {
+      content: '+';
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--promo-accent);
+      line-height: 1;
+      width: 1.5rem;
+      text-align: center;
+    }
+
+    .send-accordion details[open] summary::after {
+      content: '−';
+    }
+
+    .send-accordion .acc-body {
+      padding: 0 20px 18px 20px;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--color-muted);
+      max-width: 72ch;
+    }
+
+    .send-accordion a.mail {
+      color: var(--promo-accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .send-accordion a.mail:hover {
+      text-decoration: underline;
     }
 
     .highlight {
       font-weight: 600;
-      color: var(--color-text);
+      color: var(--color-dark);
     }
 
-    /* Form section - side-by-side with accent stripe */
-    .section-form {
-      background: var(--color-bg-white);
+    /* ═══ D. Claim — clinic intake (editorial header + split panel) ═══ */
+    .section-claim {
+      padding: clamp(72px, 11vw, 112px) clamp(24px, 5vw, 56px);
+      background: var(--color-bg-alt);
+      border-top: 1px solid rgba(99, 100, 102, 0.08);
+      border-bottom: 1px solid rgba(99, 100, 102, 0.08);
+    }
+
+    .section-claim-inner {
+      max-width: min(1140px, 100%);
+      margin: 0 auto;
+    }
+
+    .claim-prehead {
+      margin-bottom: clamp(28px, 4vw, 40px);
+      padding-bottom: clamp(20px, 3vw, 28px);
+      border-bottom: 1px solid var(--pro-line-strong);
+      max-width: min(52rem, 100%);
+    }
+
+    .claim-prehead__eyebrow {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--promo-kicker);
+      margin-bottom: 8px;
+    }
+
+    .claim-prehead__title {
+      font-size: clamp(28px, 3.2vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--color-dark);
+      margin: 0 0 12px;
+    }
+
+    .claim-prehead__lead {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--color-muted);
+      max-width: 52ch;
+    }
+
+    .claim-panel {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      min-height: 540px;
-      position: relative;
+      grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr);
+      background: var(--color-white);
+      border-radius: 4px;
+      border: 1px solid var(--pro-line);
+      box-shadow: 0 2px 14px rgba(45, 52, 55, 0.05);
+      overflow: hidden;
     }
 
-    .section-form::before {
+    .claim-panel__aside {
+      padding: clamp(28px, 4vw, 44px) clamp(22px, 3.2vw, 36px);
+      background: var(--color-bg-alt);
+      border-right: 1px solid var(--pro-line);
+      position: sticky;
+      top: 24px;
+      align-self: start;
+    }
+
+    .claim-aside-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px 14px;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--pro-line);
+    }
+
+    .claim-aside-meta__ref {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--promo-kicker);
+    }
+
+    .claim-aside-meta__fee {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-muted);
+    }
+
+    .claim-panel__kicker {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--promo-kicker);
+      margin-bottom: 10px;
+    }
+
+    .claim-panel__aside-heading {
+      font-size: clamp(22px, 2.2vw, 26px);
+      line-height: 1.25;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+      color: var(--color-dark);
+    }
+
+    .claim-panel__lead {
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--color-muted);
+      margin-bottom: 22px;
+    }
+
+    .claim-panel__lead strong {
+      color: var(--color-dark);
+      font-weight: 600;
+    }
+
+    .claim-checklist-wrap {
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+    }
+
+    .claim-checklist-wrap__label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--color-dark);
+      margin-bottom: 10px;
+    }
+
+    .claim-checklist {
+      list-style: none;
+    }
+
+    .claim-checklist li {
+      position: relative;
+      padding: 8px 0 8px 28px;
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--color-muted);
+      border-top: 1px solid var(--pro-line);
+    }
+
+    .claim-checklist li:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .claim-checklist li:first-child::before,
+    .claim-checklist li:first-child::after {
+      top: 0.15em;
+    }
+
+    .claim-checklist li:last-child {
+      padding-bottom: 0;
+    }
+
+    .claim-checklist li::before {
       content: '';
       position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(180deg, transparent, var(--color-border), transparent);
-      transform: translateX(-50%);
+      left: 0;
+      top: 0.85em;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: rgba(74, 111, 120, 0.1);
+      border: 1px solid rgba(74, 111, 120, 0.28);
     }
 
-    .promo-image-content {
-      padding: 80px 10% 80px 8%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .claim-checklist li:first-child::before {
+      top: 0.2em;
     }
 
-    .promo-image-content h2 {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 30px;
-      margin-bottom: 16px;
-      color: var(--color-text);
+    .claim-checklist li::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1em;
+      width: 5px;
+      height: 8px;
+      border: solid var(--promo-accent);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .claim-checklist li:first-child::after {
+      top: 0.35em;
+    }
+
+    .claim-panel__main {
+      padding: clamp(28px, 4vw, 44px) clamp(22px, 3.5vw, 44px);
+      background: var(--color-white);
+    }
+
+    .claim-form-head {
+      margin-bottom: clamp(24px, 3vw, 32px);
+      padding: 0 0 20px;
+      border-bottom: 1px solid var(--pro-line);
+    }
+
+    .claim-form-head__title {
+      font-size: 17px;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.3;
+      color: var(--color-dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
     }
 
-    .promo-image-content > p {
-      color: var(--color-text-muted);
-      margin-bottom: 32px;
+    .claim-form-head__sub {
       font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .promo-image-content ul {
-      list-style: none;
-      padding: 0;
+      line-height: 1.55;
+      color: var(--color-muted);
+      max-width: 48ch;
       margin: 0;
     }
 
-    .promo-image-content li {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 14px;
-      color: var(--color-text-muted);
+    .promo-form .claim-fieldset {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .promo-form .claim-fieldset + .claim-fieldset {
+      margin-top: clamp(24px, 3vw, 32px);
+      padding-top: clamp(24px, 3vw, 32px);
+      border-top: 1px solid var(--pro-line);
+    }
+
+    .promo-form .claim-fieldset:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .promo-form .claim-fieldset > legend {
+      display: block;
+      width: 100%;
       font-size: 15px;
-      line-height: 1.5;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--color-dark);
+      margin: 0;
+      padding: 0 0 10px;
+      border-bottom: none;
     }
 
-    .promo-image-content li::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--color-accent);
-      border-radius: 50%;
-      flex-shrink: 0;
+    .claim-form-block {
+      margin-top: 12px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      border-radius: 0;
     }
 
-    .promo-form {
-      padding: 80px 8% 80px 10%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: var(--color-bg-warm);
+    .claim-contact-grid {
+      display: grid;
+      gap: 16px 20px;
+    }
+
+    @media (min-width: 640px) {
+      .claim-contact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .claim-contact-grid .field-row--span {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .promo-form .field-row {
+      margin-bottom: 0;
+    }
+
+    .promo-form .field-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .promo-form label.field-label {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--color-dark);
+      margin-bottom: 8px;
+      display: block;
     }
 
     .promo-form input[type="text"] {
       width: 100%;
-      padding: 16px 20px;
-      margin-bottom: 20px;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      font-size: 15px;
+      padding: 12px 14px;
+      margin-bottom: 0;
+      border: 1px solid #cdd6d9;
+      border-radius: 6px;
+      font-size: 16px;
       font-family: inherit;
-      transition: all 0.2s;
-      background: var(--color-bg-white);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      background: var(--color-white);
+      color: var(--color-dark);
+    }
+
+    .promo-form input[type="text"]::placeholder {
+      color: #9ca3a5;
+    }
+
+    .promo-form input[type="text"]:hover {
+      border-color: #b5c0c4;
     }
 
     .promo-form input[type="text"]:focus {
       outline: none;
-      border-color: var(--color-accent);
-      box-shadow: 0 0 0 2px var(--color-accent-soft);
-    }
-
-    .promo-form label {
-      font-weight: 600;
-      font-size: 14px;
-      color: var(--color-text);
-      margin-bottom: 12px;
-      display: block;
+      border-color: var(--promo-accent);
+      box-shadow: 0 0 0 3px var(--promo-accent-soft);
     }
 
     .promo-form .radio-group {
-      margin: 16px 0 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
 
     .promo-form .radio-group label {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 12px;
-      margin-bottom: 12px;
+      margin-bottom: 0;
       font-weight: 400;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 15px;
+      color: var(--color-dark);
+      line-height: 1.5;
+      padding: 14px 0;
+      border-radius: 0;
+      border: none;
+      border-top: 1px solid var(--pro-line);
+      background: transparent;
+      transition: background 0.15s ease;
+      min-height: 0;
+    }
+
+    .promo-form .radio-group label:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .promo-form .radio-group label:hover {
+      background: rgba(74, 111, 120, 0.04);
+      box-shadow: none;
     }
 
     .promo-form .radio-group input {
-      accent-color: var(--color-accent);
+      accent-color: var(--promo-accent);
+      margin-top: 4px;
+      flex-shrink: 0;
     }
 
-    .promo-form button,
-    .promo-form .btn-primary {
-      width: 100%;
-      padding: 18px;
-      margin-top: 8px;
-      text-align: center;
-    }
-
-    /* Features - asymmetric bento */
-    .section-features {
-      background: var(--color-text);
-      color: #fff;
-      padding: 100px 8%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .section-features::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 400px;
-      height: 400px;
-      /* background: radial-gradient(circle, rgba(184, 92, 56, 0.15) 0%, transparent 70%); */
-      pointer-events: none;
-    }
-
-    .section-features .section-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .section-features .section-label {
-      color: rgba(255, 255, 255, 0.6);
-      letter-spacing: 3px;
-    }
-
-    .section-features .section-title {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(28px, 3vw, 40px);
-      color: #fff;
-      margin-bottom: 12px;
-    }
-
-    .section-features .intro-p {
-      color: rgba(255, 255, 255, 0.7);
-      max-width: 500px;
-      margin: 0 auto;
-      font-size: 15px;
-    }
-
-    .why-zann-bento {
+    .payment-tiles {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
-    .why-zann-bento .feature-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius-sm);
-      padding: 36px 32px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.3s ease;
+    .payment-tiles label.tile {
+      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 16px 16px 16px 18px;
+      border: 1px solid var(--pro-line);
+      border-radius: 4px;
+      cursor: pointer;
+      transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.25s ease,
+        transform 0.22s ease;
+      background: var(--color-white);
     }
 
-    .why-zann-bento .feature-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-4px);
+    .payment-tiles label.tile:hover {
+      border-color: #c5ced1;
+      background: var(--color-white);
     }
 
-    .why-zann-bento .feature-card .icon-wrap {
-      width: 48px;
-      height: 48px;
-      background: rgba(184, 92, 56, 0.3);
-      border-radius: 10px;
+    html:not(.promo-motion-off) .payment-tiles label.tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(45, 52, 55, 0.09);
+    }
+
+    .payment-tiles label.tile:has(input:checked) {
+      border-color: var(--promo-accent);
+      background: rgba(74, 111, 120, 0.04);
+      box-shadow: none;
+    }
+
+    .payment-tiles label.tile input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .payment-tiles label.tile:focus-within {
+      outline: 2px solid var(--promo-accent);
+      outline-offset: 2px;
+    }
+
+    .payment-tiles .tile-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .payment-tiles .tile-top i {
+      font-size: 20px;
+      color: var(--color-muted);
+      width: 2rem;
+      height: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 6px;
+      background: rgba(74, 111, 120, 0.08);
     }
 
-    .why-zann-bento .feature-card img {
-      width: 24px;
-      height: 24px;
-      filter: brightness(0) invert(1);
+    .payment-tiles .tile-top i.fa-paypal {
+      color: var(--paypal-blue);
+      background: rgba(0, 112, 186, 0.08);
     }
 
-    .why-zann-bento .feature-card h3 {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 20px;
-      margin-bottom: 0;
-      color: #fff;
-      font-weight: 700;
+    .payment-tiles .tile-title {
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--color-dark);
     }
 
-    .why-zann-bento .feature-card p {
+    .payment-tiles .tile-hint {
       font-size: 14px;
-      color: rgba(255, 255, 255, 0.75);
-      line-height: 1.65;
-      margin: 0;
+      color: var(--color-muted);
+      line-height: 1.55;
+      padding-left: 0;
     }
 
-    .why-zann-bento .feature-card:nth-child(1) { grid-column: 1 / 5;      
-       border-color: rgba(184, 92, 56, 0.4);
-                                            }
-    .why-zann-bento .feature-card:nth-child(2) { grid-column: 5 / 9; border-color: rgba(184, 92, 56, 0.4); }
-    .why-zann-bento .feature-card:nth-child(3) { grid-column: 9 / 13; border-color: rgba(184, 92, 56, 0.4);}
-    .why-zann-bento .feature-card:nth-child(4) {
-      grid-column: 1 / 7;
-            /* background: rgba(184, 92, 56, 0.2); */
-      border-color: rgba(184, 92, 56, 0.4);
-    }
-    .why-zann-bento .feature-card:nth-child(5) {
-      grid-column: 7 / 13;
-      /* background: rgba(184, 92, 56, 0.2); */
-      border-color: rgba(184, 92, 56, 0.4);
-    }
-    .why-zann-bento .feature-card:nth-child(6) {
-      grid-column: 1 / -1;
-      /* background: linear-gradient(135deg, rgba(184, 92, 56, 0.25) 0%, rgba(184, 92, 56, 0.05) 100%); */
-      border-color: rgba(184, 92, 56, 0.4);
-      padding: 40px 40px;
+    .paypal-note {
+      font-size: 15px;
+      color: var(--color-muted);
+      margin: 14px 0 0;
+      padding: 14px 16px;
+      background: #eef6f8;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 112, 186, 0.18);
+      line-height: 1.55;
     }
 
-    .why-zann-bento .special-offer h2,
-    .why-zann-bento .refer-offer h2 {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 22px;
-      margin-bottom: 10px;
+    .promo-form__hp {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .promo-form button.claim-link {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .claim-actions {
+      margin-top: clamp(24px, 3vw, 32px);
+      padding-top: 22px;
+      border-top: 1px solid var(--pro-line);
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: stretch;
+      gap: 12px;
+    }
+
+    .claim-actions:not(:has(#paypal-cta.is-visible)) .claim-link {
+      flex: 1 1 100%;
+      max-width: none;
+    }
+
+    .promo-form .paypal-cta {
+      order: 1;
+      flex: 1 1 min(200px, 100%);
+      min-width: 0;
+      display: none;
+      padding: 14px 22px;
+      text-align: center;
+      background: var(--paypal-blue);
       color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 16px;
+      border: 1px solid #005ea6;
+      cursor: pointer;
+      font-family: inherit;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .promo-form .claim-link {
+      order: 2;
+      flex: 1 1 min(220px, 100%);
+      min-width: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      text-align: center;
+      background: var(--color-dark);
+      color: var(--color-white);
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 16px;
+      border: 1px solid var(--color-dark);
+      transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .promo-form .claim-link:hover {
+      background: #3d3f41;
+      border-color: #3d3f41;
+      box-shadow: 0 4px 16px rgba(45, 52, 55, 0.12);
+    }
+
+    .promo-form .paypal-cta:hover {
+      background: #005ea6;
+      border-color: #004c87;
+      filter: none;
+      box-shadow: 0 4px 16px rgba(0, 112, 186, 0.2);
+    }
+
+    .promo-form .paypal-cta.is-visible {
+      display: inline-flex;
+    }
+
+    @media (max-width: 559px) {
+      .claim-actions {
+        flex-direction: column;
+      }
+
+      .promo-form .paypal-cta,
+      .promo-form .claim-link {
+        width: 100%;
+        flex: none;
+      }
+
+      .promo-form .paypal-cta {
+        order: 0;
+      }
+
+      .promo-form .claim-link {
+        order: 1;
+      }
+    }
+
+    /* ═══ E. Partner summary — square image + open copy (no panels) ═══ */
+    .section-close-cta {
+      padding: clamp(24px, 3.5vw, 40px) 0;
+      background: var(--color-bg-alt);
+      color: var(--color-muted);
+      border-top: 1px solid rgba(99, 100, 102, 0.1);
+    }
+
+    .close-cta-split {
+      --close-gutter: clamp(20px, 4vw, 48px);
+      --close-row-max: min(1320px, 100%);
+      max-width: var(--close-row-max);
+      width: 100%;
+      margin-inline: auto;
+      padding-inline: var(--close-gutter);
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: minmax(240px, min(480px, 44vw)) minmax(0, 1fr);
+      column-gap: clamp(24px, 3.5vw, 48px);
+      align-items: center;
+      font-feature-settings: "kern" 1, "liga" 1, "tnum" 1;
+    }
+
+    .close-cta-media {
+      position: relative;
+      align-self: center;
+      width: 100%;
+      max-width: min(520px, 100%);
+      margin-inline: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    .close-cta-media__square {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--color-bg-alt);
+    }
+
+    .close-cta-media__square img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    .close-cta-copy {
+      min-width: 0;
+      max-width: none;
+      width: 100%;
+      margin-inline: 0;
+      padding: clamp(12px, 2vw, 24px) 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+      text-align: left;
+      border: none;
+      box-sizing: border-box;
+      background: none;
+      margin-top: 0;
+    }
+
+    .close-cta-copy__inner {
+      min-width: 0;
+      width: 100%;
+      max-width: min(48rem, 100%);
+    }
+
+    .close-cta-kicker {
+      margin: 0 0 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px 12px;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--color-dark);
+    }
+
+    .close-cta-kicker__brand {
+      letter-spacing: 0.02em;
+    }
+
+    .close-cta-kicker__badge {
+      padding: 0;
+      background: none;
+      color: var(--promo-kicker);
+      border-radius: 0;
+      box-shadow: none;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .section-close-cta .close-cta-copy h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      color: var(--color-dark);
+      line-height: 1.2;
+      margin: 0 0 18px;
+      letter-spacing: -0.02em;
+      text-align: left;
+    }
+
+    .close-cta-summary {
+      margin: 0 0 22px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.55;
+      color: #4a4d50;
+      max-width: none;
+      text-align: left;
+    }
+
+    /* Flat key points — no card / no dark band */
+    .close-cta-highlights {
+      list-style: none;
+      margin: 0;
+      padding: 22px 0 0;
+      border: none;
+      border-top: 1px solid var(--pro-line);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .close-cta-highlights li {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px 16px;
+      justify-content: flex-start;
+      text-align: left;
+      border: none;
+    }
+
+    .close-cta-highlights__lbl {
+      flex: 0 0 auto;
+      min-width: 7.5rem;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--promo-accent);
+      line-height: 1.4;
+    }
+
+    .close-cta-highlights__val {
+      flex: 1 1 12rem;
+      min-width: 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-dark);
+      letter-spacing: -0.01em;
+      line-height: 1.45;
+    }
+
+    /* ═══ E-bis. Promotion & referral copy — flat, separate band (no panel) ═══ */
+    .section-promo-legal {
+      padding: clamp(28px, 4vw, 48px) clamp(20px, 4vw, 48px);
+      background: var(--color-bg);
+      color: var(--color-muted);
+      border-top: 1px solid rgba(99, 100, 102, 0.1);
+    }
+
+    .promo-legal-shell {
+      max-width: var(--pro-max);
+      margin: 0 auto;
+    }
+
+    .promo-legal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(24px, 4vw, 56px);
+      align-items: start;
+    }
+
+    .promo-legal__h {
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-dark);
+    }
+
+    .promo-legal__p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--color-muted);
+    }
+
+    /* ═══ F. Full-width ending CTA (separate from Section E) ═══ */
+    .section-promo-full-cta {
+      min-height: min(52vh, 560px);
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      padding: clamp(48px, 10vw, 96px) clamp(20px, 5vw, 48px);
+      background:
+        linear-gradient(165deg, rgba(74, 111, 120, 0.08) 0%, transparent 48%),
+        var(--color-bg-alt);
+      color: var(--color-muted);
+      text-align: center;
+      border-top: 1px solid rgba(99, 100, 102, 0.1);
+    }
+
+    .promo-full-cta__inner {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .promo-full-cta__eyebrow {
+      margin: 0 0 12px;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--promo-kicker);
+    }
+
+    .promo-full-cta__inner h2 {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      color: var(--color-dark);
+      line-height: 1.2;
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .promo-full-cta__lead {
+      margin: 0 auto 28px;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--color-muted);
+      max-width: 36rem;
+    }
+
+    .promo-full-cta__row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px 14px;
+      margin-bottom: 20px;
+    }
+
+    .section-promo-full-cta .promo-btn-primary {
+      min-width: 220px;
+    }
+
+    .section-promo-full-cta .promo-btn-secondary {
+      background: var(--color-white);
+      color: var(--color-dark);
+      border-color: var(--pro-line-strong);
+    }
+
+    .section-promo-full-cta .promo-btn-secondary:hover {
+      background: #f4f7f8;
+      border-color: var(--promo-accent);
+    }
+
+    .promo-full-cta__phone {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 0 24px;
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--color-dark);
+      text-decoration: none;
+      border-radius: 4px;
+      border: 1px solid var(--pro-line-strong);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .promo-full-cta__phone:hover {
+      background: rgba(255, 255, 255, 0.65);
+      border-color: var(--promo-accent);
+    }
+
+    .promo-full-cta__note {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.55;
+      letter-spacing: 0.02em;
+      color: var(--color-muted);
+    }
+
+    .promo-footer-brand {
+      padding: 22px clamp(20px, 4vw, 48px);
+      text-align: center;
+      background: var(--color-bg);
+      color: var(--color-muted);
+      font-size: 16px;
+      letter-spacing: 0.02em;
+      font-weight: 400;
+      border-top: 1px solid rgba(99, 100, 102, 0.1);
+    }
+
+    .promo-footer-brand a {
+      color: var(--color-dark);
+      text-decoration: none;
       font-weight: 700;
     }
 
-    .why-zann-bento .special-offer h2 img,
-    .why-zann-bento .refer-offer h2 img {
-      width: 24px;
-      height: 24px;
+    .promo-footer-brand a:hover {
+      text-decoration: underline;
+      color: var(--promo-accent);
     }
 
-    .why-zann-bento .special-offer p,
-    .why-zann-bento .refer-offer p {
-      font-size: 15px;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.7;
-      margin: 0;
+    @media (max-width: 900px) {
+      html {
+        scroll-padding-top: 64px;
+      }
+      .promo-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .promo-hero-visual {
+        clip-path: none;
+        min-height: clamp(220px, 42vw, 360px);
+        padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 32px);
+      }
+
+      .promo-hero-visual img {
+        max-width: min(92vw, 420px);
+        max-height: min(46vh, 400px);
+      }
+      .premium-wrap {
+        grid-template-columns: 1fr;
+      }
+      .premium-stats-ladder {
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-left: none;
+        border-top: 3px solid var(--promo-accent);
+        padding-left: 0;
+        padding-top: 16px;
+        gap: 16px;
+      }
+      .premium-stats-ladder .rung {
+        flex: 1 1 140px;
+        border-bottom: none;
+        padding: 12px 0;
+        border-right: 1px solid var(--color-border);
+        padding-right: 16px;
+      }
+      .premium-stats-ladder .rung:last-child {
+        border-right: none;
+      }
+      .premium-body {
+        grid-template-columns: 1fr;
+      }
+      .premium-square-wrap {
+        order: -1;
+        justify-self: center;
+        max-width: min(100%, 420px);
+        width: 100%;
+      }
+      .claim-panel {
+        grid-template-columns: 1fr;
+      }
+      .claim-panel__aside {
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+      }
+      .payment-tiles {
+        grid-template-columns: 1fr;
+      }
+      .close-cta-split {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        padding-inline: clamp(16px, 4vw, 28px);
+        column-gap: 0;
+        row-gap: clamp(16px, 3vw, 24px);
+        align-items: stretch;
+      }
+      .close-cta-media {
+        width: 100%;
+        max-width: min(440px, 100%);
+        margin-inline: auto;
+        border: none;
+      }
+      .close-cta-media__square {
+        aspect-ratio: 1 / 1;
+        max-width: 100%;
+        margin-inline: auto;
+      }
+      .close-cta-copy {
+        padding: clamp(8px, 2vw, 16px) 0 0;
+        border: none;
+        background: transparent;
+        justify-content: flex-start;
+      }
+      .close-cta-copy__inner {
+        max-width: none;
+      }
+      .close-cta-highlights {
+        padding: 12px 0 0;
+        gap: 8px;
+      }
+      .close-cta-highlights li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        flex: 0 0 auto;
+      }
+      .close-cta-highlights__lbl {
+        min-width: 0;
+        flex: 0 0 auto;
+        line-height: 1.3;
+      }
+      .close-cta-highlights__val {
+        flex: 0 0 auto;
+        width: 100%;
+        line-height: 1.4;
+      }
+      .promo-legal-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+      .promo-full-cta__row {
+        flex-direction: column;
+      }
+      .section-promo-full-cta .promo-btn-primary,
+      .section-promo-full-cta .promo-btn-secondary,
+      .promo-full-cta__phone {
+        width: 100%;
+        max-width: 340px;
+      }
     }
 
-    /* Footer bar */
-    .promo-footer-brand {
-      padding: 24px 8%;
-      text-align: center;
-      background: #0f0f0f;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 500;
+    @media (max-width: 900px) {
+      html:not(.promo-motion-off) .promo-hero-visual {
+        animation: none;
+      }
     }
 
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero::before { display: none; }
-      .hero-content { padding: 60px 8%; text-align: center; }
-      .hero p { margin-left: auto; margin-right: auto; }
-      .hero-buttons { justify-content: center; }
-      .hero-image-wrap { padding: 40px 8%; }
-      .hero-card { left: 50%; transform: translateX(-50%); }
-      .section-product { grid-template-columns: 1fr; gap: 60px; }
-      .stats-row { margin-left: 0; margin-top: 24px; }
-      .card-grid { grid-template-columns: repeat(2, 1fr); }
-      .card-grid .card:nth-child(even) { transform: translateY(0); }
-      .section-form { grid-template-columns: 1fr; }
-      .section-form::before { display: none; }
-      .promo-form { background: var(--color-bg-white); padding: 60px 8%; }
-      .why-zann-bento .feature-card:nth-child(1),
-      .why-zann-bento .feature-card:nth-child(2),
-      .why-zann-bento .feature-card:nth-child(3) { grid-column: 1 / -1; }
-      .why-zann-bento .feature-card:nth-child(4),
-      .why-zann-bento .feature-card:nth-child(5) { grid-column: 1 / -1; }
+    @media (max-width: 480px) {
+      .promo-hero-visual img {
+        max-width: 100%;
+        max-height: min(38vh, 300px);
+      }
     }
 
-    @media (max-width: 768px) {
-      .hero { min-height: auto; }
-      .hero-image-container::after { display: none; }
-      .stats-row { grid-template-columns: 1fr; }
-      .card-grid { grid-template-columns: 1fr; }
-      .card-grid .card:nth-child(even) { transform: none; }
+    .payment-tiles label.tile.is-checked {
+      border-color: var(--promo-accent);
+      background: var(--color-white);
+      box-shadow: 0 4px 16px rgba(74, 111, 120, 0.12);
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
-<body>
-
-  <div class="promo-brand">Zann Dental Lab — Exclusive Night Guard Promotion</div>
-
-  <section class="hero">
-    <div class="hero-content">
-      <p class="label">Custom Dental Solutions</p>
-      <h1>Exclusive Night Guard Promotion</h1>
-      <p>Try Canada's most comfortable custom night guard — just cover delivery!</p>
-      <div class="hero-buttons">
-        <a href="#promo-form" class="btn-primary">Claim Free Night Guard</a>
-        <a href="#send-case" class="btn-secondary">How to Send</a>
-      </div>
+ <!-- Top promo bar -->
+     <div class="promo-bar">
+        New to Zann? <a href="#resources">Request a welcome kit, Fast turnaround on first case. <a href="#case-submission">Send a case</a>
     </div>
-    <div class="hero-image-wrap">
-      <div class="hero-image-container">
-        <img src="https://raw.githubusercontent.com/KeralPatel3095/zann_image/50905c20421fcabea0303f77afc6ba0b5ec36ab6/insta_zann_march_+_onward___18_-removebg-preview.png" alt="Night Guard" class="hero-image" />
-        <div class="hero-card">
-          <h3>Need Help?</h3>
-          <p>Connect your scanner or email us — fast and easy with Zann Dental Lab.</p>
-          <div class="cta-phone">
-            <i class="fas fa-phone"></i>
-            <span>416-696-5454</span>
+
+    <div class="site-header-sticky">
+    <!-- Header with full navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">ZANN</a>
+        <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+        <nav class="nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </div>
+           
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Products &amp; Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">products &amp; services</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Crowns &amp; Bridges <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_crown_PFM.html">Porcelain-Fused-to-Metal (PFM)</a>
+                                    <a href="Product_crown_Zirconia.html">Zirconia Crown</a>
+                                    <a href="Product_crown_Emax.html">E.max</a>
+                                    <a href="Product_crown_FullGold.html">Full Gold Crown</a>
+                                </div>
+                            </div>
+                             <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Veneers <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_venner_Emax.html">E.max Veneer</a>
+                                    <a href="Product_veneer_Zirconia.html">Zirconia Veneer</a>
+                                    <!-- <a href="#">Abutments</a> -->
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Implants <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_implant_Standard.html">Standard Implants</a>
+                                    <a href="Product_implant_Advanced_Custom.html">Advanced/Custom Implants</a>
+                                    <a href="Product_implant_Full-Arch.html">Full-Arch Restorations</a>
+                                </div>
+                            </div>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand"> Nightguards/Ortho & Splints </button> <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Nightguards</a>
+                                    <a href="#">Sports Guards</a>
+                                    <a href="#">Essix Retainers</a>
+                                    <a href="#">Bleaching Trays</a>
+                                    <a href="#">Ortho</a>
+                                </div>
+                            </div> -->
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Nightguards/Ortho & Splints <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Nightguards.html">Nightguards</a>
+                                    <a href="Product_Sportsguards.html">Sports Guards</a>
+                                    <a href="Product_Essix Retainers.html">Essix Retainers</a>
+                                    <a href="Product_Bleaching_Trays.html">Bleaching Trays</a>
+                                    <a href="Product_Ortho.html">Ortho</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Removables <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Acrylic_Dentures.html">Acrylic Dentures</a>
+                                    <!-- <a href="Product_Immediate_Dentures.html">Immediate Dentures</a> -->
+                                    <a href="Product_Cast_Partial_Framework_Dentures.html">Cast Partial Dentures</a>
+                                    <!-- <a href="Product_3D_Printing.html">3D Printed Dentures</a> -->
+                                    <a href="Product_Denture_Repairs.html">Denture Repairs/Relines</a>
+
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Dentistry <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="Product_Digital_Workflow.html">Digital Workflow / Scans</a>
+                                    <a href="Product_3D_Printing.html">3D Printing</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <img class="dropdown-card-img dropdown-card-img-default" src="images/Product + Service- Crown + Bridge.jpg" alt="Crowns and bridges">
+                                    <img class="dropdown-card-img dropdown-card-img-hover" src="images/Product + Service- Crown + Bridge.jpg" alt="" aria-hidden="true">
+                                </div>
+                                <span class="dropdown-card-label">Crowns &amp; Bridges</span>
+    
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <img class="dropdown-card-img dropdown-card-img-default" src="images/Product + Service - denture.jpg" alt="Dentures">
+                                    <img class="dropdown-card-img dropdown-card-img-hover" src="images/Product + Service - denture.jpg" alt="" aria-hidden="true">
+                                </div>
+                                <span class="dropdown-card-label">Dentures</span>
+                            </div>
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <img class="dropdown-card-img dropdown-card-img-default" src="images/28.jpg" alt="Nightguards">
+                                    <img class="dropdown-card-img dropdown-card-img-hover" src="images/28.jpg" alt="" aria-hidden="true">
+                                </div>
+                                <span class="dropdown-card-label">Nightguards</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Case Submission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">case submission</span>
+                             <!-- <div>
+                                <button type="button" class="dropdown-expand">Step-by-step instructions</button>
+                            </div> -->
+                            <a href="Step_BY_Step_Instructions.html">Step-by-step instructions</a>
+                            <a href="Physical_Case_Submission.html">
+                                Physical Case Submission
+                            </a>
+                            <a href="Digital_Case_Submission.html">
+                                Digital Case Submission 
+                            </a>
+                            <a href="FAQ_Case_Submission.html">FAQ Case Submission</a>
+                        </div>
+  
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Physical Case Submission<span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Download RX Forms</a>
+                                    <a href="#">Packing &amp; Shipping Guide</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Digital Case Submission <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Scanner Integration</a>
+                                    <a href="#">File Upload Portal</a>
+                                </div> -->
+                            
+                            
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Send A Case - ( case submission ).jpg" alt="Send a Case"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Send A Case - ( case submission ).jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Send a Case</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Digital Submission.jpg" alt="Digital Submission"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Digital Submission.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Digital Submission</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Shipping1.1.jpg" alt="Shipping"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Shipping1.1.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Shipping</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Education <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">education</span>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Continuing Education <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Live Webinars</a>
+                                    <a href="#">Recorded Courses</a>
+                                    <a href="#">Hands-On Workshops</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Tips &amp; Tutorials <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Clinical Guides</a>
+                                    <a href="#">Shade &amp; Material Guides</a>
+                                    <a href="#">Workflow Tutorials</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Blog / Articles <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Case Studies</a>
+                                    <a href="#">Digital Dentistry Tips</a>
+                                    <a href="#">Industry News</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Continuing Education</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Clinical Guides</span><a href="#" aria-hidden="true"></a></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><div class="dropdown-card-img dropdown-card-img-default"></div><div class="dropdown-card-img dropdown-card-img-hover"></div></div><span class="dropdown-card-label">Case Studies</span><a href="#" aria-hidden="true"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+  
+             <!-- <div class="nav-item">
+                <a href="" class="nav-link">Specialists & Support</a>
+            </div> -->
+            <div class="nav-item has-dropdown">
+                <a href="Specialists_Support.html" class="nav-link nav-link-toggle" data-toggle="dropdown">Specialists &amp; Support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">Specialists &amp; Support</span>
+                            <a href="CustomShadeinHouse.html">Custom Shade in House</a>
+                            <!-- <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Contact a Specialist <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    
+                                    <a href="#">Book Call / Email Support</a> 
+                                </div>
+                            </div>
+                            <div class="dropdown-block">
+                                <button type="button" class="dropdown-expand">Technical Support <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
+                                <div class="dropdown-sublinks">
+                                    <a href="#">Troubleshooting</a>
+                                    <a href="#">Material or Product Guidance</a>
+                                </div>
+                            </div>
+                            <a href="#">Local Lab Contacts (Phone &amp; Email)</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Ned.jpg" alt="Contact a Specialist"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Ned.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Contact a Specialist</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Technical_Digital1.1.jpg" alt="Technical Support"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Technical_Digital1.1.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Technical Support</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/go to lab - support .jpg" alt="Local Lab"><img class="dropdown-card-img dropdown-card-img-hover" src="images/go to lab - support .jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">go to Lab</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">resources</span>
+                            <a href="Catalogues_Guides.html">Catalogs &amp; Guides</a>
+                            <a href="Welcome_Kits.html">Welcome Kits</a>
+                            <a href="Turnaround_Times.html">Turnaround Times</a>
+                            <a href="Resources_Faqs.html">FAQs</a>
+                            <a href="blog.html">Lab journal</a>
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Catalog + Guides.jpg" alt="Catalogs"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Catalog + Guides.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Catalogs</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Welcome Kit.jpg" alt="Welcome Kits"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Welcome Kit.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Welcome Kits</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/turn around time image.jpg" alt="Turnaround Times"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Turnaround_restorative.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Turnaround Times</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item has-dropdown">
+                <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+                <div class="dropdown">
+                    <div class="dropdown-inner">
+                        <div class="dropdown-left">
+                            <span class="dropdown-label">about us</span>
+                            <a href="about_ourstory.html">Our Story</a>
+                            <a href="about_missionandvalues.html">Mission &amp; Values</a>
+                            <!-- <a href="#">Team / Technicians</a> -->
+                            <!-- <a href="#">Certifications &amp; Awards</a> -->
+                            <!-- <a href="#">Careers</a> -->
+                        </div>
+                        <div class="dropdown-right">
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Our_Story.jpg" alt="Our Story"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Our_Story.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Our Story</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/upload1.2.jpg" alt="Mission and Values"><img class="dropdown-card-img dropdown-card-img-hover" src="images/upload1.2.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Mission &amp; Values</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Home1.1 elevated lab work.jpg" alt="Team"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Home1.1 elevated lab work.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Smile Lab</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="blog.html" class="nav-link">Blog</a>
+            </div>
+            <div class="nav-item">
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+        <!-- <div class="nav-utils">
+            <a href="#search" aria-label="Search">🔍</a>
+            <a href="#account" aria-label="Account">👤</a>
+        </div> -->
+    </header>
+    </div>
+<body>
+  <!-- <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="promo-site-header">
+    <div class="promo-site-header__inner">
+      <a class="promo-site-header__brand" href="https://www.zanndental.com/">Zann Dental Lab</a>
+      <span class="promo-site-header__tag">Night guard promotion</span>
+    </div>
+  </header> -->
+  <main class="promo-page" id="main-content" tabindex="-1">
+    <!-- A: asymmetric split + phone rail -->
+    <section class="promo-hero">
+      <div class="promo-hero-copy">
+        <span class="label">custom dental solutions</span>
+        <h1>Exclusive Night Guard Promotion</h1>
+        <p class="lead">Try Canada’s most comfortable custom night guard just cover delivery!</p>
+        <div class="promo-hero-buttons">
+          <a href="#promo-form" class="promo-btn-primary">Claim Free Night Guard</a>
+          <a href="#send-case" class="promo-btn-secondary">How to Send</a>
+        </div>
+      </div>
+      <div class="promo-hero-visual">
+        <img src="images/promotion1.png" alt="Custom night guard" width="440" height="550" loading="eager" decoding="async" />
+      </div>
+      <div class="hero-phone-rail">
+        <span><strong>Need help?</strong> Connect your scanner or email us fast and easy with Zann Dental Lab.</span>
+        <a href="tel:+14166965454"><i class="fas fa-phone" aria-hidden="true"></i> 416-696-5454</a>
+      </div>
+    </section>
+
+    <!-- B: stat ladder + square photo (right) -->
+    <section class="section-premium">
+      <div class="premium-wrap">
+        <div class="premium-stats-ladder" aria-label="Key stats">
+          <div class="rung"><span class="num">7</span><span class="txt">Day Turnaround</span></div>
+          <div class="rung"><span class="num">6</span><span class="txt">Days Open / Week</span></div>
+          <div class="rung"><span class="num">24/7</span><span class="txt">Support</span></div>
+        </div>
+        <div class="premium-body">
+          <div class="copy-block">
+            <p class="eyebrow">Premium Materials</p>
+            <h2>Premium Night Guards Tailored For Comfort</h2>
+            <p>Our 3D-printed Keystone soft splints provide superior fit and protection. With fast 7-day turnaround and secure STL file storage, Zann ensures both quality and convenience.</p>
+            <a href="#promo-form" class="promo-btn-primary">Claim Free Night Guard</a>
+          </div>
+          <div class="premium-square-wrap">
+            <div class="premium-square-frame">
+              <img src="images/promotion2.png" alt="Premium night guard on dental model" width="800" height="800" loading="lazy" decoding="async" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section-product">
-    <div class="image-stats">
-      <!-- <img src="https://raw.githubusercontent.com/KeralPatel3095/zann_image/97cb6b70da1e4818a75b9f6b6f4f7b94867d8889/zann%20night%20guard%20.jpg" alt="Night guard" /> -->
-             <img src="https://raw.githubusercontent.com/KeralPatel3095/zann_image/20d783a0043d45ebe8c298a635362d2518bf9594/zann%20night%20guard%20%20(1).jpg" alt="Night guard" />
-
-      <div class="stats-row">
-        <div class="stat-item">
-          <span class="number">7</span>
-          <span class="label">Day turnaround</span>
-        </div>
-        <div class="stat-item">
-          <span class="number">6</span>
-          <span class="label">Days open per week</span>
-        </div>
-        <div class="stat-item">
-          <span class="number">24/7</span>
-          <span class="label">Support available</span>
+    <!-- C: accordion -->
+    <section class="section-send" id="send-case">
+      <div class="section-send-header">
+        <div class="head-text">
+          <span class="eyebrow">case submission</span>
+          <h2>How to Send Your Case</h2>
+          <p>Connect your scanner or email us — it’s fast and easy with Zann Dental Lab.</p>
         </div>
       </div>
-    </div>
-    <div class="promo-text">
-      <p class="section-label">Premium Materials</p>
-      <h2>Premium Night Guards Tailored For Comfort</h2>
-      <p>Our 3D-printed Keystone soft splints provide superior fit and protection. With fast 7-day turnaround and secure STL file storage, Zann ensures both quality and convenience.</p>
-      <a href="#promo-form" class="btn-primary">Read More</a>
-    </div>
-  </section>
+      <div class="send-accordion">
+        <details>
+          <summary>iTero</summary>
+          <div class="acc-body">Call <span class="highlight">1-800-577-8767</span>. Choose option one twice. Provide <span class="highlight">416-696-5454</span> or account <span class="highlight">64717</span> to add Zann.</div>
+        </details>
+        <details>
+          <summary>Carestream</summary>
+          <div class="acc-body">Add <span class="highlight">“Zann Dental Laboratory”</span> on CS Connect.</div>
+        </details>
+        <details>
+          <summary>Sirona Connect</summary>
+          <div class="acc-body">Add <span class="highlight">“Zann Dental”</span> or <span class="highlight">“Zann Dental Lab”</span> as your favourite lab in your Sirona account.</div>
+        </details>
+        <details>
+          <summary>3Shape TRIOS</summary>
+          <div class="acc-body">Search for us on 3Shape Communicate using <a class="mail" href="mailto:cadcamdesign@zanndental.com">cadcamdesign@zanndental.com</a></div>
+        </details>
+        <details>
+          <summary>E4D</summary>
+          <div class="acc-body">Email files directly to <a class="mail" href="mailto:cadcamdesign@zanndental.com">cadcamdesign@zanndental.com</a></div>
+        </details>
+        <details>
+          <summary>Medit Link</summary>
+          <div class="acc-body">Connect through Medit Link using <a class="mail" href="mailto:cadcamdesign@zanndental.com">cadcamdesign@zanndental.com</a></div>
+        </details>
+        <details>
+          <summary>3M</summary>
+          <div class="acc-body">Export STL file and send to <a class="mail" href="mailto:cadcamdesign@zanndental.com">cadcamdesign@zanndental.com</a></div>
+        </details>
+      </div>
+    </section>
 
-  <section class="send-case" id="send-case">
-    <div class="section-header">
-      <span class="section-label">Send Your Case</span>
-      <h2 class="section-title">How to Send Your Case</h2>
-      <p>Connect your scanner or email us — it's fast and easy with Zann Dental Lab</p>
-    </div>
+    <!-- D: clinic request panel -->
+    <section class="section-claim" id="promo-form">
+      <div class="section-claim-inner">
+        <header class="claim-prehead">
+          <span class="claim-prehead__eyebrow">Clinic enrollment</span>
+          <h2 class="claim-prehead__title">Complimentary night guard request</h2>
+          <p class="claim-prehead__lead">Register your practice and preferred submission path. Our coordinators confirm receipt, scanner setup, and delivery details.</p>
+        </header>
+        <div class="claim-panel">
+          <aside class="claim-panel__aside">
+            <div class="claim-aside-meta">
+              <span class="claim-aside-meta__ref">Ref. NG-PROMO</span>
+              <span class="claim-aside-meta__fee">Delivery fee $40 · appliance complimentary</span>
+            </div>
+            <p class="claim-panel__kicker">Promotion overview</p>
+            <h3 class="claim-panel__aside-heading">Program highlights</h3>
+            <p class="claim-panel__lead">Experience Zann quality on your first case. The appliance is complimentary; your office covers <strong>$40 delivery</strong> only.</p>
+            <div class="claim-checklist-wrap">
+              <span class="claim-checklist-wrap__label">Included</span>
+              <ul class="claim-checklist">
+                <li>3D-printed Keystone soft splint</li>
+                <li>7-day turnaround</li>
+                <li>Secure STL file storage</li>
+                <li>Open six days per week</li>
+                <li>Dedicated lab support</li>
+              </ul>
+            </div>
+          </aside>
+          <div class="claim-panel__main">
+            <header class="claim-form-head">
+              <h3 class="claim-form-head__title">Clinic request form</h3>
+              <p class="claim-form-head__sub">Provide your practice details and preferred case and payment method. Our team will confirm receipt and next steps.</p>
+            </header>
+            <form
+              class="promo-form"
+              id="promo-claim-form"
+              name="promo-claim"
+              method="POST"
+              action=""
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+            >
+              <!-- Netlify: Site settings > Forms > Notifications — add zanndentallab@gmail.com for form "promo-claim". -->
+              <input type="hidden" name="form-name" value="promo-claim" />
+              <p class="promo-form__hp">
+                <label>
+                  <span>Do not fill out this field</span>
+                  <input type="text" name="bot-field" tabindex="-1" autocomplete="off" />
+                </label>
+              </p>
+              <fieldset class="claim-fieldset">
+                <legend>Practice contact</legend>
+                <div class="claim-form-block">
+                  <div class="claim-contact-grid">
+                    <div class="field-row field-row--span">
+                      <label class="field-label" for="clinic-name">Clinic name</label>
+                      <input type="text" id="clinic-name" name="clinic_name" placeholder="Registered practice name" required autocomplete="organization" />
+                    </div>
+                    <div class="field-row">
+                      <label class="field-label" for="dentist-contact">Dentist contact</label>
+                      <input type="text" id="dentist-contact" name="dentist_contact" placeholder="Name, phone, or email" required autocomplete="name" />
+                    </div>
+                    <div class="field-row">
+                      <label class="field-label" for="shipping-info">Shipping address</label>
+                      <input type="text" id="shipping-info" name="shipping_info" placeholder="Street, city, province, postal code" required />
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
 
-    <div class="card-grid">
-      <div class="card">
-        <div class="icon"><i class="fas fa-tooth"></i></div>
-        <h2>iTero</h2>
-        <p>Call <span class="highlight">1-800-577-8767</span>. Choose option one twice. Provide <span class="highlight">416-696-5454</span> or account <span class="highlight">64717</span> to add Zann.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-x-ray"></i></div>
-        <h2>Carestream</h2>
-        <p>Add <span class="highlight">"Zann Dental Laboratory"</span> on CS Connect.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-network-wired"></i></div>
-        <h2>Sirona Connect</h2>
-        <p>Add <span class="highlight">"Zann Dental"</span> or <span class="highlight">"Zann Dental Lab"</span> as your favourite lab in your Sirona account.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-envelope"></i></div>
-        <h2>3Shape TRIOS</h2>
-        <p>Search for us on 3Shape Communicate using <span class="highlight">cadcamdesign@zanndental.com</span></p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-laptop"></i></div>
-        <h2>E4D</h2>
-        <p>Email files directly to <span class="highlight">cadcamdesign@zanndental.com</span></p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-link"></i></div>
-        <h2>Medit Link</h2>
-        <p>Connect through Medit Link using <span class="highlight">cadcamdesign@zanndental.com</span></p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-file-export"></i></div>
-        <h2>3M</h2>
-        <p>Export STL file and send to <span class="highlight">cadcamdesign@zanndental.com</span></p>
-      </div>
-    </div>
-  </section>
+              <fieldset class="claim-fieldset">
+                <legend>Case submission</legend>
+                <div class="claim-form-block">
+                  <div class="radio-group">
+                    <label><input type="radio" name="case_option" value="impression" required /> Physical impression — ship to the lab</label>
+                    <label><input type="radio" name="case_option" value="scanner" /> Digital — we will upload STL files</label>
+                  </div>
+                </div>
+              </fieldset>
 
-  <section class="section-form" id="promo-form">
-    <div class="promo-image-content">
-      <h2>Real Promotion for Dental Clinics</h2>
-      <p>Experience Zann quality – just cover delivery</p>
-      <ul>
-        <li>3D-printed Keystone soft splint</li>
-        <li>7-day turnaround</li>
-        <li>STL file storage</li>
-        <li>Open 6 days/week</li>
-        <li>Personalized service</li>
-      </ul>
-    </div>
+              <fieldset class="claim-fieldset">
+                <legend>Delivery fee ($40) — payment method</legend>
+                <div class="claim-form-block">
+                  <div class="payment-tiles" role="radiogroup" aria-label="Payment method for delivery fee">
+                    <label class="tile">
+                      <input type="radio" name="pay_method" value="paypal" required />
+                      <span class="tile-top"><i class="fa-brands fa-paypal" aria-hidden="true"></i><span class="tile-title">PayPal</span></span>
+                      <span class="tile-hint">Secure online payment for the delivery fee.</span>
+                    </label>
+                    <label class="tile">
+                      <input type="radio" name="pay_method" value="other" />
+                      <span class="tile-top"><i class="fas fa-file-invoice" aria-hidden="true"></i><span class="tile-title">Invoice or phone</span></span>
+                      <span class="tile-hint">Our team will contact your clinic or provide an invoice for the $40 delivery fee.</span>
+                    k:\Cursor\ZannWebsite_2026\Case_Pickup_Schedule.html k:\Cursor\ZannWebsite_2026\Case_Supplies.html</label>
+                  </div>
+                  <p class="paypal-note" id="paypal-note" hidden>You may complete the $40 delivery payment via PayPal using the button below, then continue with “Claim my free night guard” if required by your workflow.</p>
+                </div>
+              </fieldset>
 
-    <div class="promo-form">
-      <form>
-        <input type="text" placeholder="Clinic Name" required />
-        <input type="text" placeholder="Dentist Contact" required />
-        <input type="text" placeholder="Shipping Info" required />
-
-        <label>$40 Payment</label>
-        <div class="radio-group">
-          <label><input type="radio" name="option" value="impression" required /> Send impression</label>
-          <label><input type="radio" name="option" value="scanner" /> We have a scanner — will upload STL</label>
+              <div class="claim-actions">
+                <!-- Replace PayPal href with your PayPal.Me or hosted checkout URL -->
+                <a href="https://www.paypal.com/" class="paypal-cta" id="paypal-cta" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-paypal" aria-hidden="true"></i> Pay $40 delivery — PayPal</a>
+                <button type="submit" class="claim-link" id="claim-primary-link">Claim my free night guard</button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <a href="http://www.zanndental.com/claim-nightguard.html">
-          <button type="button" class="btn-primary">Claim My Free Night Guard</button>
-        </a>
-      </form>
-    </div>
-  </section>
+    <!-- E: partner summary — square full-bleed media (left) + editorial copy (right) -->
+    <section class="section-close-cta" aria-labelledby="close-cta-heading">
+      <div class="close-cta-split">
+        <div class="close-cta-media">
+          <div class="close-cta-media__square">
+            <img
+              src="images/promotion3.png"
+              alt="Zann Dental Lab — Toronto, established 1987. Laboratory reference imagery."
+              width="600"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+        <div class="close-cta-copy">
+          <div class="close-cta-copy__inner">
+            <p class="close-cta-kicker">
+              <span class="close-cta-kicker__brand">Zann Dental Lab</span>
+              <span class="close-cta-kicker__badge">Ref. NG-PROMO</span>
+            </p>
+            <h2 id="close-cta-heading">Program overview</h2>
+            <p class="close-cta-summary">Custom night guards ship in about seven business days from accepted records. We follow a Keystone soft-splint protocol and retain STL files on a secure workflow to support reorders and consistent outcomes.</p>
+            <ul class="close-cta-highlights" role="list" aria-label="Key service points">
+              <li>
+                <span class="close-cta-highlights__lbl">Turnaround</span>
+                <span class="close-cta-highlights__val">~7 business days</span>
+              </li>
+              <li>
+                <span class="close-cta-highlights__lbl">Protocol</span>
+                <span class="close-cta-highlights__val">Keystone soft splint</span>
+              </li>
+              <li>
+                <span class="close-cta-highlights__lbl">Digital records</span>
+                <span class="close-cta-highlights__val">STL archive</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="section-features">
-    <div class="section-header">
-      <span class="section-label">Why Choose Us</span>
-      <h2 class="section-title">Why Dentists Choose Zann</h2>
-      <p class="intro-p">Premium night guards and seamless service — every time.</p>
-    </div>
+    <!-- Program terms: promotion & referrals (unboxed, own section) -->
+    <section class="section-promo-legal" aria-label="Promotion and referral terms">
+      <div class="promo-legal-shell">
+        <div class="promo-legal-grid">
+          <div>
+            <h3 class="promo-legal__h">Promotion</h3>
+            <p class="promo-legal__p">Complimentary appliance; $40 delivery. Bulk reorder pricing is $165 per unit (regular $180).</p>
+          </div>
+          <div>
+            <h3 class="promo-legal__h">Referrals</h3>
+            <p class="promo-legal__p">When you refer a qualifying new clinic, after their first order your office may receive a complimentary guard or a $200 lab credit, subject to program rules.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="why-zann-bento">
-      <div class="feature-card">
-        
-        <h3>Fast Turnaround</h3>
-        <p>Receive your custom night guard in just 7 days — no delays, no compromise.</p>
+    <!-- F: full-viewport ending CTA -->
+    <section class="section-promo-full-cta" aria-labelledby="promo-full-cta-heading">
+      <div class="promo-full-cta__inner">
+        <p class="promo-full-cta__eyebrow">Next steps</p>
+        <h2 id="promo-full-cta-heading">Start your complimentary night guard</h2>
+        <p class="promo-full-cta__lead">Submit the clinic request form, or contact the lab for scanner setup and delivery coordination.</p>
+        <div class="promo-full-cta__row">
+          <a href="#promo-form" class="promo-btn-primary">Claim free night guard</a>
+          <a href="tel:+14166965454" class="promo-full-cta__phone"><i class="fas fa-phone" aria-hidden="true"></i> 416-696-5454</a>
+          <a href="#send-case" class="promo-btn-secondary">How to send a case</a>
+        </div>
+        <p class="promo-full-cta__note">Complimentary guard · $40 delivery · Ref. NG-PROMO</p>
       </div>
-      <div class="feature-card">
-       
-        <h3>Premium Materials</h3>
-        <p>We use Keystone soft splints known for ultimate comfort and protection.</p>
-      </div>
-      <div class="feature-card">
-        
-        <h3>Secure File Storage</h3>
-        <p>STL files are stored securely for seamless future reorders and convenience.</p>
-      </div>
-      <div class="feature-card special-offer">
-        <h2> Special Offer Just for You!</h2>
-        <p><strong>Your first night guard is FREE</strong><br>Only pay $40 for delivery. Try us risk-free.</p>
-      </div>
-      <div class="feature-card special-offer">
-        <h2> Exclusive Pricing</h2>
-        <p>$165 for bulk guards (Reg. $180)</p>
-      </div>
-      <div class="feature-card refer-offer">
-        <h2>Refer a Dentist & Get Rewarded</h2>
-        <p>Refer another dental clinic and receive a <strong>next free night guard</strong> or a <strong>$200 lab credit</strong> when they place their first order!</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="promo-footer-brand">Zann Dental Lab — Premium Custom Dental Solutions</div>
+    <div class="promo-footer-brand"><a href="https://www.zanndental.com/">Zann Dental Lab</a> — Premium custom dental solutions</div>
+  </main>
 
+   <div id="site-footer"></div>
+
+       <script src="js/nav-footer.js"></script>
+
+  <script>
+    (function () {
+      var form = document.getElementById('promo-claim-form');
+      if (!form) return;
+      var paypalInputs = form.querySelectorAll('input[name="pay_method"]');
+      var note = document.getElementById('paypal-note');
+      var paypalCta = document.getElementById('paypal-cta');
+      var tiles = form.querySelectorAll('.payment-tiles label.tile');
+
+      function syncPayUi() {
+        var sel = form.querySelector('input[name="pay_method"]:checked');
+        var isPaypal = sel && sel.value === 'paypal';
+        if (note) note.hidden = !isPaypal;
+        if (paypalCta) paypalCta.classList.toggle('is-visible', isPaypal);
+        tiles.forEach(function (label) {
+          var inp = label.querySelector('input[type="radio"]');
+          label.classList.toggle('is-checked', inp && inp.checked);
+        });
+      }
+
+      paypalInputs.forEach(function (input) {
+        input.addEventListener('change', syncPayUi);
+      });
+      syncPayUi();
+    })();
+
+    (function () {
+      var root = document.documentElement;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('promo-motion-off');
+        return;
+      }
+      root.classList.add('promo-motion-js');
+      var nodes = document.querySelectorAll(
+        '.promo-site-header, main.promo-page > section:not(.promo-hero), main.promo-page > .promo-footer-brand'
+      );
+      nodes.forEach(function (el) {
+        el.classList.add('motion-reveal');
+      });
+      if (!('IntersectionObserver' in window)) {
+        nodes.forEach(function (el) {
+          el.classList.add('is-inview');
+        });
+        return;
+      }
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-inview');
+            io.unobserve(entry.target);
+          });
+        },
+        { rootMargin: '0px 0px -8% 0px', threshold: 0.06 }
+      );
+      nodes.forEach(function (el) {
+        io.observe(el);
+      });
+    })();
+  </script>
 </body>
 </html>

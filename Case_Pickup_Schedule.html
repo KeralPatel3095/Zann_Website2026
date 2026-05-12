@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Pick Up | Zann Dental Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        :root {
+            --color-dark: #545658;
+            --color-muted: #636466;
+            --color-border: rgba(0, 0, 0, 0.08);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            --pickup-kicker: #7a9a9f;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: var(--font);
+            color: var(--color-muted);
+            background: #ededed;
+        }
+        .pickup-schedule-page {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 46px 20px 70px;
+        }
+        .pickup-schedule-page h1 {
+            margin: 0 0 6px;
+            font-size: clamp(30px, 3.7vw, 38px);
+            color: var(--color-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+        }
+        .required-note {
+            margin: 0 0 22px;
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #6e7275;
+        }
+        .required-note span { color: #a15454; }
+        .pickup-schedule-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 820px;
+        }
+        .field label,
+        .group-title {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #5d6164;
+        }
+        .label-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+        .label-row label {
+            margin: 0;
+            display: inline;
+        }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        .field-hint {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1px solid var(--pickup-kicker);
+            font-size: 11px;
+            font-weight: 700;
+            font-style: italic;
+            color: #5d6164;
+            cursor: help;
+            flex-shrink: 0;
+        }
+        .req { color: #a15454; }
+        .field input[type="text"],
+        .field input[type="tel"] {
+            width: 100%;
+            border: 1px solid #b9bec2;
+            border-radius: 0;
+            background: #f2f2f2;
+            padding: 10px 12px;
+            font-size: 14px;
+            font-family: var(--font);
+            color: var(--color-dark);
+        }
+        .name-grid,
+        .city-state-grid,
+        .zip-country-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .pickup-options-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px 40px;
+            margin-top: 8px;
+            padding-top: 18px;
+            border-top: 1px solid #c8cdd1;
+        }
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .checklist label {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: #505457;
+            cursor: pointer;
+        }
+        .checklist input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+            margin: 0;
+            accent-color: var(--pickup-kicker);
+        }
+        .actions { margin-top: 10px; }
+        .actions button {
+            min-width: 124px;
+            height: 42px;
+            border: 1px solid var(--color-dark);
+            background: transparent;
+            color: var(--color-dark);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            font-family: var(--font);
+            cursor: pointer;
+        }
+        .actions button:hover {
+            background: var(--color-dark);
+            color: #fff;
+        }
+        .status {
+            margin-bottom: 14px;
+            padding: 10px 12px;
+            border: 1px solid #c2c7cb;
+            font-size: 14px;
+            color: var(--color-dark);
+            background: #f7f7f7;
+        }
+        .status[hidden] { display: none; }
+        .status.is-success { background: #e3efe8; border-color: #9cb9a7; }
+        .status.is-error { background: #f2e2df; border-color: #c89a93; }
+        @media (max-width: 768px) {
+            .pickup-schedule-page { padding: 32px 16px 50px; }
+            .pickup-options-row { grid-template-columns: 1fr; }
+            .name-grid,
+            .city-state-grid,
+            .zip-country-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <main class="pickup-schedule-page">
+        <h1>schedule your pick up</h1>
+        <p class="required-note"><span>*</span> indicates required field</p>
+
+        <!-- Netlify: Site settings > Forms > Notifications — add zanndentallab@gmail.com for form "pickup-schedule-request". -->
+        <form
+            class="pickup-schedule-form"
+            id="case-pickup-form"
+            name="pickup-schedule-request"
+            method="POST"
+            action="/"
+            data-netlify="true"
+            netlify
+            netlify-honeypot="bot-field"
+        >
+            <input type="hidden" name="form-name" value="pickup-schedule-request">
+            <p hidden>
+                <label>Do not fill this out: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </p>
+            <div id="case-pickup-status" class="status" role="status" aria-live="polite" hidden></div>
+
+            <div class="field">
+                <label for="pu-practice-name">practice name <span class="req">*</span></label>
+                <input type="text" id="pu-practice-name" name="practice_name" required autocomplete="organization">
+            </div>
+
+            <div class="field">
+                <label for="pu-phone">phone number <span class="req">*</span></label>
+                <input type="tel" id="pu-phone" name="phone_number" required autocomplete="tel">
+            </div>
+
+            <div class="field">
+                <div class="label-row">
+                    <label for="pu-dentist-first">name of dentist <span class="req">*</span></label>
+                    <span class="field-hint" role="img" aria-label="Use the dentist legal first and last name." title="Use the dentist legal first and last name.">i</span>
+                </div>
+                <div class="name-grid">
+                    <input type="text" id="pu-dentist-first" name="dentist_first_name" placeholder="First" required autocomplete="given-name">
+                    <input type="text" id="pu-dentist-last" name="dentist_last_name" placeholder="Last" required autocomplete="family-name">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="pu-address-line1">address <span class="req">*</span></label>
+                <input type="text" id="pu-address-line1" name="address_line_1" required autocomplete="address-line1">
+            </div>
+
+            <div class="field">
+                <label for="pu-address-line2" class="visually-hidden">address line 2 (optional)</label>
+                <input type="text" id="pu-address-line2" name="address_line_2" placeholder="Line 2 (optional)" autocomplete="address-line2">
+            </div>
+
+            <div class="field">
+                <div class="city-state-grid">
+                    <div>
+                        <label for="pu-city">city</label>
+                        <input type="text" id="pu-city" name="city" required autocomplete="address-level2">
+                    </div>
+                    <div>
+                        <label for="pu-state">state / province</label>
+                        <input type="text" id="pu-state" name="state" required autocomplete="address-level1">
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="zip-country-grid">
+                    <div>
+                        <label for="pu-zip">zip / postal code</label>
+                        <input type="text" id="pu-zip" name="zip_code" required autocomplete="postal-code">
+                    </div>
+                    <div>
+                        <label for="pu-country">country</label>
+                        <input type="text" id="pu-country" name="country" required autocomplete="country-name">
+                    </div>
+                </div>
+            </div>
+
+            <div class="pickup-options-row">
+                <div class="field">
+                    <div class="group-title">please indicate <span class="req">*</span></div>
+                    <div class="checklist" id="pu-indicate-group">
+                        <label><input type="checkbox" name="please_indicate[]" value="Pick up">pick up</label>
+                        <label><input type="checkbox" name="please_indicate[]" value="Rush $25">rush $25</label>
+                        <label><input type="checkbox" name="please_indicate[]" value="Next day before 11 AM">next day before 11 am</label>
+                        <label><input type="checkbox" name="please_indicate[]" value="Alginate">alginate</label>
+                        <label><input type="checkbox" name="please_indicate[]" value="Try in">try in</label>
+                        <label><input type="checkbox" name="please_indicate[]" value="Let's call an Uber">let's call an uber</label>
+                        <label><input type="checkbox" name="please_indicate[]" value="Courier Purolator">courier purolator</label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="group-title">hours</div>
+                    <div class="checklist" id="pu-hours-group">
+                        <label><input type="checkbox" name="close_hours[]" value="Close at 3">close at 3</label>
+                        <label><input type="checkbox" name="close_hours[]" value="Close at 4">close at 4</label>
+                        <label><input type="checkbox" name="close_hours[]" value="Close at 5">close at 5</label>
+                        <label><input type="checkbox" name="close_hours[]" value="Close at 6">close at 6</label>
+                        <label><input type="checkbox" name="close_hours[]" value="Close at 7">close at 7</label>
+                        <label><input type="checkbox" name="close_hours[]" value="Close at 8">close at 8</label>
+                        <label><input type="checkbox" name="close_hours[]" value="Close at 9">close at 9</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button type="submit">submit</button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        (function () {
+            var form = document.getElementById('case-pickup-form');
+            var statusEl = document.getElementById('case-pickup-status');
+
+            function showStatus(ok, message) {
+                if (!statusEl) return;
+                statusEl.hidden = false;
+                statusEl.textContent = message;
+                statusEl.classList.remove('is-success', 'is-error');
+                statusEl.classList.add(ok ? 'is-success' : 'is-error');
+            }
+
+            function hasChecked(containerId) {
+                var group = document.getElementById(containerId);
+                if (!group) return false;
+                return !!group.querySelector('input[type="checkbox"]:checked');
+            }
+
+            if (!form) return;
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                if (!hasChecked('pu-indicate-group')) {
+                    showStatus(false, 'Please select at least one option under please indicate.');
+                    return;
+                }
+
+                var submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'submitting...';
+                }
+                showStatus(false, 'Submitting your request...');
+
+                function encodeNetlifyBody() {
+                    var data = new URLSearchParams();
+                    var fd = new FormData(form);
+                    fd.forEach(function (value, key) {
+                        data.append(key, value);
+                    });
+                    return data.toString();
+                }
+                function postToNetlify(url) {
+                    return fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: encodeNetlifyBody(),
+                        credentials: 'same-origin'
+                    });
+                }
+                postToNetlify('/')
+                    .then(function (resp) {
+                        if (resp.ok) return;
+                        var path = window.location.pathname || '';
+                        if (!path || path === '/') throw new Error('HTTP ' + resp.status);
+                        return postToNetlify(path).then(function (r2) {
+                            if (!r2.ok) throw new Error('HTTP ' + r2.status);
+                        });
+                    })
+                    .then(function () {
+                    form.reset();
+                    showStatus(true, 'Thank you. Your pickup schedule request was submitted successfully.');
+                }).catch(function (err) {
+                    if (window.location.protocol === 'file:') {
+                        showStatus(false, 'Netlify forms work after deployment. Please publish this site on Netlify and try again.');
+                    } else {
+                        if (window.console && console.error) console.error('Netlify form submit:', err);
+                        showStatus(false, 'Could not submit. Save and redeploy the site, then in Netlify check Forms shows "pickup-schedule-request". If you use a SPA redirect for all URLs, add an exception so POST requests are not rewritten to index.html.');
+                    }
+                }).finally(function () {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'submit';
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
