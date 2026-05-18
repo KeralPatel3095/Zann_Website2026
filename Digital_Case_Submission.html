@@ -1049,6 +1049,178 @@
                 padding-right: 8px !important;
             }
         }
+
+        /* Scroll-in animations (scanner portals section) */
+        .scroll-animate .animate-title {
+            opacity: 0;
+            transform: translateY(-24px);
+            transition: opacity 1.05s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 1.05s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .scroll-animate.in-view .animate-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-animate .animate-body {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.05s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.22s,
+                        transform 1.05s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.22s;
+        }
+        .scroll-animate.in-view .animate-body {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scanner tools boxes (from index.html scanner portals) */
+        .scanner-tools-section {
+            background: var(--color-bg);
+            width: 100%;
+            box-sizing: border-box;
+            padding: 42px 24px 52px;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .scanner-tools-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .scanner-tools-inner h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 10px;
+        }
+        .scanner-tools-inner p {
+            font-size: 16px;
+            color: var(--color-muted);
+            margin-bottom: 22px;
+            max-width: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .scanner-tools-grid {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+        }
+        .scanner-tools-grid .scanner-portal-btn {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.72);
+            color: var(--color-dark);
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.18s, border-color 0.18s, box-shadow 0.18s;
+            appearance: none;
+            text-transform: none;
+        }
+        .scanner-tools-grid .scanner-portal-btn:hover {
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(122, 154, 159, 0.28);
+            box-shadow: 0 4px 14px rgba(45, 60, 64, 0.06);
+        }
+        .scanner-tools-grid .scanner-portal-btn:focus-visible {
+            outline: 2px solid #7a9a9f;
+            outline-offset: 2px;
+        }
+        .scanner-portal-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 195;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .scanner-portal-modal.is-open {
+            display: flex;
+        }
+        .scanner-portal-modal__backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(40, 48, 52, 0.45);
+            cursor: pointer;
+        }
+        .scanner-portal-modal__panel {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 520px;
+            max-height: min(85vh, 640px);
+            overflow: auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 22px 22px 20px;
+            box-shadow: 0 20px 50px rgba(45, 60, 64, 0.18);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            text-align: left;
+        }
+        .scanner-portal-modal__close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--color-dark);
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s ease;
+        }
+        .scanner-portal-modal__close:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .scanner-portal-modal__title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin: 0 44px 14px 0;
+            padding-right: 4px;
+            line-height: 1.2;
+            text-transform: none;
+        }
+        .scanner-portal-modal__body {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--color-muted);
+        }
+        .scanner-portal-modal__body p {
+            margin: 0 0 12px;
+            max-width: none;
+        }
+        .scanner-portal-modal__body p:last-child {
+            margin-bottom: 0;
+        }
+        .scanner-portal-modal__body a {
+            color: #4a7c85;
+            font-weight: 600;
+            word-break: break-word;
+        }
+        @media (max-width: 900px) {
+            .scanner-tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 520px) {
+            .scanner-tools-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -1357,6 +1529,7 @@
             <div class="quick-nav-links">
                 <a href="#why-it-matters">Why it matters</a>
                 <a href="#what-to-prepare">What to prepare</a>
+                <a href="#scanner-tools">Scanner Portals</a>
                 <a href="#how-to-upload">How to upload</a>
                 <a href="#rx-guide">Prescription guide</a>
                 <a href="#mistakes">Common mistakes</a>
@@ -1438,6 +1611,41 @@
             </div>
         </div>
     </section>
+
+     <!-- Scanner Portals -->
+    <section class="scanner-tools-section scroll-animate" id="scanner-tools">
+        <div class="scanner-tools-inner animate-body">
+            <h2>Scanner Portals</h2>
+            <p>Click a portal for step-by-step connection instructions with Zann Dental Lab.</p>
+            <div class="scanner-tools-grid">
+                <button type="button" class="scanner-portal-btn" data-portal="itero">iTero / Align</button>
+                <button type="button" class="scanner-portal-btn" data-portal="carestream">Carestream</button>
+                <button type="button" class="scanner-portal-btn" data-portal="sirona">Sirona Connect</button>
+                <button type="button" class="scanner-portal-btn" data-portal="shape3">3Shape TRIOS</button>
+                <button type="button" class="scanner-portal-btn" data-portal="e4d">E4D</button>
+                <button type="button" class="scanner-portal-btn" data-portal="medit">Medit Link</button>
+                <button type="button" class="scanner-portal-btn" data-portal="m3m">3M</button>
+                <button type="button" class="scanner-portal-btn" data-portal="wetransfer">WeTransfer</button>
+            </div>
+        </div>
+    </section>
+
+    <div
+        class="scanner-portal-modal"
+        id="scanner-portal-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="scanner-portal-modal-title"
+        aria-hidden="true"
+        hidden
+    >
+        <div class="scanner-portal-modal__backdrop" aria-hidden="true"></div>
+        <div class="scanner-portal-modal__panel">
+            <button type="button" class="scanner-portal-modal__close" aria-label="Close">&times;</button>
+            <h3 class="scanner-portal-modal__title" id="scanner-portal-modal-title"></h3>
+            <div class="scanner-portal-modal__body" id="scanner-portal-modal-body"></div>
+        </div>
+    </div>
 
     <!--how-to-upload section-->
     <section class="fit-screen" id="how-to-upload">
@@ -1556,6 +1764,122 @@
     <div id="site-footer"></div>
 
     <script src="js/nav-footer.js"></script>
+    <script>
+        (function () {
+            // Scanner portal instructions (modal) — same as index.html
+            var modal = document.getElementById('scanner-portal-modal');
+            var titleEl = document.getElementById('scanner-portal-modal-title');
+            var bodyEl = document.getElementById('scanner-portal-modal-body');
+            var closeBtn = modal ? modal.querySelector('.scanner-portal-modal__close') : null;
+            var backdrop = modal ? modal.querySelector('.scanner-portal-modal__backdrop') : null;
+            if (modal && titleEl && bodyEl && closeBtn && backdrop) {
+                var email = 'cadcamdesign@zanndental.com';
+                var copy = {
+                    itero: {
+                        title: 'iTero / Align',
+                        html:
+                            '<p>Call <strong>1-800-577-8767</strong>. Choose option one twice and provide Zann Dental&apos;s phone number <strong>416-696-5454</strong> or our account number <strong>64717</strong> to add Zann to your iTero account.</p>'
+                    },
+                    carestream: {
+                        title: 'Carestream',
+                        html: '<p>Add &ldquo;ZANN Dental Laboratory&rdquo; on CS Connect.</p>'
+                    },
+                    sirona: {
+                        title: 'Sirona Connect',
+                        html:
+                            '<p>Add &ldquo;ZANN Dental&rdquo; or &ldquo;ZANN Dental Lab&rdquo; as your favourite lab in your Sirona Connect account.</p>'
+                    },
+                    shape3: {
+                        title: '3Shape TRIOS',
+                        html:
+                            '<p>Find us on 3Shape Communicate using our email <a href="mailto:' +
+                            email +
+                            '">' +
+                            email +
+                            '</a>.</p>'
+                    },
+                    e4d: {
+                        title: 'E4D',
+                        html: '<p>Send us through <a href="mailto:' + email + '">' + email + '</a>.</p>'
+                    },
+                    medit: {
+                        title: 'Medit Link',
+                        html:
+                            '<p>Connect to us via the Medit Link portal using <a href="mailto:' +
+                            email +
+                            '">' +
+                            email +
+                            '</a>.</p>'
+                    },
+                    m3m: {
+                        title: '3M',
+                        html:
+                            '<p>Export as a STL file and email file to <a href="mailto:' +
+                            email +
+                            '">' +
+                            email +
+                            '</a>.</p>'
+                    },
+                    wetransfer: {
+                        title: 'WeTransfer',
+                        html: '<p><a href="mailto:' + email + '">' + email + '</a></p>'
+                    }
+                };
+
+                var lastActive = null;
+                function onKeydown(e) {
+                    if (e.key === 'Escape') closeScannerModal();
+                }
+                function openScannerModal(key) {
+                    var block = copy[key];
+                    if (!block) return;
+                    lastActive = document.activeElement;
+                    titleEl.textContent = block.title;
+                    bodyEl.innerHTML = block.html;
+                    modal.hidden = false;
+                    modal.classList.add('is-open');
+                    modal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                    document.addEventListener('keydown', onKeydown);
+                    closeBtn.focus();
+                }
+                function closeScannerModal() {
+                    modal.classList.remove('is-open');
+                    modal.hidden = true;
+                    modal.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                    document.removeEventListener('keydown', onKeydown);
+                    bodyEl.innerHTML = '';
+                    if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
+                    lastActive = null;
+                }
+
+                document.querySelectorAll('.scanner-portal-btn[data-portal]').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        openScannerModal(btn.getAttribute('data-portal'));
+                    });
+                });
+                closeBtn.addEventListener('click', closeScannerModal);
+                backdrop.addEventListener('click', closeScannerModal);
+            }
+
+            var animatedSections = document.querySelectorAll('.scroll-animate');
+            if (animatedSections.length && 'IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) entry.target.classList.add('in-view');
+                    });
+                }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+                animatedSections.forEach(function (el) {
+                    observer.observe(el);
+                });
+            } else {
+                animatedSections.forEach(function (el) {
+                    el.classList.add('in-view');
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
 
