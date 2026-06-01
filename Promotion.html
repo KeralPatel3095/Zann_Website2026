@@ -1395,6 +1395,23 @@
       color: var(--color-dark);
     }
 
+    .claim-autosubmit-status {
+      display: none;
+      margin: 0 0 18px;
+      padding: 14px 16px;
+      font-size: 15px;
+      color: var(--color-dark);
+      background: #eef6f8;
+      border: 1px solid rgba(74, 111, 120, 0.25);
+      border-radius: 6px;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .claim-autosubmit-status.is-visible {
+      display: block;
+    }
+
     .claim-success-panel {
       display: none;
       text-align: center;
@@ -1582,6 +1599,69 @@
       border-radius: 6px;
       border: 1px solid rgba(0, 112, 186, 0.18);
       line-height: 1.55;
+    }
+
+    .paypal-checkout,
+    .paypal-checkout-slot .paypal-checkout {
+      margin-top: 16px;
+      padding: 18px 16px;
+      background: var(--color-white);
+      border: 1px solid rgba(0, 112, 186, 0.2);
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .paypal-checkout-slot:empty {
+      display: none;
+    }
+
+    .paypal-checkout-slot:not(:empty) {
+      display: block;
+    }
+
+    .paypal-checkout__embed {
+      display: inline-grid;
+      justify-items: center;
+      gap: 0.5rem;
+    }
+
+    .paypal-checkout__embed form {
+      display: inline-grid;
+      justify-items: center;
+      align-content: start;
+      gap: 0.5rem;
+      margin: 0;
+    }
+
+    .paypal-checkout__embed .pp-X8PMNPR94MB72 {
+      text-align: center;
+      border: none;
+      border-radius: 0.25rem;
+      min-width: 11.625rem;
+      padding: 0 2rem;
+      height: 2.625rem;
+      font-weight: bold;
+      background-color: #ffd140;
+      color: #000;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.25rem;
+      cursor: pointer;
+    }
+
+    .paypal-checkout__embed .pp-powered {
+      font-size: 0.75rem;
+      color: var(--color-muted);
+    }
+
+    .paypal-checkout__embed .pp-powered img {
+      height: 0.875rem;
+      vertical-align: middle;
+    }
+
+    .paypal-checkout__embed .pp-cards {
+      max-width: 100%;
+      height: auto;
     }
 
     .promo-form__hp {
@@ -2584,7 +2664,7 @@
           <div class="claim-panel__main">
             <header class="claim-form-head">
               <h3 class="claim-form-head__title">Clinic request form</h3>
-              <p class="claim-form-head__sub">Complete each step in order. All fields are required. PayPal payers submit the form after payment returns to this page.</p>
+              <p class="claim-form-head__sub">Complete each step in order. All fields are required. PayPal payers are redirected back and the request submits automatically after payment.</p>
             </header>
             <form
               class="promo-form"
@@ -2593,11 +2673,8 @@
               method="POST"
               action="Promotion.html?submitted=1#promo-form"
               data-netlify="true"
-              netlify
               netlify-honeypot="bot-field"
             >
-              <!-- Netlify: Site settings > Forms > Notifications — add zanndentallab@gmail.com for form "promo-claim". -->
-              <!-- PayPal payment link: set return URL to https://www.zanndental.com/Promotion.html?promo_paid=1#promo-form -->
               <input type="hidden" name="form-name" value="promo-claim" />
               <p class="promo-form__hp">
                 <label>
@@ -2606,6 +2683,9 @@
                 </label>
               </p>
               <input type="hidden" name="delivery_payment" id="delivery-payment" value="" />
+              <!-- PayPal dashboard: set payment link return URL to https://www.zanndental.com/Promotion.html?paypal_paid=1#promo-form -->
+
+              <p class="claim-autosubmit-status" id="claim-autosubmit-status" role="status" aria-live="polite"></p>
 
               <div class="claim-success-panel" id="claim-success-panel" role="status" aria-live="polite" hidden>
                 <p class="claim-success-panel__icon" aria-hidden="true"><i class="fas fa-circle-check"></i></p>
@@ -2677,7 +2757,7 @@
                       <label class="tile">
                         <input type="radio" name="pay_method" value="paypal" required />
                         <span class="tile-top"><i class="fa-brands fa-paypal" aria-hidden="true"></i><span class="tile-title">PayPal</span></span>
-                        <span class="tile-hint">Pay $40 online, then return here to submit your request.</span>
+                        <span class="tile-hint">Pay $40 on PayPal — your clinic request is sent automatically after payment.</span>
                       </label>
                       <label class="tile">
                         <input type="radio" name="pay_method" value="other" required />
@@ -2685,13 +2765,12 @@
                         <span class="tile-hint">Our team will contact your clinic or provide an invoice for the $40 delivery fee.</span>
                       </label>
                     </div>
-                    <p class="paypal-note" id="paypal-note" hidden>After you pay the $40 delivery fee on PayPal, you will return to this page to submit your clinic request.</p>
+                    <div id="paypal-checkout-slot" class="paypal-checkout-slot" hidden aria-live="polite"></div>
                   </div>
                 </fieldset>
                 <div class="claim-step-actions" id="claim-step-3-actions">
                   <button type="button" class="claim-step-btn" data-prev-step="2">Back</button>
-                  <button type="button" class="claim-step-btn claim-step-btn--primary" id="claim-step3-other-next" data-next-step="4" hidden>Continue to submit</button>
-                  <button type="button" class="claim-step-btn claim-step-btn--paypal" id="claim-paypal-pay" hidden><i class="fa-brands fa-paypal" aria-hidden="true"></i> Pay $40 — PayPal</button>
+                  <button type="button" class="claim-step-btn claim-step-btn--primary" id="claim-step3-next" data-next-step="4">Continue to submit</button>
                 </div>
               </div>
 
@@ -2703,6 +2782,18 @@
                 </div>
               </div>
             </form>
+
+            <div id="paypal-checkout-park" hidden aria-hidden="true"></div>
+            <div class="paypal-checkout" id="paypal-checkout-outer" hidden>
+              <p class="paypal-note">Complete steps 1 and 2, then pay $40 below. After PayPal confirms payment, your clinic request is submitted automatically.</p>
+              <div class="paypal-checkout__embed">
+                <form id="paypal-pay-form" action="https://www.paypal.com/ncp/payment/X8PMNPR94MB72" method="post">
+                  <input class="pp-X8PMNPR94MB72" type="submit" value="Buy Now — $40 delivery" />
+                  <img class="pp-cards" src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="Accepted cards" width="240" height="32" />
+                  <p class="pp-powered">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" width="60" height="14" /></p>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2784,25 +2875,42 @@
     <div class="promo-footer-brand"><a href="https://www.zanndental.com/">Zann Dental Lab</a> — Premium custom dental solutions</div>
   </main>
 
+  <!-- Netlify build-time form detection (optional backup in Netlify dashboard) -->
+  <form name="promo-claim" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="clinic_name" />
+    <input type="text" name="dentist_contact" />
+    <input type="email" name="clinic_email" />
+    <input type="text" name="shipping_info" />
+    <input type="text" name="case_option" />
+    <input type="text" name="pay_method" />
+    <input type="text" name="delivery_payment" />
+    <input type="text" name="bot-field" />
+  </form>
+
    <div id="site-footer"></div>
 
        <script src="js/nav-footer.js"></script>
 
   <script>
     (function () {
-      var PAYPAL_URL = 'https://www.paypal.com/ncp/payment/X8PMNPR94MB72';
+      var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/zanndentallab@gmail.com';
       var DRAFT_KEY = 'promo_claim_draft';
+      var PAYPAL_PENDING_KEY = 'promo_paypal_pending';
       var form = document.getElementById('promo-claim-form');
       if (!form) return;
 
       var currentStep = 1;
+      var isSubmitting = false;
       var paypalInputs = form.querySelectorAll('input[name="pay_method"]');
-      var note = document.getElementById('paypal-note');
+      var paypalCheckoutOuter = document.getElementById('paypal-checkout-outer');
+      var paypalCheckoutSlot = document.getElementById('paypal-checkout-slot');
+      var paypalCheckoutPark = document.getElementById('paypal-checkout-park');
       var tiles = form.querySelectorAll('.payment-tiles label.tile');
-      var otherNext = document.getElementById('claim-step3-other-next');
-      var paypalPayBtn = document.getElementById('claim-paypal-pay');
       var deliveryPayment = document.getElementById('delivery-payment');
       var submitNote = document.getElementById('claim-submit-note');
+      var autosubmitStatus = document.getElementById('claim-autosubmit-status');
+      var step3Next = document.getElementById('claim-step3-next');
+      var paypalPayForm = document.getElementById('paypal-pay-form');
       var progressItems = document.querySelectorAll('[data-progress-step]');
       var steps = form.querySelectorAll('.claim-form-step');
 
@@ -2846,7 +2954,18 @@
       function clearDraft() {
         try {
           sessionStorage.removeItem(DRAFT_KEY);
+          sessionStorage.removeItem(PAYPAL_PENDING_KEY);
         } catch (e) { /* ignore */ }
+      }
+
+      function setAutosubmitStatus(message, visible) {
+        if (!autosubmitStatus) return;
+        autosubmitStatus.textContent = message || '';
+        autosubmitStatus.classList.toggle('is-visible', !!visible);
+      }
+
+      function validateAllSteps() {
+        return validateStep(1) && validateStep(2) && validateStep(3);
       }
 
       function clearStepErrors(stepNum) {
@@ -2919,42 +3038,76 @@
         if (section && stepNum > 1) {
           section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+        mountPaypalCheckout();
+      }
+
+      function mountPaypalCheckout() {
+        if (!paypalCheckoutOuter || !paypalCheckoutSlot || !paypalCheckoutPark) return;
+        var sel = form.querySelector('input[name="pay_method"]:checked');
+        var show = sel && sel.value === 'paypal' && currentStep === 3;
+        if (show) {
+          paypalCheckoutSlot.hidden = false;
+          paypalCheckoutOuter.hidden = false;
+          if (paypalCheckoutOuter.parentElement !== paypalCheckoutSlot) {
+            paypalCheckoutSlot.appendChild(paypalCheckoutOuter);
+          }
+        } else {
+          paypalCheckoutOuter.hidden = true;
+          paypalCheckoutSlot.hidden = true;
+          if (paypalCheckoutOuter.parentElement !== paypalCheckoutPark) {
+            paypalCheckoutPark.appendChild(paypalCheckoutOuter);
+          }
+        }
       }
 
       function syncPayUi() {
         var sel = form.querySelector('input[name="pay_method"]:checked');
         var isPaypal = sel && sel.value === 'paypal';
         var isOther = sel && sel.value === 'other';
-        if (note) note.hidden = !isPaypal;
-        if (otherNext) otherNext.hidden = !isOther;
-        if (paypalPayBtn) paypalPayBtn.hidden = !isPaypal;
+        if (deliveryPayment) {
+          if (isPaypal) deliveryPayment.value = 'paypal';
+          else if (isOther) deliveryPayment.value = 'invoice_or_phone';
+        }
+        if (step3Next) step3Next.hidden = !!isPaypal;
+        mountPaypalCheckout();
         tiles.forEach(function (label) {
           var inp = label.querySelector('input[type="radio"]');
           label.classList.toggle('is-checked', inp && inp.checked);
         });
       }
 
-      function goToPayPal() {
-        if (!validateStep(1) || !validateStep(2) || !validateStep(3)) {
-          if (!validateStep(1)) setStep(1);
-          else if (!validateStep(2)) setStep(2);
-          else setStep(3);
-          return;
-        }
-        saveDraft();
-        if (deliveryPayment) deliveryPayment.value = 'pending_paypal';
-        window.location.href = PAYPAL_URL;
+      function labelForCase(value) {
+        if (value === 'impression') return 'Physical impression — ship to the lab';
+        if (value === 'scanner') return 'Digital — STL upload';
+        return value || '';
+      }
+
+      function labelForPay(value) {
+        if (value === 'paypal') return 'PayPal ($40 delivery)';
+        if (value === 'other') return 'Invoice or phone';
+        return value || '';
       }
 
       form.querySelectorAll('[data-next-step]').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var next = Number(btn.getAttribute('data-next-step'));
           if (!validateStep(currentStep)) return;
-          if (currentStep === 1) saveDraft();
-          if (currentStep === 2) saveDraft();
+          if (currentStep === 1 || currentStep === 2) saveDraft();
+          if (currentStep === 3) {
+            if (!validateStep(3)) return;
+            saveDraft();
+            syncPayUi();
+          }
           setStep(next);
-          if (next === 4 && deliveryPayment && !deliveryPayment.value) {
-            deliveryPayment.value = 'invoice_or_phone';
+          if (next === 4) {
+            var pay = form.querySelector('input[name="pay_method"]:checked');
+            if (submitNote && pay && pay.value === 'paypal') {
+              submitNote.textContent = 'Submit your request after paying the $40 delivery fee on PayPal. Our team will confirm receipt.';
+              submitNote.classList.remove('is-success');
+            } else if (submitNote) {
+              submitNote.textContent = 'Submit your complimentary night guard request. Our team will arrange the $40 delivery fee by invoice or phone.';
+              submitNote.classList.remove('is-success');
+            }
           }
         });
       });
@@ -2968,23 +3121,6 @@
       paypalInputs.forEach(function (input) {
         input.addEventListener('change', syncPayUi);
       });
-
-      if (paypalPayBtn) {
-        paypalPayBtn.addEventListener('click', goToPayPal);
-      }
-
-      if (otherNext) {
-        otherNext.addEventListener('click', function () {
-          if (!validateStep(3)) return;
-          saveDraft();
-          if (deliveryPayment) deliveryPayment.value = 'invoice_or_phone';
-          setStep(4);
-          if (submitNote) {
-            submitNote.textContent = 'Submit your complimentary night guard request. Our team will arrange the $40 delivery fee by invoice or phone.';
-            submitNote.classList.remove('is-success');
-          }
-        });
-      }
 
       var successPanel = document.getElementById('claim-success-panel');
       var stepsProgress = document.getElementById('claim-steps-progress');
@@ -3004,6 +3140,28 @@
         if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
+      function buildFormSubmitPayload() {
+        var caseVal = (form.querySelector('input[name="case_option"]:checked') || {}).value || '';
+        var payVal = (form.querySelector('input[name="pay_method"]:checked') || {}).value || '';
+        var emailEl = form.querySelector('#clinic-email');
+        return {
+          _subject: 'Zann promo — night guard clinic request',
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: emailEl ? emailEl.value.trim() : '',
+          clinic_name: (form.querySelector('#clinic-name') || {}).value || '',
+          dentist_contact: (form.querySelector('#dentist-contact') || {}).value || '',
+          email: emailEl ? emailEl.value.trim() : '',
+          clinic_email: emailEl ? emailEl.value.trim() : '',
+          shipping_info: (form.querySelector('#shipping-info') || {}).value || '',
+          case_submission: labelForCase(caseVal),
+          case_option: caseVal,
+          payment_method: labelForPay(payVal),
+          pay_method: payVal,
+          delivery_payment: deliveryPayment ? deliveryPayment.value : ''
+        };
+      }
+
       function encodeNetlifyPromoForm() {
         var data = new URLSearchParams();
         data.append('form-name', 'promo-claim');
@@ -3013,7 +3171,7 @@
             if (el.checked) data.append(el.name, el.value);
             return;
           }
-          if (el.type === 'file') return;
+          if (el.type === 'file' || el.name === 'bot-field') return;
           data.append(el.name, el.value || '');
         });
         return data.toString();
@@ -3025,32 +3183,56 @@
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: encodeNetlifyPromoForm(),
           credentials: 'same-origin'
+        }).then(function (resp) {
+          return resp.ok;
+        }).catch(function () {
+          return false;
         });
       }
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (!validateStep(1) || !validateStep(2) || !validateStep(3)) {
+      function postToFormSubmit() {
+        return fetch(FORMSUBMIT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify(buildFormSubmitPayload())
+        }).then(function (resp) {
+          if (!resp.ok) throw new Error('FormSubmit ' + resp.status);
+          return resp.json();
+        });
+      }
+
+      function submitPromoClaim(options) {
+        options = options || {};
+        if (isSubmitting) return Promise.resolve();
+        if (!validateAllSteps()) {
           if (!validateStep(1)) setStep(1);
           else if (!validateStep(2)) setStep(2);
           else setStep(3);
-          return;
+          return Promise.reject(new Error('validation'));
+        }
+        isSubmitting = true;
+        if (options.paypalPaid && deliveryPayment) {
+          deliveryPayment.value = 'paypal_paid';
         }
         if (submitBtn) {
           submitBtn.disabled = true;
           submitBtn.textContent = 'Submitting...';
         }
-        postToNetlify('/')
-          .then(function (resp) {
-            if (resp.ok) return;
-            var path = window.location.pathname || '';
-            if (!path || path === '/') throw new Error('HTTP ' + resp.status);
-            return postToNetlify(path).then(function (r2) {
-              if (!r2.ok) throw new Error('HTTP ' + r2.status);
-            });
-          })
+        if (options.auto) {
+          setAutosubmitStatus('Payment received — submitting your clinic request…', true);
+          form.classList.remove('is-submitted');
+        }
+        var netlifyPath = window.location.pathname || '/';
+        return postToFormSubmit()
           .then(function () {
+            postToNetlify('/').then(function (ok) {
+              if (!ok && netlifyPath && netlifyPath !== '/') postToNetlify(netlifyPath);
+            });
             clearDraft();
+            setAutosubmitStatus('', false);
             var target = 'Promotion.html?submitted=1#promo-form';
             if (window.location.pathname.toLowerCase().endsWith('promotion.html')) {
               if (window.history.replaceState) {
@@ -3062,39 +3244,84 @@
             }
           })
           .catch(function () {
+            isSubmitting = false;
+            setAutosubmitStatus('', false);
             if (submitBtn) {
               submitBtn.disabled = false;
               submitBtn.textContent = 'Claim my free night guard';
             }
-            alert('Could not submit your request. Please try again or call 416-696-5454.');
+            if (!options.silent) {
+              alert('Could not submit your request. Please try again or call 416-696-5454.');
+            }
+            throw new Error('submit failed');
           });
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var pay = form.querySelector('input[name="pay_method"]:checked');
+        if (pay && pay.value === 'paypal') {
+          setStep(3);
+          alert('Please pay with the PayPal button on step 3. Your request will be submitted automatically after payment.');
+          return;
+        }
+        submitPromoClaim();
       });
 
+      if (paypalPayForm) {
+        paypalPayForm.addEventListener('submit', function (e) {
+          var pay = form.querySelector('input[name="pay_method"]:checked');
+          if (!pay || pay.value !== 'paypal') {
+            e.preventDefault();
+            return;
+          }
+          if (!validateAllSteps()) {
+            e.preventDefault();
+            if (!validateStep(1)) setStep(1);
+            else if (!validateStep(2)) setStep(2);
+            else setStep(3);
+            alert('Please complete all required fields in steps 1–3 before paying on PayPal.');
+            return;
+          }
+          saveDraft();
+          try {
+            sessionStorage.setItem(PAYPAL_PENDING_KEY, '1');
+          } catch (err) { /* ignore */ }
+        });
+      }
+
       var params = new URLSearchParams(window.location.search);
-      var returnedFromPaypal = params.get('promo_paid') === '1';
       var formSubmitted = params.get('submitted') === '1';
+      var paypalPaid = params.get('paypal_paid') === '1';
 
       if (formSubmitted) {
         showSubmittedSuccess();
         if (window.history.replaceState) {
           window.history.replaceState({}, '', window.location.pathname + '#promo-form');
         }
-      } else if (returnedFromPaypal) {
-        loadDraft();
+      } else if (paypalPaid) {
+        if (paypalCheckoutOuter && paypalCheckoutPark) {
+          paypalCheckoutPark.appendChild(paypalCheckoutOuter);
+        }
+        var hadDraft = loadDraft();
         var paypalRadio = form.querySelector('input[name="pay_method"][value="paypal"]');
         if (paypalRadio) paypalRadio.checked = true;
-        if (deliveryPayment) deliveryPayment.value = 'paypal_paid';
         syncPayUi();
-        setStep(4);
-        if (submitNote) {
-          submitNote.textContent = 'Thank you for your PayPal payment. Submit your clinic request below and our team will confirm receipt.';
-          submitNote.classList.add('is-success');
-        }
-        if (window.history.replaceState) {
-          var clean = window.location.pathname + window.location.hash;
-          window.history.replaceState({}, '', clean);
+        setStep(3);
+        if (!hadDraft || !validateAllSteps()) {
+          setAutosubmitStatus('We could not restore your form after PayPal. Please complete steps 1–3 and pay again, or call 416-696-5454.', true);
+          if (window.history.replaceState) {
+            window.history.replaceState({}, '', window.location.pathname + '#promo-form');
+          }
+        } else {
+          submitPromoClaim({ auto: true, paypalPaid: true }).catch(function () {
+            setAutosubmitStatus('Automatic submit failed. Please try the PayPal button again or call 416-696-5454.', true);
+          });
         }
       } else {
+        if (paypalCheckoutOuter && paypalCheckoutPark) {
+          paypalCheckoutPark.appendChild(paypalCheckoutOuter);
+        }
         loadDraft();
         syncPayUi();
       }
