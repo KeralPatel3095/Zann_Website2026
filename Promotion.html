@@ -1412,6 +1412,57 @@
       display: block;
     }
 
+    .claim-paypal-return-banner {
+      display: none;
+      align-items: flex-start;
+      gap: 14px;
+      margin: 0 0 20px;
+      padding: 16px 18px;
+      background: linear-gradient(135deg, #e8f7ec 0%, #eef6f8 100%);
+      border: 1px solid rgba(39, 120, 72, 0.35);
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(39, 120, 72, 0.08);
+      line-height: 1.55;
+    }
+
+    .claim-paypal-return-banner.is-visible {
+      display: flex;
+    }
+
+    .claim-paypal-return-banner__icon {
+      flex-shrink: 0;
+      margin: 2px 0 0;
+      font-size: 22px;
+      color: #2d7a4a;
+      line-height: 1;
+    }
+
+    .claim-paypal-return-banner__title {
+      display: block;
+      margin: 0 0 6px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-dark);
+    }
+
+    .claim-paypal-return-banner__text {
+      margin: 0;
+      font-size: 15px;
+      color: var(--color-muted);
+    }
+
+    .claim-paypal-return-banner__text strong {
+      color: var(--color-dark);
+      font-weight: 700;
+    }
+
+    .claim-submit-note.is-paypal-return {
+      background: #fff;
+      border-color: rgba(0, 112, 186, 0.35);
+      color: var(--color-dark);
+      font-weight: 500;
+    }
+
     .claim-success-panel {
       display: none;
       text-align: center;
@@ -2779,6 +2830,13 @@
               </div>
 
               <div class="claim-form-step" data-step="4" id="claim-step-4">
+                <div class="claim-paypal-return-banner" id="claim-paypal-return-banner" role="status" aria-live="polite" hidden>
+                  <p class="claim-paypal-return-banner__icon" aria-hidden="true"><i class="fas fa-circle-check"></i></p>
+                  <div>
+                    <span class="claim-paypal-return-banner__title">PayPal payment received</span>
+                    <p class="claim-paypal-return-banner__text">Thank you your $40 delivery fee is paid. <strong>Click “Claim my free night guard”</strong> below to complete your request. We will email your clinic details to our team.</p>
+                  </div>
+                </div>
                 <p class="claim-submit-note" id="claim-submit-note">Review your details, then submit your complimentary night guard request.</p>
                 <div class="claim-step-actions claim-actions">
                   <button type="button" class="claim-step-btn" data-prev-step="3" id="claim-step4-back">Back</button>
@@ -2923,6 +2981,7 @@
       var deliveryPayment = document.getElementById('delivery-payment');
       var submitNote = document.getElementById('claim-submit-note');
       var autosubmitStatus = document.getElementById('claim-autosubmit-status');
+      var paypalReturnBanner = document.getElementById('claim-paypal-return-banner');
       var step3Next = document.getElementById('claim-step3-next');
       var paypalPayForm = document.getElementById('paypal-pay-form');
       var progressItems = document.querySelectorAll('[data-progress-step]');
@@ -2988,26 +3047,46 @@
         if (deliveryPayment) deliveryPayment.value = 'paypal_paid';
       }
 
+      function hidePaypalReturnBanner() {
+        if (paypalReturnBanner) {
+          paypalReturnBanner.hidden = true;
+          paypalReturnBanner.classList.remove('is-visible');
+        }
+        if (submitNote) submitNote.classList.remove('is-paypal-return');
+        if (submitBtn) submitBtn.classList.remove('is-paypal-ready');
+        setAutosubmitStatus('', false);
+      }
+
       function showPaypalReturnStep() {
         markPaypalPaymentComplete();
         syncPayUi();
         setStep(4);
+        if (paypalReturnBanner) {
+          paypalReturnBanner.hidden = false;
+          paypalReturnBanner.classList.add('is-visible');
+        }
         if (submitNote) {
           submitNote.textContent =
-            'Payment received — thank you. Click the button below to claim your free night guard. We will email your request to our team.';
+            'Final step: press the green button below to claim your complimentary night guard and send your request by email.';
           submitNote.classList.remove('is-success');
+          submitNote.classList.add('is-paypal-return');
         }
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Claim my free night guard';
           submitBtn.classList.add('is-paypal-ready');
         }
-        setAutosubmitStatus('PayPal payment received. Click “Claim my free night guard” below to complete your request.', true);
+        setAutosubmitStatus('', false);
         if (window.history.replaceState) {
           window.history.replaceState({}, '', (window.location.pathname || 'Promotion.html') + '#promo-form');
         }
         var section = document.getElementById('promo-form');
         if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (submitBtn) {
+          setTimeout(function () {
+            submitBtn.focus({ preventScroll: true });
+          }, 400);
+        }
       }
 
       function setAutosubmitStatus(message, visible) {
@@ -3089,6 +3168,15 @@
         var section = document.getElementById('promo-form');
         if (section && stepNum > 1) {
           section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        if (paypalReturnBanner) {
+          if (stepNum === 4 && isPaypalPaymentComplete()) {
+            paypalReturnBanner.hidden = false;
+            paypalReturnBanner.classList.add('is-visible');
+          } else {
+            paypalReturnBanner.hidden = true;
+            paypalReturnBanner.classList.remove('is-visible');
+          }
         }
         mountPaypalCheckout();
       }
@@ -3180,6 +3268,7 @@
       var submitBtn = document.getElementById('claim-primary-link');
 
       function showSubmittedSuccess() {
+        hidePaypalReturnBanner();
         clearDraft();
         form.reset();
         if (deliveryPayment) deliveryPayment.value = '';
