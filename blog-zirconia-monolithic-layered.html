@@ -24,7 +24,7 @@
 </head>
 <body>
 
-     <!-- Top promo bar -->
+      <!-- Top promo bar -->
      <div class="promo-bar">
         New to Zann? <a href="#resources">Request a welcome kit, Fast turnaround on first case. <a href="#case-submission">Send a case</a>
     </div>
@@ -32,9 +32,8 @@
     <div class="site-header-sticky">
     <!-- Header with full navigation -->
     <header class="header">
+        <div class="header-main">
         <a href="index.html" class="logo">ZANN</a>
-        <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-        <div class="nav-overlay" aria-hidden="true"></div>
         <nav class="nav">
             <div class="nav-item">
                 <a href="index.html" class="nav-link">Home</a>
@@ -97,7 +96,7 @@
                                     <a href="Product_Acrylic_Dentures.html">Acrylic Dentures</a>
                                     <!-- <a href="Product_Immediate_Dentures.html">Immediate Dentures</a> -->
                                     <a href="Product_Cast_Partial_Framework_Dentures.html">Cast Partial Dentures</a>
-                                    <!-- <a href="Product_3D_Printing.html">3D Printed Dentures</a> -->
+                                    <a href="Product_3D_Printing.html">3D Printed Dentures</a>
                                     <a href="Product_Denture_Repairs.html">Denture Repairs/Relines</a>
 
                                 </div>
@@ -114,33 +113,67 @@
                         </div>
                         <div class="dropdown-right">
                             <div class="dropdown-card">
-                                <div class="dropdown-card-img-wrap">
-                                    <img class="dropdown-card-img dropdown-card-img-default" src="images/Product + Service- Crown + Bridge.jpg" alt="Crowns and bridges">
-                                    <img class="dropdown-card-img dropdown-card-img-hover" src="images/Product + Service- Crown + Bridge.jpg" alt="" aria-hidden="true">
-                                </div>
+                                <!-- <div class="dropdown-card-img-wrap">
+                                    <img class="dropdown-card-img dropdown-card-img-default" src="images/Zrc_v-1x Strength _ Aesthetic.jpg" alt="Crowns and bridges">
+                                    <img class="dropdown-card-img dropdown-card-img-hover" src="images/Zrc_v-1x Strength _ Aesthetic.jpg" alt="" aria-hidden="true">
+                                </div> -->
+                                <a href="product_crown_Zirconia.html" target="_blank">
+                                  <div class="dropdown-card-img-wrap">
+                                     <img class="dropdown-card-img dropdown-card-img-default" 
+                                          src="images/Zrc_v-1x Strength _ Aesthetic.jpg" 
+                                          alt="Crowns and bridges">
+
+                                     <img class="dropdown-card-img dropdown-card-img-hover" 
+                                          src="images/Zrc_v-1x Strength _ Aesthetic.jpg" 
+                                          alt="" 
+                                    aria-hidden="true">
+                                    </div>
+                                </a>
                                 <span class="dropdown-card-label">Crowns &amp; Bridges</span>
     
                             </div>
+
                             <div class="dropdown-card">
+                                <!-- <div class="dropdown-card-img-wrap">
+                                    <img class="dropdown-card-img dropdown-card-img-default" src="images/3dPrinted_1x premium material updated.jpg" alt="Dentures">
+                                    <img class="dropdown-card-img dropdown-card-img-hover" src="images/3dPrinted_1x premium material updated.jpg" alt="" aria-hidden="true">
+                                </div> -->
+                                <a href="Product_Acrylic_Dentures.html">
                                 <div class="dropdown-card-img-wrap">
-                                    <img class="dropdown-card-img dropdown-card-img-default" src="images/Product + Service - denture.jpg" alt="Dentures">
-                                    <img class="dropdown-card-img dropdown-card-img-hover" src="images/Product + Service - denture.jpg" alt="" aria-hidden="true">
+                                    <img class="dropdown-card-img dropdown-card-img-default"
+                                        src="images/3dPrinted_1x premium material updated.jpg"
+                                        alt="Dentures">
+
+                                    <img class="dropdown-card-img dropdown-card-img-hover"
+                                        src="images/3dPrinted_1x premium material updated.jpg"
+                                        alt=""
+                                        aria-hidden="true">
                                 </div>
+                            </a>
                                 <span class="dropdown-card-label">Dentures</span>
                             </div>
                             <div class="dropdown-card">
-                                <div class="dropdown-card-img-wrap">
+                                <!-- <div class="dropdown-card-img-wrap">
                                     <img class="dropdown-card-img dropdown-card-img-default" src="images/28.jpg" alt="Nightguards">
                                     <img class="dropdown-card-img dropdown-card-img-hover" src="images/28.jpg" alt="" aria-hidden="true">
-                                </div>
+                                </div> -->
+                                <a href="Product_Nightguards.html">
+                                    <div class="dropdown-card-img-wrap">
+                                        <img class="dropdown-card-img dropdown-card-img-default"
+                                            src="images/28.jpg"
+                                            alt="Nightguards">
+
+                                        <img class="dropdown-card-img dropdown-card-img-hover"
+                                            src="images/28.jpg"
+                                            alt=""
+                                            aria-hidden="true">
+                                    </div>
+                                </a>
                                 <span class="dropdown-card-label">Nightguards</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-             <div class="nav-item">
-                <a href="shop.html" class="nav-link">Shop</a>
             </div>
             <div class="nav-item has-dropdown">
                 <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Case Submission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -177,12 +210,47 @@
                             
                             
                         <div class="dropdown-right">
-                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Send A Case - ( case submission ).jpg" alt="Send a Case"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Send A Case - ( case submission ).jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Send a Case</span></div>
+                            <!-- <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Send It Complete.jpg" alt="Send a Case"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Send It Complete.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Send a Case</span></div>
                             <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Digital Submission.jpg" alt="Digital Submission"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Digital Submission.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Digital Submission</span></div>
-                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Shipping1.1.jpg" alt="Shipping"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Shipping1.1.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Shipping</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Shipping1.1.jpg" alt="Shipping"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Shipping1.1.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Shipping</span></div> -->
+                            <a href="Step_BY_Step_Instructions.html" class="dropdown-card-link">
+                                <div class="dropdown-card">
+                                    <div class="dropdown-card-img-wrap">
+                                        <img class="dropdown-card-img dropdown-card-img-default" src="images/Send It Complete.jpg" alt="Send a Case">
+                                        <img class="dropdown-card-img dropdown-card-img-hover" src="images/Send It Complete.jpg" alt="" aria-hidden="true">
+                                    </div>
+                                    <span class="dropdown-card-label">Send a Case</span>
+                                </div>
+                            </a>
+
+                            <a href="Digital_Case_Submission.html" class="dropdown-card-link">
+                                <div class="dropdown-card">
+                                    <div class="dropdown-card-img-wrap">
+                                        <img class="dropdown-card-img dropdown-card-img-default" src="images/Digital Submission.jpg" alt="Digital Submission">
+                                        <img class="dropdown-card-img dropdown-card-img-hover" src="images/Digital Submission.jpg" alt="" aria-hidden="true">
+                                    </div>
+                                    <span class="dropdown-card-label">Digital Submission</span>
+                                </div>
+                            </a>
+
+                            <a href="FAQ_Case_Submission.html" class="dropdown-card-link">
+                                <div class="dropdown-card">
+                                    <div class="dropdown-card-img-wrap">
+                                        <img class="dropdown-card-img dropdown-card-img-default" src="images/Shipping1.1.jpg" alt="Shipping">
+                                        <img class="dropdown-card-img dropdown-card-img-hover" src="images/Shipping1.1.jpg" alt="" aria-hidden="true">
+                                    </div>
+                                    <span class="dropdown-card-label">Shipping</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
+              <div class="nav-item">
+                <a href="shop.html" class="nav-link">Shop</a>
+            </div>
+            <div class="nav-item">
+                <a href="Promotion.html" class="nav-link">Promotion</a>
             </div>
             <!-- <div class="nav-item has-dropdown">
                 <a href="#" class="nav-link nav-link-toggle" data-toggle="dropdown">Education <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -232,10 +300,12 @@
                 <div class="dropdown">
                     <div class="dropdown-inner">
                         <div class="dropdown-left">
-                            <span class="dropdown-label">Specialists &amp; Support</span>
+                            <span class="dropdown-label">specialists &amp; support</span>
                             <a href="CustomShadeinHouse.html">Custom Shade in House</a>
                             <a href="Case_Pickup_Schedule.html">Case Pickup</a>
                             <a href="Case_Supplies.html">Case Supplies</a>
+
+                            
                             <!-- <div class="dropdown-block">
                                 <button type="button" class="dropdown-expand">Contact a Specialist <span class="dropdown-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></button>
                                 <div class="dropdown-sublinks">
@@ -253,9 +323,38 @@
                             <a href="#">Local Lab Contacts (Phone &amp; Email)</a> -->
                         </div>
                         <div class="dropdown-right">
-                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Ned.jpg" alt="Contact a Specialist"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Ned.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Contact a Specialist</span></div>
+                            <!-- <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Ned.jpg" alt="Contact a Specialist"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Ned.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Contact a Specialist</span></div>
                             <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Technical_Digital1.1.jpg" alt="Technical Support"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Technical_Digital1.1.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Technical Support</span></div>
-                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/go to lab - support .jpg" alt="Local Lab"><img class="dropdown-card-img dropdown-card-img-hover" src="images/go to lab - support .jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">go to Lab</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/At the lab.jpg" alt="Local Lab"><img class="dropdown-card-img dropdown-card-img-hover" src="images/At the lab.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">go to Lab</span></div> -->
+                         <a href="about_ourstory.html" class="dropdown-card-link">
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <img class="dropdown-card-img dropdown-card-img-default" src="images/Ned.jpg" alt="Contact a Specialist">
+                                    <img class="dropdown-card-img dropdown-card-img-hover" src="images/Ned.jpg" alt="" aria-hidden="true">
+                                </div>
+                                <span class="dropdown-card-label">Contact a Specialist</span>
+                            </div>
+                        </a>
+
+                        <a href="contact.html" class="dropdown-card-link">
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <img class="dropdown-card-img dropdown-card-img-default" src="images/Technical_Digital1.1.jpg" alt="Technical Support">
+                                    <img class="dropdown-card-img dropdown-card-img-hover" src="images/Technical_Digital1.1.jpg" alt="" aria-hidden="true">
+                                </div>
+                                <span class="dropdown-card-label">Technical Support</span>
+                            </div>
+                        </a>
+
+                        <a href="about_missionandvalues.html" class="dropdown-card-link">
+                            <div class="dropdown-card">
+                                <div class="dropdown-card-img-wrap">
+                                    <img class="dropdown-card-img dropdown-card-img-default" src="images/At the lab.jpg" alt="Local Lab">
+                                    <img class="dropdown-card-img dropdown-card-img-hover" src="images/At the lab.jpg" alt="" aria-hidden="true">
+                                </div>
+                                <span class="dropdown-card-label">go to Lab</span>
+                            </div>
+                        </a>
                         </div>
                     </div>
                 </div>
@@ -273,9 +372,38 @@
                             <a href="blog.html">Lab journal</a>
                         </div>
                         <div class="dropdown-right">
-                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Catalog + Guides.jpg" alt="Catalogs"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Catalog + Guides.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Catalogs</span></div>
+                            <!-- <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Catalog + Guides.jpg" alt="Catalogs"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Catalog + Guides.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Catalogs</span></div>
                             <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Welcome Kit.jpg" alt="Welcome Kits"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Welcome Kit.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Welcome Kits</span></div>
-                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/turn around time image.jpg" alt="Turnaround Times"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Turnaround_restorative.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Turnaround Times</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Turnaround_restorative.jpg" alt="Turnaround Times"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Turnaround_restorative.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Turnaround Times</span></div> -->
+                            <a href="Catalogues_Guides.html" class="dropdown-card-link">
+                                <div class="dropdown-card">
+                                    <div class="dropdown-card-img-wrap">
+                                        <img class="dropdown-card-img dropdown-card-img-default" src="images/Catalog + Guides.jpg" alt="Catalogs">
+                                        <img class="dropdown-card-img dropdown-card-img-hover" src="images/Catalog + Guides.jpg" alt="" aria-hidden="true">
+                                    </div>
+                                    <span class="dropdown-card-label">Catalogs</span>
+                                </div>
+                            </a>
+
+                            <a href="Welcome_Kits.html" class="dropdown-card-link">
+                                <div class="dropdown-card">
+                                    <div class="dropdown-card-img-wrap">
+                                        <img class="dropdown-card-img dropdown-card-img-default" src="images/Welcome Kit.jpg" alt="Welcome Kits">
+                                        <img class="dropdown-card-img dropdown-card-img-hover" src="images/Welcome Kit.jpg" alt="" aria-hidden="true">
+                                    </div>
+                                    <span class="dropdown-card-label">Welcome Kits</span>
+                                </div>
+                            </a>
+
+                            <a href="Turnaround_Times.html" class="dropdown-card-link">
+                                <div class="dropdown-card">
+                                    <div class="dropdown-card-img-wrap">
+                                        <img class="dropdown-card-img dropdown-card-img-default" src="images/Turnaround_restorative.jpg" alt="Turnaround Times">
+                                        <img class="dropdown-card-img dropdown-card-img-hover" src="images/Turnaround_restorative.jpg" alt="" aria-hidden="true">
+                                    </div>
+                                    <span class="dropdown-card-label">Turnaround Times</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -293,9 +421,38 @@
                             <!-- <a href="#">Careers</a> -->
                         </div>
                         <div class="dropdown-right">
-                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Our_Story.jpg" alt="Our Story"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Our_Story.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Our Story</span></div>
+                            <!-- <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Our_Story.jpg" alt="Our Story"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Our_Story.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Our Story</span></div>
                             <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/upload1.2.jpg" alt="Mission and Values"><img class="dropdown-card-img dropdown-card-img-hover" src="images/upload1.2.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Mission &amp; Values</span></div>
-                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Home1.1 elevated lab work.jpg" alt="Team"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Home1.1 elevated lab work.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Smile Lab</span></div>
+                            <div class="dropdown-card"><div class="dropdown-card-img-wrap"><img class="dropdown-card-img dropdown-card-img-default" src="images/Home1.1 elevated lab work.jpg" alt="Team"><img class="dropdown-card-img dropdown-card-img-hover" src="images/Home1.1 elevated lab work.jpg" alt="" aria-hidden="true"></div><span class="dropdown-card-label">Smile Lab</span></div> -->
+                            <a href="about_ourstory.html" class="dropdown-card-link">
+                                <div class="dropdown-card">
+                                    <div class="dropdown-card-img-wrap">
+                                        <img class="dropdown-card-img dropdown-card-img-default" src="images/Our_Story.jpg" alt="Our Story">
+                                        <img class="dropdown-card-img dropdown-card-img-hover" src="images/Our_Story.jpg" alt="" aria-hidden="true">
+                                    </div>
+                                    <span class="dropdown-card-label">Our Story</span>
+                                </div>
+                            </a>
+
+                            <a href="about_missionandvalues.html" class="dropdown-card-link">
+                                <div class="dropdown-card">
+                                    <div class="dropdown-card-img-wrap">
+                                        <img class="dropdown-card-img dropdown-card-img-default" src="images/upload1.2.jpg" alt="Mission and Values">
+                                        <img class="dropdown-card-img dropdown-card-img-hover" src="images/upload1.2.jpg" alt="" aria-hidden="true">
+                                    </div>
+                                    <span class="dropdown-card-label">Mission &amp; Values</span>
+                                </div>
+                            </a>
+
+                            <a href="index.html" class="dropdown-card-link">
+                                <div class="dropdown-card">
+                                    <div class="dropdown-card-img-wrap">
+                                        <img class="dropdown-card-img dropdown-card-img-default" src="images/Home1.1 elevated lab work.jpg" alt="Smile Lab">
+                                        <img class="dropdown-card-img dropdown-card-img-hover" src="images/Home1.1 elevated lab work.jpg" alt="" aria-hidden="true">
+                                    </div>
+                                    <span class="dropdown-card-label">Smile Lab</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -304,12 +461,12 @@
                 <a href="blog.html" class="nav-link">Blog</a>
             </div>
             <div class="nav-item">
-                <a href="Promotion.html" class="nav-link">Promotion</a>
-            </div>
-            <div class="nav-item">
                 <a href="contact.html" class="nav-link">Contact</a>
             </div>
         </nav>
+                </div>
+        <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-overlay" aria-hidden="true"></div>
         <!-- <div class="nav-utils">
             <a href="#search" aria-label="Search">🔍</a>
             <a href="#account" aria-label="Account">👤</a>

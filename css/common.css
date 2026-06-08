@@ -59,6 +59,12 @@ h1, h2, h3, .section-title { font-weight: 700; color: var(--color-dark); }
     background: var(--color-bg);
 }
 
+.dropdown-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Header */
 .header {
     background: var(--color-bg);
