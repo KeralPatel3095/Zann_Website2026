@@ -3,3 +3,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.zanndental.com/sitemap.xml
+
+# IndexNow key file (Bing / Yandex instant indexing)
+# https://www.indexnow.org/documentation
+# Key: 7f3c9e2b1d84f6e9a0c3b5d7e8f1a2c

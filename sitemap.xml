@@ -156,7 +156,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.zanndental.com/Product_Denture_%20Repairs_Relines.html</loc>
+    <loc>https://www.zanndental.com/Product_Denture_Repairs.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -175,11 +175,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
+  <!-- <url>
     <loc>https://www.zanndental.com/Product_Immediate_Dentures.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  </url> -->
   <url>
     <loc>https://www.zanndental.com/Product_implant_Advanced_Custom.html</loc>
     <changefreq>monthly</changefreq>
