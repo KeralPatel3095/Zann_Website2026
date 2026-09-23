@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Meeting | ZANN Dental Laboratory</title>
+  <meta name="description" content="Choose a day and time to meet with ZANN Dental Laboratory. Your request is sent to the lab." />
+  <link rel="canonical" href="https://www.zanndental.com/Meeting_Booking.html" />
+  <meta name="theme-color" content="#E2F2F6" />
+  <link rel="icon" type="image/x-icon" href="images/Logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ice: #e2f2f6;
+      --frost: #f5fbfc;
+      --white: #ffffff;
+      --ink: #545658;
+      --muted: #636466;
+      --accent: #4a6f78;
+      --pine: #3d5c63;
+      --line: #dceef3;
+      --soft: #9ab1b6;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--ice);
+      color: var(--muted);
+    }
+    .page { max-width: 640px; margin: 0 auto; padding: 28px 16px 56px; }
+    .brand { text-align: center; margin-bottom: 22px; }
+    .brand strong {
+      display: block;
+      color: var(--ink);
+      font-size: 28px;
+      letter-spacing: 0.2em;
+      font-weight: 800;
+    }
+    .brand span {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px 22px 24px;
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--soft);
+      font-weight: 800;
+    }
+    h1 {
+      margin: 0 0 8px;
+      text-align: center;
+      color: var(--ink);
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+    .lead {
+      margin: 0 0 22px;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .cal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .cal-head p {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .nav {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      background: var(--frost);
+      color: var(--accent);
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .nav:disabled { opacity: 0.35; cursor: default; }
+    .weekdays, .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+    .weekdays span {
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--soft);
+      font-weight: 800;
+      padding-bottom: 4px;
+    }
+    .day {
+      height: 42px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--ink);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .day:hover:not(:disabled) { background: var(--frost); }
+    .day.is-selected { background: var(--accent); color: var(--white); }
+    .day:disabled { color: #c5d5d9; cursor: default; }
+    .day.is-empty { visibility: hidden; }
+    .times { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .time {
+      border: 1px solid var(--line);
+      background: var(--frost);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .time.is-selected { background: var(--accent); color: var(--white); border-color: var(--accent); }
+    .picked {
+      margin: 16px 0 0;
+      min-height: 22px;
+      text-align: center;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    form { margin-top: 8px; }
+    label {
+      display: block;
+      margin: 14px 0 6px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--frost);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    textarea { min-height: 84px; resize: vertical; }
+    .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+    .error {
+      display: none;
+      margin: 14px 0 0;
+      color: #8a4b4b;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .error.is-visible { display: block; }
+    .submit {
+      display: block;
+      width: 100%;
+      margin-top: 18px;
+      border: 0;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 999px;
+      padding: 15px 18px;
+      font-family: inherit;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .submit:disabled { opacity: 0.6; cursor: default; }
+    .success { display: none; text-align: center; padding: 28px 8px 12px; }
+    .success.is-visible { display: block; }
+    .success h2 { margin: 0 0 10px; color: var(--ink); font-size: 26px; }
+    .success p { margin: 0; font-size: 15px; line-height: 1.7; }
+    .foot {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--soft);
+    }
+    .foot a { color: var(--accent); font-weight: 800; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="brand">
+      <strong>ZANN</strong>
+      <span>Dental Laboratory</span>
+    </div>
+    <div class="card">
+      <div id="booking">
+        <p class="eyebrow">Book a meeting</p>
+        <h1>Click the day and time</h1>
+        <p class="lead">Weekdays only. Times are Eastern. Your request is emailed to ZANN Dental Laboratory.</p>
+        <div class="cal-head">
+          <button type="button" class="nav" id="prev" aria-label="Previous month">&#8249;</button>
+          <p id="month-label"></p>
+          <button type="button" class="nav" id="next" aria-label="Next month">&#8250;</button>
+        </div>
+        <div class="weekdays" aria-hidden="true">
+          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </div>
+        <div class="days" id="days" role="grid"></div>
+        <div class="times" id="times" hidden></div>
+        <p class="picked" id="picked" aria-live="polite"></p>
+        <form id="meet-form">
+          <div class="hp" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" tabindex="-1" autocomplete="off" />
+          </div>
+          <label for="doctor">Doctor name</label>
+          <input id="doctor" name="doctor" type="text" required autocomplete="name" />
+          <label for="clinic">Clinic name</label>
+          <input id="clinic" name="clinic" type="text" required autocomplete="organization" />
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email" />
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" required autocomplete="tel" />
+          <label for="note">Note</label>
+          <textarea id="note" name="note" placeholder="Optional"></textarea>
+          <p class="error" id="error">Choose a weekday and a time, then complete the fields.</p>
+          <button class="submit" id="submit" type="submit">Request this meeting</button>
+        </form>
+      </div>
+      <div class="success" id="success">
+        <h2>Request sent</h2>
+        <p>ZANN Dental Laboratory has your day and time. We will confirm by email.</p>
+      </div>
+    </div>
+    <p class="foot"><a href="tel:+14166965454">(416) 696-5454</a> · <a href="mailto:zanndentallab@gmail.com">zanndentallab@gmail.com</a></p>
+  </div>
+  <script>
+    (function () {
+      var TIMES = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"];
+      var daysEl = document.getElementById("days");
+      var timesEl = document.getElementById("times");
+      var monthLabel = document.getElementById("month-label");
+      var pickedEl = document.getElementById("picked");
+      var prevBtn = document.getElementById("prev");
+      var nextBtn = document.getElementById("next");
+      var form = document.getElementById("meet-form");
+      var errorEl = document.getElementById("error");
+      var submitBtn = document.getElementById("submit");
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var maxDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 90);
+      var view = new Date(today.getFullYear(), today.getMonth(), 1);
+      var selectedDate = null;
+      var selectedTime = "";
+
+      function sameDay(a, b) {
+        return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+      }
+      function formatDay(d) {
+        return d.toLocaleDateString("en-CA", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+      }
+      function updatePicked() {
+        if (!selectedDate || !selectedTime) {
+          pickedEl.textContent = selectedDate ? "Choose a time on " + formatDay(selectedDate) + "." : "";
+          return;
+        }
+        pickedEl.textContent = formatDay(selectedDate) + " at " + selectedTime + " Eastern";
+      }
+      function renderTimes() {
+        timesEl.hidden = !selectedDate;
+        timesEl.innerHTML = "";
+        TIMES.forEach(function (time) {
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "time" + (time === selectedTime ? " is-selected" : "");
+          btn.textContent = time;
+          btn.addEventListener("click", function () {
+            selectedTime = time;
+            renderTimes();
+            updatePicked();
+            errorEl.classList.remove("is-visible");
+          });
+          timesEl.appendChild(btn);
+        });
+      }
+      function renderMonth() {
+        var year = view.getFullYear();
+        var month = view.getMonth();
+        monthLabel.textContent = view.toLocaleDateString("en-CA", { month: "long", year: "numeric" });
+        prevBtn.disabled = year === today.getFullYear() && month === today.getMonth();
+        var nextMonth = new Date(year, month + 1, 1);
+        nextBtn.disabled = nextMonth > maxDate;
+        daysEl.innerHTML = "";
+        var firstWeekday = new Date(year, month, 1).getDay();
+        var count = new Date(year, month + 1, 0).getDate();
+        var i;
+        for (i = 0; i < firstWeekday; i++) {
+          var empty = document.createElement("span");
+          empty.className = "day is-empty";
+          daysEl.appendChild(empty);
+        }
+        for (i = 1; i <= count; i++) {
+          var date = new Date(year, month, i);
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "day";
+          btn.textContent = String(i);
+          var weekend = date.getDay() === 0 || date.getDay() === 6;
+          var outOfRange = date < today || date > maxDate;
+          if (weekend || outOfRange) {
+            btn.disabled = true;
+          } else if (selectedDate && sameDay(date, selectedDate)) {
+            btn.classList.add("is-selected");
+          }
+          btn.addEventListener("click", function (chosen) {
+            return function () {
+              selectedDate = chosen;
+              selectedTime = "";
+              renderMonth();
+              renderTimes();
+              updatePicked();
+              errorEl.classList.remove("is-visible");
+            };
+          }(date));
+          daysEl.appendChild(btn);
+        }
+      }
+      prevBtn.addEventListener("click", function () {
+        view = new Date(view.getFullYear(), view.getMonth() - 1, 1);
+        renderMonth();
+      });
+      nextBtn.addEventListener("click", function () {
+        view = new Date(view.getFullYear(), view.getMonth() + 1, 1);
+        renderMonth();
+      });
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (document.getElementById("company").value) return;
+        if (!selectedDate || !selectedTime || !form.checkValidity()) {
+          errorEl.classList.add("is-visible");
+          form.reportValidity();
+          return;
+        }
+        errorEl.classList.remove("is-visible");
+        var doctor = document.getElementById("doctor").value.trim();
+        var clinic = document.getElementById("clinic").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var phone = document.getElementById("phone").value.trim();
+        var note = document.getElementById("note").value.trim();
+        var dayLabel = formatDay(selectedDate);
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+        fetch("https://formsubmit.co/ajax/zanndentallab@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            _subject: "ZANN meeting request — " + doctor + " — " + dayLabel + " at " + selectedTime,
+            _template: "table",
+            _captcha: "false",
+            _replyto: email,
+            doctor_name: doctor,
+            clinic_name: clinic,
+            email: email,
+            phone: phone,
+            meeting_day: dayLabel,
+            meeting_time: selectedTime + " Eastern",
+            note: note || "—"
+          })
+        }).then(function (resp) {
+          if (!resp.ok) throw new Error("send failed");
+          return resp.json();
+        }).then(function (data) {
+          if (data && String(data.success) === "false") throw new Error(data.message || "send failed");
+          document.getElementById("booking").hidden = true;
+          document.getElementById("success").classList.add("is-visible");
+        }).catch(function () {
+          errorEl.textContent = "We could not send the request. Email zanndentallab@gmail.com or try again.";
+          errorEl.classList.add("is-visible");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Request this meeting";
+        });
+      });
+      renderMonth();
+    })();
+  </script>
+</body>
+</html>
