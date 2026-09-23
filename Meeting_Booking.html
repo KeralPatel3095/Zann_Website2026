@@ -26,80 +26,117 @@
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
+      min-height: 100vh;
       font-family: Inter, Arial, Helvetica, sans-serif;
-      background: var(--ice);
       color: var(--muted);
+      background-color: #d5e7ee;
+      background-image:
+        linear-gradient(165deg, rgba(226,242,246,0.9) 0%, rgba(255,255,255,0.78) 42%, rgba(210,228,234,0.88) 100%),
+        url("https://raw.githubusercontent.com/KeralPatel3095/zannemailimages/8d5d51caeb622b58dab801cd256ae031d7dda822/Zrc-1x%20premium%20material.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
     }
-    .page { max-width: 640px; margin: 0 auto; padding: 28px 16px 56px; }
-    .brand { text-align: center; margin-bottom: 22px; }
+    button, input, textarea { font-family: inherit; }
+    .page { max-width: 680px; margin: 0 auto; padding: 48px 18px 64px; }
+    .brand {
+      position: relative;
+      text-align: center;
+      margin: 0;
+      padding: 42px 28px 36px;
+      background-color: #24383d;
+      background-image:
+        linear-gradient(180deg, rgba(24,38,42,0.28) 0%, rgba(24,38,42,0.58) 100%),
+        url("https://raw.githubusercontent.com/KeralPatel3095/Zann_Website2026/main/images/Gold-1x%20Did%20you%20know.jpg");
+      background-repeat: no-repeat;
+      background-position: center 40%;
+      background-size: cover;
+    }
     .brand strong {
       display: block;
-      color: var(--ink);
-      font-size: 28px;
-      letter-spacing: 0.2em;
-      font-weight: 800;
+      color: #ffffff;
+      font-size: 22px;
+      letter-spacing: 0.46em;
+      font-weight: 600;
+      text-indent: 0.46em;
     }
     .brand span {
       display: block;
-      margin-top: 6px;
+      margin-top: 10px;
       font-size: 11px;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      font-weight: 500;
+    }
+    .card {
+      background: rgba(255,255,255,0.97);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 28px 70px rgba(28, 48, 54, 0.22);
+    }
+    .card-body { padding: 34px 28px 30px; }
+    .eyebrow {
+      margin: 0 0 10px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--accent);
       font-weight: 700;
     }
-    .card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 28px 22px 24px;
-    }
-    .eyebrow {
-      margin: 0 0 8px;
-      text-align: center;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--soft);
-      font-weight: 800;
-    }
     h1 {
-      margin: 0 0 8px;
+      margin: 0 0 10px;
       text-align: center;
-      color: var(--ink);
-      font-size: 30px;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
+      color: #3a4144;
+      font-size: 34px;
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+      font-weight: 600;
     }
     .lead {
-      margin: 0 0 22px;
+      max-width: 440px;
+      margin: 0 auto 26px;
       text-align: center;
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.7;
+      color: #6a7276;
+    }
+    .panel {
+      background: linear-gradient(180deg, #f7fcfd 0%, #f3f9fb 100%);
+      border: 1px solid #e4f0f3;
+      border-radius: 18px;
+      padding: 18px 16px 16px;
     }
     .cal-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      padding: 0 4px;
     }
     .cal-head p {
       margin: 0;
-      color: var(--ink);
-      font-weight: 800;
+      color: #3a4144;
+      font-weight: 600;
       font-size: 16px;
+      letter-spacing: -0.02em;
     }
     .nav {
-      width: 36px;
-      height: 36px;
-      border: 1px solid var(--line);
-      background: var(--frost);
-      color: var(--accent);
+      width: 34px;
+      height: 34px;
+      border: 1px solid #d7e6ea;
+      background: #ffffff;
+      color: var(--pine);
       border-radius: 999px;
       font-size: 18px;
-      font-weight: 800;
+      line-height: 1;
+      font-weight: 600;
       cursor: pointer;
     }
+    .nav:hover:not(:disabled) { background: #eef6f8; }
     .nav:disabled { opacity: 0.35; cursor: default; }
     .weekdays, .days {
       display: grid;
@@ -108,70 +145,133 @@
     }
     .weekdays span {
       text-align: center;
-      font-size: 11px;
-      letter-spacing: 0.06em;
+      font-size: 10px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--soft);
-      font-weight: 800;
-      padding-bottom: 4px;
+      color: #8aa0a6;
+      font-weight: 700;
+      padding-bottom: 6px;
     }
     .day {
-      height: 42px;
-      border: 1px solid transparent;
+      height: 44px;
+      border: 1px solid #e6f0f3;
+      background: #ffffff;
+      color: #3f484c;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .day:hover:not(:disabled) {
+      border-color: #b7cdd3;
+      background: #ffffff;
+    }
+    .day.is-selected {
+      background: var(--pine);
+      border-color: var(--pine);
+      color: var(--white);
+      box-shadow: 0 8px 16px rgba(61, 92, 99, 0.22);
+    }
+    .day:disabled {
       background: transparent;
-      color: var(--ink);
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
+      border-color: transparent;
+      color: #c5d3d7;
+      cursor: default;
     }
-    .day:hover:not(:disabled) { background: var(--frost); }
-    .day.is-selected { background: var(--accent); color: var(--white); }
-    .day:disabled { color: #c5d5d9; cursor: default; }
+    .day.is-full,
+    .day.is-full:disabled {
+      background: #f4f7f8;
+      border-color: #e5eef0;
+      color: #b7c6ca;
+      text-decoration: line-through;
+      cursor: default;
+    }
     .day.is-empty { visibility: hidden; }
-    .times { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-    .time {
-      border: 1px solid var(--line);
-      background: var(--frost);
-      color: var(--accent);
-      border-radius: 999px;
-      padding: 10px 14px;
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
+    .times {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #e4eef1;
     }
-    .time.is-selected { background: var(--accent); color: var(--white); border-color: var(--accent); }
-    .picked {
-      margin: 16px 0 0;
-      min-height: 22px;
+    .time {
+      border: 1px solid #d7e6ea;
+      background: #ffffff;
+      color: var(--pine);
+      border-radius: 12px;
+      padding: 11px 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
       text-align: center;
-      color: var(--ink);
+    }
+    .time:hover { border-color: #9eb6bc; }
+    .time.is-selected {
+      background: var(--pine);
+      color: var(--white);
+      border-color: var(--pine);
+    }
+    .time.is-reserved,
+    .time.is-reserved:disabled {
+      background: #f4f7f8;
+      color: #a9bcc1;
+      border-color: #e5eef0;
+      text-decoration: line-through;
+      cursor: default;
+    }
+    .time.is-reserved:hover { border-color: #e5eef0; }
+    .picked {
+      margin: 14px 0 0;
+      min-height: 20px;
+      text-align: center;
+      color: var(--pine);
       font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .details {
+      margin-top: 18px;
+    }
+    .section-label {
+      margin: 0 0 4px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
       font-weight: 700;
     }
-    form { margin-top: 8px; }
+    form { margin-top: 0; }
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 14px;
+    }
+    .field-wide { grid-column: 1 / -1; }
     label {
       display: block;
       margin: 14px 0 6px;
-      font-size: 12px;
-      letter-spacing: 0.08em;
+      font-size: 11px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 800;
+      color: #7d9196;
+      font-weight: 700;
     }
     input, textarea {
       width: 100%;
-      border: 1px solid var(--line);
-      background: var(--frost);
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-family: inherit;
+      border: 1px solid #dce8ec;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 13px 14px;
       font-size: 15px;
-      color: var(--ink);
+      color: #3a4144;
     }
-    textarea { min-height: 84px; resize: vertical; }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #7f9ea6;
+      box-shadow: 0 0 0 4px rgba(74, 111, 120, 0.12);
+    }
+    textarea { min-height: 96px; resize: vertical; }
     .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
     .error {
       display: none;
@@ -187,82 +287,124 @@
       width: 100%;
       margin-top: 18px;
       border: 0;
-      background: var(--accent);
+      background: var(--pine);
       color: var(--white);
-      border-radius: 999px;
-      padding: 15px 18px;
-      font-family: inherit;
+      border-radius: 14px;
+      padding: 16px 18px;
       font-size: 12px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      font-weight: 800;
+      font-weight: 700;
       cursor: pointer;
+      box-shadow: 0 10px 22px rgba(61, 92, 99, 0.2);
     }
+    .submit:hover:not(:disabled) { background: #314c52; }
     .submit:disabled { opacity: 0.6; cursor: default; }
-    .success { display: none; text-align: center; padding: 28px 8px 12px; }
+    .success { display: none; text-align: center; padding: 36px 12px 20px; }
     .success.is-visible { display: block; }
-    .success h2 { margin: 0 0 10px; color: var(--ink); font-size: 26px; }
-    .success p { margin: 0; font-size: 15px; line-height: 1.7; }
+    .success h2 {
+      margin: 0 auto 12px;
+      max-width: 420px;
+      color: #3a4144;
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+    .success p { margin: 0; font-size: 15px; line-height: 1.7; color: #636b6e; }
+    .success p + p { margin-top: 10px; }
+    .send-frame { position: absolute; width: 0; height: 0; border: 0; }
     .foot {
-      margin-top: 18px;
+      margin-top: 22px;
       text-align: center;
       font-size: 13px;
-      color: var(--soft);
+      color: #3d5c63;
+      font-weight: 500;
+      letter-spacing: 0.01em;
     }
-    .foot a { color: var(--accent); font-weight: 800; text-decoration: none; }
+    .foot a { color: #3d5c63; font-weight: 700; text-decoration: none; }
+    @media (max-width: 560px) {
+      .page { padding: 24px 12px 40px; }
+      .card-body { padding: 26px 16px 22px; }
+      h1 { font-size: 28px; }
+      .fields, .times { grid-template-columns: 1fr 1fr; }
+      .brand strong { letter-spacing: 0.32em; text-indent: 0.32em; }
+    }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="brand">
-      <strong>ZANN</strong>
-      <span>Dental Laboratory</span>
-    </div>
     <div class="card">
+      <div class="brand">
+        <strong>ZANN</strong>
+        <span>Dental Laboratory</span>
+      </div>
+      <div class="card-body">
       <div id="booking">
         <p class="eyebrow">Book a meeting</p>
         <h1>Click the day and time</h1>
-        <p class="lead">Weekdays only. Times are Eastern. Your request is emailed to ZANN Dental Laboratory.</p>
-        <div class="cal-head">
-          <button type="button" class="nav" id="prev" aria-label="Previous month">&#8249;</button>
-          <p id="month-label"></p>
-          <button type="button" class="nav" id="next" aria-label="Next month">&#8250;</button>
-        </div>
-        <div class="weekdays" aria-hidden="true">
-          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
-        </div>
-        <div class="days" id="days" role="grid"></div>
-        <div class="times" id="times" hidden></div>
-        <p class="picked" id="picked" aria-live="polite"></p>
-        <form id="meet-form">
-          <div class="hp" aria-hidden="true">
-            <label for="company">Company</label>
-            <input id="company" name="company" tabindex="-1" autocomplete="off" />
+        <p class="lead">Choose a weekday and a time. Your request is sent directly to ZANN Dental Laboratory.</p>
+        <div class="panel">
+          <div class="cal-head">
+            <button type="button" class="nav" id="prev" aria-label="Previous month">&#8249;</button>
+            <p id="month-label"></p>
+            <button type="button" class="nav" id="next" aria-label="Next month">&#8250;</button>
           </div>
-          <label for="doctor">Doctor name</label>
-          <input id="doctor" name="doctor" type="text" required autocomplete="name" />
-          <label for="clinic">Clinic name</label>
-          <input id="clinic" name="clinic" type="text" required autocomplete="organization" />
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required autocomplete="email" />
-          <label for="phone">Phone</label>
-          <input id="phone" name="phone" type="tel" required autocomplete="tel" />
-          <label for="note">Note</label>
-          <textarea id="note" name="note" placeholder="Optional"></textarea>
-          <p class="error" id="error">Choose a weekday and a time, then complete the fields.</p>
-          <button class="submit" id="submit" type="submit">Request this meeting</button>
-        </form>
+          <div class="weekdays" aria-hidden="true">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="days" id="days" role="grid"></div>
+          <div class="times" id="times" hidden></div>
+          <p class="picked" id="picked" aria-live="polite"></p>
+        </div>
+        <div class="details">
+          <p class="section-label">Your details</p>
+          <form id="meet-form" autocomplete="off" novalidate>
+            <div class="hp" aria-hidden="true">
+              <label for="company">Leave blank</label>
+              <input id="company" name="company" tabindex="-1" autocomplete="off" />
+            </div>
+            <div class="fields">
+              <div>
+                <label for="doctor">Doctor name</label>
+                <input id="doctor" name="doctor" type="text" autocomplete="name" />
+              </div>
+              <div>
+                <label for="clinic">Clinic name</label>
+                <input id="clinic" name="clinic" type="text" autocomplete="organization" />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" />
+              </div>
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+              <div class="field-wide">
+                <label for="note">Note</label>
+                <textarea id="note" name="note" placeholder="Optional"></textarea>
+              </div>
+              <div class="field-wide">
+                <button class="submit" id="submit" type="submit">Request this meeting</button>
+                <p class="error" id="error" role="alert"></p>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
       <div class="success" id="success">
-        <h2>Request sent</h2>
-        <p>ZANN Dental Laboratory has your day and time. We will confirm by email.</p>
+        <h2>Thank you for choosing a time to meet with Ana.</h2>
+        <p id="success-detail"></p>
+        <p>Your day and time have been sent to zanndentallab@gmail.com. Ana will confirm by email.</p>
+      </div>
       </div>
     </div>
+    <iframe class="send-frame" name="meet-send" id="meet-send" title="Sending meeting request"></iframe>
     <p class="foot"><a href="tel:+14166965454">(416) 696-5454</a> · <a href="mailto:zanndentallab@gmail.com">zanndentallab@gmail.com</a></p>
   </div>
   <script>
     (function () {
-      var TIMES = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"];
+      var TIMES = ["9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM"];
       var daysEl = document.getElementById("days");
       var timesEl = document.getElementById("times");
       var monthLabel = document.getElementById("month-label");
@@ -278,12 +420,60 @@
       var view = new Date(today.getFullYear(), today.getMonth(), 1);
       var selectedDate = null;
       var selectedTime = "";
+      var booked = {};
+      var STORAGE_KEY = "zann-meeting-slots";
 
       function sameDay(a, b) {
         return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
       }
       function formatDay(d) {
         return d.toLocaleDateString("en-CA", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+      }
+      function slotId(date, time) {
+        var month = String(date.getMonth() + 1);
+        var day = String(date.getDate());
+        if (month.length < 2) month = "0" + month;
+        if (day.length < 2) day = "0" + day;
+        return date.getFullYear() + "-" + month + "-" + day + "_" + time.replace(/[: ]/g, "");
+      }
+      function remember(slot) {
+        booked[slot] = true;
+        try {
+          var list = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+          if (list.indexOf(slot) === -1) list.push(slot);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        } catch (err) {}
+      }
+      function loadLocal() {
+        try {
+          JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]").forEach(function (id) {
+            booked[id] = true;
+          });
+        } catch (err) {}
+      }
+      function dayIsFull(date) {
+        var i;
+        for (i = 0; i < TIMES.length; i++) {
+          if (!booked[slotId(date, TIMES[i])]) return false;
+        }
+        return true;
+      }
+      function refreshBooked() {
+        if (location.protocol === "file:") return;
+        fetch("/api/bookings", { headers: { Accept: "application/json" }, cache: "no-store" })
+          .then(function (resp) {
+            if (!resp.ok) return null;
+            return resp.json();
+          })
+          .then(function (data) {
+            if (!data) return;
+            (data.slots || []).forEach(function (id) { booked[id] = true; });
+            if (selectedDate && selectedTime && booked[slotId(selectedDate, selectedTime)]) selectedTime = "";
+            renderMonth();
+            renderTimes();
+            updatePicked();
+          })
+          .catch(function () {});
       }
       function updatePicked() {
         if (!selectedDate || !selectedTime) {
@@ -297,15 +487,22 @@
         timesEl.innerHTML = "";
         TIMES.forEach(function (time) {
           var btn = document.createElement("button");
+          var reserved = selectedDate && booked[slotId(selectedDate, time)];
           btn.type = "button";
-          btn.className = "time" + (time === selectedTime ? " is-selected" : "");
           btn.textContent = time;
-          btn.addEventListener("click", function () {
-            selectedTime = time;
-            renderTimes();
-            updatePicked();
-            errorEl.classList.remove("is-visible");
-          });
+          if (reserved) {
+            btn.className = "time is-reserved";
+            btn.disabled = true;
+            btn.title = "Already reserved";
+          } else {
+            btn.className = "time" + (time === selectedTime ? " is-selected" : "");
+            btn.addEventListener("click", function () {
+              selectedTime = time;
+              renderTimes();
+              updatePicked();
+              errorEl.classList.remove("is-visible");
+            });
+          }
           timesEl.appendChild(btn);
         });
       }
@@ -335,6 +532,10 @@
           var outOfRange = date < today || date > maxDate;
           if (weekend || outOfRange) {
             btn.disabled = true;
+          } else if (dayIsFull(date)) {
+            btn.disabled = true;
+            btn.classList.add("is-full");
+            btn.title = "Fully booked";
           } else if (selectedDate && sameDay(date, selectedDate)) {
             btn.classList.add("is-selected");
           }
@@ -359,53 +560,176 @@
         view = new Date(view.getFullYear(), view.getMonth() + 1, 1);
         renderMonth();
       });
+      function showError(message) {
+        errorEl.textContent = message;
+        errorEl.classList.add("is-visible");
+        errorEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+      function showThanks(dayLabel, timeLabel) {
+        document.getElementById("success-detail").textContent = dayLabel + " at " + timeLabel + " Eastern.";
+        document.getElementById("booking").hidden = true;
+        document.getElementById("success").classList.add("is-visible");
+      }
+      function payloadFor(doctor, clinic, email, phone, note, dayLabel) {
+        return {
+          _subject: "ZANN meeting request — " + doctor + " — " + dayLabel + " at " + selectedTime,
+          _template: "table",
+          _captcha: "false",
+          _replyto: email,
+          doctor_name: doctor,
+          clinic_name: clinic,
+          email: email,
+          phone: phone,
+          meeting_day: dayLabel,
+          meeting_time: selectedTime + " Eastern",
+          note: note || "—"
+        };
+      }
+      function postWithFrame(payload) {
+        return new Promise(function (resolve, reject) {
+          var frame = document.getElementById("meet-send");
+          var settled = false;
+          var timer = setTimeout(function () { finish(false); }, 12000);
+          function finish(ok) {
+            if (settled) return;
+            settled = true;
+            clearTimeout(timer);
+            frame.removeEventListener("load", onLoad);
+            if (ok) resolve();
+            else reject(new Error("send failed"));
+          }
+          function onLoad() { finish(true); }
+          frame.addEventListener("load", onLoad);
+          var fallback = document.createElement("form");
+          fallback.method = "POST";
+          fallback.action = "https://formsubmit.co/zanndentallab@gmail.com";
+          fallback.target = "meet-send";
+          fallback.acceptCharset = "UTF-8";
+          Object.keys(payload).forEach(function (key) {
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = key;
+            input.value = payload[key];
+            fallback.appendChild(input);
+          });
+          document.body.appendChild(fallback);
+          fallback.submit();
+        });
+      }
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-        if (document.getElementById("company").value) return;
-        if (!selectedDate || !selectedTime || !form.checkValidity()) {
-          errorEl.classList.add("is-visible");
-          form.reportValidity();
-          return;
-        }
-        errorEl.classList.remove("is-visible");
         var doctor = document.getElementById("doctor").value.trim();
         var clinic = document.getElementById("clinic").value.trim();
         var email = document.getElementById("email").value.trim();
         var phone = document.getElementById("phone").value.trim();
         var note = document.getElementById("note").value.trim();
+        if (!selectedDate || !selectedTime) {
+          showError("Choose a weekday and a time, then press Request this meeting again.");
+          return;
+        }
+        if (!doctor || !clinic || !email || !phone) {
+          showError("Add your name, clinic, email, and phone so Ana can confirm the meeting.");
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showError("Enter a valid email so Ana can confirm the meeting.");
+          return;
+        }
+        errorEl.classList.remove("is-visible");
         var dayLabel = formatDay(selectedDate);
+        var slot = slotId(selectedDate, selectedTime);
+        if (booked[slot]) {
+          selectedTime = "";
+          renderTimes();
+          updatePicked();
+          showError("This time is already reserved. Please choose another time.");
+          return;
+        }
+        var payload = payloadFor(doctor, clinic, email, phone, note, dayLabel);
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending…";
-        fetch("https://formsubmit.co/ajax/zanndentallab@gmail.com", {
+        function releaseSlot() {
+          if (location.protocol === "file:") return;
+          fetch("/api/bookings", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({ slot: slot, email: email })
+          }).catch(function () {});
+        }
+        function sendRequest(heldOnServer) {
+        var ajax = fetch("https://formsubmit.co/ajax/zanndentallab@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload)
+        }).then(function (resp) {
+          return resp.text().then(function (text) {
+            var data = null;
+            try { data = JSON.parse(text); } catch (err) { data = null; }
+            if (!resp.ok || !data || String(data.success) !== "true") {
+              var failed = new Error("send failed");
+              failed.detail = (data && data.message) || "";
+              throw failed;
+            }
+          });
+        });
+        ajax.then(function () {
+          remember(slot);
+          showThanks(dayLabel, selectedTime);
+        }).catch(function (err) {
+          postWithFrame(payload).then(function () {
+            remember(slot);
+            showThanks(dayLabel, selectedTime);
+          }).catch(function () {
+            var detail = err && err.detail ? " " + err.detail : "";
+            if (heldOnServer) releaseSlot();
+            showError("We could not send the request." + detail + " Email zanndentallab@gmail.com or try again.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Request this meeting";
+          });
+        });
+        }
+        function markTaken() {
+          remember(slot);
+          selectedTime = "";
+          renderMonth();
+          renderTimes();
+          updatePicked();
+          showError("This time is already reserved. Please choose another time.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Request this meeting";
+        }
+        if (location.protocol === "file:") {
+          sendRequest(false);
+          return;
+        }
+        fetch("/api/bookings", {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({
-            _subject: "ZANN meeting request — " + doctor + " — " + dayLabel + " at " + selectedTime,
-            _template: "table",
-            _captcha: "false",
-            _replyto: email,
+            slot: slot,
+            meeting_day: dayLabel,
+            meeting_time: selectedTime,
             doctor_name: doctor,
             clinic_name: clinic,
             email: email,
-            phone: phone,
-            meeting_day: dayLabel,
-            meeting_time: selectedTime + " Eastern",
-            note: note || "—"
+            phone: phone
           })
         }).then(function (resp) {
-          if (!resp.ok) throw new Error("send failed");
-          return resp.json();
-        }).then(function (data) {
-          if (data && String(data.success) === "false") throw new Error(data.message || "send failed");
-          document.getElementById("booking").hidden = true;
-          document.getElementById("success").classList.add("is-visible");
+          return resp.json().catch(function () { return {}; }).then(function (data) {
+            return { status: resp.status, taken: resp.status === 409 || !!(data && data.taken) };
+          });
+        }).then(function (result) {
+          if (result.taken) {
+            markTaken();
+            return;
+          }
+          sendRequest(result.status >= 200 && result.status < 300);
         }).catch(function () {
-          errorEl.textContent = "We could not send the request. Email zanndentallab@gmail.com or try again.";
-          errorEl.classList.add("is-visible");
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Request this meeting";
+          sendRequest(false);
         });
       });
+      loadLocal();
+      refreshBooked();
       renderMonth();
     })();
   </script>
